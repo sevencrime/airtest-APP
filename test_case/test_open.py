@@ -15,7 +15,7 @@ class Test_open():
     def test_Openning(self, poco):
         startupfrom = startUpFrom(poco)
         with allure.step("启动APP"):
-            start_app("io.newtype.eddid.app")
+            start_app(package="io.newtype.eddid.app")
 
         with allure.step("处理权限弹框--点击运行"):
             startupfrom.permissionBox()
@@ -43,7 +43,11 @@ class Test_open():
         with allure.step("登陆界面--点击登陆按钮"):
             startupfrom.click_Loginbtn()
 
+        with allure.step("登录后再次点击便捷开户"):
+            startupfrom.click_easyOpenning()
 
 
 if __name__ == "__main__":
     pytest.main(["-s", "test_open.py", '--alluredir', '../report/xml'])
+    # os.popen("allure generate {xml} -o {html} --clean".format(xml=os.getcwd() + r'\EDDID_APP\report\xml',
+    #                                                           html=os.getcwd() + r'\EDDID_APP\report\html'))

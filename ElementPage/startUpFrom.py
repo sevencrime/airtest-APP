@@ -5,7 +5,6 @@ from Commons.BaseView import BaseView
 
 
 class startUpFrom(BaseView):
-
     firstSetting_loc = 'io.newtype.eddid.app:id/btn_start'
 
     def permissionBox(self):
@@ -14,7 +13,6 @@ class startUpFrom(BaseView):
 
         """
         pass
-
 
     def firstSetting(self):
         """
@@ -32,8 +30,22 @@ class startUpFrom(BaseView):
         底部栏--开户选项
 
         """
-        # self.poco(self.barOpenning_loc).click()
-        self.poco(text="开户").click()
+
+        while True:
+            index = 0
+            baropen = self.poco(text="开户")
+
+            existence = self.poco.wait_for_any(baropen)
+
+            if not existence is None:
+                baropen.click()
+                return
+
+            else:
+                index += 1
+                if index >= 10:
+                    return
+
 
     def click_easyOpenning(self):
         """
@@ -56,20 +68,19 @@ class startUpFrom(BaseView):
         """
         self.poco(text="请输入手机号").set_text("15089514626")
 
-
     def send_password(self):
         """
         登陆界面--输入密码
 
         """
-        self.poco(text="请输入密码").set_text("abcd1234")
-
+        # import pdb;pdb.set_trace()
+        # self.poco(text="请输入密码").set_text("abcd1234")
+        self.poco("android.widget.ScrollView").child("android.view.ViewGroup").child("android.widget.EditText")[1].set_text("abcd1234")
 
     def click_Loginbtn(self):
         """
         登陆界面--登陆按钮
 
         """
-        self.poco("android.widget.ScrollView").child("android.widget.TextView").child("android.view.ViewGroup").child(
+        self.poco("android.widget.ScrollView").child("android.view.ViewGroup").child("android.view.ViewGroup").child(
             "android.widget.TextView", text="登录").click()
-
