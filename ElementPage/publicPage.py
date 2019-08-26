@@ -12,12 +12,13 @@ class publicPage(BaseView):
         """
         pass
 
+
     def click_NextStepbtn(self):
         """
         开户表单所有的下一步按钮
 
         """
-        self.nextStepbtn.click()
+        self.exists(self.nextStepbtn).click()
 
     def click_boxCancel(self):
         """
@@ -32,4 +33,4 @@ class publicPage(BaseView):
         开户表单-- 弹出确认框--确定按钮
 
         """
-        self.boxconfirm.click()
+        self.exists(self.boxconfirm).click()

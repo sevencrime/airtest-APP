@@ -12,6 +12,7 @@ class BaseView():
         self.boxCancel = self.poco(text="取消")
         self.boxconfirm = self.poco(text="确定")
         self.Album = self.poco(text="相册选取")
+        self.loading = self.poco("android.widget.ProgressBar")
 
         self.el_firstSetting_loc = self.poco("io.newtype.eddid.app:id/btn_start")
         self.baropen = self.poco(text="开户")
@@ -38,12 +39,13 @@ class BaseView():
         """
         先等待元素出现, 再判断元素是否显示
 
-        Args:
-            element: 定位到的控件, poco(..)
-
         """
         try:
-            return self.poco.wait_for_any(element)
+            # return self.poco.wait_for_any(element)
+            element.wait_for_appearance()
+            return element
         except Exception as e:
             print("找不到元素 {}".format(element))
             print(e)
+
+
