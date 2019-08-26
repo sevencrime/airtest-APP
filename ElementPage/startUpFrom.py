@@ -5,46 +5,21 @@ from Commons.BaseView import BaseView
 
 
 class startUpFrom(BaseView):
-    firstSetting_loc = 'io.newtype.eddid.app:id/btn_start'
-
-    def permissionBox(self):
-        """
-        处理Android权限弹框
-
-        """
-        pass
 
     def firstSetting(self):
         """
         首次使用设置
 
         """
-        try:
-            self.poco(self.firstSetting_loc).click()
-            return True
-        except:
-            return False
+        self.exists(self.el_firstSetting_loc).click()
+
 
     def click_barOpenning(self):
         """
         底部栏--开户选项
 
         """
-
-        while True:
-            index = 0
-            baropen = self.poco(text="开户")
-
-            existence = self.poco.wait_for_any(baropen)
-
-            if not existence is None:
-                baropen.click()
-                return
-
-            else:
-                index += 1
-                if index >= 10:
-                    return
+        self.exists(self.baropen).click()
 
 
     def click_easyOpenning(self):
@@ -52,21 +27,21 @@ class startUpFrom(BaseView):
         便捷开户
 
         """
-        self.poco(text="便捷开户").click()
+        self.easyOpenning.click()
 
     def click_goLogin(self):
         """
         注册界面--去登陆
 
         """
-        self.poco(text="去登录").click()
+        self.goLogin.click()
 
     def send_phonenumber(self):
         """
         登陆界面--输入电话号码(手机号)
 
         """
-        self.poco(text="请输入手机号").set_text("15089514626")
+        self.phonenumber.set_text("15089514626")
 
     def send_password(self):
         """

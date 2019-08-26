@@ -4,6 +4,7 @@ import allure
 import pytest
 from airtest.core.api import *
 
+from ElementPage.publicPage import publicPage
 from ElementPage.startUpFrom import startUpFrom
 
 
@@ -14,11 +15,12 @@ class Test_open():
     @pytest.mark.run(order=1)
     def test_Openning(self, poco):
         startupfrom = startUpFrom(poco)
+        pubpage = publicPage(poco)
         with allure.step("启动APP"):
             start_app(package="io.newtype.eddid.app")
 
         with allure.step("处理权限弹框--点击运行"):
-            startupfrom.permissionBox()
+            pubpage.permissionBox()
 
         with allure.step("首次使用设置--点击确定"):
             boolstr = startupfrom.firstSetting()
