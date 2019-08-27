@@ -13,7 +13,7 @@ class Test_uploadidcard():
 
     @allure.story("上传身份证")
     @pytest.mark.run(order=2)
-    def test_Openning(self, poco):
+    def test_uploadidcard(self, poco):
         upidcard = idcardPage(poco)
         pubpage = publicPage(poco)
         with allure.step("选择所属地区 -- 内地居民"):
@@ -29,6 +29,7 @@ class Test_uploadidcard():
 
         with allure.step("点击下一步"):
             pubpage.click_NextStepbtn()
+
 
 
 if __name__ == "__main__":

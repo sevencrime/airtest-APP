@@ -24,3 +24,11 @@ class personalInformationPage(BaseView):
 
         """
         self.exists(self.el_reEmail).set_text(email)
+
+
+    def get_address(self):
+        """
+        获取地址栏的值
+
+        """
+        return self.exists(self.el_iDcardAddress).get_text()

@@ -34,3 +34,21 @@ class publicPage(BaseView):
 
         """
         self.exists(self.boxconfirm).click()
+
+
+    def get_boxtitle(self):
+        """
+        获取弹出框的标题
+
+        """
+        boxtitle = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.view.ViewGroup")[0].child("android.widget.TextView")
+        return boxtitle.get_text()
+
+    def get_boxcontent(self):
+        """
+        获取弹出框的提示内容
+        """
+        boxcontent = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.widget.TextView")
+        return boxcontent.get_text()
+
+

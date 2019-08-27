@@ -28,7 +28,9 @@ class Test_open():
                 allure.attach("AppSetpLOG", "首次使用设置弹框没有出现")
 
         with allure.step("底部栏选择开户"):
-            startupfrom.click_barOpenning()
+            baropen = startupfrom.click_barOpenning()
+            if not baropen:
+                allure.attach("AppSetpLOG", "没有底部栏, 非行情APP")
 
         with allure.step("点击便捷开户"):
             startupfrom.click_easyOpenning()

@@ -11,7 +11,10 @@ class startUpFrom(BaseView):
         首次使用设置
 
         """
-        self.exists(self.el_firstSetting_loc).click()
+        try:
+            self.exists(self.el_firstSetting_loc).click()
+        except:
+            return False
 
 
     def click_barOpenning(self):
@@ -19,7 +22,10 @@ class startUpFrom(BaseView):
         底部栏--开户选项
 
         """
-        self.exists(self.baropen).click()
+        try:
+            self.exists(self.baropen).click()
+        except:
+            return False
 
 
     def click_easyOpenning(self):

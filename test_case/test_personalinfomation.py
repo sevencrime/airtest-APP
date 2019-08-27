@@ -14,17 +14,25 @@ class Test_personalinfomation():
 
     @allure.story("填写个人资料")
     @pytest.mark.run(order=3)
-    def test_Openning(self, poco):
+    def test_personal(self, poco):
         perinfo = personalInformationPage(poco)
         pubpage = publicPage(poco)
         with allure.step("输入电邮"):
-            perinfo.send_emali()
+            email = perinfo.send_emali()
         with allure.step("再次输入电邮"):
-            perinfo.send_reemail()
+            reEmail = perinfo.send_reemail()
         with allure.step("点击下一步"):
             pubpage.click_NextStepbtn()
+
+        with allure.step("校验地址弹框标题和内容"):
+            boxtitle = pubpage.get_boxtitle()
+            boxcontent = pubpage.get_boxcontent()
+            assert_equal(boxtitle, "请确认您的身份证地址", "确认地址弹框标题有误")
+            assert_equal(boxcontent, perinfo.get_address(), "弹框内容与填写内容不符")
+
         with allure.step("确认地址弹框--点击确定"):
             pubpage.click_boxconfirm()
+
 
 
 if __name__ == "__main__":
