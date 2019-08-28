@@ -50,8 +50,23 @@ class BaseView():
 
         # 就业情况
         self.el_employ = self.poco(text="就业情况").sibling("android.view.ViewGroup").offspring("android.widget.ImageView").click()
-        self.el_employ = self.poco(text="全年总收入(港元)").sibling("android.view.ViewGroup").offspring("android.widget.ImageView").click()
-        self.el_employ = self.poco(text="资产净值(港元)").sibling("android.view.ViewGroup").offspring("android.widget.ImageView").click()
+        self.totalAnnualCustomerRevenueHK = self.poco(text="全年总收入(港元)").sibling("android.view.ViewGroup").offspring("android.widget.ImageView").click()
+        self.customerNetAssetValueHK = self.poco(text="资产净值(港元)").sibling("android.view.ViewGroup").offspring("android.widget.ImageView").click()
+        self.sourcesfunds = self.poco(text="请注明资金来源(可多选)")
+        self.assetsvalue = self.poco(text="请注明资产净值(可多选)")
+        # self.salary = self.poco(text="就业")
+        # self.saving = self.poco(text="储蓄")
+        # self.investmentreturn = self.poco(text="投资回报")
+        # self.rent = self.poco(text="租金")
+        # self.commission = self.poco(text="佣金")
+        # self.other = self.poco(text="其他")
+        # self.Property = self.poco(text="物业投资")
+        # self.vehicle = self.poco(text="车辆投资")
+        # self.Stockorbond = self.poco(text="股票/债券投资")
+        # self.heritage = self.poco(text="遗产")
+        # self.selfOperatedBusinessIncome = self.poco(test="自营业务收益")
+        # self.pension = self.poco(test="退休金")
+
 
     def exists(self, element):
         """
