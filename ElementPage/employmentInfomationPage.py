@@ -16,14 +16,21 @@ class employmentInfomationPage(BaseView):
             employ:下拉框的值(string)  可选值['就业', '自雇', '无业]
         """
         employment = self.exists(self.el_employ)
+
+        # 获取就业情况栏位的值
+        try:
+            employtext = employment.get_text()
+        except:
+            employtext = None
+
         # 判断employ是否与当前选中的一致
-        if employ != employment.get_text():
+        if employ != employtext:
             # 点击就业情况下拉框
             employment.click()
             # 下拉框选值:employ
-            self.poco(employ).click()
+            self.poco(text=employ).click()
 
-        return employment.get_text()
+        return self.el_employ.get_text()
 
 
     def click_totalAnnualCustomerRevenueHK(self, price, funds=None):
@@ -35,13 +42,19 @@ class employmentInfomationPage(BaseView):
             funds:  list类型, 资金来源需要勾选的字段
         """
         totalAnnual = self.exists(self.totalAnnualCustomerRevenueHK)
+
+        try:
+            totalAnnualtext = totalAnnual.get_text()
+        except:
+            totalAnnualtext = None
+
         # 判断employ是否与当前选中的一致
-        if price != totalAnnual.get_text():
+        if price != totalAnnualtext:
             totalAnnual.click()
             self.poco(text=price).click()
 
         # 判断 "请注明资金来源(可多选)" 复选框是否触发
-        if self.exists(self.sourcesfunds):
+        if self.sourcesfunds:
             # 遍历需要点击的选项
             for fund in funds:
                 sources = self.exists(self.poco(text=fund))
@@ -54,7 +67,7 @@ class employmentInfomationPage(BaseView):
                     print("出现了不止2个, 需要查看问题哦")
                     pass
 
-        return totalAnnual.get_text()
+        return self.totalAnnualCustomerRevenueHK.get_text()
 
 
     def click_customerNetAssetValueHK(self, price, assets=None):
@@ -66,13 +79,19 @@ class employmentInfomationPage(BaseView):
             assets:  list类型, 资产净值需要勾选的字段
         """
         customer = self.exists(self.customerNetAssetValueHK)
+
+        try:
+            customertext = customer.get_text()
+        except:
+            customertext = None
+
         # 判断employ是否与当前选中的一致
-        if price != customer.get_text():
+        if price != customertext:
             customer.click()
             self.poco(text=price).click()
 
         # 判断 "请注明资金来源(可多选)" 复选框是否触发
-        if self.exists(self.assetsvalue):
+        if self.assetsvalue:
             # 遍历需要点击的选项
             for asset in assets:
                 sources = self.exists(self.poco(text=asset))
@@ -85,7 +104,7 @@ class employmentInfomationPage(BaseView):
                     print("出现了不止2个, 需要查看问题哦")
                     pass
 
-        return customer.get_text()
+        return self.customerNetAssetValueHK.get_text()
 
 
 

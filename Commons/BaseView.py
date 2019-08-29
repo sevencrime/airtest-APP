@@ -49,9 +49,9 @@ class BaseView():
         self.el_bullionMargin = self.poco(text="艾德金业现货黄金账户(保证金)").sibling("android.widget.ImageView")
 
         # 就业情况
-        self.el_employ = self.poco(text="就业情况").sibling("android.view.ViewGroup").offspring("android.widget.ImageView").click()
-        self.totalAnnualCustomerRevenueHK = self.poco(text="全年总收入(港元)").sibling("android.view.ViewGroup").offspring("android.widget.ImageView").click()
-        self.customerNetAssetValueHK = self.poco(text="资产净值(港元)").sibling("android.view.ViewGroup").offspring("android.widget.ImageView").click()
+        self.el_employ = self.poco(text="就业情况").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
+        self.totalAnnualCustomerRevenueHK = self.poco(text="全年总收入(港元)").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
+        self.customerNetAssetValueHK = self.poco(text="资产净值(港元)").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.sourcesfunds = self.poco(text="请注明资金来源(可多选)")
         self.assetsvalue = self.poco(text="请注明资产净值(可多选)")
         # self.salary = self.poco(text="就业")

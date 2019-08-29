@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from airtest.core.api import *
+
 from Commons.BaseView import BaseView
 
 
@@ -18,7 +20,8 @@ class publicPage(BaseView):
         开户表单所有的下一步按钮
 
         """
-        self.exists(self.nextStepbtn).click()
+        self.poco("android:id/content").swipe([0, -0.4])
+        self.nextStepbtn.click()
 
     def click_boxCancel(self):
         """
