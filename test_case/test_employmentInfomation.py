@@ -28,6 +28,7 @@ class Test_employmentInfomation():
             # assert_equal(customer, "300-800万", "资产净值填写有误")
 
         with allure.step("点击下一步"):
+            pubpage.swipe()
             pubpage.click_NextStepbtn()
 
 

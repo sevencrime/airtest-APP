@@ -73,6 +73,38 @@ class BaseView():
         # 介绍与推广
         self.channel = self.poco(text="您透过哪些渠道认识艾德证券期货及/或艾德金业?(选择所有适用)")
 
+        # 其他资料
+        self.investmentTarget = self.poco(text="您的投资目标是")
+
+    def isElementRadio(self, content, isFlag):
+        """
+        # 开户表单radio单选框定位方式
+
+        args:
+            content: 类型string, 定位栏的标题文本
+            isFlag: 类型:Bool
+
+        """
+        if isFlag:
+            element = self.poco(text=content).sibling("android.view.ViewGroup").child("android.widget.TextView", text="是")
+        else:
+            element = self.poco(text=content).sibling("android.view.ViewGroup").child("android.widget.TextView", text="否")
+
+        return element
+
+    def isElementCheck(self, content):
+        """
+        # 开户表单check单个复选框定位方式
+
+        args:
+            content: 类型string, 定位栏的标题文本
+            isFlag: 类型:Bool
+
+        """
+        element = self.poco(text=content).parent().sibling("android.view.ViewGroup").child("android.widget.ImageView")
+
+        return element
+
     def exists(self, element):
         """
         先等待元素出现, 再判断元素是否显示
