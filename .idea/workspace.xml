@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1889eda-5c1d-4e8e-b325-4df012162aef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/airtest/.idea/airtest.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ElementPage/introPromoPage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ElementPage/transactionPage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_case/test_channels.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_case/test_transaction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Commons/BaseView.py" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/BaseView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ElementPage/employmentInfomationPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/ElementPage/employmentInfomationPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ElementPage/publicPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/ElementPage/publicPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/test_employmentInfomation.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/test_employmentInfomation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_case/test_employmentInfomation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="348">
+              <caret line="30" column="39" lean-forward="true" selection-end-line="41" />
               <folding>
                 <element signature="e#46#59#0" expanded="true" />
               </folding>
@@ -37,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/ElementPage/publicPage.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="418">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#46#80#0" expanded="true" />
               </folding>
@@ -46,10 +45,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ElementPage/employmentInfomationPage.py">
+        <entry file="file://$PROJECT_DIR$/ElementPage/introPromoPage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-226">
-              <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+            <state relative-caret-position="209">
+              <caret line="11" column="22" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test_case/test_channels.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+              <folding>
+                <element signature="e#46#59#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/Commons/BaseView.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="173">
-              <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+              <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -128,12 +139,16 @@
         <option value="$PROJECT_DIR$/ElementPage/employmentInfomationPage.py" />
         <option value="$PROJECT_DIR$/test_case/test_employmentInfomation.py" />
         <option value="$PROJECT_DIR$/ElementPage/publicPage.py" />
+        <option value="$PROJECT_DIR$/test_case/test_transaction.py" />
+        <option value="$PROJECT_DIR$/ElementPage/transactionPage.py" />
+        <option value="$PROJECT_DIR$/ElementPage/introPromoPage.py" />
+        <option value="$PROJECT_DIR$/test_case/test_channels.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2275" />
-    <option name="y" value="70" />
+    <option name="x" value="250" />
+    <option name="y" value="-27" />
     <option name="width" value="1583" />
     <option name="height" value="1086" />
   </component>
@@ -196,7 +211,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_employmentInfomation">
+  <component name="RunManager" selected="Python.test_channels">
     <configuration name="test_accountInformation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="report" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -233,6 +248,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_case/test_bankCardInformation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_channels" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="report" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_case" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_case/test_channels.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -285,7 +322,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_personalinfomation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test_transaction" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="report" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -298,29 +335,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_case/test_personalinfomation.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test_uploadidcard" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="report" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_case" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_case/test_uploadidcard.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_case/test_transaction.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -331,19 +346,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.test_open" />
-      <item itemvalue="Python.test_uploadidcard" />
-      <item itemvalue="Python.test_personalinfomation" />
       <item itemvalue="Python.test_bankCardInformation" />
       <item itemvalue="Python.test_accountInformation" />
       <item itemvalue="Python.test_employmentInfomation" />
+      <item itemvalue="Python.test_transaction" />
+      <item itemvalue="Python.test_channels" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test_channels" />
+        <item itemvalue="Python.test_transaction" />
         <item itemvalue="Python.test_employmentInfomation" />
         <item itemvalue="Python.test_accountInformation" />
         <item itemvalue="Python.test_bankCardInformation" />
-        <item itemvalue="Python.test_personalinfomation" />
-        <item itemvalue="Python.test_uploadidcard" />
       </list>
     </recent_temporary>
   </component>
@@ -365,7 +380,7 @@
       <workItem from="1566527477333" duration="19698000" />
       <workItem from="1566785748348" duration="14132000" />
       <workItem from="1566870591347" duration="23114000" />
-      <workItem from="1567058249125" duration="11903000" />
+      <workItem from="1567058249125" duration="16128000" />
     </task>
     <task id="LOCAL-00001" summary="身份证">
       <created>1566553763816</created>
@@ -388,11 +403,18 @@
       <option name="project" value="LOCAL" />
       <updated>1566987174316</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="就业界面完成">
+      <created>1567074129767</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1567074129767</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78771000" />
+    <option name="totallyTimeSpent" value="82996000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -404,7 +426,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22639485" />
@@ -437,7 +459,8 @@
     <MESSAGE value="身份证" />
     <MESSAGE value="待完成就业界面" />
     <MESSAGE value="就业界面完成, 待调试" />
-    <option name="LAST_COMMIT_MESSAGE" value="就业界面完成, 待调试" />
+    <MESSAGE value="就业界面完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="就业界面完成" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -454,9 +477,11 @@
     <SUITE FILE_PATH="coverage/airtest_APP$startUpFrom.coverage" NAME="startUpFrom Coverage Results" MODIFIED="1566487566482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ElementPage" />
     <SUITE FILE_PATH="coverage/report$test_open.coverage" NAME="test_open Coverage Results" MODIFIED="1566464366036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
     <SUITE FILE_PATH="coverage/airtest_APP$test_personalinfomation.coverage" NAME="test_personalinfomation Coverage Results" MODIFIED="1566887837795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_transaction.coverage" NAME="test_transaction Coverage Results" MODIFIED="1567144484097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
     <SUITE FILE_PATH="coverage/airtest_APP$test_accountInformation.coverage" NAME="test_accountInformation Coverage Results" MODIFIED="1566897141562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
     <SUITE FILE_PATH="coverage/airtest_APP$test_open.coverage" NAME="test_open Coverage Results" MODIFIED="1566887512467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
     <SUITE FILE_PATH="coverage/airtest_APP$test_bankCardInformation.coverage" NAME="test_bankCardInformation Coverage Results" MODIFIED="1566891991236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_channels.coverage" NAME="test_channels Coverage Results" MODIFIED="1567145910669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
     <SUITE FILE_PATH="coverage/airtest_APP$test_employmentInfomation.coverage" NAME="test_employmentInfomation Coverage Results" MODIFIED="1567074087590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
     <SUITE FILE_PATH="coverage/airtest_APP$test_uploadidcard.coverage" NAME="test_uploadidcard Coverage Results" MODIFIED="1566550533970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
   </component>
@@ -747,20 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ElementPage/employmentInfomationPage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-226">
-          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Commons/BaseView.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/airtest/core/api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -768,20 +779,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Commons/BaseView.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/test_employmentInfomation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="30" column="39" lean-forward="true" selection-end-line="41" />
+          <folding>
+            <element signature="e#46#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ElementPage/employmentInfomationPage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="46" column="47" selection-end-line="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ElementPage/transactionPage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ElementPage/publicPage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="e#46#80#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_employmentInfomation.py">
+    <entry file="file://$PROJECT_DIR$/test_case/test_transaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="122">
+          <caret line="7" lean-forward="true" selection-end-line="33" />
+          <folding>
+            <element signature="e#46#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ElementPage/introPromoPage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/test_channels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
           <folding>
             <element signature="e#46#59#0" expanded="true" />
           </folding>

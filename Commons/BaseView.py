@@ -67,6 +67,11 @@ class BaseView():
         # self.selfOperatedBusinessIncome = self.poco(test="自营业务收益")
         # self.pension = self.poco(test="退休金")
 
+        # 选择交易信息
+        self.fundsSourcetext = self.poco(text="交易的资金/财富来源(选择所有适用)")
+
+        # 介绍与推广
+        self.channel = self.poco(text="您透过哪些渠道认识艾德证券期货及/或艾德金业?(选择所有适用)")
 
     def exists(self, element):
         """
