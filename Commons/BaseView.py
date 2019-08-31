@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from Commons.GlobalMap import GlobalMap
 
 
 class BaseView():
+
+    gm = GlobalMap()
 
     def __init__(self, poco):
         self.poco = poco

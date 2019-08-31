@@ -23,7 +23,7 @@ class startUpFrom(BaseView):
 
         """
         try:
-            self.exists(self.baropen).click()
+            self.baropen.click()
         except:
             return False
 
