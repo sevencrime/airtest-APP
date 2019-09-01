@@ -5,7 +5,7 @@ from airtest.core.api import *
 from Commons.BaseView import BaseView
 
 
-class publicPage(BaseView):
+class publicTool(BaseView):
 
     def permissionBox(self):
         """
@@ -54,5 +54,16 @@ class publicPage(BaseView):
         return boxcontent.get_text()
 
 
-    def swipe(self):
+    def swipe_to_Up(self):
+        """
+        # 向上滑动屏幕
+        """
         self.poco("android:id/content").swipe([0, -0.4])
+
+
+    def DragFrom_LeftToRight(self, element):
+        """
+        # 从左边拖动到右键
+        """
+        element.long_click()
+        element.swipe([1, 0])

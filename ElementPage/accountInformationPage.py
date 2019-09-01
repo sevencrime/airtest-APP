@@ -16,6 +16,9 @@ class accountInformationPage(BaseView):
     def get_leverMargin(self):
         try:
             self.poco(text="杠杆式外汇账户(保证金)").get_text()
+            # assert acctext.strip() == "杠杆式外汇账户(保证金)"
+        # except AssertionError:
+        #     raise AssertionError
         except PocoNoSuchNodeException:
             self.gm.set_value(isLeveraged=False)
         else:

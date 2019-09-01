@@ -79,6 +79,12 @@ class BaseView():
         # 其他资料
         self.investmentTarget = self.poco(text="您的投资目标是")
 
+        # 风险披露
+        self.player = self.poco("android.widget.SeekBar").sibling("android.view.ViewGroup").child("android.widget.ImageView")
+        self.progressbar = self.poco("android.widget.SeekBar")
+        self.isUnderstandRisk = self.poco(text="本人已收听风险披露语音，清楚明白并完全接受语音中所声明的全部风险。").sibling("android.view.ViewGroup").child("android.widget.ImageView")
+
+
     def isElementRadio(self, content, isFlag):
         """
         # 开户表单radio单选框定位方式
