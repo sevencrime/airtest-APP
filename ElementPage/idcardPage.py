@@ -7,16 +7,18 @@ from airtest.core.api import *
 from Commons.BaseView import BaseView
 
 
-class idcardPage(BaseView):
+class idcardPage():
     # 当前目录
     curPath = os.path.abspath(os.path.dirname(__file__))
     # 项目根目录
     rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
 
     # 采用图片识别方式上传身份证
-    idcardimgpath = glob.glob(rootPath + r'\testData\testIMG\tpl1567406605623.png')
-    idcardimgnegative = glob.glob(rootPath + r'\testData\testIMG\tpl1567407008671.png')
-    idcardimgpositive = glob.glob(rootPath + r'\testData\testIMG\tpl1567408843326.png')
+    idcardimgpath = rootPath + r'testData\testIMG\tpl1567406605623.png'
+    idcardimgnegative = rootPath + r'testData\testIMG\tpl1567407008671.png'
+    idcardimgpositive = rootPath + r'testData\testIMG\tpl1567408843326.png'
+
+
 
     def click_Chinese(self):
         """
@@ -51,3 +53,6 @@ class idcardPage(BaseView):
         touch(Template("".join(self.idcardimgnegative), record_pos=(-0.367, -0.721), resolution=(1080, 2340)))
 
         return True
+
+if __name__ == '__main__':
+    idcardPage()

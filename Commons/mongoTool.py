@@ -27,28 +27,25 @@ class mongoTool:
 		self.log.debug("close Client")
 		self.client.close()		#关闭数据库
 
-		# print("\n\n此次操作总共删除",Counter(self.removeTotal))
-		expectedTotal = set(self.expectedRemoveTotal)
-		for item in expectedTotal:	#输出删除总数
-			print("%s 表预计删除 %d 条记录" %(item, self.expectedRemoveTotal.count(item)))
-			self.log.debug("%s 表预计删除 %d 条记录" %(item, self.expectedRemoveTotal.count(item)))
 
-
-		print("\n********************************************************\n")
-		actualTotal = set(self.actualRemoveTotal)
-		for actual in actualTotal:
-			print("%s 表实际删除 %d 条记录" %(actual, self.actualRemoveTotal.count(actual)))
-			self.log.debug("%s 表实际删除 %d 条记录" %(actual, self.actualRemoveTotal.count(actual)))
-
-
-	def findData(self):
-		result = self.db["accounts"].find({"phone":"15089514626"})
+	def findData(self, collection, query):
+		result = self.db[collection].find(query)
 		for r in result:
-			print(r['forLogin'])
+			print(r)
 
+		# db.getCollection("apply_info").find({phone: "15089514626"})
+		# .forEach(
+		# 	function(item)
+		# {
+		# 	print(db.getCollection("apply").find({"_id": item.applyId}))
+		# db.getCollection("apply").remove({"_id": item.applyId})
+		# }
+		# )
 
 	def UpdataData(self):
 		self.db["accounts"].update({"phone":"15089514626",  "forLogin":True} , { "$set" : { "currentRoute" : "/account"} })
+
+
 
 
 
