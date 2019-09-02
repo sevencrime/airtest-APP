@@ -20,10 +20,7 @@ class otherDataPage(BaseView):
         """
         # 客户是否艾德证券及/或艾德金业的雇员或任何其客户的亲属?
         """
-        if self.gm.get_value("isbullion"):
-            content = "您是否艾德证券期货及/或艾德金业的雇员或任何其雇员的亲属"
-        else:
-            content = "您是否艾德证券期货的雇员或任何其雇员的亲属"
+        content = "您是否艾德证券期货及/或艾德金业的雇员或任何其雇员的亲属"
         self.isElementRadio(content, isFlag).click()
 
 
@@ -31,11 +28,7 @@ class otherDataPage(BaseView):
         """
         # 3.客户是否与任何艾德证券及/或艾德金业客户有关连?
         """
-        if self.gm.get_value("isbullion"):
-            content = "您是否与任何艾德证券期货及/或艾德金业客户有关连"
-        else:
-            content = "您是否与任何艾德证券期货客户有关连"
-        
+        content = "您是否与任何艾德证券期货及/或艾德金业客户有关连"
         self.isElementRadio(content, isFlag).click()
 
 

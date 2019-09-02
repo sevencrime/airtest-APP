@@ -53,12 +53,14 @@ class publicTool(BaseView):
         boxcontent = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.widget.TextView")
         return boxcontent.get_text()
 
+    def wait_loading(self):
+        self.loading.wait_for_disappearance()
 
     def swipe_to_Up(self):
         """
         # 向上滑动屏幕
         """
-        self.poco("android:id/content").swipe([0, -0.4])
+        self.poco("android:id/content").swipe([0, -0.7])
 
 
     def DragFrom_LeftToRight(self, element):
