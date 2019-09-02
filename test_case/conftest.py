@@ -14,7 +14,6 @@ def config():
     gm.set_bool(isbullion=False)
     gm.set_bool(isLeveraged=False)
 
-
 @pytest.fixture(scope="session", autouse=True)
 def poco():
     # os.popen("adb connect 127.0.0.1:7555")

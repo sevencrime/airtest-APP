@@ -9,7 +9,7 @@ from Commons import Logging
 
 class GlobalMap:
     # 拼装成字典构造全局变量  借鉴map  包含变量的增删改查
-    log = Logging.Logs()
+    log = Logging.Logs("GlobalMap")
     map = {}
 
     def set_map(self, key, value):
@@ -39,6 +39,7 @@ class GlobalMap:
         except BaseException as msg:
             self.log.error(msg)
             raise msg
+
 
     def del_map(self, key):
         try:

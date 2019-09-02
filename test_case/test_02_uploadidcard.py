@@ -15,20 +15,31 @@ class Test_uploadidcard():
     @pytest.mark.run(order=2)
     def test_uploadidcard(self, poco):
         upidcard = idcardPage(poco)
-        pubTool = publicTool(poco)
+        pubtool = publicTool(poco)
         with allure.step("选择所属地区 -- 内地居民"):
             upidcard.click_Chinese()
         with allure.step("开户准备点击下一步"):
-            pubTool.click_NextStepbtn()
+            pubtool.click_NextStepbtn()
 
         with allure.step("上传身份证人像面"):
-            upidcard.upload_idcardNegative
+            # import pdb; pdb.set_trace()
+            upidcard.upload_idcardNegative()
+
+        with allure.step("等待上传"):
+            pubtool.wait_loading()
 
         with allure.step("上传身份证国徽面"):
             upidcard.upload_idcardpositive()
 
+        with allure.step("等待上传"):
+            pubtool.wait_loading()
+
+        with allure.step("滑动页面"):
+            pubtool.swipe_to_Up()
+            pubtool.swipe_to_Up()
+
         with allure.step("点击下一步"):
-            pubTool.click_NextStepbtn()
+            pubtool.click_NextStepbtn()
 
 
 
