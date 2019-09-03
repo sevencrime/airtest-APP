@@ -6,13 +6,13 @@ import pytest
 from ElementPage.derivativeProductPage import derivativeProductPage
 from ElementPage.publicTool import publicTool
 
-@allure.feature("就业信息")
+@allure.feature("衍生产品的认识")
 class Test_derivativeProduct():
 
     @allure.story("填写衍生产品的认识")
     @pytest.mark.run(order=3)
     def test_derivative(self, poco):
-        pubtool = publicTool(poco)
+        pubTool = publicTool(poco)
         derivative = derivativeProductPage(poco)
         with allure.step("客户是否曾接受有关衍生产品性质和风险的一般知识培训或修读相关课程"):
             derivative.click_derivativeCourse(True)
@@ -31,7 +31,7 @@ class Test_derivativeProduct():
             derivative.click_riskStatement()
 
         with allure.step("点击下一步"):
-            pubtool.click_NextStepbtn()
+            pubTool.click_NextStepbtn()
 
 
 if __name__ == "__main__":

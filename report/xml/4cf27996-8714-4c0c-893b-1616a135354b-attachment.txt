@@ -1,0 +1,1 @@
+DEBUG    airtest.core.android.adb:adb.py:142 D:\projectdemo\Eddid_App\venv\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe devices

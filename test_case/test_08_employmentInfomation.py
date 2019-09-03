@@ -13,7 +13,7 @@ class Test_employmentInfomation():
     @allure.story("填写就业信息")
     @pytest.mark.run(order=3)
     def test_unemployedandnot(self, poco):
-        pubtool = publicTool(poco)
+        pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("就业情况选择无业"):
             employ = employment.click_employment("无业")
@@ -28,8 +28,8 @@ class Test_employmentInfomation():
             # assert_equal(customer, "300-800万", "资产净值填写有误")
 
         with allure.step("点击下一步"):
-            pubtool.swipe()
-            pubtool.click_NextStepbtn()
+            pubTool.swipe()
+            pubTool.click_NextStepbtn()
 
 
 if __name__ == "__main__":

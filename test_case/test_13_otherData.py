@@ -12,7 +12,7 @@ class Test_otherDataPage():
     @allure.story("其他资料")
     @pytest.mark.run(order=3)
     def test_otherData(self, poco):
-        pubtool = publicTool(poco)
+        pubTool = publicTool(poco)
         otherdata = otherDataPage(poco)
         with allure.step("您是否曾经宣告破产或被申请破产?"):
             otherdata.click_bankrupt(False)
@@ -36,7 +36,7 @@ class Test_otherDataPage():
             otherdata.click_PEP_People(False)
 
         with allure.step("滑动页面"):
-            pubtool.swipe()
+            pubTool.swipe_to_Up()
 
         with allure.step("您的投资目标"):
             otherdata.click_investmentTarget(["投机", "对冲"])
@@ -45,7 +45,7 @@ class Test_otherDataPage():
             otherdata.click_riskTolerance(grade="高")
 
         with allure.step("点击下一步"):
-            pubtool.click_NextStepbtn()
+            pubTool.click_NextStepbtn()
 
 
 if __name__ == "__main__":

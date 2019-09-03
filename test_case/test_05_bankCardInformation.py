@@ -14,7 +14,7 @@ class Test_bankCardInformation():
     @allure.story("填写个人资料")
     @pytest.mark.run(order=3)
     def test_bankCard(self, poco):
-        pubtool = publicTool(poco)
+        pubTool = publicTool(poco)
         bankcard = bankCardInformationPage(poco)
         with allure.step("输入卡号"):
             bankcard.send_bankCardNo()
@@ -26,7 +26,7 @@ class Test_bankCardInformation():
             bankcard.send_bankPhone()
 
         with allure.step("点击下一步"):
-            pubtool.click_NextStepbtn()
+            pubTool.click_NextStepbtn()
 
 
 

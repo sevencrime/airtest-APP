@@ -12,7 +12,7 @@ class Test_financial():
     @allure.story("相关保证金融资账户")
     @pytest.mark.run(order=3)
     def test_derivative(self, poco):
-        pubtool = publicTool(poco)
+        pubTool = publicTool(poco)
         financial = financialPage(poco)
         with allure.step("您是否是账户的最终实益拥有人? "):
             financial.click_accountHolder(True)
@@ -21,7 +21,7 @@ class Test_financial():
             financial.click_orderPerson(True)
 
         with allure.step("点击下一步"):
-            pubtool.click_NextStepbtn()
+            pubTool.click_NextStepbtn()
 
 
 if __name__ == "__main__":

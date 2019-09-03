@@ -1,34 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1889eda-5c1d-4e8e-b325-4df012162aef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Commons/GlobalMap.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Commons/Logging.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testData/testIMG/tpl1567406605623.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testData/testIMG/tpl1567407008671.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testData/testIMG/tpl1567408843326.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_01_open.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_02_uploadidcard.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_03_personalinfomation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_04_addressProof.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_05_bankCardInformation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_06_faceid.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_07_accountInformation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_08_employmentInfomation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_09_transaction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_10_channels.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_11_derivativeProduct.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_12_financial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_case/test_13_otherData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/report.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/report.iml" afterDir="false" />
+    <list default="true" id="f1889eda-5c1d-4e8e-b325-4df012162aef" name="Default Changelist" comment="合并提交">
+      <change afterPath="$PROJECT_DIR$/Logs/GlobalMap.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Commons/BaseView.py" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/BaseView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons/mongoTool.py" beforeDir="false" afterPath="$PROJECT_DIR$/Commons/mongoTool.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ElementPage/idcardPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/ElementPage/idcardPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ElementPage/otherDataPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/ElementPage/otherDataPage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ElementPage/publicTool.py" beforeDir="false" afterPath="$PROJECT_DIR$/ElementPage/publicTool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ElementPage/startUpFrom.py" beforeDir="false" afterPath="$PROJECT_DIR$/ElementPage/startUpFrom.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_case/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_case/log/log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_case/test_02_uploadidcard.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_case/test_02_uploadidcard.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Commons/BaseView.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="126" column="22" selection-start-line="126" selection-start-column="22" selection-end-line="126" selection-end-column="43" />
+            <state relative-caret-position="85">
+              <caret line="11" column="27" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="27" />
               <folding>
                 <element signature="e#46#55#0" expanded="true" />
               </folding>
@@ -51,24 +30,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ElementPage/accountInformationPage.py">
+        <entry file="file://$PROJECT_DIR$/test_case/test_02_uploadidcard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="191">
+              <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
               <folding>
-                <element signature="e#46#97#0" expanded="true" />
+                <element signature="e#46#59#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test_case/test_02_uploadidcard.py">
+        <entry file="file://$PROJECT_DIR$/Commons/mongoTool.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="357">
+              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
               <folding>
-                <element signature="e#46#59#0" expanded="true" />
+                <element signature="e#156#170#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ElementPage/idcardPage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+            <state relative-caret-position="153">
+              <caret line="12" column="11" lean-forward="true" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
               <folding>
                 <element signature="e#46#57#0" expanded="true" />
               </folding>
@@ -89,7 +68,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Commons/Logging.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
+            <state relative-caret-position="170">
               <caret line="19" column="74" selection-start-line="19" selection-start-column="74" selection-end-line="19" selection-end-column="74" />
               <folding>
                 <element signature="e#153#167#0" expanded="true" />
@@ -101,7 +80,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ElementPage/publicTool.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
+            <state relative-caret-position="901">
               <caret line="55" column="20" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="20" />
               <folding>
                 <element signature="e#46#76#0" expanded="true" />
@@ -127,6 +106,7 @@
       <find>info</find>
       <find>publicPage</find>
       <find>pubpage</find>
+      <find>pubtool</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -172,7 +152,6 @@
         <option value="$PROJECT_DIR$/test_case/test_14_riskDisclosure.py" />
         <option value="$PROJECT_DIR$/ElementPage/RiskDisclosurePage.py" />
         <option value="$PROJECT_DIR$/Commons/del_mongo.py" />
-        <option value="$PROJECT_DIR$/Commons/mongoTool.py" />
         <option value="$PROJECT_DIR$/Commons/GlobalMap.py" />
         <option value="$PROJECT_DIR$/test_case/conftest.py" />
         <option value="$PROJECT_DIR$/test_case/test_09_transaction.py" />
@@ -183,16 +162,17 @@
         <option value="$PROJECT_DIR$/test_case/test_01_open.py" />
         <option value="$PROJECT_DIR$/ElementPage/publicTool.py" />
         <option value="$PROJECT_DIR$/Commons/BaseView.py" />
-        <option value="$PROJECT_DIR$/ElementPage/idcardPage.py" />
         <option value="$PROJECT_DIR$/test_case/test_02_uploadidcard.py" />
+        <option value="$PROJECT_DIR$/ElementPage/idcardPage.py" />
+        <option value="$PROJECT_DIR$/Commons/mongoTool.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2079" />
-    <option name="y" value="35" />
-    <option name="width" value="1493" />
-    <option name="height" value="1060" />
+    <option name="x" value="240" />
+    <option name="y" value="128" />
+    <option name="width" value="1440" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -210,11 +190,6 @@
               <item name="airtest-APP" type="b2602c69:ProjectViewProjectNode" />
               <item name="airtest-APP" type="462c0819:PsiDirectoryNode" />
               <item name="Commons" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="airtest-APP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="airtest-APP" type="462c0819:PsiDirectoryNode" />
-              <item name="ElementPage" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="airtest-APP" type="b2602c69:ProjectViewProjectNode" />
@@ -274,7 +249,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_02_uploadidcard">
+  <component name="RunManager" selected="Python.idcardPage">
+    <configuration name="idcardPage" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="report" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ElementPage" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ElementPage/idcardPage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="mongoTool" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="report" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -363,28 +360,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_13_otherData" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="report" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_case" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_case/test_13_otherData.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="test_14_riskDisclosure" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="report" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -408,19 +383,23 @@
       <method v="2" />
     </configuration>
     <list>
+<<<<<<< HEAD
       <item itemvalue="Python.test_13_otherData" />
+=======
+>>>>>>> ef661ea31ebec101f6c2d497aaf85008ff0c13c5
       <item itemvalue="Python.test_01_open" />
       <item itemvalue="Python.test_14_riskDisclosure" />
       <item itemvalue="Python.mongoTool" />
       <item itemvalue="Python.test_02_uploadidcard" />
+      <item itemvalue="Python.idcardPage" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.idcardPage" />
         <item itemvalue="Python.test_02_uploadidcard" />
         <item itemvalue="Python.test_01_open" />
         <item itemvalue="Python.mongoTool" />
         <item itemvalue="Python.test_14_riskDisclosure" />
-        <item itemvalue="Python.test_13_otherData" />
       </list>
     </recent_temporary>
   </component>
@@ -444,6 +423,7 @@
       <workItem from="1566870591347" duration="20228000" />
       <workItem from="1567257829670" duration="11811000" />
       <workItem from="1567395024909" duration="10009000" />
+      <workItem from="1567434054284" duration="2560000" />
     </task>
     <task id="LOCAL-00001" summary="身份证">
       <created>1566553763816</created>
@@ -470,24 +450,24 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85802000" />
+    <option name="totallyTimeSpent" value="78353000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22907725" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22855228" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32777777" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49911973" visible="true" weight="0.3611111" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49911973" visible="true" weight="0.3611898" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.29777777" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5008803" side_tool="true" weight="0.35614526" />
       <window_info anchor="bottom" id="Terminal" order="11" />
@@ -502,16 +482,6 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="身份证" />
     <MESSAGE value="待完成就业界面" />
@@ -520,25 +490,36 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/airtest_APP$Logging.coverage" NAME="Logging Coverage Results" MODIFIED="1567262508281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Commons" />
-    <SUITE FILE_PATH="coverage/airtest_APP$test_14_riskDisclosure.coverage" NAME="test_14_riskDisclosure Coverage Results" MODIFIED="1567346711878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
     <SUITE FILE_PATH="coverage/airtest_APP$startUpFrom.coverage" NAME="startUpFrom Coverage Results" MODIFIED="1566487566482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ElementPage" />
-    <SUITE FILE_PATH="coverage/report$test_open.coverage" NAME="test_open Coverage Results" MODIFIED="1566464366036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
-    <SUITE FILE_PATH="coverage/airtest_APP$test_derivativeProduct.coverage" NAME="test_derivativeProduct Coverage Results" MODIFIED="1567259386142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
-    <SUITE FILE_PATH="coverage/airtest_APP$test_13_otherData.coverage" NAME="test_13_otherData Coverage Results" MODIFIED="1567263620446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
-    <SUITE FILE_PATH="coverage/airtest_APP$test_accountInformation.coverage" NAME="test_accountInformation Coverage Results" MODIFIED="1566897141562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
-    <SUITE FILE_PATH="coverage/airtest_APP$test_open.coverage" NAME="test_open Coverage Results" MODIFIED="1566887512467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
-    <SUITE FILE_PATH="coverage/airtest_APP$test_bankCardInformation.coverage" NAME="test_bankCardInformation Coverage Results" MODIFIED="1566891991236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
     <SUITE FILE_PATH="coverage/airtest_APP$test_channels.coverage" NAME="test_channels Coverage Results" MODIFIED="1567259261229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
-    <SUITE FILE_PATH="coverage/airtest_APP$test_12_financial.coverage" NAME="test_12_financial Coverage Results" MODIFIED="1567259997582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
-    <SUITE FILE_PATH="coverage/airtest_APP$test_uploadidcard.coverage" NAME="test_uploadidcard Coverage Results" MODIFIED="1566550533970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
-    <SUITE FILE_PATH="coverage/airtest_APP$test_personalinfomation.coverage" NAME="test_personalinfomation Coverage Results" MODIFIED="1566887837795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
-    <SUITE FILE_PATH="coverage/airtest_APP$test_transaction.coverage" NAME="test_transaction Coverage Results" MODIFIED="1567259212226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
-    <SUITE FILE_PATH="coverage/airtest_APP$test_02_uploadidcard.coverage" NAME="test_02_uploadidcard Coverage Results" MODIFIED="1567420091673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
     <SUITE FILE_PATH="coverage/airtest_APP$mongoTool.coverage" NAME="mongoTool Coverage Results" MODIFIED="1567348605384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Commons" />
     <SUITE FILE_PATH="coverage/airtest_APP$test_employmentInfomation.coverage" NAME="test_employmentInfomation Coverage Results" MODIFIED="1567259153809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
-    <SUITE FILE_PATH="coverage/airtest_APP$test_01_open.coverage" NAME="test_01_open Coverage Results" MODIFIED="1567409415569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/report$test_open.coverage" NAME="test_open Coverage Results" MODIFIED="1566464366036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_bankCardInformation.coverage" NAME="test_bankCardInformation Coverage Results" MODIFIED="1566891991236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_14_riskDisclosure.coverage" NAME="test_14_riskDisclosure Coverage Results" MODIFIED="1567346711878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$idcardPage.coverage" NAME="idcardPage Coverage Results" MODIFIED="1567434795888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ElementPage" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_open.coverage" NAME="test_open Coverage Results" MODIFIED="1566887512467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_13_otherData.coverage" NAME="test_13_otherData Coverage Results" MODIFIED="1567263620446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_12_financial.coverage" NAME="test_12_financial Coverage Results" MODIFIED="1567259997582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_uploadidcard.coverage" NAME="test_uploadidcard Coverage Results" MODIFIED="1566550533970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_01_open.coverage" NAME="test_01_open Coverage Results" MODIFIED="1567262806728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_personalinfomation.coverage" NAME="test_personalinfomation Coverage Results" MODIFIED="1566887837795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_derivativeProduct.coverage" NAME="test_derivativeProduct Coverage Results" MODIFIED="1567259386142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_accountInformation.coverage" NAME="test_accountInformation Coverage Results" MODIFIED="1566897141562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
+    <SUITE FILE_PATH="coverage/airtest_APP$test_transaction.coverage" NAME="test_transaction Coverage Results" MODIFIED="1567259212226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/poco/pocofw.py" />
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/poco/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/../Eddid_APP/venv/Lib/site-packages/poco/drivers/android/uiautomation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="804">
+          <caret line="149" column="73" selection-start-line="149" selection-start-column="54" selection-end-line="149" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Commons/PublicTool.py" />
+    <entry file="file://$PROJECT_DIR$/Commons/ElementAll.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/airtest/core/api.py" />
     <entry file="file://$PROJECT_DIR$/test_case/test_uploadidcard.py" />
     <entry file="file://$PROJECT_DIR$/ElementPage/personalInformationPage.py">
@@ -564,6 +545,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_case/test_personalinfomation.py" />
+    <entry file="file://$PROJECT_DIR$/test_case/test_transaction.py" />
     <entry file="file://$PROJECT_DIR$/ElementPage/introPromoPage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -571,41 +553,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_05_bankCardInformation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" selection-start-line="16" selection-end-line="17" selection-end-column="48" />
-          <folding>
-            <element signature="e#46#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_08_employmentInfomation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_01_open.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-          <folding>
-            <element signature="e#46#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_13_otherData.py">
+    <entry file="file://$PROJECT_DIR$/test_case/test_accountInformation.py" />
+    <entry file="file://$PROJECT_DIR$/test_case/test_bankCardInformation.py" />
+    <entry file="file://$PROJECT_DIR$/test_case/test_channels.py" />
+    <entry file="file://$PROJECT_DIR$/test_case/test_derivativeProduct.py" />
+    <entry file="file://$PROJECT_DIR$/test_case/test_employmentInfomation.py" />
+    <entry file="file://$PROJECT_DIR$/test_case/test_financial.py" />
+    <entry file="file://$PROJECT_DIR$/test_case/test_open.py" />
+    <entry file="file://$PROJECT_DIR$/test_case/test_otherData.py" />
+    <entry file="file://$PROJECT_DIR$/Logs/submit.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Logs/submit.log" />
     <entry file="file://$PROJECT_DIR$/ElementPage/startUpFrom.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
           <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/conftest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="13" column="31" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -616,22 +588,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_04_addressProof.py" />
-    <entry file="file://$PROJECT_DIR$/test_case/test_05_bankCardInformation.py" />
-    <entry file="file://$PROJECT_DIR$/test_case/test_07_accountInformation.py" />
-    <entry file="file://$PROJECT_DIR$/test_case/test_09_transaction.py" />
-    <entry file="file://$PROJECT_DIR$/test_case/test_10_channels.py" />
-    <entry file="file://$PROJECT_DIR$/test_case/test_11_derivativeProduct.py" />
-    <entry file="file://$PROJECT_DIR$/test_case/test_12_financial.py" />
-    <entry file="file://$PROJECT_DIR$/test_case/test_13_otherData.py" />
-    <entry file="file://$PROJECT_DIR$/../EDDID_APP/venv/Lib/site-packages/poco/proxy.py">
+    <entry file="file://$PROJECT_DIR$/test_case/test_04_addressProof.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/test_05_bankCardInformation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-end-line="17" />
+          <folding>
+            <element signature="e#46#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/test_06_faceid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/test_07_accountInformation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          <folding>
+            <element signature="e#46#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/test_08_employmentInfomation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+          <folding>
+            <element signature="e#46#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/test_09_transaction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+          <folding>
+            <element signature="e#46#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/test_10_channels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+          <folding>
+            <element signature="e#46#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/test_11_derivativeProduct.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding>
+            <element signature="e#46#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/test_12_financial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding>
+            <element signature="e#46#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/test_13_otherData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+          <folding>
+            <element signature="e#46#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Eddid_APP/venv/Lib/site-packages/poco/proxy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
           <caret line="406" column="8" selection-start-line="406" selection-start-column="8" selection-end-line="406" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/report/xml/7b909d53-71fc-43b0-9f8d-30c0436531fb-result.json" />
+    <entry file="file://$PROJECT_DIR$/report/xml/7b909d53-71fc-43b0-9f8d-30c0436531fb-result.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="498" selection-start-column="498" selection-end-column="498" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test_case/test_03_personalinfomation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-52">
@@ -642,11 +702,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/python/Lib/logging/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/Commons/mongoTool.py" />
     <entry file="file://$PROJECT_DIR$/ElementPage/RiskDisclosurePage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
+        <state relative-caret-position="252">
           <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
           <folding>
             <element signature="e#47#84#0" expanded="true" />
@@ -654,114 +712,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/conftest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_04_addressProof.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_06_faceid.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_07_accountInformation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#46#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_08_employmentInfomation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_09_transaction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_10_channels.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_11_derivativeProduct.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_12_financial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_14_riskDisclosure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-          <folding>
-            <element signature="e#46#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Commons/GlobalMap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="31" column="21" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+        <state relative-caret-position="188">
+          <caret line="37" column="52" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
           <folding>
             <element signature="e#48#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Commons/Logging.py">
+    <entry file="file://D:/python/Lib/logging/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="74" selection-start-line="19" selection-start-column="74" selection-end-line="19" selection-end-column="74" />
-          <folding>
-            <element signature="e#153#167#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/test_01_open.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/hrpc/transport/http.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="141">
+          <caret line="1053" selection-start-line="1053" selection-end-line="1053" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ElementPage/accountInformationPage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
+        <state relative-caret-position="374">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="e#46#97#0" expanded="true" />
@@ -769,16 +739,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/poco/proxy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="696" column="27" lean-forward="true" selection-start-line="694" selection-start-column="14" selection-end-line="696" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ElementPage/publicTool.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
+        <state relative-caret-position="901">
           <caret line="55" column="20" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="20" />
           <folding>
             <element signature="e#46#76#0" expanded="true" />
@@ -786,46 +749,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/airtest/core/cv.py">
+    <entry file="file://$PROJECT_DIR$/test_case/test_01_open.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="37" selection-start-line="37" selection-end-line="54" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Python3.6/Tools/demo/sortvisu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="84" column="8" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Commons/BaseView.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="126" column="22" selection-start-line="126" selection-start-column="22" selection-end-line="126" selection-end-column="43" />
+        <state relative-caret-position="119">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
-            <element signature="e#46#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ElementPage/idcardPage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding>
-            <element signature="e#46#57#0" expanded="true" />
+            <element signature="e#46#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_case/test_02_uploadidcard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="191">
+          <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
           <folding>
             <element signature="e#46#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/test_14_riskDisclosure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="26" column="34" lean-forward="true" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+          <folding>
+            <element signature="e#46#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Commons/BaseView.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="27" />
+          <folding>
+            <element signature="e#46#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Commons/Logging.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="19" column="74" selection-start-line="19" selection-start-column="74" selection-end-line="19" selection-end-column="74" />
+          <folding>
+            <element signature="e#153#167#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ElementPage/idcardPage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="11" lean-forward="true" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+          <folding>
+            <element signature="e#46#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Commons/mongoTool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="e#156#170#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -16,22 +16,22 @@ class Test_personalinfomation():
     @pytest.mark.run(order=3)
     def test_personal(self, poco):
         perinfo = personalInformationPage(poco)
-        pubtool = publicTool(poco)
+        pubTool = publicTool(poco)
         with allure.step("输入电邮"):
             email = perinfo.send_emali()
         with allure.step("再次输入电邮"):
             reEmail = perinfo.send_reemail()
         with allure.step("点击下一步"):
-            pubtool.click_NextStepbtn()
+            pubTool.click_NextStepbtn()
 
         with allure.step("校验地址弹框标题和内容"):
-            boxtitle = pubtool.get_boxtitle()
-            boxcontent = pubtool.get_boxcontent()
+            boxtitle = pubTool.get_boxtitle()
+            boxcontent = pubTool.get_boxcontent()
             assert_equal(boxtitle, "请确认您的身份证地址", "确认地址弹框标题有误")
             assert_equal(boxcontent, perinfo.get_address(), "弹框内容与填写内容不符")
 
         with allure.step("确认地址弹框--点击确定"):
-            pubtool.click_boxconfirm()
+            pubTool.click_boxconfirm()
 
 
 
