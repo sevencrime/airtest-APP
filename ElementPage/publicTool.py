@@ -54,13 +54,18 @@ class publicTool(BaseView):
         return boxcontent.get_text()
 
     def wait_loading(self):
-        self.loading.wait_for_disappearance()
+        self.loading.wait_for_disappearance(10)
+        # while True:
+        #     print("死循环")
+        #     if not self.loading.exists():
+        #         print("退出了")
+        #         return True
 
     def swipe_to_Up(self):
         """
         # 向上滑动屏幕
         """
-        self.poco("android:id/content").swipe([0, -0.7])
+        self.poco("android:id/content").swipe([0, -0.4])
 
 
     def DragFrom_LeftToRight(self, element):

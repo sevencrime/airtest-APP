@@ -7,7 +7,7 @@ from airtest.core.api import *
 from Commons.BaseView import BaseView
 
 
-class idcardPage():
+class idcardPage(BaseView):
     # 当前目录
     curPath = os.path.abspath(os.path.dirname(__file__))
     # 项目根目录
@@ -33,8 +33,9 @@ class idcardPage():
         身份证正面--国徽面
 
         """
-        import pdb; pdb.set_trace()
-        self.el_idcardpositive.wait_for_appearance().click()
+        # import pdb; pdb.set_trace()
+        time.sleep(3)
+        self.el_idcardpositive.click()
         self.gallery.click()
 
         touch(Template("".join(self.idcardimgpath), record_pos=(0.109, -0.466), resolution=(1080, 2340)))

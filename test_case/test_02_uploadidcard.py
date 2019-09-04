@@ -22,21 +22,13 @@ class Test_uploadidcard():
             pubTool.click_NextStepbtn()
 
         with allure.step("上传身份证人像面"):
-            # import pdb; pdb.set_trace()
             upidcard.upload_idcardNegative()
-
-        with allure.step("等待上传"):
-            pubTool.wait_loading()
 
         with allure.step("上传身份证国徽面"):
             upidcard.upload_idcardpositive()
 
-        with allure.step("等待上传"):
-            pubTool.wait_loading()
-
         with allure.step("滑动页面"):
-            pubTool.swipe_to_Up()
-            pubTool.swipe_to_Up()
+            poco("android:id/content").swipe([0.3, -0.7])
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
