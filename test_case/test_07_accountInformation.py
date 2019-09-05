@@ -30,7 +30,7 @@ class Test_AccountInformation():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "test_07_bankCardInformation.py", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "test_07_accountInformation.py", '--alluredir', '../report/xml'])
 
 
 

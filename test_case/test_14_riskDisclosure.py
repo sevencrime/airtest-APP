@@ -7,10 +7,10 @@ from ElementPage.RiskDisclosurePage import RiskDisclosurePage
 from ElementPage.otherDataPage import otherDataPage
 from ElementPage.publicTool import publicTool
 
-@allure.feature("风险披露")
+@allure.feature("风险视频")
 class Test_riskDisclosure():
 
-    @allure.story("风险披露")
+    @allure.story("风险视频")
     @pytest.mark.run(order=3)
     def test_otherData(self, poco):
         pubTool = publicTool(poco)

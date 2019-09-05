@@ -90,9 +90,10 @@ class mongoTool:
 		# 			print("aosaccount >> ", aosaccount)
 
 
-	def UpdataData(self):
-		self.db["accounts"].update({"phone":"15089514626",  "forLogin":True} , { "$set" : { "currentRoute" : "/account"} })
-
+	def UpdataData(self, database=None, collection=None, query=None):
+		db = self.client[database]
+		# db["accounts"].update({"phone":"15089514626",  "forLogin":True} , { "$set" : { "currentRoute" : "/account"} })
+		db["apply"].update({'applySeqId':"9612"} , { "$set" : { "step" : "AccountInformation"} })
 
 
 

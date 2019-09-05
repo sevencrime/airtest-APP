@@ -8,17 +8,6 @@ from Commons.BaseView import BaseView
 
 
 class idcardPage(BaseView):
-    # 当前目录
-    curPath = os.path.abspath(os.path.dirname(__file__))
-    # 项目根目录
-    rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
-
-    # 采用图片识别方式上传身份证
-    idcardimgpath = rootPath + r'testData\testIMG\tpl1567406605623.png'
-    idcardimgnegative = rootPath + r'testData\testIMG\tpl1567407008671.png'
-    idcardimgpositive = rootPath + r'testData\testIMG\tpl1567408843326.png'
-
-
 
     def click_Chinese(self):
         """
@@ -34,12 +23,12 @@ class idcardPage(BaseView):
 
         """
         # import pdb; pdb.set_trace()
-        time.sleep(3)
+        time.sleep(6)
         self.el_idcardpositive.click()
         self.gallery.click()
 
-        touch(Template("".join(self.idcardimgpath), record_pos=(0.109, -0.466), resolution=(1080, 2340)))
-        touch(Template("".join(self.idcardimgpositive), record_pos=(-0.111, -0.728), resolution=(1080, 2340)))
+        touch(Template("".join(self.idcardimgpath_img), record_pos=(0.109, -0.466), resolution=(1080, 2340)))
+        touch(Template("".join(self.idcardimgpositive_img), record_pos=(-0.111, -0.728), resolution=(1080, 2340)))
         return True
 
     def upload_idcardNegative(self):
@@ -50,8 +39,8 @@ class idcardPage(BaseView):
         self.el_idcardNegative.click()
         self.gallery.click()
 
-        touch(Template("".join(self.idcardimgpath), record_pos=(0.109, -0.466), resolution=(1080, 2340)))
-        touch(Template("".join(self.idcardimgnegative), record_pos=(-0.367, -0.721), resolution=(1080, 2340)))
+        touch(Template("".join(self.idcardimgpath_img), record_pos=(0.109, -0.466), resolution=(1080, 2340)))
+        touch(Template("".join(self.idcardimgnegative_img), record_pos=(-0.367, -0.721), resolution=(1080, 2340)))
 
         return True
 

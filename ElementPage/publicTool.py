@@ -3,6 +3,7 @@
 from airtest.core.api import *
 
 from Commons.BaseView import BaseView
+from ElementPage.startUpFrom import startUpFrom
 
 
 class publicTool(BaseView):
@@ -74,3 +75,19 @@ class publicTool(BaseView):
         """
         element.long_click()
         element.swipe([1, 0])
+
+    def closeform(self):
+        """
+        # APP关闭按钮"X"
+        """
+        # 关闭开户表单
+        touch(Template(self.closeform_img, record_pos=(-0.331, -0.919), resolution=(1080, 2340)))
+        # 点击便捷开户
+        startUpFrom(self.poco).click_easyOpenning()
+
+    def backform(self):
+        """
+        # APP返回按钮
+        """
+        # 点击返回按钮
+        touch(Template(self.backform_img, record_pos=(-0.42, -0.919), resolution=(1080, 2340)))

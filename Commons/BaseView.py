@@ -11,6 +11,10 @@ class BaseView():
 
     def __init__(self, poco):
         self.poco = poco
+        # 当前目录
+        curPath = os.path.abspath(os.path.dirname(__file__))
+        # 项目根目录
+        rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
 
         # 公用
         self.nextStepbtn = self.poco(text="下一步")
@@ -18,6 +22,9 @@ class BaseView():
         self.boxconfirm = self.poco(text="确定")
         self.gallery = self.poco(text="相册选取")
         self.loading = self.poco("android.widget.ProgressBar")
+
+        self.closeform_img = rootPath + r'testData\\testIMG\\closeform.png'
+        self.backform_img = rootPath + r'testData\\testIMG\\backform.png'
 
         self.el_firstSetting_loc = self.poco("io.newtype.eddid.app:id/btn_start")
         self.baropen = self.poco(text="开户")
@@ -28,6 +35,11 @@ class BaseView():
         self.el_chinese = self.poco(text="我是内地居民")
         self.el_idcardNegative = self.poco(text="请上传身份证人像面")
         self.el_idcardpositive = self.poco(text="请上传身份证国徽面")
+
+        # 采用图片识别方式上传身份证
+        self.idcardimgpath_img = rootPath + r'testData\\testIMG\\idcardFolder.png'
+        self.idcardimgnegative_img = rootPath + r'testData\\testIMG\\idcardimgnegative.png'
+        self.idcardimgpositive_img = rootPath + r'testData\\testIMG\\idcardimgpositive.png'
 
         # 个人信息界面
         self.el_chinesename = self.poco(text="中文姓名").sibling("android.widget.EditText")
@@ -75,9 +87,6 @@ class BaseView():
 
         # 选择交易信息
         self.fundsSourcetext = self.poco(text="交易的资金/财富来源(选择所有适用)")
-
-        # 介绍与推广
-        self.channel = self.poco(text="您透过哪些渠道认识艾德证券期货及/或艾德金业?(选择所有适用)")
 
         # 其他资料
         self.investmentTarget = self.poco(text="您的投资目标是")

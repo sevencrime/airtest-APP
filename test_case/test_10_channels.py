@@ -17,6 +17,7 @@ class Test_channels():
         pubTool = publicTool(poco)
         channel = introPromoPage(poco)
         with allure.step("您透过哪些渠道认识艾德证券期货及/或艾德金业?(选择所有适用)"):
+
             channels = channel.click_Channels(["网上广告", "讲座"])
             # assert_equal(employ, "无业", "就业情况信息填写有误")
 
