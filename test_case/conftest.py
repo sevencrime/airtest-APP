@@ -11,6 +11,7 @@ from Commons.GlobalMap import GlobalMap
 @pytest.fixture(scope="session", autouse=True)
 def config():
     gm = GlobalMap()
+    gm.set_value(environment="develop")
     gm.set_bool(isbullion=False)
     gm.set_bool(isLeveraged=False)
 

@@ -16,6 +16,10 @@ class Test_uploadidcard():
     def test_uploadidcard(self, poco):
         upidcard = idcardPage(poco)
         pubTool = publicTool(poco)
+
+        # 判断客户来源
+        pubTool.customersource()
+
         with allure.step("选择所属地区 -- 内地居民"):
             upidcard.click_Chinese()
         with allure.step("开户准备点击下一步"):

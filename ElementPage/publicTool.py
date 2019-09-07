@@ -3,10 +3,12 @@
 from airtest.core.api import *
 
 from Commons.BaseView import BaseView
+from Commons.GlobalMap import GlobalMap
 from ElementPage.startUpFrom import startUpFrom
 
 
 class publicTool(BaseView):
+    gm = GlobalMap()
 
     def permissionBox(self):
         """
@@ -91,3 +93,27 @@ class publicTool(BaseView):
         """
         # 点击返回按钮
         touch(Template(self.backform_img, record_pos=(-0.42, -0.919), resolution=(1080, 2340)))
+
+
+    def customersource(self):
+        """
+        # 通过申请编号判断客户来源
+        """
+        appcationNumberatext = self.poco(textMatches="申请编号:.*").get_text()
+        # 判断申请编号是否APP或H5
+        if appcationNumberatext.find("app") != -1 or appcationNumberatext.find("h5") != -1:
+            if self.gm.get_value("environment") == "uat":
+                self.gm.set_value(source='aos-uat')
+            else:
+                self.gm.set_value(source='aos')
+
+        else:
+            if self.gm.get_value("enviroment") == "uat":
+                self.gm.set_value(source='uat')
+            else:
+                self.gm.set_value(source='test')
+
+            self.gm.set_value(appcationNumber=appcationNumberatext[5:])
+
+
+
