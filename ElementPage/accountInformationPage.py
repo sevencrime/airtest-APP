@@ -32,12 +32,16 @@ class accountInformationPage(BaseView):
         else:
             self.gm.set_value(isbullion=True)
 
-    def click_securitiesCash(self):
-        self.exists(self.el_securitiesCash).click()
+    def click_securitiesCash(self, data):
+        # 查询数据库, 通过值判断是否勾选
+        if "securitiesCash" not in data['accountTypes']:
+            self.exists(self.el_securitiesCash).click()
 
-    def click_securitiesMargin(self):
-        self.exists(self.el_securitiesMargin).click()
+    def click_securitiesMargin(self, data):
+        if "securitiesMargin" not in data['accountTypes']:
+            self.exists(self.el_securitiesMargin).click()
 
-    def click_futuresMargin(self):
-        self.exists(self.el_futuresMargin).click()
+    def click_futuresMargin(self, data):
+        if "futuresMargin" not in data['accountTypes']:
+            self.exists(self.el_futuresMargin).click()
 

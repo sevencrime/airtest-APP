@@ -43,21 +43,26 @@ class mongoTool:
 
 	def findData(self, database, collection, query):
 
-		if database == 'test' or database == 'uat':
-			db = self.client[database]
-		elif database == 'aos':
-			aosdb = self.client['aos']
-		elif database == 'eddidclientpoolfeature':
-			userdb = self.client['eddidclientpoolfeature']
-		else:
-			print("错误")
-
+		db = self.client[database]
 		for result in db[collection].find(query):
+			return result
 
-			for key in result.keys():
-				if not key == '_id':
-					if key == 'idpUserId':
-						pass
+
+		# if database == 'test' or database == 'uat':
+		# 	db = self.client[database]
+		# elif database == 'aos':
+		# 	aosdb = self.client['aos']
+		# elif database == 'eddidclientpoolfeature':
+		# 	userdb = self.client['eddidclientpoolfeature']
+		# else:
+		# 	print("错误")
+		#
+		# for result in db[collection].find(query):
+		#
+		# 	for key in result.keys():
+		# 		if not key == '_id':
+		# 			if key == 'idpUserId':
+		# 				pass
 
 		#
 		# for applyinfo in db[collection].find(query):
@@ -90,10 +95,10 @@ class mongoTool:
 		# 			print("aosaccount >> ", aosaccount)
 
 
-	def UpdataData(self, database=None, collection=None, query=None):
+	def UpdataData(self, database=None, collection=None, query=None, setdata=None):
 		db = self.client[database]
 		# db["accounts"].update({"phone":"15089514626",  "forLogin":True} , { "$set" : { "currentRoute" : "/account"} })
-		db[collection].update(query)
+		db[collection].update(query, setdata)
 
 
 

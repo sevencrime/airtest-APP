@@ -1,1 +1,5 @@
 2019-09-01 22:27:35,663 mongoTool.py INFO [line:33] 连接数据库aos
+2019-09-16 15:23:53,759 GlobalMap.py WARNING [line:66] key:'source'  不存在
+2019-09-16 15:23:53,759 GlobalMap.py WARNING [line:66] key:'source'  不存在
+2019-09-16 15:23:53,759 GlobalMap.py WARNING [line:66] key:'source'  不存在
+2019-09-16 15:23:53,760 GlobalMap.py WARNING [line:66] key:'source'  不存在

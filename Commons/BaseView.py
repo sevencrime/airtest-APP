@@ -17,7 +17,7 @@ class BaseView():
         rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
 
         # 公用
-        self.nextStepbtn = self.poco(text="下一步")
+        self.nextStepbtn = self.poco(text="下一步").parent()
         self.boxCancel = self.poco(text="取消")
         self.boxconfirm = self.poco(text="确定")
         self.gallery = self.poco(text="相册选取")
@@ -133,8 +133,9 @@ class BaseView():
         """
         try:
             # return self.poco.wait_for_any(element)
-            # element.wait_for_appearance()
-            element.wait(5)
+            element.wait_for_appearance()
+            # element.wait(5)
+            # element.exists()
             return element
         except Exception as e:
             print("找不到元素 {}".format(element))

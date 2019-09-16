@@ -4,6 +4,7 @@ import allure
 import pytest
 from airtest.core.api import *
 
+from Commons.GlobalMap import GlobalMap
 from ElementPage.personalInformationPage import personalInformationPage
 from ElementPage.idcardPage import idcardPage
 from ElementPage.publicTool import publicTool
@@ -11,10 +12,14 @@ from ElementPage.publicTool import publicTool
 
 @allure.feature("请填写个人资料")
 class Test_personalinfomation():
+    gm = GlobalMap()
 
     @allure.story("填写个人资料")
+    @pytest.mark.skipif(gm.get_value("appApi") == "aos",
+                        reason="后台是aos接口, 没有该页面, 跳过此用例")
     @pytest.mark.run(order=3)
     def test_personal(self, poco):
+
         perinfo = personalInformationPage(poco)
         pubTool = publicTool(poco)
         with allure.step("输入电邮"):

@@ -11,7 +11,8 @@ from Commons.GlobalMap import GlobalMap
 @pytest.fixture(scope="session", autouse=True)
 def config():
     gm = GlobalMap()
-    gm.set_value(environment="develop")
+    gm.set_value(environment="aos-uat")
+    gm.set_value(appApi="aos")
     gm.set_bool(isbullion=False)
     gm.set_bool(isLeveraged=False)
 

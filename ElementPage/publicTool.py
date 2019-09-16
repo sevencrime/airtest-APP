@@ -23,7 +23,17 @@ class publicTool(BaseView):
         开户表单所有的下一步按钮
 
         """
-        self.nextStepbtn.click()
+        # time.sleep(1)
+        self.nextStepbtn.wait_for_appearance(30)
+        # 判断按钮是否高亮, 通过focusable属性
+        # while not self.nextStepbtn.attr("focusable"):
+        #     self.nextStepbtn.click()
+
+        while True:
+            if self.nextStepbtn.attr("focusable"):
+                self.nextStepbtn.click()
+                return True
+
 
     def click_boxCancel(self):
         """
@@ -57,7 +67,7 @@ class publicTool(BaseView):
         return boxcontent.get_text()
 
     def wait_loading(self):
-        self.loading.wait_for_disappearance(10)
+        self.loading.wait_for_disappearance(30)
         # while True:
         #     print("死循环")
         #     if not self.loading.exists():
@@ -98,6 +108,8 @@ class publicTool(BaseView):
     def customersource(self):
         """
         # 通过申请编号判断客户来源
+
+        textMatches: 模糊匹配
         """
         appcationNumberatext = self.poco(textMatches="申请编号:.*").get_text()
         # 判断申请编号是否APP或H5
