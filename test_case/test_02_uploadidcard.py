@@ -32,7 +32,8 @@ class Test_uploadidcard():
             upidcard.upload_idcardpositive()
 
         with allure.step("滑动页面"):
-            poco("android:id/content").swipe([0.3, -0.7])
+            time.sleep(2)
+            poco("android:id/content").swipe([0.25, -0.9])
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()

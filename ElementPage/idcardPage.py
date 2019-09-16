@@ -24,6 +24,7 @@ class idcardPage(BaseView):
         """
         # import pdb; pdb.set_trace()
         time.sleep(6)
+        self.el_idcardpositive.wait(5)
         self.el_idcardpositive.click()
         self.gallery.click()
 
@@ -36,6 +37,7 @@ class idcardPage(BaseView):
         身份证正面--人像面
 
         """
+        self.el_idcardNegative.wait(5)
         self.el_idcardNegative.click()
         self.gallery.click()
 
