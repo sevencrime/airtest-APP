@@ -20,6 +20,7 @@ class Test_AccountInformation():
     @allure.story("填写账户信息")
     def test_Account(self, poco):
         pubTool = publicTool(poco)
+        pubTool.customersource()
         accountinfo = accountInformationPage(poco)
         with allure.step("判断外汇账户和金业账户是否出现"):
             accountinfo.get_leverMargin()
@@ -29,7 +30,8 @@ class Test_AccountInformation():
                 collection = "accounts"
                 query = {"phone":"15089514626",  "forLogin":True}
 
-            result = self.mongo.findData(database=self.gm.get_value("environment"), collection=collection , query=query)
+            # import pdb; pdb.set_trace()
+            result = self.mongo.findData(database=self.gm.get_value("environment"), collection=collection, query=query)
 
         with allure.step("选择账户类别"):
             accountinfo.click_securitiesCash(result)

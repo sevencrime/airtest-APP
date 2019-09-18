@@ -20,7 +20,7 @@ class Test_employmentInfomation():
             # assert_equal(employ, "无业", "就业情况信息填写有误")
 
         with allure.step("全年总收入选择小于20万"):
-            totalAnnual = employment.click_totalAnnualCustomerRevenueHK("20-50万", funds=["退休金", "储蓄"])
+            totalAnnual = employment.click_totalAnnualCustomerRevenueHK("20-50万", funds=["退休金", "租金"])
             # assert_equal(totalAnnual, "20-50万", "全年总收入填写有误")
 
         with allure.step("资产净值选择小于100万"):

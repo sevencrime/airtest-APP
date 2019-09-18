@@ -5,10 +5,12 @@ from airtest.core.api import *
 from Commons.BaseView import BaseView
 from Commons.GlobalMap import GlobalMap
 from ElementPage.startUpFrom import startUpFrom
+from poco.sdk.interfaces.hierarchy import *
 
 
 class publicTool(BaseView):
     gm = GlobalMap()
+    # hierarchy = HierarchyInterface()
 
     def permissionBox(self):
         """
@@ -128,4 +130,8 @@ class publicTool(BaseView):
             self.gm.set_value(appcationNumber=appcationNumberatext[5:])
 
 
-
+    def get_Routetitle(self):
+        """
+        # 获取页面的标题
+        """
+        return self.Routetitle.get_text()

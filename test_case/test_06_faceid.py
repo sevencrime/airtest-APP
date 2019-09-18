@@ -20,7 +20,7 @@ class Test_faceid():
     @pytest.mark.run(order=3)
     def test_bankCard(self, poco):
         pubTool = publicTool(poco)
-        pubTool.customersource()
+
         with allure.step("修改数据库currentRoute"):
             # 判断申请编号, 判断是APP还是H5数据还是老版APP数据
             if self.gm.get_value("source") == "aos" or self.gm.get_value("source") == "aos-uat":

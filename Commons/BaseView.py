@@ -22,6 +22,7 @@ class BaseView():
         self.boxconfirm = self.poco(text="确定")
         self.gallery = self.poco(text="相册选取")
         self.loading = self.poco("android.widget.ProgressBar")
+        self.Routetitle = self.poco("android.widget.FrameLayout").offspring("android.widget.TextView")
 
         self.closeform_img = rootPath + r'testData\\testIMG\\closeform.png'
         self.backform_img = rootPath + r'testData\\testIMG\\backform.png'
@@ -133,7 +134,7 @@ class BaseView():
         """
         try:
             # return self.poco.wait_for_any(element)
-            element.wait_for_appearance()
+            element.wait_for_appearance(30)
             # element.wait(5)
             # element.exists()
             return element

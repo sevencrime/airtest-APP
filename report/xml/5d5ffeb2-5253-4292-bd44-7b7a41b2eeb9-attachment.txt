@@ -1,1 +1,0 @@
-ERROR    Commons.Logging:GlobalMap.py:40 must be str, not bool

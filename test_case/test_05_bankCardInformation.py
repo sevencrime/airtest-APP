@@ -11,7 +11,7 @@ from ElementPage.publicTool import publicTool
 @allure.feature("银行卡信息")
 class Test_bankCardInformation():
 
-    @allure.story("填写个人资料")
+    @allure.story("银行卡信息")
     @pytest.mark.run(order=3)
     def test_bankCard(self, poco):
         pubTool = publicTool(poco)
