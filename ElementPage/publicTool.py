@@ -4,13 +4,14 @@ from airtest.core.api import *
 
 from Commons.BaseView import BaseView
 from Commons.GlobalMap import GlobalMap
+from Commons.Logging import Logs
 from ElementPage.startUpFrom import startUpFrom
 from poco.sdk.interfaces.hierarchy import *
 
 
 class publicTool(BaseView):
-    gm = GlobalMap()
-    # hierarchy = HierarchyInterface()
+
+    log = Logs()
 
     def permissionBox(self):
         """
@@ -20,7 +21,7 @@ class publicTool(BaseView):
         pass
 
 
-    def click_NextStepbtn(self):
+    def click_NextStepbtn(self, title=None):
         """
         开户表单所有的下一步按钮
 
@@ -34,7 +35,14 @@ class publicTool(BaseView):
         while True:
             if self.nextStepbtn.attr("focusable"):
                 self.nextStepbtn.click()
-                return True
+                if title != None:
+                    try:
+                        assert_equal(self.get_Routetitle(), title, msg="页面标题错误")
+                        return True
+                    except AssertionError:
+                        continue
+                else:
+                    return True
 
 
     def click_boxCancel(self):
@@ -134,4 +142,5 @@ class publicTool(BaseView):
         """
         # 获取页面的标题
         """
+        self.log.debug(self.Routetitle.get_text())
         return self.Routetitle.get_text()

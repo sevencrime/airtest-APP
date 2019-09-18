@@ -23,10 +23,10 @@ class Test_uploadidcard():
         # 判断客户来源
         pubTool.customersource()
 
-        # with allure.step("选择所属地区 -- 内地居民"):
-        #     upidcard.click_Chinese()
-        # with allure.step("开户准备点击下一步"):
-        #     pubTool.click_NextStepbtn()
+        with allure.step("选择所属地区 -- 内地居民"):
+            upidcard.click_Chinese()
+        with allure.step("开户准备点击下一步"):
+            pubTool.click_NextStepbtn()
 
         with allure.step("上传身份证人像面"):
             upidcard.upload_idcardNegative()
@@ -50,8 +50,7 @@ class Test_uploadidcard():
                 reEmail = perinfo.send_reemail()
 
             with allure.step("点击下一步"):
-                # import pdb; pdb.set_trace()
-                pubTool.click_NextStepbtn()
+                pubTool.click_NextStepbtn("银行卡信息")
 
             # with allure.step("校验地址弹框标题和内容"):
             #     boxtitle = pubTool.get_boxtitle()
@@ -64,6 +63,7 @@ class Test_uploadidcard():
 
         else:
             with allure.step("点击下一步"):
+
                 pubTool.click_NextStepbtn()
 
 

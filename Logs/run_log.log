@@ -1,4 +1,0 @@
-2019-08-31 22:41:48,517 Logging.py INFO [line:54] 1111
-2019-08-31 22:41:48,526 Logging.py INFO [line:55] 2222
-2019-08-31 22:41:48,535 Logging.py INFO [line:56] 3333
-2019-08-31 22:42:24,168 GlobalMap.py ERROR [line:40] must be str, not bool

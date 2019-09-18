@@ -30,7 +30,7 @@ def Logs(logname=None):
         logger = logging.getLogger(__name__)
         # 每次被调用后，清空已经存在handler,防止重复打印日志
         logger.handlers.clear()
-        logger.setLevel(level=logging.INFO)
+        logger.setLevel(level=logging.DEBUG)
 
         # 获取文件处理器，并设置级别
         handler = logging.FileHandler(filename=url_log, encoding='utf-8')
@@ -57,3 +57,4 @@ if __name__ == '__main__':
     l = Logs(logname= "submit")
     l.info("44444444")
     l.info("555")
+    l.debug("222222222")
