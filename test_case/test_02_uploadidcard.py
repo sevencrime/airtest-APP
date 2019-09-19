@@ -38,6 +38,7 @@ class Test_uploadidcard():
 
         with allure.step("滑动页面"):
             time.sleep(5)
+            assert_equal(pubTool.get_Routetitle(), "身份证验证", msg="页面没有跳转")
             poco("android:id/content").swipe([0.25, -0.9])
 
         if self.gm.get_value("appApi") == "aos":
@@ -50,20 +51,24 @@ class Test_uploadidcard():
                 reEmail = perinfo.send_reemail()
 
             with allure.step("点击下一步"):
-                pubTool.click_NextStepbtn("银行卡信息")
+                pubTool.click_NextStepbtn()
 
-            # with allure.step("校验地址弹框标题和内容"):
-            #     boxtitle = pubTool.get_boxtitle()
-            #     boxcontent = pubTool.get_boxcontent()
-            #     assert_equal(boxtitle, "请确认您的身份证地址", "确认地址弹框标题有误")
-            #     assert_equal(boxcontent, perinfo.get_address(), "弹框内容与填写内容不符")
-            #
-            # with allure.step("确认地址弹框--点击确定"):
-            #     pubTool.click_boxconfirm()
+            with allure.step("校验地址弹框标题和内容"):
+                # import pdb; pdb.set_trace()
+                boxtitle = pubTool.get_boxtitle()
+                boxcontent = pubTool.get_boxcontent()
+                assert_equal(boxtitle, "请确认您的身份证地址", "确认地址弹框标题有误")
+                assert_equal(boxcontent, perinfo.get_address(), "弹框内容与填写内容不符")
+
+            with allure.step("确认地址弹框--点击确定"):
+                pubTool.click_boxconfirm()
+
+            with allure.step("页面跳转到<银行卡信息>界面"):
+                assert_equal(pubTool.get_Routetitle(), "银行卡信息", msg="页面没有跳转")
+
 
         else:
             with allure.step("点击下一步"):
-
                 pubTool.click_NextStepbtn()
 
 

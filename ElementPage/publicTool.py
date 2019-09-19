@@ -26,24 +26,40 @@ class publicTool(BaseView):
         开户表单所有的下一步按钮
 
         """
-        # time.sleep(1)
         self.nextStepbtn.wait_for_appearance(30)
-        # 判断按钮是否高亮, 通过focusable属性
-        # while not self.nextStepbtn.attr("focusable"):
-        #     self.nextStepbtn.click()
+        index = 0
 
         while True:
-            if self.nextStepbtn.attr("focusable"):
-                self.nextStepbtn.click()
-                if title != None:
-                    try:
-                        assert_equal(self.get_Routetitle(), title, msg="页面标题错误")
-                        return True
-                    except AssertionError:
-                        continue
-                else:
-                    return True
+            # # 重复5次
+            # if index > 5:
+            #     self.log.debug("'下一步'按钮循环点击超过10次, 退出")
+            #     return False
 
+            # 判断按钮是否高亮, 通过focusable属性
+            if self.nextStepbtn.attr("focusable"):
+                """
+                # 刷新Android界面
+                    Android的invalidate与postInvalidate都是用来刷新界面的。
+                    在UI主线程中，用invalidate()，本质是调用View的onDraw（）绘制。
+                    主线程之外，用postInvalidate()。
+                    
+                    地址:
+                    https://www.zybuluo.com/natsumi/note/470226
+                """
+                self.nextStepbtn.invalidate()
+                self.nextStepbtn.click()
+                return True
+            #     if title != None:
+            #         try:
+            #             assert_equal(self.get_Routetitle(), title, msg="页面标题错误")
+            #             return True
+            #         except AssertionError:
+            #             self.log.debug("循环点击")
+            #             continue
+            #     else:
+            #         return True
+            #
+            # index += 1
 
     def click_boxCancel(self):
         """
@@ -142,5 +158,6 @@ class publicTool(BaseView):
         """
         # 获取页面的标题
         """
+        self.Routetitle.invalidate()
         self.log.debug(self.Routetitle.get_text())
         return self.Routetitle.get_text()
