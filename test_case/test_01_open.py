@@ -46,9 +46,10 @@ class Test_open():
 
         with allure.step("登陆界面--点击登陆按钮"):
             startupfrom.click_Loginbtn()
+            # pubTool.get_Routetitle()
+        # with allure.step("登录后再次点击便捷开户"):
+        #     startupfrom.click_easyOpenning()
 
-        with allure.step("登录后再次点击便捷开户"):
-            startupfrom.click_easyOpenning()
 
 
 if __name__ == "__main__":

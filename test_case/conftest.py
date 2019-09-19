@@ -26,4 +26,7 @@ def poco():
                    devices=["Android:///", ])
 
     poco = AndroidUiautomationPoco(force_restart=True)
-    return poco
+    yield poco
+
+    # from airtest.report.report import simple_report
+    # simple_report(__file__)

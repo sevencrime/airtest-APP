@@ -18,13 +18,13 @@ class bankCardInformationPage(BaseView):
         bankCardNo.set_text(bankNo)
         return bankCardNo
 
-    def send_bankName(self):
+    def send_bankName(self, text="中国建设银行"):
         """
         输入银行卡号
 
         """
         bankname = self.exists(self.el_bankName)
-        bankname.set_text("中国建设银行")
+        bankname.set_text(text)
         return bankname
 
     def send_bankPhone(self, bankphone="15089514626"):

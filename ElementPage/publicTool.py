@@ -30,10 +30,10 @@ class publicTool(BaseView):
         index = 0
 
         while True:
-            # # 重复5次
-            # if index > 5:
-            #     self.log.debug("'下一步'按钮循环点击超过10次, 退出")
-            #     return False
+            # 重复5次
+            if index > 5:
+                self.log.debug("'下一步'按钮循环点击超过5次, 退出")
+                return False
 
             # 判断按钮是否高亮, 通过focusable属性
             if self.nextStepbtn.attr("focusable"):
@@ -58,8 +58,7 @@ class publicTool(BaseView):
             #             continue
             #     else:
             #         return True
-            #
-            # index += 1
+            index += 1
 
     def click_boxCancel(self):
         """
@@ -79,18 +78,27 @@ class publicTool(BaseView):
 
     def get_boxtitle(self):
         """
-        获取弹出框的标题
+        获取弹出框的标题和弹框的内容
 
         """
-        boxtitle = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.view.ViewGroup")[0].child("android.widget.TextView")
-        return boxtitle.get_text()
+        index = 0
+        try:
+            # 获取页面标题, 代替页面刷新
+            self.get_Routetitle()
+            # 弹出框标题
+            boxtitle = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.view.ViewGroup")[0].child("android.widget.TextView")
+            # 弹出框内容
+            boxcontent = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.widget.TextView")
+            return boxtitle.get_text(), boxcontent.get_text()
 
-    def get_boxcontent(self):
-        """
-        获取弹出框的提示内容
-        """
-        boxcontent = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.widget.TextView")
-        return boxcontent.get_text()
+        except:
+            index += 1
+            if index > 3 :
+                self.log.debug("弹框标题或内容获取失败")
+                return False
+            # 失败重新获取3次
+            self.get_boxtitle()
+
 
     def wait_loading(self):
         self.loading.wait_for_disappearance(30)
