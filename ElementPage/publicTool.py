@@ -30,25 +30,20 @@ class publicTool(BaseView):
         index = 0
 
         while True:
-            # 重复5次
-            if index > 5:
-                self.log.debug("'下一步'按钮循环点击超过5次, 退出")
-                return False
+            self.log.debug(index)
+            if index > 10:
+                self.log.debug("'下一步'按钮循环点击超过10次, 退出")
+                break
 
+            # 获取页面标题内容, 目的是为了刷新页面
+            self.get_Routetitle()
             # 判断按钮是否高亮, 通过focusable属性
             if self.nextStepbtn.attr("focusable"):
-                """
-                # 刷新Android界面
-                    Android的invalidate与postInvalidate都是用来刷新界面的。
-                    在UI主线程中，用invalidate()，本质是调用View的onDraw（）绘制。
-                    主线程之外，用postInvalidate()。
-                    
-                    地址:
-                    https://www.zybuluo.com/natsumi/note/470226
-                """
-                self.nextStepbtn.invalidate()
+
+                self.log.debug("'下一步'按钮高亮")
                 self.nextStepbtn.click()
-                return True
+                # return True
+                break
             #     if title != None:
             #         try:
             #             assert_equal(self.get_Routetitle(), title, msg="页面标题错误")
@@ -58,6 +53,7 @@ class publicTool(BaseView):
             #             continue
             #     else:
             #         return True
+
             index += 1
 
     def click_boxCancel(self):
@@ -87,13 +83,15 @@ class publicTool(BaseView):
             self.get_Routetitle()
             # 弹出框标题
             boxtitle = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.view.ViewGroup")[0].child("android.widget.TextView")
+            self.log.debug("获取boxtitle成功, 标题是{}".format(boxtitle))
             # 弹出框内容
             boxcontent = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.widget.TextView")
+            self.log.debug("获取boxcontent成功, 内容是{}".format(boxcontent))
             return boxtitle.get_text(), boxcontent.get_text()
 
-        except:
+        except Exception as e:
             index += 1
-            if index > 3 :
+            if index > 5 :
                 self.log.debug("弹框标题或内容获取失败")
                 return False
             # 失败重新获取3次
@@ -165,6 +163,14 @@ class publicTool(BaseView):
     def get_Routetitle(self):
         """
         # 获取页面的标题
+
+            # invalidate() : 刷新Android界面
+                Android的invalidate与postInvalidate都是用来刷新界面的。
+                在UI主线程中，用invalidate()，本质是调用View的onDraw（）绘制。
+                主线程之外，用postInvalidate()。
+
+                地址:
+                https://www.zybuluo.com/natsumi/note/470226
         """
         self.Routetitle.invalidate()
         self.log.debug(self.Routetitle.get_text())

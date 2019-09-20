@@ -16,7 +16,7 @@ class Test_bankCardInformation():
 
     @allure.story("银行卡界面正常输入")
     def test_bankCard(self, poco):
-        self.log.debug("正在执行{} 方法".format(sys.getframe().f_code.co_name))
+        self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         bankcard = bankCardInformationPage(poco)
         with allure.step("输入卡号"):
@@ -41,7 +41,7 @@ class Test_bankCardInformation():
 
     @allure.story("内地银行卡号非空校验")
     def test_bankCardnullvalue(self, poco):
-        self.log.debug("正在执行{} 方法".format(sys.getframe().f_code.co_name))
+        self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         bankcard = bankCardInformationPage(poco)
         with allure.step("输入卡号"):
@@ -61,7 +61,7 @@ class Test_bankCardInformation():
 
     @allure.story("内地银行卡号输入中文")
     def test_bankCard_sendChinese(self, poco):
-        self.log.debug("正在执行{} 方法".format(sys.getframe().f_code.co_name))
+        self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         bankcard = bankCardInformationPage(poco)
         with allure.step("输入卡号"):
@@ -88,7 +88,7 @@ class Test_bankCardInformation():
 
     @allure.story("内地银行卡号输入组合字符")
     def test_bankCard_sendAll(self, poco):
-        self.log.debug("正在执行{} 方法".format(sys.getframe().f_code.co_name))
+        self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         bankcard = bankCardInformationPage(poco)
         with allure.step("输入卡号"):
@@ -117,7 +117,7 @@ class Test_bankCardInformation():
 
     @allure.story("银行名称输入空值")
     def test_bankCardnameNull(self, poco):
-        self.log.debug("正在执行{} 方法".format(sys.getframe().f_code.co_name))
+        self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         bankcard = bankCardInformationPage(poco)
         with allure.step("输入卡号"):
@@ -137,7 +137,7 @@ class Test_bankCardInformation():
 
     @allure.story("银行名称输入组合字符")
     def test_bankCardname_sendAll(self, poco):
-        self.log.debug("正在执行{} 方法".format(sys.getframe().f_code.co_name))
+        self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         bankcard = bankCardInformationPage(poco)
         with allure.step("输入卡号"):
@@ -150,6 +150,7 @@ class Test_bankCardInformation():
             bankcard.send_bankPhone()
 
         with allure.step("点击下一步"):
+            time.sleep(0.5)
             pubTool.click_NextStepbtn()
 
         with allure.step("页面跳转到人脸识别界面"):
@@ -161,7 +162,7 @@ class Test_bankCardInformation():
 
     @allure.story("绑定手机号不填")
     def test_bankCardPhone_Null(self, poco):
-        self.log.debug("正在执行{} 方法".format(sys.getframe().f_code.co_name))
+        self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         bankcard = bankCardInformationPage(poco)
         with allure.step("输入卡号"):
@@ -181,7 +182,7 @@ class Test_bankCardInformation():
 
     @allure.story("绑定手机号输入中文")
     def test_bankCardPhone_sendChinese(self, poco):
-        self.log.debug("正在执行{} 方法".format(sys.getframe().f_code.co_name))
+        self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         bankcard = bankCardInformationPage(poco)
         with allure.step("输入卡号"):
@@ -194,6 +195,7 @@ class Test_bankCardInformation():
             bankcard.send_bankPhone("手机号")
 
         with allure.step("点击下一步"):
+            time.sleep(0.2)
             pubTool.click_NextStepbtn()
 
         with allure.step("校验弹框内容"):
@@ -209,7 +211,7 @@ class Test_bankCardInformation():
 
     @allure.story("绑定手机号输入组合字符")
     def test_bankCardPhone_sendAll(self, poco):
-        self.log.debug("正在执行{} 方法".format(sys.getframe().f_code.co_name))
+        self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         bankcard = bankCardInformationPage(poco)
         with allure.step("输入卡号"):
@@ -237,7 +239,7 @@ class Test_bankCardInformation():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "test_05_bankCardInformation.py::Test_bankCardInformation", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "-v", "test_05_bankCardInformation.py::Test_bankCardInformation", '--alluredir', '../report/xml'])
 
 
 
