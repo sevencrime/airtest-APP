@@ -14,31 +14,6 @@ from ElementPage.publicTool import publicTool
 class Test_bankCardInformation():
     log = Logs("Test_bankCardInformation")
 
-    @allure.story("银行卡界面正常输入")
-    def test_bankCard(self, poco):
-        self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
-        pubTool = publicTool(poco)
-        bankcard = bankCardInformationPage(poco)
-        with allure.step("输入卡号"):
-            bankcard.send_bankCardNo()
-
-        with allure.step("输入银行名称"):
-            bankcard.send_bankName()
-
-        with allure.step("输入绑定手机号"):
-            bankcard.send_bankPhone()
-
-        with allure.step("点击下一步"):
-            pubTool.click_NextStepbtn()
-
-        with allure.step("页面跳转到人脸识别界面"):
-            assert_equal(pubTool.get_Routetitle(), "人脸识别", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
-
-        with allure.step("点击返回按钮返回银行卡信息界面"):
-            pubTool.backform()
-            assert_equal(pubTool.get_Routetitle(), "银行卡信息", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
-
-
     @allure.story("内地银行卡号非空校验")
     def test_bankCardnullvalue(self, poco):
         self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
@@ -236,6 +211,30 @@ class Test_bankCardInformation():
         with allure.step("页面停留在<银行卡信息>界面"):
             assert_equal(pubTool.get_Routetitle(), "银行卡信息", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
+
+    @allure.story("银行卡界面正常输入")
+    def test_bankCard(self, poco):
+        self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
+        pubTool = publicTool(poco)
+        bankcard = bankCardInformationPage(poco)
+        with allure.step("输入卡号"):
+            bankcard.send_bankCardNo()
+
+        with allure.step("输入银行名称"):
+            bankcard.send_bankName()
+
+        with allure.step("输入绑定手机号"):
+            bankcard.send_bankPhone()
+
+        with allure.step("点击下一步"):
+            pubTool.click_NextStepbtn()
+
+        with allure.step("页面跳转到人脸识别界面"):
+            assert_equal(pubTool.get_Routetitle(), "人脸识别", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+
+        # with allure.step("点击返回按钮返回银行卡信息界面"):
+        #     pubTool.backform()
+        #     assert_equal(pubTool.get_Routetitle(), "银行卡信息", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
 
 if __name__ == "__main__":

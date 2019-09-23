@@ -51,6 +51,7 @@ class Test_uploadidcard():
                 reEmail = perinfo.send_reemail()
 
             with allure.step("点击下一步"):
+                time.sleep(1)
                 pubTool.click_NextStepbtn()
 
             with allure.step("校验地址弹框标题和内容"):

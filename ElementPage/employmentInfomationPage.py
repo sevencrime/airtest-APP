@@ -41,6 +41,7 @@ class employmentInfomationPage(BaseView):
             price: 资金区间(string)
             funds:  list类型, 资金来源需要勾选的字段
         """
+        self.gm.get_value("istotalAnnual")
         totalAnnual = self.exists(self.totalAnnualCustomerRevenueHK)
 
         try:
@@ -61,8 +62,14 @@ class employmentInfomationPage(BaseView):
                 # 判断资金来源和资产净值是否同时出现
                 if len(sources) == 1:
                     sources.click()
+                    if fund == '其他':
+                        self.otherfunds.set_text("其他资金来源")
+
                 elif len(sources) > 1:
                     sources[0].click()
+                    if fund == '其他':
+                        self.otherfunds.set_text("其他资金来源")
+
                 else:
                     print("出现了不止2个, 需要查看问题哦")
                     pass
@@ -98,8 +105,13 @@ class employmentInfomationPage(BaseView):
                 # 判断资金来源和资产净值是否同时出现
                 if len(sources) == 1:
                     sources.click()
+                    if asset == '其他':
+                        self.otherfunds.set_text("其他资产净值")
+
                 elif len(sources) > 1:
                     sources[1].click()
+                    if asset == '其他':
+                        self.otherfunds.set_text("其他资产净值")
                 else:
                     print("出现了不止2个, 需要查看问题哦")
                     pass

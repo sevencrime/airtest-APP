@@ -73,6 +73,8 @@ class BaseView():
         self.customerNetAssetValueHK = self.poco(text="资产净值(港元)").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.sourcesfunds = self.poco(text="请注明资金来源(可多选)")
         self.assetsvalue = self.poco(text="请注明资产净值(可多选)")
+        self.otherfunds = self.poco(text="请输入其他资金来源").sibling("android.widget.EditText")
+        self.otherassetsvalue = self.poco(text="请输入其他资产净值来源").sibling("android.widget.EditText")
         # self.salary = self.poco(text="就业")
         # self.saving = self.poco(text="储蓄")
         # self.investmentreturn = self.poco(text="投资回报")
