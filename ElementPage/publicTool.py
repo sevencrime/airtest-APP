@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import traceback
+
 from airtest.core.api import *
 
 from Commons.BaseView import BaseView
-from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.startUpFrom import startUpFrom
-from poco.sdk.interfaces.hierarchy import *
-
+import sys
 
 class publicTool(BaseView):
 
@@ -29,17 +29,15 @@ class publicTool(BaseView):
         self.nextStepbtn.wait_for_appearance(30)
         index = 0
 
-        while True:
-            self.log.debug(index)
-            if index > 10:
-                self.log.debug("'下一步'按钮循环点击超过10次, 退出")
-                break
+        while index < 5:
+            # if index > 10:
+            #     self.log.debug("'下一步'按钮循环点击超过10次, 退出")
+            #     break
 
             # 获取页面标题内容, 目的是为了刷新页面
             self.get_Routetitle()
             # 判断按钮是否高亮, 通过focusable属性
             if self.nextStepbtn.attr("focusable"):
-
                 self.log.debug("'下一步'按钮高亮")
                 self.nextStepbtn.click()
                 # return True
@@ -78,24 +76,27 @@ class publicTool(BaseView):
 
         """
         index = 0
-        try:
-            # 获取页面标题, 代替页面刷新
-            self.get_Routetitle()
-            # 弹出框标题
-            boxtitle = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.view.ViewGroup")[0].child("android.widget.TextView")
-            self.log.debug("获取boxtitle成功, 标题是{}".format(boxtitle))
-            # 弹出框内容
-            boxcontent = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.widget.TextView")
-            self.log.debug("获取boxcontent成功, 内容是{}".format(boxcontent))
-            return boxtitle.get_text(), boxcontent.get_text()
+        while True:
 
-        except Exception as e:
-            index += 1
-            if index > 5 :
+            try:
+                # 获取页面标题, 代替页面刷新
+                self.get_Routetitle()
+                # 弹出框标题
+                boxtitle = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.view.ViewGroup")[0].child("android.widget.TextView")
+                self.log.debug("获取boxtitle成功, 标题是{}".format(boxtitle))
+                # 弹出框内容
+                boxcontent = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.widget.TextView")
+                self.log.debug("获取boxcontent成功, 内容是{}".format(boxcontent))
+                return boxtitle.get_text(), boxcontent.get_text()
+
+            except Exception as e:
                 self.log.debug("弹框标题或内容获取失败")
-                return False
-            # 失败重新获取3次
-            self.get_boxtitle()
+
+            finally:
+                index += 1
+                if index > 5:
+                    break
+
 
 
     def wait_loading(self):
@@ -135,7 +136,7 @@ class publicTool(BaseView):
         """
         # 点击返回按钮
         touch(Template(self.backform_img, record_pos=(-0.42, -0.919), resolution=(1080, 2340)))
-
+        time.sleep(0.5)
 
     def customersource(self):
         """
@@ -173,5 +174,9 @@ class publicTool(BaseView):
                 https://www.zybuluo.com/natsumi/note/470226
         """
         self.Routetitle.invalidate()
+        self.log.debug("调用此方法的是: {}".format(traceback.extract_stack()[-2][2]))
+        self.log.debug("调用此方法的模块为: {}, 行数为: {}".format(sys._getframe().f_code.co_filename , sys._getframe().f_back.f_lineno))
         self.log.debug(self.Routetitle.get_text())
         return self.Routetitle.get_text()
+
+

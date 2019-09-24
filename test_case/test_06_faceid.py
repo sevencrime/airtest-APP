@@ -13,8 +13,9 @@ from ElementPage.publicTool import publicTool
 @allure.feature("人脸识别")
 class Test_faceid():
 
-    mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
+    # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
     gm = GlobalMap()
+    mongo = mongoTool(gm.get_value("mongohost"))
 
     @allure.story("填写个人资料")
     @pytest.mark.run(order=3)

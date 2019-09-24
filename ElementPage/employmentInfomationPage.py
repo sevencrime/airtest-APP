@@ -33,15 +33,20 @@ class employmentInfomationPage(BaseView):
         return self.el_employ.get_text()
 
 
-    def click_totalAnnualCustomerRevenueHK(self, price, funds=None):
+    def click_totalAnnualCustomerRevenueHK(self, price, fundlist=[]):
         """
         # 全年总收入
 
         args:
             price: 资金区间(string)
-            funds:  list类型, 资金来源需要勾选的字段
+            fundlist:  list类型, 资金来源需要勾选的字段
+
+        # gm.get_value("istotalAnnual") : 全年总收入来源已勾选的值
         """
-        self.gm.get_value("istotalAnnual")
+        # import pdb; pdb.set_trace()
+
+        funds = set(self.gm.get_value("istotalAnnual")).symmetric_difference(fundlist)
+
         totalAnnual = self.exists(self.totalAnnualCustomerRevenueHK)
 
         try:
@@ -74,17 +79,21 @@ class employmentInfomationPage(BaseView):
                     print("出现了不止2个, 需要查看问题哦")
                     pass
 
+        # 重新给istotalAnnual赋值, 值为当前勾选的字段
+        self.gm.set_List('istotalAnnual', fundlist)
         return self.totalAnnualCustomerRevenueHK.get_text()
 
 
-    def click_customerNetAssetValueHK(self, price, assets=None):
+    def click_customerNetAssetValueHK(self, price, assetslist=[]):
         """
         # 资产净值
 
         args:
             price: 资金区间(string)
-            assets:  list类型, 资产净值需要勾选的字段
+            assetslist:  list类型, 资产净值需要勾选的字段
         """
+
+        assets = set(self.gm.get_value("customerNetAssetValue")).symmetric_difference(assetslist)
         customer = self.exists(self.customerNetAssetValueHK)
 
         try:
@@ -116,6 +125,8 @@ class employmentInfomationPage(BaseView):
                     print("出现了不止2个, 需要查看问题哦")
                     pass
 
+        # 重新给istotalAnnual赋值, 值为当前勾选的字段
+        self.gm.set_List('customerNetAssetValue', assetslist)
         return self.customerNetAssetValueHK.get_text()
 
 

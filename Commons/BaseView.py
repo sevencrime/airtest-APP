@@ -3,11 +3,13 @@
 import os
 
 from Commons.GlobalMap import GlobalMap
+from Commons.Logging import Logs
 
 
 class BaseView():
 
     gm = GlobalMap()
+    log = Logs()
 
     def __init__(self, poco):
         self.poco = poco

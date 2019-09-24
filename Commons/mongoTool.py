@@ -111,7 +111,7 @@ if __name__ == '__main__':
 	# Database(host, database).del_linked("apply_debug", {'email':{"$regex" : ".*onedi.*"}})
 
 	d = mongoTool(host)
-	d.findData(database, "apply_info", {'phone':'6880062539507'})
+	d.findData(database, "apply_info", {'phone':'15089514626'})
 	
 
 

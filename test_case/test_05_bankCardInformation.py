@@ -238,7 +238,7 @@ class Test_bankCardInformation():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_05_bankCardInformation.py::Test_bankCardInformation", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "-v", "--pdb", "test_05_bankCardInformation.py::Test_bankCardInformation", '--alluredir', '../report/xml'])
 
 
 
