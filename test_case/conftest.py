@@ -104,6 +104,8 @@ def poco():
         auto_setup(__file__, logdir=True,
                    devices=["Android:///", ])
 
+    # connect_device("android://127.0.0.1:5037/127.0.0.1:7555?cap_method=javacap&touch_method=adb")
+
     poco = AndroidUiautomationPoco(force_restart=True)
     yield poco
 
@@ -121,19 +123,19 @@ def poco():
     #
     # os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 
-
-@pytest.fixture(scope="class")
-def reloadRoute(routetitle, poco):
-
-    pubTool = publicTool(poco)
-    # 点击退出按钮
-    pubTool.closeform()
-    # 点击便捷开户再次进入开户表单, 清除页面缓存
-    pubTool.easyOpenning()
-
-    # 判断当前标题, 如不是操作界面, 则点击返回按钮
-    if routetitle != pubTool.get_Routetitle:
-        pubTool.backform()
+#
+# @pytest.fixture(scope="class")
+# def reloadRoute(routetitle, poco):
+#
+#     pubTool = publicTool(poco)
+#     # 点击退出按钮
+#     pubTool.closeform()
+#     # 点击便捷开户再次进入开户表单, 清除页面缓存
+#     pubTool.easyOpenning()
+#
+#     # 判断当前标题, 如不是操作界面, 则点击返回按钮
+#     if routetitle != pubTool.get_Routetitle:
+#         pubTool.backform()
 
 
 
