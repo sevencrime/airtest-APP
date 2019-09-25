@@ -7,6 +7,8 @@ from poco.drivers.android.uiautomation import AndroidUiautomationPoco
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from Commons.mongoTool import mongoTool
+from ElementPage.publicTool import publicTool
+
 
 @pytest.fixture(scope="class")
 def get_totalAnnual_AND_customerNetAssetValue():
@@ -91,7 +93,7 @@ def config():
     gm.set_value(appApi="aos")
     gm.set_bool(isbullion=False)
     gm.set_bool(isLeveraged=False)
-    gm.set_value(mongohost='mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
+    gm.set_value(mongohost="mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net")
 
 @pytest.fixture(scope="session", autouse=True)
 def poco():
@@ -108,15 +110,30 @@ def poco():
     # from airtest.report.report import simple_report
     # simple_report(__file__)
 
-    # 当前目录
-    curPath = os.path.abspath(os.path.dirname(__file__))
-    # 项目根目录
-    rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
+    # # 当前目录
+    # curPath = os.path.abspath(os.path.dirname(__file__))
+    # # 项目根目录
+    # rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
+    #
+    # # import pdb; pdb.set_trace()
+    # xml_report_path = rootPath + r'report\xml'
+    # html_report_path = rootPath + r'report\html'
+    #
+    # os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 
-    # import pdb; pdb.set_trace()
-    xml_report_path = rootPath + r'report\xml'
-    html_report_path = rootPath + r'report\html'
 
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
+@pytest.fixture(scope="class")
+def reloadRoute(routetitle, poco):
+
+    pubTool = publicTool(poco)
+    # 点击退出按钮
+    pubTool.closeform()
+    # 点击便捷开户再次进入开户表单, 清除页面缓存
+    pubTool.easyOpenning()
+
+    # 判断当前标题, 如不是操作界面, 则点击返回按钮
+    if routetitle != pubTool.get_Routetitle:
+        pubTool.backform()
+
 
 

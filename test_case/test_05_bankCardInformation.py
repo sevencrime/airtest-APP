@@ -125,7 +125,6 @@ class Test_bankCardInformation():
             bankcard.send_bankPhone()
 
         with allure.step("点击下一步"):
-            time.sleep(0.5)
             pubTool.click_NextStepbtn()
 
         with allure.step("页面跳转到人脸识别界面"):
@@ -170,7 +169,6 @@ class Test_bankCardInformation():
             bankcard.send_bankPhone("手机号")
 
         with allure.step("点击下一步"):
-            time.sleep(0.2)
             pubTool.click_NextStepbtn()
 
         with allure.step("校验弹框内容"):

@@ -28,14 +28,14 @@ class publicTool(BaseView):
         """
         self.nextStepbtn.wait_for_appearance(30)
         index = 0
-
-        while index < 5:
+        while index < 10:
             # if index > 10:
             #     self.log.debug("'下一步'按钮循环点击超过10次, 退出")
             #     break
 
             # 获取页面标题内容, 目的是为了刷新页面
-            self.get_Routetitle()
+            # self.get_Routetitle()
+            self.nextStepbtn.invalidate()
             # 判断按钮是否高亮, 通过focusable属性
             if self.nextStepbtn.attr("focusable"):
                 self.log.debug("'下一步'按钮高亮")
@@ -94,7 +94,7 @@ class publicTool(BaseView):
 
             finally:
                 index += 1
-                if index > 5:
+                if index > 10:
                     break
 
 
@@ -176,7 +176,32 @@ class publicTool(BaseView):
         self.Routetitle.invalidate()
         self.log.debug("调用此方法的是: {}".format(traceback.extract_stack()[-2][2]))
         self.log.debug("调用此方法的模块为: {}, 行数为: {}".format(sys._getframe().f_code.co_filename , sys._getframe().f_back.f_lineno))
-        self.log.debug(self.Routetitle.get_text())
+        self.log.debug("当前页面的标题为: {}".format(self.Routetitle.get_text()))
         return self.Routetitle.get_text()
+
+
+    # def reloadRoute(routetitle):
+    #     # 把开户方法变成装饰器实现
+    #     def wrapper(func):
+    #         def inner_wrapper(self, *args, **kwargs):
+    #             # 点击退出按钮
+    #             self.closeform()
+    #             # 点击便捷开户再次进入开户表单, 清除页面缓存
+    #             self.easyOpenning()
+    #
+    #             # 判断当前标题, 如不是操作界面, 则点击返回按钮
+    #             if routetitle != self.get_Routetitle:
+    #                 self.backform()
+    #
+    #             return func(self, self.poco, *args, **kwargs)
+    #
+    #         return inner_wrapper
+    #     return wrapper
+    #
+    #
+
+
+
+
 
 

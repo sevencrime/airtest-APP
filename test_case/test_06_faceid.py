@@ -15,11 +15,11 @@ class Test_faceid():
 
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
     gm = GlobalMap()
-    mongo = mongoTool(gm.get_value("mongohost"))
 
     @allure.story("填写个人资料")
     @pytest.mark.run(order=3)
     def test_bankCard(self, poco):
+        mongo = mongoTool(self.gm.get_value("mongohost"))
         pubTool = publicTool(poco)
         pubTool.customersource()
         with allure.step("修改数据库currentRoute"):
@@ -35,7 +35,7 @@ class Test_faceid():
             else:
                 print("数据可能有问题哦!!!")
 
-            self.mongo.UpdataData(database=self.gm.get_value("environment"), collection=collection , query=query, setdata = setdata)
+            mongo.UpdataData(database=self.gm.get_value("environment"), collection=collection , query=query, setdata = setdata)
 
         with allure.step("退出开户表单"):
             pubTool.closeform()

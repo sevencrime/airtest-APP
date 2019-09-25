@@ -16,10 +16,10 @@ from ElementPage.publicTool import publicTool
 class Test_AccountInformation():
     gm = GlobalMap()
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
-    mongo = mongoTool(gm.get_value("mongohost"))
 
     @allure.story("填写账户信息")
     def test_Account(self, poco):
+        mongo = mongoTool(self.gm.get_value("mongohost"))
         pubTool = publicTool(poco)
         pubTool.customersource()
         accountinfo = accountInformationPage(poco)
@@ -32,7 +32,8 @@ class Test_AccountInformation():
                 query = {"phone":"15089514626",  "forLogin":True}
 
             # import pdb; pdb.set_trace()
-            result = self.mongo.findData(database=self.gm.get_value("environment"), collection=collection, query=query)
+            # 查询数据库
+            result = mongo.findData(database=self.gm.get_value("environment"), collection=collection, query=query)
 
         with allure.step("选择账户类别"):
             accountinfo.click_securitiesCash(result)

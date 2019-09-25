@@ -46,7 +46,7 @@ class employmentInfomationPage(BaseView):
         # import pdb; pdb.set_trace()
 
         funds = set(self.gm.get_value("istotalAnnual")).symmetric_difference(fundlist)
-
+        self.log.debug("需要点击的选项有: {}".format(','.join(funds)))
         totalAnnual = self.exists(self.totalAnnualCustomerRevenueHK)
 
         try:
