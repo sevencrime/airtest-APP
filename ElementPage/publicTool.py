@@ -127,8 +127,13 @@ class publicTool(BaseView):
         """
         # 关闭开户表单
         touch(Template(self.closeform_img, record_pos=(-0.331, -0.919), resolution=(1080, 2340)))
-        # 点击便捷开户
-        startUpFrom(self.poco).click_easyOpenning()
+        # 重复十次
+        for i in range(10):
+            if self.get_Routetitle() == "艾德证券期货":
+                # 点击便捷开户
+                self.easyOpenning.click()
+                break
+
 
     def backform(self):
         """
