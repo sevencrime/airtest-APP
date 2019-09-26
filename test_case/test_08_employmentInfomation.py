@@ -11,15 +11,16 @@ from airtest.core.api import *
 
 @allure.feature("就业及财务状况")
 @pytest.mark.usefixtures('get_totalAnnual_AND_customerNetAssetValue')
-# @pytest.mark.usefixtures('reloadRoute')
 class Test_employmentInfomation():
 
     gm = GlobalMap()
     log = Logs()
 
-    @publicTool.reloadRoute("就业及财务状况")
+    fix_routetitle = ["就业及财务状况"]      #当fixture的参数
+
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @allure.story("就业情况选择'无业', 全年总收入选择'小于20万', 资产净值选择'小于100万', 点击下一步")
-    def test_unemployedandnot_01(self, poco):
+    def test_unemployedandnot_01(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("就业情况选择无业"):
@@ -135,8 +136,13 @@ class Test_employmentInfomation():
 
 
 
+
+
+
+
+
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "--pdb", "test_08_employmentInfomation.py::Test_employmentInfomation::test_unemployedandnot_01", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "-v", "test_08_employmentInfomation.py::Test_employmentInfomation", '--alluredir', '../report/xml'])
 
 
 

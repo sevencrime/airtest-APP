@@ -180,28 +180,5 @@ class publicTool(BaseView):
         return self.Routetitle.get_text()
 
 
-    def reloadRoute(routetitle):
-        # 把开户方法变成装饰器实现
-        def wrapper(func):
-            def inner_wrapper(self, *args, **kwargs):
-                # 点击退出按钮
-                self.closeform(self)
-                # 点击便捷开户再次进入开户表单, 清除页面缓存
-                self.easyOpenning.click()
-
-                # 判断当前标题, 如不是操作界面, 则点击返回按钮
-                if routetitle != self.get_Routetitle:
-                    self.backform()
-
-                return func(self, self.poco, *args, **kwargs)
-
-            return inner_wrapper
-        return wrapper
-
-
-
-
-
-
 
 
