@@ -18,12 +18,6 @@ class Test_employmentInfomation():
 
     fix_routetitle = ["就业及财务状况"]      #当fixture的参数
 
-    fix_data = [
-                ("无业", "小于20万", "小于100万", [], []),
-                ("无业", "20-50万", "小于100万", ['退休金', '投资回报', '租金', '其他'], []),
-                ("无业", "50-100万", "小于100万", ['退休金', '投资回报', '租金', '其他'], []),
-                ("无业", "大于100万", "小于100万", ['退休金', '投资回报', '租金', '其他'], [])
-                ]
 
 
     fix_totalAnnual = [
@@ -34,7 +28,10 @@ class Test_employmentInfomation():
     ]
 
     fix_assetslist = [
-        ("小于100万", [])
+        ("小于100万", []),
+        ("100-300万", ["退休金", "物业投资", "车辆投资", "储蓄", "股票/债券投资", "遗产", "其他"]),
+        ("300-800万", ["退休金", "物业投资", "车辆投资", "储蓄", "股票/债券投资", "遗产", "其他"]),
+        ("大于800万", ["退休金", "物业投资", "车辆投资", "储蓄", "股票/债券投资", "遗产", "其他"]),
     ]
 
     @allure.step("用例标题: 就业情况选择: {employed}, 全年总收入选择: {totalAnnual}, 资金来源选择: {fundlist}, 资产净值选择: {customer}, 资产净值来源选择: {assetslist}")
@@ -186,10 +183,6 @@ class Test_employmentInfomation():
     #     with allure.step("点击返回按钮返回账户信息界面"):
     #         pubTool.backform()
     #         assert_equal(pubTool.get_Routetitle(), "就业及财务状况", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
-    #
-    #
-    #
-    #
     #
 
 
