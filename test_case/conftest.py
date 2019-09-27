@@ -89,11 +89,10 @@ def get_totalAnnual_AND_customerNetAssetValue():
 @pytest.fixture(scope="session", autouse=True)
 def config():
     gm = GlobalMap()
-    gm.set_value(environment="aos-uat")
-    gm.set_value(appApi="aos")
-    gm.set_bool(isbullion=False)
-    gm.set_bool(isLeveraged=False)
-    gm.set_value(mongohost="mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net")
+    gm.set_value(environment="aos-uat")     # 记录数据库
+    gm.set_bool(isbullion=False)        # 记录黄金账户是否开启
+    gm.set_bool(isLeveraged=False)      # 记录外汇账户是否开启
+    gm.set_value(mongohost="mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net")    # mongo数据库地址
 
 @pytest.fixture(scope="session", autouse=True)
 def poco():

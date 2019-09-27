@@ -21,7 +21,7 @@ class Test_uploadidcard():
         pubTool = publicTool(poco)
 
         # 判断客户来源
-        pubTool.customersource()
+        pubTool.get_appcationNumber()
 
         with allure.step("选择所属地区 -- 内地居民"):
             upidcard.click_Chinese()
@@ -41,7 +41,7 @@ class Test_uploadidcard():
             assert_equal(pubTool.get_Routetitle(), "身份证验证", msg="页面没有跳转")
             poco("android:id/content").swipe([0.25, -0.9])
 
-        if self.gm.get_value("appApi") == "aos":
+        if self.gm.get_value("environment").find("aos") != -1:
             # 输入email
             perinfo = personalInformationPage(poco)
 

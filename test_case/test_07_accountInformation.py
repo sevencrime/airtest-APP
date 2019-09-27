@@ -21,17 +21,27 @@ class Test_AccountInformation():
     def test_Account(self, poco):
         mongo = mongoTool(self.gm.get_value("mongohost"))
         pubTool = publicTool(poco)
-        pubTool.customersource()
+        pubTool.get_appcationNumber()
         accountinfo = accountInformationPage(poco)
         with allure.step("判断外汇账户和金业账户是否出现"):
             accountinfo.get_leverMargin()
             accountinfo.get_bullionMargin()
-        with allure.step("查询数据库"):
-            if self.gm.get_value("source") == "aos" or self.gm.get_value("source") == "aos-uat":
-                collection = "accounts"
-                query = {"phone":"15089514626",  "forLogin":True}
 
-            # import pdb; pdb.set_trace()
+        with allure.step("查询数据库, 获取数据的初始值"):
+            # if self.gm.get_value("source") == "aos" or self.gm.get_value("source") == "aos-uat":
+            #     collection = "accounts"
+            #     query = {"phone":"15089514626",  "forLogin":True}
+
+            if self.gm.get_value("environment").find("aos") != -1:
+                collection = "accounts"
+                query = {"applyCode":self.gm.get_value("appcationNumber"),  "forLogin":True}
+            elif self.gm.get_value("environment").find("uat") != -1 or self.gm.get_value("environment").find("test") != -1:
+                collection = "apply"
+                query = {"applySeqId":self.gm.get_value("appcationNumber")}
+            else:
+                print("数据可能有问题哦!!!")
+
+
             # 查询数据库
             result = mongo.findData(database=self.gm.get_value("environment"), collection=collection, query=query)
 

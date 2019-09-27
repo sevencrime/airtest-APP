@@ -15,7 +15,7 @@ class Test_personalinfomation():
     gm = GlobalMap()
 
     @allure.story("填写个人资料")
-    @pytest.mark.skipif(gm.get_value("appApi") == "aos",
+    @pytest.mark.skipif(gm.get_value("environment") == "aos" or gm.get_value("environment") == "aos-uat",
                         reason="后台是aos接口, 没有该页面, 跳过此用例")
     @pytest.mark.run(order=3)
     def test_personal(self, poco):
