@@ -71,24 +71,18 @@ class BaseView():
 
         # 就业情况
         self.el_employ = self.poco(text="就业情况").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
+        self.position = self.poco(text="职位").sibling("android.widget.EditText")
+        self.BusinessNature = self.poco(text="业务性质").sibling("android.widget.EditText")
+        self.companyName = self.poco(text="公司名称").sibling("android.widget.EditText")
+        self.employmenTime = self.poco(text="受雇年期").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
+
         self.totalAnnualCustomerRevenueHK = self.poco(text="全年总收入(港元)").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.customerNetAssetValueHK = self.poco(text="资产净值(港元)").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.sourcesfunds = self.poco(text="请注明资金来源(可多选)")
         self.assetsvalue = self.poco(text="请注明资产净值(可多选)")
         self.otherfunds = self.poco(text="请输入其他资金来源").sibling("android.widget.EditText")
         self.otherassetsvalue = self.poco(text="请输入其他资产净值来源").sibling("android.widget.EditText")
-        # self.salary = self.poco(text="就业")
-        # self.saving = self.poco(text="储蓄")
-        # self.investmentreturn = self.poco(text="投资回报")
-        # self.rent = self.poco(text="租金")
-        # self.commission = self.poco(text="佣金")
-        # self.other = self.poco(text="其他")
-        # self.Property = self.poco(text="物业投资")
-        # self.vehicle = self.poco(text="车辆投资")
-        # self.Stockorbond = self.poco(text="股票/债券投资")
-        # self.heritage = self.poco(text="遗产")
-        # self.selfOperatedBusinessIncome = self.poco(test="自营业务收益")
-        # self.pension = self.poco(test="退休金")
+
 
         # 选择交易信息
         self.fundsSourcetext = self.poco(text="交易的资金/财富来源(选择所有适用)")

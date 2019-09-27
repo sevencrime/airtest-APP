@@ -30,6 +30,15 @@ class employmentInfomationPage(BaseView):
             # 下拉框选值:employ
             self.poco(text=employ).click()
 
+        # 判断就业情况是否输入就业或自雇
+        if employ == "就业" or employ == "自雇":
+            # 输入职位信息
+            self.position.set_text("工程师")
+            # 输入业务性质
+            self.BusinessNature.set_text("互联网行业")
+            # 公司名称
+            self.companyName.set_text("艾德网络科技")
+
         return self.el_employ.get_text()
 
 
