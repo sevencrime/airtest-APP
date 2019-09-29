@@ -1,3 +1,4 @@
+import allure
 import pytest
 import os
 from airtest.cli.parser import cli_setup
@@ -111,26 +112,29 @@ def poco():
     # from airtest.report.report import simple_report
     # simple_report(__file__)
 
-    # # 当前目录
-    # curPath = os.path.abspath(os.path.dirname(__file__))
-    # # 项目根目录
-    # rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
-    #
-    # # import pdb; pdb.set_trace()
-    # xml_report_path = rootPath + r'report\xml'
-    # html_report_path = rootPath + r'report\html'
-    #
-    # os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
+    # 当前目录
+    curPath = os.path.abspath(os.path.dirname(__file__))
+    # 项目根目录
+    rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
+
+    # import pdb; pdb.set_trace()
+    xml_report_path = rootPath + r'report\xml'
+    html_report_path = rootPath + r'report\html'
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture()
 def reloadRoute(request, poco):
+    """
+    # 退出重新加载页面, 清除页面前端缓存
 
+    """
     routetitle = request.param
     pubTool = publicTool(poco)
     # 点击退出按钮后, 再次进入开户表单
     pubTool.closeform()
 
     # 判断当前标题, 如不是操作界面, 则点击返回按钮
-    if routetitle != pubTool.get_Routetitle:
+    if routetitle != pubTool.get_Routetitle():
         pubTool.backform()
+

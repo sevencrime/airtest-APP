@@ -24,16 +24,6 @@ class Test_faceid():
         pubTool.get_appcationNumber()
         with allure.step("修改数据库currentRoute"):
             # 判断申请编号, 判断是APP还是H5数据还是老版APP数据
-            # if self.gm.get_value("source") == "aos" or self.gm.get_value("source") == "aos-uat":
-            #     collection = "accounts"
-            #     query = {"phone":"15089514626",  "forLogin":True}
-            #     setdata = {"$set": {"currentRoute": "/account"}}
-            # elif self.gm.get_value("source") == "test" or self.gm.get_value("source") == "uat":
-            #     collection = "apply"
-            #     query = {"applySeqId":self.gm.get_value("appcationNumber")}
-            #     setdata = { "$set" : { "step" : "faceid"} }
-            # else:
-            #     print("数据可能有问题哦!!!")
 
             if self.gm.get_value("environment").find("aos") != -1:
                 collection = "accounts"

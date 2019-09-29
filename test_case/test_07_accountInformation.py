@@ -28,9 +28,6 @@ class Test_AccountInformation():
             accountinfo.get_bullionMargin()
 
         with allure.step("查询数据库, 获取数据的初始值"):
-            # if self.gm.get_value("source") == "aos" or self.gm.get_value("source") == "aos-uat":
-            #     collection = "accounts"
-            #     query = {"phone":"15089514626",  "forLogin":True}
 
             if self.gm.get_value("environment").find("aos") != -1:
                 collection = "accounts"

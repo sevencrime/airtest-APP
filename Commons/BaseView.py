@@ -75,12 +75,13 @@ class BaseView():
         self.BusinessNature = self.poco(text="业务性质").sibling("android.widget.EditText")
         self.companyName = self.poco(text="公司名称").sibling("android.widget.EditText")
         self.employmenTime = self.poco(text="受雇年期").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
-
+        self.el_officeaddr = self.poco(text="办公室地址").parent().sibling("android.widget.EditText ")
         self.totalAnnualCustomerRevenueHK = self.poco(text="全年总收入(港元)").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.customerNetAssetValueHK = self.poco(text="资产净值(港元)").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.sourcesfunds = self.poco(text="请注明资金来源(可多选)")
-        self.assetsvalue = self.poco(text="请注明资产净值(可多选)")
+        self.assetsvalue = self.poco(text="请注明资产净值来源(可多选)")
         self.otherfunds = self.poco(text="请输入其他资金来源").sibling("android.widget.EditText")
+        self.otherassets = self.poco(text="请输入其他资产净值来源").sibling("android.widget.EditText")
         self.otherassetsvalue = self.poco(text="请输入其他资产净值来源").sibling("android.widget.EditText")
 
 
@@ -141,3 +142,26 @@ class BaseView():
             print(e)
 
 
+    def click_select(self, selectelement, selectText):
+        """
+        # 选择下拉框的值
+
+        args:
+            selectelement : 需要操作的元素
+            selectText : 需要选择的, 下拉框的值
+        """
+
+        selectElement = self.exists(selectelement)
+
+        # 获取就业情况栏位的值
+        try:
+            employtext = selectElement.get_text()
+        except:
+            employtext = None
+
+        # 判断下拉选项当前值是否与当前选中的一致
+        if selectText != employtext:
+            # 点击就业情况下拉框
+            selectElement.click()
+            # 下拉框选值:employ
+            self.poco(text=selectText).click()

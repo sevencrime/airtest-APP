@@ -113,6 +113,12 @@ class publicTool(BaseView):
         """
         self.poco("android:id/content").swipe([0, -0.4])
 
+    def swipe_to_Down(self):
+        """
+        # 向下滑动屏幕
+        """
+        self.poco("android:id/content").swipe([0, 0.4])
+
 
     def DragFrom_LeftToRight(self, element):
         """
