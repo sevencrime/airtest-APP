@@ -11,11 +11,13 @@ from bson.objectid import ObjectId
 from collections import Counter
 from Commons import Logging
 from Commons.GlobalMap import GlobalMap
+from Commons.Logging import Logs
 
 
 class mongoTool:
 	log = Logging.Logs(logname= "mongodb")
 	gm = GlobalMap()
+	log = Logs()
 
 	def __init__(self, host):
 		self.log.debug("开始连接数据库: {}".format(host, ))

@@ -102,9 +102,9 @@ class Test_employmentInfomation():
             self.log.debug("{}".format(self.gm.get_value("istotalAnnual"), ))
             assert_equal(pubTool.get_Routetitle(), "选择交易信息", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
-        # with allure.step("点击返回按钮返回账户信息界面"):
-        #     pubTool.backform()
-        #     assert_equal(pubTool.get_Routetitle(), "就业及财务状况", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+        with allure.step("点击返回按钮返回账户信息界面"):
+            pubTool.backform()
+            assert_equal(pubTool.get_Routetitle(), "就业及财务状况", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
 
     @allure.step("用例标题: 就业情况选择: {employed}, 全年总收入选择: {totalAnnual}, 资金来源选择: {fundlist}, 资产净值选择: {customer}, 资产净值来源选择: {assetslist}")
@@ -112,26 +112,37 @@ class Test_employmentInfomation():
     @pytest.mark.parametrize("totalAnnual, fundlist", Employed_totalAnnual)
     @pytest.mark.parametrize("customer, assetslist", Employed_assetslist)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
-    def test_employedandnot(self, poco, reloadRoute, employed, totalAnnual, fundlist, customer, assetslist):
+    def test_Employed(self, poco, reloadRoute, employed, totalAnnual, fundlist, customer, assetslist):
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("就业情况选择就业"):
+            # pubTool.swipe_to_Down()
             employ = employment.click_employment(employed)
 
         with allure.step("输入办公室地址"):
-            employment.send_officeAddr()
+            employaddr = employment.send_officeAddr()
 
         with allure.step("全年总收入选择{}".format(totalAnnual)):
+            # pubTool.swipe_to_Down()
             totalAnnual = employment.click_totalAnnualCustomerRevenueHK(totalAnnual, fundlist=fundlist)
             # assert_equal(totalAnnual, "20-50万", "全年总收入填写有误")
 
         with allure.step("资产净值选择{}".format(customer)):
+            pubTool.swipe_to_Up()
             customer = employment.click_customerNetAssetValueHK(customer, assetslist = assetslist)
             # assert_equal(customer, "300-800万", "资产净值填写有误")
 
         with allure.step("点击下一步"):
             pubTool.swipe_to_Up()
             pubTool.click_NextStepbtn()
+
+        with allure.step("校验就业地址弹框标题和内容"):
+            boxtitle, boxcontent = pubTool.get_boxtitle()
+            assert_equal(boxtitle, "请确认您的办公室地址", "办公室地址弹框标题有误")
+            assert_equal(boxcontent, employaddr, "办公室地址弹框内容与填写的地址不一致")
+
+        with allure.step("确认地址弹框--点击确定"):
+            pubTool.click_boxconfirm()
 
         with allure.step("点击下一步成功, 跳转到'选择交易界面'"):
             self.log.debug("{}".format(self.gm.get_value("istotalAnnual"), ))
@@ -148,26 +159,37 @@ class Test_employmentInfomation():
     @pytest.mark.parametrize("totalAnnual, fundlist", selfEmployed_totalAnnual)
     @pytest.mark.parametrize("customer, assetslist", selfEmployed_assetslist)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
-    def test_employedandnot(self, poco, reloadRoute, employed, totalAnnual, fundlist, customer, assetslist):
+    def test_selfEmployed(self, poco, reloadRoute, employed, totalAnnual, fundlist, customer, assetslist):
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("就业情况选择自雇"):
+            pubTool.swipe_to_Down()
             employ = employment.click_employment(employed)
 
         with allure.step("输入办公室地址"):
-            employment.send_officeAddr()
+            employaddr = employment.send_officeAddr()
 
         with allure.step("全年总收入选择{}".format(totalAnnual)):
+            pubTool.swipe_to_Down()
             totalAnnual = employment.click_totalAnnualCustomerRevenueHK(totalAnnual, fundlist=fundlist)
             # assert_equal(totalAnnual, "20-50万", "全年总收入填写有误")
 
         with allure.step("资产净值选择{}".format(customer)):
+            pubTool.swipe_to_Up()
             customer = employment.click_customerNetAssetValueHK(customer, assetslist = assetslist)
             # assert_equal(customer, "300-800万", "资产净值填写有误")
 
         with allure.step("点击下一步"):
             pubTool.swipe_to_Up()
             pubTool.click_NextStepbtn()
+
+        with allure.step("校验就业地址弹框标题和内容"):
+            boxtitle, boxcontent = pubTool.get_boxtitle()
+            assert_equal(boxtitle, "请确认您的办公室地址", "办公室地址弹框标题有误")
+            assert_equal(boxcontent, employaddr, "办公室地址弹框内容与填写的地址不一致")
+
+        with allure.step("确认地址弹框--点击确定"):
+            pubTool.click_boxconfirm()
 
         with allure.step("点击下一步成功, 跳转到'选择交易界面'"):
             self.log.debug("{}".format(self.gm.get_value("istotalAnnual"), ))
@@ -181,7 +203,7 @@ class Test_employmentInfomation():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_08_employmentInfomation.py::Test_employmentInfomation::test_unemployedandnot", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "-v", "test_08_employmentInfomation.py::Test_employmentInfomation::test_Employed", '--alluredir', '../report/xml'])
 
 
 

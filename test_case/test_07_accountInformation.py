@@ -36,7 +36,7 @@ class Test_AccountInformation():
                 collection = "apply"
                 query = {"applySeqId":self.gm.get_value("appcationNumber")}
             else:
-                print("数据可能有问题哦!!!")
+                self.log.deubg("数据可能有问题哦!!!")
 
 
             # 查询数据库

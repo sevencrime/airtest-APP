@@ -5,6 +5,7 @@ import pytest
 from airtest.core.api import *
 
 from Commons.GlobalMap import GlobalMap
+from Commons.Logging import Logs
 from Commons.mongoTool import mongoTool
 from ElementPage.bankCardInformationPage import bankCardInformationPage
 from ElementPage.publicTool import publicTool
@@ -15,6 +16,7 @@ class Test_faceid():
 
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
     gm = GlobalMap()
+    log = Logs()
 
     @allure.story("填写个人资料")
     @pytest.mark.run(order=3)
@@ -34,7 +36,7 @@ class Test_faceid():
                 query = {"applySeqId":self.gm.get_value("appcationNumber")}
                 setdata = { "$set" : { "step" : "faceid"} }
             else:
-                print("数据可能有问题哦!!!")
+                self.log.debug("数据可能有问题哦!!!")
 
 
             mongo.UpdataData(database=self.gm.get_value("environment"), collection=collection , query=query, setdata = setdata)

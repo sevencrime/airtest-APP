@@ -75,7 +75,7 @@ class BaseView():
         self.BusinessNature = self.poco(text="业务性质").sibling("android.widget.EditText")
         self.companyName = self.poco(text="公司名称").sibling("android.widget.EditText")
         self.employmenTime = self.poco(text="受雇年期").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
-        self.el_officeaddr = self.poco(text="办公室地址").parent().sibling("android.widget.EditText ")
+        self.el_officeaddr = self.poco(text="办公室地址").parent().sibling("android.widget.EditText")
         self.totalAnnualCustomerRevenueHK = self.poco(text="全年总收入(港元)").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.customerNetAssetValueHK = self.poco(text="资产净值(港元)").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.sourcesfunds = self.poco(text="请注明资金来源(可多选)")
@@ -165,3 +165,5 @@ class BaseView():
             selectElement.click()
             # 下拉框选值:employ
             self.poco(text=selectText).click()
+
+            return True

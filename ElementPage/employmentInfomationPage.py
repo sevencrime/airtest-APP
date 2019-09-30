@@ -17,10 +17,10 @@ class employmentInfomationPage(BaseView):
             employ:下拉框的值(string)  可选值['就业', '自雇', '无业]
         """
 
-        self.click_select(self.el_employ, employ)
+        flag = self.click_select(self.el_employ, employ)
 
         # 判断就业情况是否输入就业或自雇
-        if employ == "就业" or employ == "自雇":
+        if (employ == "就业" or employ == "自雇") and flag == True:
             # 输入职位信息
             self.position.set_text("工程师")
             # 输入业务性质
@@ -37,7 +37,9 @@ class employmentInfomationPage(BaseView):
 
     def send_officeAddr(self):
 
-        self.el_officeaddr.set_value("深圳市南山区大冲商务中心")
+        self.el_officeaddr.set_text("深圳市南山区大冲商务中心")
+
+        return self.el_officeaddr.get_text()
 
 
     def click_totalAnnualCustomerRevenueHK(self, price, fundlist=[]):
@@ -60,6 +62,8 @@ class employmentInfomationPage(BaseView):
 
         # 判断 "请注明资金来源(可多选)" 复选框是否触发
         if self.sourcesfunds:
+            # 触发资金来源， 向上滑动屏幕
+            self.poco("android:id/content").swipe([0, -0.4])
             # 遍历需要点击的选项
             for fund in funds:
                 sources = self.exists(self.poco(text=fund))
@@ -75,7 +79,7 @@ class employmentInfomationPage(BaseView):
                         self.otherfunds.set_text("其他资金来源")
 
                 else:
-                    print("出现了不止2个, 需要查看问题哦")
+                    self.log.debug("出现了不止2个, 需要查看问题哦")
                     pass
 
         # 重新给istotalAnnual赋值, 值为当前勾选的字段
@@ -99,6 +103,8 @@ class employmentInfomationPage(BaseView):
 
         # 判断 "请注明资金来源(可多选)" 复选框是否触发
         if self.assetsvalue:
+            # 触发资产净值来源, 向上滑动页面
+            self.poco("android:id/content").swipe([0, -0.4])
             # 遍历需要点击的选项
             for asset in assets:
                 sources = self.exists(self.poco(text=asset))
@@ -114,7 +120,7 @@ class employmentInfomationPage(BaseView):
                     if asset == '其他':
                         self.otherassets.set_text("其他资产净值")
                 else:
-                    print("出现了不止2个, 需要查看问题哦")
+                    self.log.debug("出现了不止2个, 需要查看问题哦")
                     pass
 
         # 重新给istotalAnnual赋值, 值为当前勾选的字段
