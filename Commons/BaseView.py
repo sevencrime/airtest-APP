@@ -87,6 +87,7 @@ class BaseView():
 
         # 选择交易信息
         self.fundsSourcetext = self.poco(text="交易的资金/财富来源(选择所有适用)")
+        self.otherfundsSource = self.poco(text="请提供其他财富来源").sibling("android.widget.EditText")
 
         # 其他资料
         self.investmentTarget = self.poco(text="您的投资目标是")

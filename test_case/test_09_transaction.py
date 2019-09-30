@@ -5,26 +5,32 @@ import pytest
 
 from ElementPage.publicTool import publicTool
 from ElementPage.transactionPage import transactionPage
+from airtest.core.api import *
 
-
+@pytest.mark.usefixtures('get_totalAnnual_AND_customerNetAssetValue')
 @allure.feature("选择交易信息")
 class Test_transaction():
 
+    fix_routetitle = ["选择交易信息"]
+
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @allure.story("选择交易信息")
-    @pytest.mark.run(order=3)
-    def test_sendtransaction(self, poco):
+    def test_sendtransaction(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         transac = transactionPage(poco)
         with allure.step("输入交易资金/财富来源"):
             employ = transac.click_fundsSource(["储蓄"])
-            # assert_equal(employ, "无业", "就业情况信息填写有误")
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
 
+        with allure.step("点击返回按钮返回账户信息界面"):
+            pubTool.backform()
+            assert_equal(pubTool.get_Routetitle(), "就业及财务状况", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+
 
 if __name__ == "__main__":
-    pytest.main(["-s", "test_09_transaction.py", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "test_09_transaction.py::Test_transaction", '--alluredir', '../report/xml'])
 
 
 

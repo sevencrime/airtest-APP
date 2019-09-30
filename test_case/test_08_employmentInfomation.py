@@ -11,8 +11,8 @@ from ElementPage.employmentInfomationPage import employmentInfomationPage
 from ElementPage.publicTool import publicTool
 from airtest.core.api import *
 
-@allure.feature("就业及财务状况")
 @pytest.mark.usefixtures('get_totalAnnual_AND_customerNetAssetValue')
+@allure.feature("就业及财务状况")
 class Test_employmentInfomation():
 
     gm = GlobalMap()

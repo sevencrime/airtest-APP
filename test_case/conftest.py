@@ -25,6 +25,7 @@ def get_totalAnnual_AND_customerNetAssetValue():
 
     totalAnnuallist = []  # 存放全年总收入的初始值
     customerNetAssetValuelist = []  # 存放资产净值的初始值
+    fundsSourcelist = []    #交易的资金/财富来源(选择所有适用)
 
     # 查询数据库获取全年总收入和资产净值的字段
     result = mongo.findData(gm.get_value("environment"), "accounts", {'phone': "15089514626", 'forLogin': True})
@@ -79,11 +80,33 @@ def get_totalAnnual_AND_customerNetAssetValue():
         if customerNetAssetValue == 'pension':
             customerNetAssetValuelist.append('退休金')
 
+    for fundsSource in result['fundsSource']:
+        if fundsSource == "deposit":
+            fundsSourcelist.append("储蓄")
+
+        if fundsSource == "selfOperatedBusinessIncome":
+            fundsSourcelist.append("自营业务收益")
+
+        if fundsSource == "investment":
+            fundsSourcelist.append("投资")
+
+        if fundsSource == "other":
+            fundsSourcelist.append("其他")
+
+        if fundsSource == "salary":
+            fundsSourcelist.append("薪金")
+
+        if fundsSource == "pension":
+            fundsSourcelist.append("退休金")
+
+
     gm.set_List('istotalAnnual', totalAnnuallist)
     gm.set_List('customerNetAssetValue', customerNetAssetValuelist)
+    gm.set_List('fundsSource', fundsSourcelist)
 
     log.debug("istotalAnnual的值为:" + "".join(gm.get_value("istotalAnnual")))
     log.debug("customerNetAssetValue的值为:" + "".join(gm.get_value("customerNetAssetValue")))
+    log.debug("fundsSource的值为:" + "".join(gm.get_value("fundsSource")))
 
 
 @pytest.fixture(scope="session", autouse=True)
