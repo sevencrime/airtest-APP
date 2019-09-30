@@ -18,7 +18,6 @@ def get_totalAnnual_AND_customerNetAssetValue():
 
     textMatches: 模糊匹配
     """
-
     gm = GlobalMap()
     log = Logs()
     mongo = mongoTool(gm.get_value("mongohost"))

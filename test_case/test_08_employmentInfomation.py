@@ -57,17 +57,17 @@ class Test_employmentInfomation():
     # 自雇--全年总收入
     selfEmployed_totalAnnual = [
         ("小于20万", []),
-        ("20-50万", []),
-        ("50-100万", []),
-        ("大于100万", ['薪金', '投资回报', '租金', '佣金', '其他']),
+        ("20-50万", ["自营业务收益", "投资回报", "租金", "其他"]),
+        ("50-100万", ["自营业务收益", "投资回报", "租金", "其他"]),
+        ("大于100万", ["自营业务收益", "投资回报", "租金", "其他"]),
     ]
 
     # 自雇--资产净值
     selfEmployed_assetslist = [
         ("小于100万", []),
-        ("100-300万", []),
-        ("300-800万", ["薪金", "物业投资", "车辆投资", "储蓄", "股票/债券投资", "遗产", "其他"]),
-        ("大于800万", ["薪金", "物业投资", "车辆投资", "储蓄", "股票/债券投资", "遗产", "其他"]),
+        ("100-300万", ["薪金", "自营业务收益", "物业投资", "储蓄", "股票/债券投资", "车辆投资", "遗产", "其他"]),
+        ("300-800万", ["薪金", "自营业务收益", "物业投资", "储蓄", "股票/债券投资", "车辆投资", "遗产", "其他"]),
+        ("大于800万", ["薪金", "自营业务收益", "物业投资", "储蓄", "股票/债券投资", "车辆投资", "遗产", "其他"]),
     ]
 
 
@@ -163,21 +163,18 @@ class Test_employmentInfomation():
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("就业情况选择自雇"):
-            pubTool.swipe_to_Down()
             employ = employment.click_employment(employed)
 
         with allure.step("输入办公室地址"):
             employaddr = employment.send_officeAddr()
 
         with allure.step("全年总收入选择{}".format(totalAnnual)):
-            pubTool.swipe_to_Down()
             totalAnnual = employment.click_totalAnnualCustomerRevenueHK(totalAnnual, fundlist=fundlist)
             # assert_equal(totalAnnual, "20-50万", "全年总收入填写有误")
 
         with allure.step("资产净值选择{}".format(customer)):
             pubTool.swipe_to_Up()
             customer = employment.click_customerNetAssetValueHK(customer, assetslist = assetslist)
-            # assert_equal(customer, "300-800万", "资产净值填写有误")
 
         with allure.step("点击下一步"):
             pubTool.swipe_to_Up()
@@ -203,7 +200,7 @@ class Test_employmentInfomation():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_08_employmentInfomation.py::Test_employmentInfomation::test_Employed", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "-v", "--pdb", "test_08_employmentInfomation.py::Test_employmentInfomation::test_selfEmployed", '--alluredir', '../report/xml'])
 
 
 
