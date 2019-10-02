@@ -122,11 +122,12 @@ def poco():
     # os.popen("adb connect 127.0.0.1:7555")
     # poco = AndroidUiautomationPoco(screenshot_each_action=False)
 
-    if not cli_setup():
-        auto_setup(__file__, logdir=True,
-                   devices=["Android:///", ])
+    # if not cli_setup():
+    #     auto_setup(__file__, logdir=True,
+    #                devices=["Android:///", ])
 
-    # connect_device("android://127.0.0.1:5037/127.0.0.1:7555?cap_method=javacap&touch_method=adb")
+    # 模拟器 >> 网易mumu模拟器连接cap_method=JAVACAP&&ori_method=ADBORI
+    connect_device("android://127.0.0.1:5037/127.0.0.1:7555?cap_method=JAVACAP&&ori_method=ADBORI")
 
     poco = AndroidUiautomationPoco(force_restart=True)
     yield poco
