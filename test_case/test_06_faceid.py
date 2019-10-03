@@ -15,7 +15,7 @@ from ElementPage.publicTool import publicTool
 class Test_faceid():
 
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
-    gm = GlobalMap()
+    # gm = GlobalMap()
     log = Logs()
 
     @allure.story("填写个人资料")

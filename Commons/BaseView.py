@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 import os
 
-from Commons.GlobalMap import GlobalMap
+from Commons.GlobalMap import GlobalMap as gm
 from Commons.Logging import Logs
 
 
 class BaseView():
 
-    gm = GlobalMap()
+    # gm = GlobalMap()
     log = Logs()
 
     def __init__(self, poco):
@@ -26,8 +26,8 @@ class BaseView():
         self.loading = self.poco("android.widget.ProgressBar")
         self.Routetitle = self.poco("android.widget.FrameLayout").offspring("android.widget.TextView")
 
-        self.closeform_img = rootPath + r'testData\\testIMG\\closeform.png'
-        self.backform_img = rootPath + r'testData\\testIMG\\backform.png'
+        self.closeform_img = rootPath + r'testData\testIMG\closeform.png'
+        self.backform_img = rootPath + r'testData\testIMG\backform.png'
 
         self.el_firstSetting_loc = self.poco("io.newtype.eddid.app:id/btn_start")
         self.baropen = self.poco(text="开户")
@@ -88,6 +88,15 @@ class BaseView():
         # 选择交易信息
         self.fundsSourcetext = self.poco(text="交易的资金/财富来源(选择所有适用)")
         self.otherfundsSource = self.poco(text="请提供其他财富来源").sibling("android.widget.EditText")
+        self.securities_date = self.poco(text="证券").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
+        self.CBBC_date = self.poco(text="牛熊证").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
+        self.DerivativeWarrant_date = self.poco(text="衍生权证(涡轮)").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
+        self.futures_date = self.poco(text="期货").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
+        self.Option_date = self.poco(text="期权").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
+        self.Optional_date = self.poco(text="其他投资(选填)").sibling("android.widget.EditText")
+        self.otherInvestment_date = self.poco(text="其他投资").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
+
+
 
         # 其他资料
         self.investmentTarget = self.poco(text="您的投资目标是")
@@ -145,7 +154,7 @@ class BaseView():
 
     def click_select(self, selectelement, selectText):
         """
-        # 选择下拉框的值
+        # 选择下拉框的值, 判断与当前值是否一致
 
         args:
             selectelement : 需要操作的元素

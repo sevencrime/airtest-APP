@@ -10,7 +10,7 @@ class introPromoPage(BaseView):
     # 介绍与推广
     """
 
-    gm = GlobalMap()
+    # gm = GlobalMap()
 
     def click_Channels(self, channelslist=None):
         """

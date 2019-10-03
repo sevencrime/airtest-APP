@@ -31,11 +31,12 @@ class Test_derivativeProduct():
             derivative.click_riskStatement()
 
         with allure.step("点击下一步"):
+            import pdb; pdb.set_trace()
             pubTool.click_NextStepbtn()
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "test_11_derivativeProduct.py", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "-v", "test_11_derivativeProduct.py", '--alluredir', '../report/xml'])
 
 
 

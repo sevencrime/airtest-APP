@@ -11,11 +11,11 @@ from ElementPage.employmentInfomationPage import employmentInfomationPage
 from ElementPage.publicTool import publicTool
 from airtest.core.api import *
 
-@pytest.mark.usefixtures('get_totalAnnual_AND_customerNetAssetValue')
+@pytest.mark.usefixtures('query_initialData')
 @allure.feature("就业及财务状况")
 class Test_employmentInfomation():
 
-    gm = GlobalMap()
+    # gm = GlobalMap()
     log = Logs()
 
     fix_routetitle = ["就业及财务状况"]      #当fixture的参数

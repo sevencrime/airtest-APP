@@ -11,7 +11,7 @@ class accountInformationPage(BaseView):
     账户信息
 
     """
-    gm = GlobalMap()
+    # gm = GlobalMap()
 
     def get_leverMargin(self):
         try:

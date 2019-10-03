@@ -15,8 +15,8 @@ from Commons.Logging import Logs
 
 
 class mongoTool:
-	log = Logging.Logs(logname= "mongodb")
-	gm = GlobalMap()
+	log = Logging.Logs()
+	# gm = GlobalMap()
 	log = Logs()
 
 	def __init__(self, host):

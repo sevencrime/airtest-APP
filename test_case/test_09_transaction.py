@@ -7,7 +7,7 @@ from ElementPage.publicTool import publicTool
 from ElementPage.transactionPage import transactionPage
 from airtest.core.api import *
 
-@pytest.mark.usefixtures('get_totalAnnual_AND_customerNetAssetValue')
+@pytest.mark.usefixtures('query_initialData')
 @allure.feature("选择交易信息")
 class Test_transaction():
 
@@ -19,14 +19,14 @@ class Test_transaction():
         pubTool = publicTool(poco)
         transac = transactionPage(poco)
         with allure.step("输入交易资金/财富来源"):
-            employ = transac.click_fundsSource(["储蓄"])
+            employ = transac.click_fundsSource(["储蓄", "其他", "退休金"])
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
 
         with allure.step("点击返回按钮返回账户信息界面"):
             pubTool.backform()
-            assert_equal(pubTool.get_Routetitle(), "就业及财务状况", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+            assert_equal(pubTool.get_Routetitle(), "选择交易信息", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
 
 if __name__ == "__main__":

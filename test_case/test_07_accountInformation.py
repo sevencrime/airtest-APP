@@ -14,7 +14,7 @@ from ElementPage.publicTool import publicTool
 @allure.feature("账户信息")
 @pytest.mark.run(order=3)
 class Test_AccountInformation():
-    gm = GlobalMap()
+    # gm = GlobalMap()
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
 
     @allure.story("填写账户信息")

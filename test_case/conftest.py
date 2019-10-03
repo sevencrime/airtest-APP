@@ -12,13 +12,15 @@ from ElementPage.publicTool import publicTool
 
 
 @pytest.fixture(scope="class")
-def get_totalAnnual_AND_customerNetAssetValue():
+def query_initialData():
+
     """
     # 获取就业界面: 全年总收入和资产净值的初始值
 
     textMatches: 模糊匹配
     """
     gm = GlobalMap()
+    gm._init()
     log = Logs()
     mongo = mongoTool(gm.get_value("mongohost"))
 
@@ -30,74 +32,53 @@ def get_totalAnnual_AND_customerNetAssetValue():
     # 查询数据库获取全年总收入和资产净值的字段
     result = mongo.findData(gm.get_value("environment"), "accounts", {'phone': "15089514626", 'forLogin': True})
 
+    totalAnnualdict = {
+        "pension" : "退休金", 
+        "returnOnInvestment" : "投资回报", 
+        "rent" : "租金", 
+        "other" : "其他", 
+        "salary" : "薪金", 
+        "commission" : "佣金", 
+        "selfOperatedBusinessIncome" : "自营业务收益", 
+
+    }
+
+    customerNetAssetValuedict = {
+        "salary" : "薪金" , 
+        "propertyInvestment" : "物业投资" , 
+        "vehicleInvestment" : "车辆投资" , 
+        "savings" : "储蓄" , 
+        "stockOrBondInvestment" : "股票/债券投资" , 
+        "heritage" : "遗产" , 
+        "other" : "其他" , 
+        "selfOperatedBusinessIncome" : "自营业务收益" , 
+        "pension" : "退休金" , 
+         
+    }
+
+    fundsSourcedict = {
+        "deposit" : "储蓄" ,
+        "selfOperatedBusinessIncome" : "自营业务收益" ,
+        "investment" : "投资" ,
+        "other" : "其他" ,
+        "salary" : "薪金" ,
+        "pension" : "退休金" ,
+
+    }
+
     for totalAnnual in result['totalAnnualCustomerRevenueHKSource']:
-        if totalAnnual == 'pension':
-            totalAnnuallist.append('退休金')
+        if totalAnnualdict.__contains__(totalAnnual):
+            totalAnnuallist.append(totalAnnualdict[totalAnnual])
 
-        if totalAnnual == 'returnOnInvestment':
-            totalAnnuallist.append('投资回报')
-
-        if totalAnnual == 'rent':
-            totalAnnuallist.append('租金')
-
-        if totalAnnual == 'other':
-            totalAnnuallist.append('其他')
-
-        if totalAnnual == 'salary':
-            totalAnnuallist.append('薪金')
-
-        if totalAnnual == 'commission':
-            totalAnnuallist.append('佣金')
-
-        if totalAnnual == 'selfOperatedBusinessIncome':
-            totalAnnuallist.append('自营业务收益')
 
     for customerNetAssetValue in result['customerNetAssetValueHKSource']:
-        if customerNetAssetValue == 'salary':
-            customerNetAssetValuelist.append('薪金')
+        if customerNetAssetValuedict.__contains__(customerNetAssetValue):
+            customerNetAssetValuelist.append(customerNetAssetValuedict[customerNetAssetValue])
 
-        if customerNetAssetValue == 'propertyInvestment':
-            customerNetAssetValuelist.append('物业投资')
-
-        if customerNetAssetValue == 'vehicleInvestment':
-            customerNetAssetValuelist.append('车辆投资')
-
-        if customerNetAssetValue == 'savings':
-            customerNetAssetValuelist.append('储蓄')
-
-        if customerNetAssetValue == 'stockOrBondInvestment':
-            customerNetAssetValuelist.append('股票/债券投资')
-
-        if customerNetAssetValue == 'heritage':
-            customerNetAssetValuelist.append('遗产')
-
-        if customerNetAssetValue == 'other':
-            customerNetAssetValuelist.append('其他')
-
-        if customerNetAssetValue == 'selfOperatedBusinessIncome':
-            customerNetAssetValuelist.append('自营业务收益')
-
-        if customerNetAssetValue == 'pension':
-            customerNetAssetValuelist.append('退休金')
 
     for fundsSource in result['fundsSource']:
-        if fundsSource == "deposit":
-            fundsSourcelist.append("储蓄")
-
-        if fundsSource == "selfOperatedBusinessIncome":
-            fundsSourcelist.append("自营业务收益")
-
-        if fundsSource == "investment":
-            fundsSourcelist.append("投资")
-
-        if fundsSource == "other":
-            fundsSourcelist.append("其他")
-
-        if fundsSource == "salary":
-            fundsSourcelist.append("薪金")
-
-        if fundsSource == "pension":
-            fundsSourcelist.append("退休金")
+        if fundsSourcedict.__contains__(fundsSource):
+            fundsSourcelist.append(fundsSourcedict[fundsSource])
 
 
     gm.set_List('istotalAnnual', totalAnnuallist)
@@ -112,6 +93,7 @@ def get_totalAnnual_AND_customerNetAssetValue():
 @pytest.fixture(scope="session", autouse=True)
 def config():
     gm = GlobalMap()
+    gm._init()
     gm.set_value(environment="aos-uat")     # 记录数据库
     gm.set_bool(isbullion=False)        # 记录黄金账户是否开启
     gm.set_bool(isLeveraged=False)      # 记录外汇账户是否开启
