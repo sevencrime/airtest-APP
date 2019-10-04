@@ -5,16 +5,22 @@ import pytest
 
 from ElementPage.derivativeProductPage import derivativeProductPage
 from ElementPage.publicTool import publicTool
+from airtest.core.api import *
+from Commons.GlobalMap import GlobalMap
+
 
 @allure.feature("衍生产品的认识")
 class Test_derivativeProduct():
 
+    gm = GlobalMap()
+    gm._init()
     fix_routetitle = ["衍生品产品认识"]
     radiovalue = [True, False]
 
     @allure.story("衍生品产品认识 >> 勾选最后一个")
     @pytest.mark.parametrize("buyProduct", radiovalue)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skipif(gm.get_value("derivative") == True, reason="衍生产品选项已经勾选")
     def test_derivative_Reversed(self, poco, reloadRoute, buyProduct):
         pubTool = publicTool(poco)
         derivative = derivativeProductPage(poco)
