@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 
-from Commons.GlobalMap import GlobalMap as gm
+from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 
 
@@ -25,6 +25,8 @@ class BaseView():
         self.gallery = self.poco(text="相册选取")
         self.loading = self.poco("android.widget.ProgressBar")
         self.Routetitle = self.poco("android.widget.FrameLayout").offspring("android.widget.TextView")
+        self.permission_allow_button = self.poco("com.android.packageinstaller:id/permission_allow_button", text="始终允许")
+        self.permission_title = self.poco("com.android.packageinstaller:id/permission_title")
 
         self.closeform_img = rootPath + r'testData\testIMG\closeform.png'
         self.backform_img = rootPath + r'testData\testIMG\backform.png'
@@ -109,6 +111,12 @@ class BaseView():
         self.player = self.poco("android.widget.SeekBar").sibling("android.view.ViewGroup").child("android.widget.ImageView")
         self.progressbar = self.poco("android.widget.SeekBar")
         self.isUnderstandRisk = self.poco(text="本人已收听风险披露语音，清楚明白并完全接受语音中所声明的全部风险。").sibling("android.view.ViewGroup").child("android.widget.ImageView")
+
+        # 签名
+        self.signature = self.poco("android.view.View")
+        self.signSubmit = self.poco(text="提").parent()
+        self.resign = self.poco(text="重").parent()
+
 
 
     def isElementRadio(self, content, isFlag):

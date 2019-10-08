@@ -14,13 +14,13 @@ class Test_open():
     @allure.story("进入开户界面")
     @pytest.mark.run(order=1)
     def test_Openning(self, poco):
-        startupfrom = startUpFrom(poco)
         pubTool = publicTool(poco)
+        startupfrom = startUpFrom(poco)
         # with allure.step("启动APP"):
         #     start_app(package="io.newtype.eddid.app")
 
         with allure.step("处理权限弹框--点击运行"):
-            pubTool.permissionBox()
+            pubTool.allow_permissionBox()
 
         # with allure.step("首次使用设置--点击确定"):
         #     boolstr = startupfrom.firstSetting()

@@ -9,9 +9,11 @@ from ElementPage.publicTool import publicTool
 @allure.feature("其他资料")
 class Test_otherDataPage():
 
+    fix_routetitle = ["其他资料"]
+
     @allure.story("其他资料")
-    @pytest.mark.run(order=3)
-    def test_otherData(self, poco):
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    def test_otherData(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         otherdata = otherDataPage(poco)
         with allure.step("您是否曾经宣告破产或被申请破产?"):
