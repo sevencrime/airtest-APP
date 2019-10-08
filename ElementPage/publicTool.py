@@ -13,12 +13,22 @@ class publicTool(BaseView):
 
     log = Logs()
 
-    def permissionBox(self):
+    def allow_permissionBox(self):
         """
         处理Android权限弹框
 
         """
-        pass
+        try:
+            # 循环5次, 点击多个弹框
+            for i in range(5):
+                self.permission_allow_button.invalidate()
+                permission_title = self.permission_title.get_text()
+                self.log.info("权限 >> {}".format(permission_title,))
+                self.permission_allow_button.click()
+
+        except Exception as e:
+            self.log.debug("没有出现权限弹框")
+            pass
 
 
     def click_NextStepbtn(self, title=None):
