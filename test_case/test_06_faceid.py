@@ -15,10 +15,10 @@ from ElementPage.publicTool import publicTool
 class Test_faceid():
 
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
-    # gm = GlobalMap()
+    gm = GlobalMap()
     log = Logs()
 
-    @allure.story("填写个人资料")
+    @allure.story("人脸识别")
     @pytest.mark.run(order=3)
     def test_bankCard(self, poco):
         mongo = mongoTool(self.gm.get_value("mongohost"))
