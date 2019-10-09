@@ -98,7 +98,11 @@ class BaseView():
         self.Optional_date = self.poco(text="其他投资(选填)").sibling("android.widget.EditText")
         self.otherInvestment_date = self.poco(text="其他投资").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
 
-
+        # 相关保证金融资账户
+        self.AccountName = self.poco(text=" 账户持有人姓名").sibling("android.widget.EditText")
+        self.AccountNumber = self.poco(text=" 账户号码").sibling("android.widget.EditText")
+        self.beneficiaryName = self.poco(text=" 受益人名称").sibling("android.widget.EditText")
+        self.ordersName = self.poco(text=" 最终负责下单人姓名").sibling("android.widget.EditText")
 
         # 其他资料
         self.investmentTarget = self.poco(text="您的投资目标是")

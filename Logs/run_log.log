@@ -1,0 +1,186 @@
+2019-10-03 22:08:14,738 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-03 22:08:14,738 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-03 22:08:14,738 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-03 22:08:14,739 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-03 22:09:21,956 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-03 22:09:21,957 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-03 22:09:21,957 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-03 22:09:21,957 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-04 16:48:49,660 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-04 16:48:49,661 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-04 16:48:49,661 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-04 16:48:49,661 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-04 16:49:35,333 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-04 16:49:35,333 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-04 16:49:35,333 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-04 16:49:35,333 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-04 16:49:55,235 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:04:51,606 GlobalMap.py WARNING [line:71] key:'derivative'  不存在
+2019-10-04 19:04:54,960 GlobalMap.py WARNING [line:71] key:'derivative'  不存在
+2019-10-04 19:04:55,054 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-04 19:04:55,054 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-04 19:04:55,054 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-04 19:04:55,054 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-04 19:05:05,171 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:05:05,171 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:05:05,263 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:05:07,017 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:05:07,018 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:05:07,116 publicTool.py DEBUG [line:178] 当前页面的标题为: 衍生品产品认识
+2019-10-04 19:05:14,237 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:05:16,952 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:05:16,953 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:05:17,030 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:05:18,750 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:05:18,751 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:05:18,819 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:05:27,311 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:05:29,783 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:05:29,783 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:05:29,850 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:05:31,574 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:05:31,575 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:05:31,659 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:05:40,026 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:05:42,512 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:05:42,513 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:05:42,580 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:05:44,299 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:05:44,299 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:05:44,371 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:05:52,700 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:05:55,216 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:05:55,216 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:05:55,280 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:05:56,978 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:05:56,979 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:05:57,051 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:06:05,321 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:06:07,787 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:06:07,787 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:06:07,857 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:06:09,566 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:06:09,567 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:06:09,645 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:06:17,960 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:06:20,449 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:06:20,449 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:06:20,516 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:06:22,230 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:06:22,231 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:06:22,305 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:06:30,619 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:06:33,091 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:06:33,092 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:06:33,163 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:06:34,893 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:06:34,893 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:06:34,968 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:06:43,273 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:06:45,818 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:06:45,818 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:06:45,889 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:06:47,608 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:06:47,608 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:06:47,685 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:06:59,454 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:06:59,455 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:06:59,532 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:07:01,245 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:07:01,245 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:07:01,313 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:07:13,005 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:07:13,005 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:07:13,070 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:07:14,782 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:07:14,783 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:07:14,857 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:07:26,433 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:07:26,434 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:07:26,510 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:07:28,220 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:07:28,221 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:07:28,292 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:07:38,305 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:07:40,941 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:07:40,941 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:07:41,006 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:07:42,721 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:07:42,722 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:07:42,798 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:07:52,714 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:07:55,251 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:07:55,251 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:07:55,328 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:07:57,047 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:07:57,048 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:07:57,116 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:08:08,744 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:08:08,745 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:08:08,823 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:08:10,536 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:08:10,536 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:08:10,602 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:08:22,211 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:08:22,211 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:08:22,281 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:08:23,994 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:08:23,994 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:08:24,062 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:08:34,080 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:08:36,695 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:08:36,695 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:08:36,761 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:08:38,480 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:08:38,480 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:08:38,548 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:08:46,814 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:08:49,433 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:08:49,433 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:08:49,501 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:08:51,223 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:08:51,224 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:08:51,293 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:08:59,648 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:09:02,030 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:09:02,031 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:09:02,103 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:09:03,827 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:09:03,827 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:09:03,893 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:09:12,166 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:09:14,646 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:09:14,647 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:09:14,716 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:09:16,425 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:09:16,426 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:09:16,497 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:09:24,745 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:09:27,288 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:09:27,288 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:09:27,354 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:09:29,072 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:09:29,073 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:09:29,142 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:09:37,404 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:09:39,883 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:09:39,884 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:09:39,967 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:09:41,694 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:09:41,694 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:09:41,765 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:09:49,988 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:09:52,486 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:09:52,487 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:09:52,554 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:09:54,274 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:09:54,275 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:09:54,344 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:10:02,580 publicTool.py DEBUG [line:41] '下一步'按钮高亮
+2019-10-04 19:10:05,068 publicTool.py DEBUG [line:176] 调用此方法的是: closeform
+2019-10-04 19:10:05,068 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 138
+2019-10-04 19:10:05,142 publicTool.py DEBUG [line:178] 当前页面的标题为: 艾德证券期货
+2019-10-04 19:10:06,856 publicTool.py DEBUG [line:176] 调用此方法的是: reloadRoute
+2019-10-04 19:10:06,856 publicTool.py DEBUG [line:177] 调用此方法的模块为: D:\projectdemo\airtest-APP\ElementPage\publicTool.py, 行数为: 151
+2019-10-04 19:10:06,931 publicTool.py DEBUG [line:178] 当前页面的标题为: 相关保证金融资账户
+2019-10-04 19:10:15,270 publicTool.py DEBUG [line:41] '下一步'按钮高亮
