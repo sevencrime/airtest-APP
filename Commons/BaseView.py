@@ -101,8 +101,8 @@ class BaseView():
         # 相关保证金融资账户
         self.AccountName = self.poco(text=" 账户持有人姓名").sibling("android.widget.EditText")
         self.AccountNumber = self.poco(text=" 账户号码").sibling("android.widget.EditText")
-        self.beneficiaryName = self.poco(text=" 受益人名称").sibling("android.widget.EditText")
-        self.ordersName = self.poco(text=" 最终负责下单人姓名").sibling("android.widget.EditText")
+        self.beneficiaryName = self.poco(text="受益人名称").sibling("android.widget.EditText")
+        self.ordersName = self.poco(text="最终负责下单人姓名").sibling("android.widget.EditText")
 
         # 其他资料
         self.investmentTarget = self.poco(text="您的投资目标是")
@@ -162,6 +162,20 @@ class BaseView():
         except Exception as e:
             print("找不到元素 {}".format(element))
             print(e)
+
+
+    def AutocSliding(self, element):
+        '''
+        判断元素是否在ui树上并滑动到该位置
+        :return:
+        '''
+
+        try:
+            if not element.exists():
+                pass
+
+        except:
+            pass
 
 
     def click_select(self, selectelement, selectText):

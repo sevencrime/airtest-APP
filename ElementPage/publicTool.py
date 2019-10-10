@@ -121,13 +121,17 @@ class publicTool(BaseView):
         """
         # 向上滑动屏幕
         """
-        self.poco("android:id/content").swipe([0, -0.4])
+        contentEle = self.poco("android:id/content")
+        contentEle.invalidate()
+        contentEle.swipe([0, -0.4])
 
     def swipe_to_Down(self):
         """
         # 向下滑动屏幕
         """
-        self.poco("android:id/content").swipe([0, 0.4])
+        contentEle = self.poco("android:id/content")
+        contentEle.invalidate()
+        contentEle.swipe([0, 0.4])
 
 
     def DragFrom_LeftToRight(self, element):
@@ -185,7 +189,7 @@ class publicTool(BaseView):
         self.Routetitle.invalidate()
         self.log.debug("调用此方法的是: {}".format(traceback.extract_stack()[-2][2]))
         self.log.debug("调用此方法的模块为: {}, 行数为: {}".format(sys._getframe().f_code.co_filename , sys._getframe().f_back.f_lineno))
-        self.log.debug("当前页面的标题为: {}".format(self.Routetitle.get_text()))
+        self.log.debug("当前页面的标题为: {}".format(self.Routetitle.get_text(),))
         return self.Routetitle.get_text()
 
 

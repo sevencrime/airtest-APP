@@ -87,6 +87,7 @@ def query_initialData():
     gm.set_List('customerNetAssetValue', customerNetAssetValuelist)
     gm.set_List('fundsSource', fundsSourcelist)
 
+
     log.debug("istotalAnnual的值为:" + "".join(gm.get_value("istotalAnnual")))
     log.debug("customerNetAssetValue的值为:" +
               "".join(gm.get_value("customerNetAssetValue")))
