@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import datetime
+
 import allure
 import pytest
 from airtest.core.api import *
@@ -50,7 +52,7 @@ class Test_faceid():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "test_06_faceid.py", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "test_06_faceid.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
 
 
 

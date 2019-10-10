@@ -5,6 +5,7 @@ import shutil
 import traceback
 
 from airtest.core.api import *
+from poco.exceptions import PocoNoSuchNodeException
 
 from Commons.BaseView import BaseView
 from Commons.Logging import Logs
@@ -41,30 +42,18 @@ class publicTool(BaseView):
         self.nextStepbtn.wait_for_appearance(30)
         index = 0
         while index < 10:
-            # if index > 10:
-            #     self.log.debug("'下一步'按钮循环点击超过10次, 退出")
-            #     break
 
             # 获取页面标题内容, 目的是为了刷新页面
-            # self.get_Routetitle()
-            self.nextStepbtn.invalidate()
+            # self.nextStepbtn.invalidate()
+            nextStepbtn = self.disExists_swipe(self.nextStepbtn)
             # 判断按钮是否高亮, 通过focusable属性
-            if self.nextStepbtn.attr("focusable"):
+            if nextStepbtn.attr("focusable"):
                 self.log.debug("'下一步'按钮高亮")
-                self.nextStepbtn.click()
-                # return True
+                nextStepbtn.click()
                 break
-            #     if title != None:
-            #         try:
-            #             assert_equal(self.get_Routetitle(), title, msg="页面标题错误")
-            #             return True
-            #         except AssertionError:
-            #             self.log.debug("循环点击")
-            #             continue
-            #     else:
-            #         return True
 
             index += 1
+
 
     def click_boxCancel(self):
         """
@@ -191,7 +180,11 @@ class publicTool(BaseView):
         self.Routetitle.invalidate()
         self.log.debug("调用此方法的是: {}".format(traceback.extract_stack()[-2][2]))
         self.log.debug("调用此方法的模块为: {}, 行数为: {}".format(sys._getframe().f_code.co_filename , sys._getframe().f_back.f_lineno))
-        self.log.debug("当前页面的标题为: {}".format(self.Routetitle.get_text(),))
+        try:
+            self.log.debug("当前页面的标题为: {}".format(self.Routetitle.get_text(),))
+        except PocoNoSuchNodeException:
+            self.log.debug("首页title获取不到")
+
         return self.Routetitle.get_text()
 
 

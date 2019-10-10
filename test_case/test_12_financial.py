@@ -72,30 +72,34 @@ class Test_financial():
             financial.send_AccountName()
             financial.send_AccountNumber()
 
-
         with allure.step("您是否有以客户的同一集团公司旗下之公司开立保证金账户？"):
-            pubTool.swipe_to_Up()
             financial.click_isCompanyAccounts(isCompanyAccounts)
             pubTool.swipe_to_Up()
             financial.send_AccountName()
             financial.send_AccountNumber()
 
-
         with allure.step("您是否是账户的最终实益拥有人? "):
-            pubTool.swipe_to_Up()
+            # pubTool.swipe_to_Up()
             financial.click_accountHolder(accountHolder)
 
         with allure.step("您是否是最终负责下单的人? "):
-            pubTool.swipe_to_Up()
+            # pubTool.swipe_to_Up()
             financial.click_orderPerson(orderPerson)
 
         with allure.step("点击下一步"):
-            pubTool.swipe_to_Up()
+            # pubTool.swipe_to_Up()
             pubTool.click_NextStepbtn()
             assert_equal(pubTool.get_Routetitle(), "其他资料", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
+    @allure.story("从底部开始输入")
+    @pytest.mark.usefixtures('teardown')
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    def test_derivative_reverseRun(self, poco, reloadRoute):
+        pubTool = publicTool(poco)
+        financial = financialPage(poco)
 
 
+        financial.click_orderPerson(False)
 
 
 

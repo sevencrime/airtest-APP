@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import datetime
 import sys
 import allure
 import pytest
@@ -212,7 +213,7 @@ class Test_bankCardInformation():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_05_bankCardInformation.py::Test_bankCardInformation", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "-v", "test_05_bankCardInformation.py::Test_bankCardInformation", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
 
 
 

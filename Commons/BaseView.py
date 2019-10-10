@@ -99,10 +99,10 @@ class BaseView():
         self.otherInvestment_date = self.poco(text="其他投资").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
 
         # 相关保证金融资账户
-        self.AccountName = self.poco(text=" 账户持有人姓名").sibling("android.widget.EditText")
-        self.AccountNumber = self.poco(text=" 账户号码").sibling("android.widget.EditText")
-        self.beneficiaryName = self.poco(text="受益人名称").sibling("android.widget.EditText")
-        self.ordersName = self.poco(text="最终负责下单人姓名").sibling("android.widget.EditText")
+        self.AccountName = self.poco(textMatches=".*账户持有人姓名").sibling("android.widget.EditText")
+        self.AccountNumber = self.poco(textMatches=".*账户号码").sibling("android.widget.EditText")
+        self.beneficiaryName = self.poco(textMatches=".*受益人名称").sibling("android.widget.EditText")
+        self.ordersName = self.poco(textMatches=".*最终负责下单人姓名").sibling("android.widget.EditText")
 
         # 其他资料
         self.investmentTarget = self.poco(text="您的投资目标是")
@@ -154,25 +154,32 @@ class BaseView():
 
         """
         try:
+            # return self.poco.wait_for_any(element)
             element.wait_for_appearance(30)
+            # element.wait(5)
+            # element.exists()
             return element
         except Exception as e:
             print("找不到元素 {}".format(element))
             print(e)
 
 
-    def AutocSliding(self, element):
+    def disExists_swipe(self, element):
         '''
-        判断元素是否在ui树上并滑动到该位置
+        元素不在界面上, 滑动界面
+        :param element:
         :return:
         '''
 
-        try:
-            if not element.exists():
-                pass
+        while not element.exists():
+            self.log.debug("disExists_swipe进来")
+            element.invalidate()
+            contentEle = self.poco("android:id/content")
+            contentEle.invalidate()
+            contentEle.swipe([0, -0.2])
 
-        except:
-            pass
+        element.invalidate()
+        return element
 
 
     def click_select(self, selectelement, selectText):

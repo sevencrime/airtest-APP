@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import datetime
+
 import allure
 import pytest
 
@@ -30,7 +32,7 @@ class Test_transaction():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "test_09_transaction.py::Test_transaction", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "test_09_transaction.py::Test_transaction", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
 
 
 

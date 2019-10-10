@@ -45,7 +45,8 @@ class financialPage(BaseView):
         # 您是否有以客户的同一集团公司旗下之公司开立保证金账户？?
         """
         context = "您是否有以客户的同一集团公司旗下之公司开立保证金账户？"
-        self.isElementRadio(context, isFlag).click()
+        CompanyAccounts = self.isElementRadio(context, isFlag)
+        self.disExists_swipe(CompanyAccounts).click()
 
         # isFlag存入global
         if isFlag:
@@ -60,12 +61,12 @@ class financialPage(BaseView):
         # 您是否是账户的最终实益拥有人?
         """
         context = "您是否是账户的最终实益拥有人?"
-        self.isElementRadio(context, isFlag).click()
+        accountHolder = self.isElementRadio(context, isFlag)
+        self.disExists_swipe(accountHolder).click()
 
         # 触发框, 受益人名称
         if not isFlag:
-            # self.gm.set_bool(beneficiaryName=True)
-            self.beneficiaryName.set_text("账户的最终实益拥有人")
+            self.disExists_swipe(self.beneficiaryName).set_text("账户的最终实益拥有人")
 
 
 
@@ -74,12 +75,12 @@ class financialPage(BaseView):
         # 您是否是最终负责下单的人?
         """
         context = "您是否是最终负责下单的人?"
-        self.isElementRadio(context, isFlag).click()
+        orderperson = self.isElementRadio(context, isFlag)
+        self.disExists_swipe(orderperson).click()
 
         # 触发框, 下单人名称
         if not isFlag:
-            # self.gm.set_bool(ordersName=True)
-            self.ordersName.set_text("最终负责下单的人")
+            self.disExists_swipe(self.ordersName).set_text("最终负责下单的人")
 
 
     def send_AccountName(self):
@@ -129,14 +130,14 @@ class financialPage(BaseView):
                     self.AccountNumber.set_text("账户号码2")
 
         elif self.gm.get_value("CompanyAccountsAccountNumber"):
-            self.AccountNumber = self.poco(text=" 账户号码").sibling("android.widget.EditText")
-            if self.AccountNumber.__len__() == 1:
-                self.AccountNumber.set_text("账户号码3")
-            elif self.AccountNumber.__len__() == 2 :
-                self.AccountNumber[-1].set_text("账户号码3")
+            AccountNumber = self.poco(textMatches=".*账户号码").sibling("android.widget.EditText")
+            if AccountNumber.__len__() == 1:
+                AccountNumber.set_text("账户号码3")
+            elif AccountNumber.__len__() == 2 :
+                AccountNumber[-1].set_text("账户号码3")
 
-            elif self.AccountNumber.__len__() == 3:
-                self.AccountNumber[-1].set_text("账户号码3")
+            elif AccountNumber.__len__() == 3:
+                AccountNumber[-1].set_text("账户号码3")
 
 
 

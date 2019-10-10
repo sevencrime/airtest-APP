@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import datetime
+
 import allure
 import pytest
 
@@ -96,7 +98,7 @@ class Test_derivativeProduct():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_11_derivativeProduct.py", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "-v", "test_11_derivativeProduct.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
 
 
 
