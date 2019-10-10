@@ -120,19 +120,14 @@ def poco():
     #     "android://127.0.0.1:5037/127.0.0.1:7555?cap_method=JAVACAP&&ori_method=ADBORI")
 
     poco = AndroidUiautomationPoco(force_restart=True)
+    pubTool = publicTool(poco)
+    xml_report_path, html_report_path = pubTool.rmdir5()
+
     yield poco
 
     # from airtest.report.report import simple_report
     # simple_report(__file__)
 
-    # 当前目录
-    curPath = os.path.abspath(os.path.dirname(__file__))
-    # 项目根目录
-    rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
-
-    # import pdb; pdb.set_trace()
-    xml_report_path = rootPath + r'report\xml'
-    html_report_path = rootPath + r'report\html'
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 

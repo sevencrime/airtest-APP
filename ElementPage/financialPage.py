@@ -14,7 +14,7 @@ class financialPage(BaseView):
         """
         # 您的配偶是否持有艾德证券期货任何相关的保证金账户?
         """
-        context = "您的配偶是否持有艾德证券期货任何相关的保证金账户"
+        context = "您的配偶是否持有艾德证券期货任何相关的保证金账户？"
         self.isElementRadio(context, isFlag).click()
 
         # isFlag存入global
@@ -29,7 +29,7 @@ class financialPage(BaseView):
         """
         # 您或您的配偶是否单独或共同控制艾德证券期货之其他保证金账户35%或以上之表决权?
         """
-        context = "您或您的配偶是否单独或共同控制艾德证券期货之其他保证金账户35%或以上之表决权"
+        context = "您或您的配偶是否单独或共同控制艾德证券期货之其他保证金账户35%或以上之表决权？"
         self.isElementRadio(context, isFlag).click()
 
         # isFlag存入global
@@ -44,7 +44,7 @@ class financialPage(BaseView):
         """
         # 您是否有以客户的同一集团公司旗下之公司开立保证金账户？?
         """
-        context = "您是否有以客户的同一集团公司旗下之公司开立保证金账户"
+        context = "您是否有以客户的同一集团公司旗下之公司开立保证金账户？"
         self.isElementRadio(context, isFlag).click()
 
         # isFlag存入global

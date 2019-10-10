@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import glob
+import shutil
 import traceback
 
 from airtest.core.api import *
@@ -194,4 +196,23 @@ class publicTool(BaseView):
 
 
 
+    def rmdir5(self):
+
+        curPath = os.path.abspath(os.path.dirname(__file__))
+        rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
+        xml_report_pathlib = glob.glob(rootPath + r'report\\xml*')
+        html_report_pathlib = glob.glob(rootPath + r'report\\html*')
+
+        html_report_name = rootPath + r'report\html' + os.path.basename(xml_report_pathlib[-1])[3:]
+        # 判断文件目录是否超过5个
+        # 生成后才调用该方法, 所以要+1
+        if len(xml_report_pathlib) >= 6:
+            # shutil模块, 文件高级库
+            shutil.rmtree(xml_report_pathlib[0])
+
+        if len(html_report_pathlib) >= 5:
+            # 删除第一个
+            shutil.rmtree(html_report_pathlib[0])
+
+        return xml_report_pathlib[-1], html_report_name
 

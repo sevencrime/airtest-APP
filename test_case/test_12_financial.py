@@ -85,7 +85,7 @@ class Test_financial():
             pubTool.swipe_to_Up()
             financial.click_accountHolder(accountHolder)
 
-        with allure.step("您是否是最终负责下单的人?? "):
+        with allure.step("您是否是最终负责下单的人? "):
             pubTool.swipe_to_Up()
             financial.click_orderPerson(orderPerson)
 
