@@ -127,7 +127,7 @@ def poco():
 
     # from airtest.report.report import simple_report
     # simple_report(__file__)
-
+    time.sleep(5)
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 

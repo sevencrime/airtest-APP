@@ -39,7 +39,6 @@ class publicTool(BaseView):
         开户表单所有的下一步按钮
 
         """
-        self.nextStepbtn.wait_for_appearance(30)
         index = 0
         while index < 10:
 

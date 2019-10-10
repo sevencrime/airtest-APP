@@ -176,7 +176,7 @@ class BaseView():
             element.invalidate()
             contentEle = self.poco("android:id/content")
             contentEle.invalidate()
-            contentEle.swipe([0, -0.2])
+            contentEle.swipe([0, -0.3])
 
         element.invalidate()
         return element

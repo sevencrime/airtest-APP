@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import datetime
+
 import allure
 import pytest
 from airtest.core.api import *
@@ -104,7 +106,7 @@ class Test_financial():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "--pdb", "test_12_financial.py::Test_financial::test_derivative_securitiesMargin", '--alluredir', '../report/xml'])
+    pytest.main(["-s", "-v", "--pdb", "test_12_financial.py::Test_financial::test_derivative_securitiesMargin", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
 
 
 
