@@ -14,7 +14,7 @@ from ElementPage.publicTool import publicTool
 
 @allure.feature("上传身份证")
 class Test_uploadidcard():
-    # gm = GlobalMap()
+    gm = GlobalMap()
 
     @allure.story("上传身份证")
     @pytest.mark.run(order=2)

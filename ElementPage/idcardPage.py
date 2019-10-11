@@ -47,8 +47,14 @@ class idcardPage(BaseView):
         self.el_idcardpositive.click()
         self.gallery.click()
 
-        touch(Template("".join(self.idcardimgpath_img), record_pos=(0.109, -0.466), resolution=(1080, 2340)))
-        touch(Template("".join(self.idcardimgpositive_img), record_pos=(-0.111, -0.728), resolution=(1080, 2340)))
+        import pdb; pdb.set_trace()
+
+        if device().uuid == '127.0.0.1:7555':
+            touch(Template("".join(self.mumuidcardimgpath_img), record_pos=(-0.186, 0.567), resolution=(810, 1440)))
+            touch(Template("".join(self.mumuidcardimgpositive_img), record_pos=(-0.002, 0.277), resolution=(810, 1440)))
+        else:
+            touch(Template("".join(self.idcardimgpath_img), record_pos=(0.109, -0.466), resolution=(1080, 2340)))
+            touch(Template("".join(self.idcardimgpositive_img), record_pos=(-0.111, -0.728), resolution=(1080, 2340)))
 
     # @permission
     def upload_idcardNegative(self):
@@ -61,8 +67,15 @@ class idcardPage(BaseView):
 
         self.gallery.click()
 
-        touch(Template("".join(self.idcardimgpath_img), record_pos=(0.109, -0.466), resolution=(1080, 2340)))
-        touch(Template("".join(self.idcardimgnegative_img), record_pos=(-0.367, -0.721), resolution=(1080, 2340)))
+        import pdb; pdb.set_trace()
+
+        if device().uuid == '127.0.0.1:7555':
+            touch(Template("".join(self.mumuidcardimgpath_img), record_pos=(-0.186, 0.567), resolution=(810, 1440)))
+            touch(Template("".join(self.mumuidcardimgnegative_img), record_pos=(-0.002, -0.132), resolution=(810, 1440)))
+
+        else:
+            touch(Template("".join(self.idcardimgpath_img), record_pos=(0.109, -0.466), resolution=(1080, 2340)))
+            touch(Template("".join(self.idcardimgnegative_img), record_pos=(-0.367, -0.721), resolution=(1080, 2340)))
 
 
 

@@ -46,6 +46,12 @@ class BaseView():
         self.idcardimgnegative_img = rootPath + r'testData\\testIMG\\idcardimgnegative.png'
         self.idcardimgpositive_img = rootPath + r'testData\\testIMG\\idcardimgpositive.png'
 
+        # mumu模拟器图片
+        self.mumuidcardimgpath_img = rootPath + r'testData\\testIMG\\mumuidcardFolder.png'
+        self.mumuidcardimgnegative_img = rootPath + r'testData\\testIMG\\mumuidcardimgnegative.png'
+        self.mumuidcardimgpositive_img = rootPath + r'testData\\testIMG\\mumuidcardimgpositive.png'
+
+
         # 个人信息界面
         self.el_chinesename = self.poco(text="中文姓名").sibling("android.widget.EditText")
         self.el_lastname = self.poco(text="姓氏").sibling("android.widget.EditText")

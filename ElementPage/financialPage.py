@@ -88,10 +88,8 @@ class financialPage(BaseView):
             # 账户持有人姓名
 
         """
-        if self.gm.get_value("MarginAccountName") and not self.gm.get_value("iscretionAccountName"):
-            self.AccountName.set_text("账户持有人姓名1")
 
-        elif self.gm.get_value("iscretionAccountName") and not self.gm.get_value("CompanyAccountsAccountName"):
+        if self.gm.get_value("iscretionAccountName") and not self.gm.get_value("CompanyAccountsAccountName"):
             if self.AccountName.__len__() == 1:
                 self.AccountName.set_text("账户持有人姓名2")
             elif self.AccountName.__len__() != 1:
@@ -112,15 +110,18 @@ class financialPage(BaseView):
                 AccountName[-1].set_text("账户持有人姓名3")
 
 
+        elif self.gm.get_value("MarginAccountName") and not self.gm.get_value("iscretionAccountName"):
+            self.AccountName.set_text("账户持有人姓名1")
+
+
     def send_AccountNumber(self):
         """
             # 账户号码
 
         """
-        if self.gm.get_value("MarginAccountNumber") and not self.gm.get_value("iscretionAccountNumber"):
-            self.AccountNumber.set_text("账户号码1")
 
-        elif self.gm.get_value("iscretionAccountNumber") and not self.gm.get_value("CompanyAccountsAccountNumber"):
+
+        if self.gm.get_value("iscretionAccountNumber") and not self.gm.get_value("CompanyAccountsAccountNumber"):
             if self.AccountNumber.__len__() == 1:
                 self.AccountNumber.set_text("账户号码2")
             elif self.AccountNumber.__len__() != 1:
@@ -140,6 +141,8 @@ class financialPage(BaseView):
                 AccountNumber[-1].set_text("账户号码3")
 
 
+        elif self.gm.get_value("MarginAccountNumber") and not self.gm.get_value("iscretionAccountNumber"):
+            self.AccountNumber.set_text("账户号码1")
 
 
 

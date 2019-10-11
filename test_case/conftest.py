@@ -94,44 +94,6 @@ def query_initialData():
     log.debug("fundsSource的值为:" + "".join(gm.get_value("fundsSource")))
 
 
-@pytest.fixture(scope="session", autouse=True)
-def config():
-    gm = GlobalMap()
-    gm._init()
-    gm.set_value(environment="aos-uat")     # 记录数据库
-    gm.set_bool(isbullion=False)        # 记录黄金账户是否开启
-    gm.set_bool(isLeveraged=False)      # 记录外汇账户是否开启
-    # mongo数据库地址
-    gm.set_value(
-        mongohost="mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net")
-
-
-@pytest.fixture(scope="session", autouse=True)
-def poco():
-    # os.popen("adb connect 127.0.0.1:7555")
-    # poco = AndroidUiautomationPoco(screenshot_each_action=False)
-
-    if not cli_setup():
-        auto_setup(__file__, logdir=True,
-                   devices=["Android:///", ])
-
-    # 模拟器 >> 网易mumu模拟器连接cap_method=JAVACAP&&ori_method=ADBORI
-    # connect_device(
-    #     "android://127.0.0.1:5037/127.0.0.1:7555?cap_method=JAVACAP&&ori_method=ADBORI")
-
-    poco = AndroidUiautomationPoco(force_restart=True)
-    pubTool = publicTool(poco)
-    xml_report_path, html_report_path = pubTool.rmdir5()
-
-    yield poco
-
-    # from airtest.report.report import simple_report
-    # simple_report(__file__)
-    time.sleep(5)
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
-        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
-
-
 @pytest.fixture()
 def reloadRoute(request, poco):
     """
@@ -146,3 +108,45 @@ def reloadRoute(request, poco):
     # 判断当前标题, 如不是操作界面, 则点击返回按钮
     if routetitle != pubTool.get_Routetitle():
         pubTool.backform()
+
+
+
+@pytest.fixture(scope="session", autouse=True)
+def config():
+    gm = GlobalMap()
+    gm._init()
+    gm.set_value(environment="aos-uat")     # 记录数据库
+    gm.set_bool(isbullion=False)        # 记录黄金账户是否开启
+    gm.set_bool(isLeveraged=False)      # 记录外汇账户是否开启
+    # mongo数据库地址
+    gm.set_value(
+        mongohost="mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net")
+
+
+@pytest.fixture(scope="session", autouse=True)
+def poco():
+    # poco = AndroidUiautomationPoco(screenshot_each_action=False)
+
+    # if not cli_setup():
+    #     auto_setup(__file__, logdir=True,
+    #                devices=["Android:///", ])
+
+    if not cli_setup():
+        # 模拟器 >> 网易mumu模拟器连接cap_method=JAVACAP&&ori_method=ADBORI
+        os.popen("adb connect 127.0.0.1:7555").read()
+        connect_device(
+            "Android://127.0.0.1:5037/127.0.0.1:7555?ori_method=ADBORI")
+
+    poco = AndroidUiautomationPoco(force_restart=True)
+    pubTool = publicTool(poco)
+    xml_report_path, html_report_path = pubTool.rmdir5()
+
+    yield poco
+
+    # from airtest.report.report import simple_report
+    # simple_report(__file__)
+    time.sleep(10)
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
+
+
