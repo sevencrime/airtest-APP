@@ -15,28 +15,29 @@ from ElementPage.publicTool import publicTool
 @allure.feature("上传身份证")
 class Test_uploadidcard():
     gm = GlobalMap()
+    fix_routetitle = ["身份证验证"]
 
     @allure.story("上传身份证")
-    @pytest.mark.run(order=2)
-    def test_uploadidcard(self, poco):
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    def test_uploadidcard(self, poco, reloadRoute):
         upidcard = idcardPage(poco)
         pubTool = publicTool(poco)
 
         # 判断客户来源
         pubTool.get_appcationNumber()
 
-        with allure.step("选择所属地区 -- 内地居民"):
-            upidcard.click_Chinese()
-        with allure.step("开户准备点击下一步"):
-            pubTool.click_NextStepbtn()
+        # with allure.step("选择所属地区 -- 内地居民"):
+        #     upidcard.click_Chinese()
+        # with allure.step("开户准备点击下一步"):
+        #     pubTool.click_NextStepbtn()
 
         with allure.step("上传身份证人像面"):
             upidcard.upload_idcardNegative()
-            # pubTool.wait_loading()
+            pubTool.wait_loading()
 
         with allure.step("上传身份证国徽面"):
             upidcard.upload_idcardpositive()
-            # pubTool.wait_loading()
+            pubTool.wait_loading()
 
         with allure.step("滑动页面"):
             time.sleep(5)
@@ -77,6 +78,6 @@ class Test_uploadidcard():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "test_02_uploadidcard.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "--pdb","test_02_uploadidcard.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     # os.popen("allure generate {xml} -o {html} --clean".format(xml=os.getcwd() + r'\EDDID_APP\report\xml',
     #                                                           html=os.getcwd() + r'\EDDID_APP\report\html'))

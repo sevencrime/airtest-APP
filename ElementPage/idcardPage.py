@@ -41,16 +41,14 @@ class idcardPage(BaseView):
         身份证正面--国徽面
 
         """
-
-        time.sleep(10)
+        # time.sleep(10)
         self.el_idcardpositive.wait(10)
         self.el_idcardpositive.click()
         self.gallery.click()
 
-        import pdb; pdb.set_trace()
-
         if device().uuid == '127.0.0.1:7555':
-            touch(Template("".join(self.mumuidcardimgpath_img), record_pos=(-0.186, 0.567), resolution=(810, 1440)))
+            touch(Template("".join(self.mumuidcardimgpath_img), record_pos=(-0.17, 0.572), resolution=(810, 1440)))
+            time.sleep(1)
             touch(Template("".join(self.mumuidcardimgpositive_img), record_pos=(-0.002, 0.277), resolution=(810, 1440)))
         else:
             touch(Template("".join(self.idcardimgpath_img), record_pos=(0.109, -0.466), resolution=(1080, 2340)))
@@ -67,10 +65,10 @@ class idcardPage(BaseView):
 
         self.gallery.click()
 
-        import pdb; pdb.set_trace()
 
         if device().uuid == '127.0.0.1:7555':
-            touch(Template("".join(self.mumuidcardimgpath_img), record_pos=(-0.186, 0.567), resolution=(810, 1440)))
+            touch(Template("".join(self.mumuidcardimgpath_img), record_pos=(-0.17, 0.572), resolution=(810, 1440)))
+            time.sleep(1)
             touch(Template("".join(self.mumuidcardimgnegative_img), record_pos=(-0.002, -0.132), resolution=(810, 1440)))
 
         else:

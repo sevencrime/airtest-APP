@@ -100,12 +100,14 @@ class publicTool(BaseView):
 
 
     def wait_loading(self):
-        self.loading.wait_for_disappearance(30)
-        # while True:
-        #     print("死循环")
-        #     if not self.loading.exists():
-        #         print("退出了")
-        #         return True
+
+        self.get_Routetitle()
+        # 循环判断loading是否存在
+        while self.loading.exists():
+            self.log.debug("wait_loading as True, loading存在")
+            self.loading.invalidate()
+            time.sleep(1)
+
 
     def swipe_to_Up(self):
         """
@@ -177,6 +179,11 @@ class publicTool(BaseView):
                 https://www.zybuluo.com/natsumi/note/470226
         """
         self.Routetitle.invalidate()
+
+        while not self.Routetitle.exists():
+            self.log.debug("Routetitle 不存在")
+            pass
+
         self.log.debug("调用此方法的是: {}".format(traceback.extract_stack()[-2][2]))
         self.log.debug("调用此方法的模块为: {}, 行数为: {}".format(sys._getframe().f_code.co_filename , sys._getframe().f_back.f_lineno))
         try:
