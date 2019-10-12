@@ -75,27 +75,40 @@ class publicTool(BaseView):
         获取弹出框的标题和弹框的内容
 
         """
-        index = 0
-        while True:
+        # index = 0
+        # while True:
+        #
+        #     try:
+        #         # 获取页面标题, 代替页面刷新
+        #         self.get_Routetitle()
+        #         # 弹出框标题
+        #         boxtitle = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.view.ViewGroup")[0].child("android.widget.TextView")
+        #         self.log.debug("获取boxtitle成功, 标题是{}".format(boxtitle))
+        #         # 弹出框内容
+        #         boxcontent = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.widget.TextView")
+        #         self.log.debug("获取boxcontent成功, 内容是{}".format(boxcontent))
+        #         return boxtitle.get_text(), boxcontent.get_text()
+        #
+        #     except Exception as e:
+        #         self.log.debug("弹框标题或内容获取失败")
+        #
+        #     finally:
+        #         index += 1
+        #         if index > 10:
+        #             break
 
-            try:
-                # 获取页面标题, 代替页面刷新
-                self.get_Routetitle()
-                # 弹出框标题
-                boxtitle = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.view.ViewGroup")[0].child("android.widget.TextView")
-                self.log.debug("获取boxtitle成功, 标题是{}".format(boxtitle))
-                # 弹出框内容
-                boxcontent = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.widget.TextView")
-                self.log.debug("获取boxcontent成功, 内容是{}".format(boxcontent))
-                return boxtitle.get_text(), boxcontent.get_text()
 
-            except Exception as e:
-                self.log.debug("弹框标题或内容获取失败")
+        boxalert = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[-1].offspring("android.widget.TextView")
 
-            finally:
-                index += 1
-                if index > 10:
-                    break
+        while not boxalert.exists():
+            boxalert.invalidate()
+            pass
+
+        self.log.debug("提示框的标题是: {}".format(boxalert[0].get_text()))
+        self.log.debug("提示框的标题是: {}".format(boxalert[1].get_text()))
+
+        return boxalert[0].get_text(), boxalert[1].get_text()
+
 
 
 
@@ -138,7 +151,8 @@ class publicTool(BaseView):
         # APP关闭按钮"X"
         """
         # 关闭开户表单
-        touch(Template(self.closeform_img, record_pos=(-0.331, -0.919), resolution=(1080, 2340)))
+        touch(Template(self.closeform_img, record_pos=(-0.378, -0.774), resolution=(810, 1440)))
+
         # 重复十次
         for i in range(10):
             if self.get_Routetitle() == "艾德证券期货":

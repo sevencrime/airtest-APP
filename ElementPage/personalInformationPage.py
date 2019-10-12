@@ -10,7 +10,7 @@ class personalInformationPage(BaseView):
 
     """
 
-    def send_emali(self, email="onedi.zheng@newtype.io"):
+    def send_emali(self, email="15089514626@sina.cn"):
         """
         输入邮箱
 
@@ -18,7 +18,7 @@ class personalInformationPage(BaseView):
         # import pdb; pdb.set_trace()
         self.exists(self.el_email).set_text(email)
 
-    def send_reemail(self, email="onedi.zheng@newtype.io"):
+    def send_reemail(self, email="15089514626@sina.cn"):
         """
         再次输入电邮
 

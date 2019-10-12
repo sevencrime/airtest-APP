@@ -33,7 +33,13 @@ class idcardPage(BaseView):
         选择内地居民
 
         """
-        self.el_chinese.click()
+        pubTool = publicTool(self.poco)
+
+        if pubTool.get_Routetitle() == "选择所属地区":
+            self.el_chinese.click()
+
+        if pubTool.get_Routetitle() == "开户准备":
+            pubTool.click_NextStepbtn()
 
     # @permission
     def upload_idcardpositive(self):
