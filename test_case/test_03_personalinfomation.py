@@ -14,7 +14,7 @@ from ElementPage.publicTool import publicTool
 
 @allure.feature("请填写个人资料")
 class Test_personalinfomation():
-    # gm = GlobalMap()
+    gm = GlobalMap()
 
     @allure.story("填写个人资料")
     @pytest.mark.skipif(gm.get_value("environment") == "aos" or gm.get_value("environment") == "aos-uat",
@@ -32,8 +32,7 @@ class Test_personalinfomation():
             pubTool.click_NextStepbtn()
 
         with allure.step("校验地址弹框标题和内容"):
-            boxtitle = pubTool.get_boxtitle()
-            boxcontent = pubTool.get_boxcontent()
+            boxtitle, boxcontent = pubTool.get_boxtitle()
             assert_equal(boxtitle, "请确认您的身份证地址", "确认地址弹框标题有误")
             assert_equal(boxcontent, perinfo.get_address(), "弹框内容与填写内容不符")
 

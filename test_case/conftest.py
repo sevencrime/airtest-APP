@@ -139,7 +139,8 @@ def poco():
 
     poco = AndroidUiautomationPoco(force_restart=True)
     pubTool = publicTool(poco)
-    xml_report_path, html_report_path = pubTool.rmdir5()
+    # report限制5条
+    pubTool.rmdir5()
 
     yield poco
 

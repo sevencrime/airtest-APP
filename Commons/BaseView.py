@@ -62,6 +62,11 @@ class BaseView():
         self.el_idNumber = self.poco(text="证件号码").sibling("android.widget.EditText")
         self.el_iDcardAddress = self.poco(text="身份证地址(*请确认地址无误，如有误请手动修改)").sibling("android.widget.EditText")
         self.el_FalseiDcardAddress = self.poco(text="如住址和身份证地址不一致(请勾选)").sibling("android.widget.ImageView")
+        self.el_isAddress = self.poco(text="如住址和身份证地址不一致(请勾选)").sibling("android.widget.ImageView")
+
+        # 地址证明
+        self.addressProve = self.poco(text="请上传资料")
+        self.Nowaddress = self.poco(text="请输入住址").sibling("android.widget.EditText")
 
         # 银行卡信息
         self.el_bankCardNo = self.poco(text="卡号").sibling("android.widget.EditText")

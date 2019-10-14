@@ -21,7 +21,6 @@ class Test_faceid():
     log = Logs()
 
     @allure.story("人脸识别")
-    @pytest.mark.run(order=3)
     def test_bankCard(self, poco):
         mongo = mongoTool(self.gm.get_value("mongohost"))
         pubTool = publicTool(poco)
