@@ -39,19 +39,24 @@ class publicTool(BaseView):
         开户表单所有的下一步按钮
 
         """
-        index = 0
-        while index < 10:
+        self.log.debug("调用此方法的是: {}".format(traceback.extract_stack()[-2][2]))
+        # index = 0
+        # while index < 10:
+        #     self.log.debug("进入下一步循环")
+        #     # 获取页面标题内容, 目的是为了刷新页面
+        #     # self.nextStepbtn.invalidate()
+        #     nextStepbtn = self.disExists_swipe(self.nextStepbtn)
+        #     # 判断按钮是否高亮, 通过focusable属性
+        #     if nextStepbtn.attr("focusable"):
+        #         self.log.debug("'下一步'按钮高亮")
+        #         nextStepbtn.click()
+        #         break
+        #
+        #     index += 1
 
-            # 获取页面标题内容, 目的是为了刷新页面
-            # self.nextStepbtn.invalidate()
-            nextStepbtn = self.disExists_swipe(self.nextStepbtn)
-            # 判断按钮是否高亮, 通过focusable属性
-            if nextStepbtn.attr("focusable"):
-                self.log.debug("'下一步'按钮高亮")
-                nextStepbtn.click()
-                break
+        nextStepbtn = self.disExists_swipe(self.nextStepbtn)
+        nextStepbtn.click()
 
-            index += 1
 
 
     def click_boxCancel(self):
@@ -227,5 +232,7 @@ class publicTool(BaseView):
             # 删除第一个
             shutil.rmtree(html_report_pathlib[0])
 
+        self.gm.set_value(xml_report_path=xml_report_pathlib[-1])
+        self.gm.set_value(html_report_path=html_report_name)
         return xml_report_pathlib[-1], html_report_name
 

@@ -57,6 +57,7 @@ class idcardPage(BaseView):
             time.sleep(1)
             touch(Template("".join(self.mumuidcardimgpositive_img), record_pos=(-0.002, 0.277), resolution=(810, 1440)))
         else:
+            # oppo手机
             touch(Template("".join(self.idcardimgpath_img), record_pos=(0.109, -0.466), resolution=(1080, 2340)))
             touch(Template("".join(self.idcardimgpositive_img), record_pos=(-0.111, -0.728), resolution=(1080, 2340)))
 

@@ -74,5 +74,5 @@ class Test_uploadidcard():
 
 if __name__ == "__main__":
     pytest.main(["-s", "--pdb","test_02_uploadidcard.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    # os.popen("allure generate {xml} -o {html} --clean".format(xml=os.getcwd() + r'\EDDID_APP\report\xml',
-    #                                                           html=os.getcwd() + r'\EDDID_APP\report\html'))
+    gm = GlobalMap()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()

@@ -10,6 +10,21 @@ class personalInformationPage(BaseView):
 
     """
 
+    def modify_chinesename(self, ismodify):
+        try:
+            assert self.el_chinesename.get_text() == '宜小信'
+        except Exception as e:
+            self.log.error("姓名OCR识别有误, 错误的中文姓名为: {}".format(chineseanme))
+
+        if ismodify:
+            # 判断是否修改
+            self.el_chinesename.set_text("修改中文姓名")
+            self.el_chinesename.invalidate()
+            chineseanme = self.el_chinesename.get_text()
+
+
+        return chineseanme
+
     def send_emali(self, email="15089514626@sina.cn"):
         """
         输入邮箱

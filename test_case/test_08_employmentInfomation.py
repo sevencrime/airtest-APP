@@ -72,6 +72,27 @@ class Test_employmentInfomation():
     ]
 
 
+    @allure.step("用例标题: 不选择就业情况, 直接选择全年总收入和资产净值")
+    @allure.title("全年总收入选择: {}, 资产净值全栈: {}")
+    @pytest.mark.parametrize('totalAnnual', ['小于20万', '20-50万', '50-100万', '大于100万'])
+    @pytest.mark.parametrize('customer', ['小于100万', '100-300万', '300-800万', '大于800万'])
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    def test_nullemploy(self, poco, reloadRoute, totalAnnual, customer):
+        pubTool = publicTool(poco)
+        employment = employmentInfomationPage(poco)
+        with allure.step("选择全年总收入选择 {}".format(totalAnnual)):
+            totalAnnual = employment.click_totalAnnualCustomerRevenueHK(totalAnnual)
+
+
+        with allure.step("资产净值选择 {}".format(customer)):
+            customer = employment.click_customerNetAssetValueHK(customer)
+
+        with allure.step("点击下一步"):
+            pubTool.click_NextStepbtn()
+            assert_equal(pubTool.get_Routetitle(), "就业及财务状况", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+
+
+
     @allure.step("用例标题: 就业情况选择: {employed}, 全年总收入选择: {totalAnnual}, 资金来源选择: {fundlist}, 资产净值选择: {customer}, 资产净值来源选择: {assetslist}")
     @pytest.mark.parametrize("employed", ["无业"])
     @pytest.mark.parametrize("totalAnnual, fundlist", Unemployed_totalAnnual)
@@ -81,22 +102,22 @@ class Test_employmentInfomation():
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("就业情况选择无业"):
-            pubTool.swipe_to_Down()
+            # pubTool.swipe_to_Down()
             employ = employment.click_employment(employed)
             # assert_equal(employ, "无业", "就业情况信息填写有误")
 
         with allure.step("全年总收入选择{}".format(totalAnnual)):
-            pubTool.swipe_to_Down()
+            # pubTool.swipe_to_Down()
             totalAnnual = employment.click_totalAnnualCustomerRevenueHK(totalAnnual, fundlist=fundlist)
             # assert_equal(totalAnnual, "20-50万", "全年总收入填写有误")
 
         with allure.step("资产净值选择{}".format(customer)):
-            pubTool.swipe_to_Up()
+            # pubTool.swipe_to_Up()
             customer = employment.click_customerNetAssetValueHK(customer, assetslist = assetslist)
             # assert_equal(customer, "300-800万", "资产净值填写有误")
 
         with allure.step("点击下一步"):
-            pubTool.swipe_to_Up()
+            # pubTool.swipe_to_Up()
             pubTool.click_NextStepbtn()
 
         with allure.step("点击下一步成功, 跳转到'选择交易界面'"):
@@ -134,7 +155,7 @@ class Test_employmentInfomation():
             # assert_equal(customer, "300-800万", "资产净值填写有误")
 
         with allure.step("点击下一步"):
-            pubTool.swipe_to_Up()
+            # pubTool.swipe_to_Up()
             pubTool.click_NextStepbtn()
 
         with allure.step("校验就业地址弹框标题和内容"):
@@ -174,11 +195,11 @@ class Test_employmentInfomation():
             # assert_equal(totalAnnual, "20-50万", "全年总收入填写有误")
 
         with allure.step("资产净值选择{}".format(customer)):
-            pubTool.swipe_to_Up()
+            # pubTool.swipe_to_Up()
             customer = employment.click_customerNetAssetValueHK(customer, assetslist = assetslist)
 
         with allure.step("点击下一步"):
-            pubTool.swipe_to_Up()
+            # pubTool.swipe_to_Up()
             pubTool.click_NextStepbtn()
 
         with allure.step("校验就业地址弹框标题和内容"):
@@ -202,6 +223,8 @@ class Test_employmentInfomation():
 
 if __name__ == "__main__":
     pytest.main(["-s", "-v", "--pdb", "test_08_employmentInfomation.py::Test_employmentInfomation::test_selfEmployed", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    gm = GlobalMap()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
 
 
 

@@ -61,12 +61,12 @@ class employmentInfomationPage(BaseView):
         self.click_select(self.totalAnnualCustomerRevenueHK, price)
 
         # 判断 "请注明资金来源(可多选)" 复选框是否触发
-        if self.sourcesfunds:
+        if self.disExists_swipe(self.sourcesfunds):
             # 触发资金来源， 向上滑动屏幕
             self.poco("android:id/content").swipe([0, -0.4])
             # 遍历需要点击的选项
             for fund in funds:
-                sources = self.exists(self.poco(text=fund))
+                sources = self.disExists_swipe(self.poco(text=fund))
                 # 判断资金来源和资产净值是否同时出现
                 if len(sources) == 1:
                     sources.click()
@@ -102,12 +102,12 @@ class employmentInfomationPage(BaseView):
         self.click_select(self.customerNetAssetValueHK, price)
 
         # 判断 "请注明资金来源(可多选)" 复选框是否触发
-        if self.assetsvalue:
+        if self.disExists_swipe(self.assetsvalue):
             # 触发资产净值来源, 向上滑动页面
             self.poco("android:id/content").swipe([0, -0.4])
             # 遍历需要点击的选项
             for asset in assets:
-                sources = self.exists(self.poco(text=asset))
+                sources  = self.disExists_swipe(self.poco(text=asset))
                 # 判断资金来源和资产净值是否同时出现
                 if len(sources) == 1:
                     sources.click()

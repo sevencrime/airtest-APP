@@ -14,9 +14,8 @@ from ElementPage.publicTool import publicTool
 
 
 @allure.feature("账户信息")
-@pytest.mark.run(order=3)
 class Test_AccountInformation():
-    # gm = GlobalMap()
+    gm = GlobalMap()
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
 
     @allure.story("填写账户信息")
@@ -55,6 +54,8 @@ class Test_AccountInformation():
 if __name__ == "__main__":
     pytest.main(["-s", "test_07_accountInformation.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
 
+    gm = GlobalMap()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
 
 
 
