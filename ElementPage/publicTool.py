@@ -19,7 +19,6 @@ class publicTool(BaseView):
     def allow_permissionBox(self):
         """
         处理Android权限弹框
-
         """
         try:
             # 循环5次, 点击多个弹框
@@ -156,7 +155,14 @@ class publicTool(BaseView):
         # APP关闭按钮"X"
         """
         # 关闭开户表单
-        touch(Template(self.closeform_img, record_pos=(-0.378, -0.774), resolution=(810, 1440)))
+        # touch(Template(self.closeform_img, record_pos=(-0.378, -0.774), resolution=(810, 1440)))
+
+
+        # import pdb; pdb.set_trace()
+
+        title = self.Routetitle.get_text()
+        close_btn = self.poco(text=title).sibling("android.view.ViewGroup")[1]
+        close_btn.click()
 
         # 重复十次
         for i in range(10):
@@ -166,13 +172,21 @@ class publicTool(BaseView):
                 break
 
 
+
     def backform(self):
         """
         # APP返回按钮
         """
-        # 点击返回按钮
-        touch(Template(self.backform_img, record_pos=(-0.42, -0.919), resolution=(1080, 2340)))
-        time.sleep(0.5)
+        # # 点击返回按钮
+        # touch(Template(self.backform_img, record_pos=(-0.42, -0.919), resolution=(1080, 2340)))
+        # time.sleep(0.5)
+
+        # import pdb; pdb.set_trace()
+
+        title = self.Routetitle.get_text()
+        back_btn = self.poco(text=title).sibling("android.view.ViewGroup")[0]
+        back_btn.click()
+
 
     def get_appcationNumber(self):
         """

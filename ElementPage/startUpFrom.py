@@ -2,9 +2,27 @@
 # -*- coding: utf-8 -*-
 
 from Commons.BaseView import BaseView
+import os, re
+
+from airtest.core.api import *
 
 
 class startUpFrom(BaseView):
+
+
+    def Start_APP(self):
+        # 获取当前界面的包名和Activity
+        CurrentFocus = os.popen("adb shell dumpsys window | findstr mCurrentFocus").read()
+        currentActivity = re.findall(r"u0\s(.+)}", CurrentFocus)
+
+        if currentActivity.find("io.newtype.eddid.app") == -1:
+            curlist = currentActivity.split('/')
+            start_app(curlist[0], curlist[1])
+
+
+        return currentActivity
+
+
 
     def firstSetting(self):
         """
