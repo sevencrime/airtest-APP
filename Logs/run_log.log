@@ -1,0 +1,174 @@
+2019-10-14 14:29:49,624 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-14 14:29:49,624 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-14 14:29:49,624 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-14 14:29:49,624 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 14:30:17,184 publicTool.py DEBUG [line:203] 调用此方法的是: closeform
+2019-10-14 14:30:17,184 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 160
+2019-10-14 14:30:17,218 publicTool.py DEBUG [line:206] 当前页面的标题为: 艾德证券期货
+2019-10-14 14:30:19,675 publicTool.py DEBUG [line:203] 调用此方法的是: reloadRoute
+2019-10-14 14:30:19,677 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 109
+2019-10-14 14:30:19,816 publicTool.py DEBUG [line:206] 当前页面的标题为: 艾德证券期货
+2019-10-14 14:30:22,600 GlobalMap.py DEBUG [line:34] appcationNumber:app191
+2019-10-14 14:30:22,716 publicTool.py DEBUG [line:203] 调用此方法的是: click_Chinese
+2019-10-14 14:30:22,716 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 38
+2019-10-14 14:30:22,760 publicTool.py DEBUG [line:206] 当前页面的标题为: 选择所属地区
+2019-10-14 14:30:48,849 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-14 14:30:48,849 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-14 14:30:48,849 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-14 14:30:48,849 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 14:30:59,972 publicTool.py DEBUG [line:203] 调用此方法的是: closeform
+2019-10-14 14:30:59,972 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 160
+2019-10-14 14:30:59,994 publicTool.py DEBUG [line:206] 当前页面的标题为: 选择所属地区
+2019-10-14 14:31:00,270 publicTool.py DEBUG [line:203] 调用此方法的是: closeform
+2019-10-14 14:31:00,271 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 160
+2019-10-14 14:31:00,304 publicTool.py DEBUG [line:206] 当前页面的标题为: 艾德证券期货
+2019-10-14 14:31:02,223 publicTool.py DEBUG [line:203] 调用此方法的是: reloadRoute
+2019-10-14 14:31:02,223 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 109
+2019-10-14 14:31:02,242 publicTool.py DEBUG [line:206] 当前页面的标题为: 开户准备
+2019-10-14 14:31:03,355 GlobalMap.py DEBUG [line:34] appcationNumber:app191
+2019-10-14 14:31:03,434 publicTool.py DEBUG [line:203] 调用此方法的是: click_Chinese
+2019-10-14 14:31:03,435 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 38
+2019-10-14 14:31:03,452 publicTool.py DEBUG [line:206] 当前页面的标题为: 选择所属地区
+2019-10-14 14:31:05,325 publicTool.py DEBUG [line:203] 调用此方法的是: click_Chinese
+2019-10-14 14:31:05,325 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 41
+2019-10-14 14:31:05,343 publicTool.py DEBUG [line:206] 当前页面的标题为: 开户准备
+2019-10-14 14:31:05,359 publicTool.py DEBUG [line:42] 调用此方法的是: click_Chinese
+2019-10-14 14:31:17,384 publicTool.py DEBUG [line:46] 进入下一步循环
+2019-10-14 14:32:30,631 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-14 14:32:30,632 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-14 14:32:30,632 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-14 14:32:30,632 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 14:33:20,612 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-14 14:33:20,613 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-14 14:33:20,613 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-14 14:33:20,613 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 14:34:14,570 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-14 14:34:14,570 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-14 14:34:14,570 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-14 14:34:14,570 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 14:34:20,469 GlobalMap.py DEBUG [line:34] appcationNumber:app191
+2019-10-14 14:34:20,631 publicTool.py DEBUG [line:203] 调用此方法的是: click_Chinese
+2019-10-14 14:34:20,631 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 38
+2019-10-14 14:34:20,644 publicTool.py DEBUG [line:206] 当前页面的标题为: 身份证验证
+2019-10-14 14:34:20,837 publicTool.py DEBUG [line:203] 调用此方法的是: click_Chinese
+2019-10-14 14:34:20,837 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 41
+2019-10-14 14:34:20,852 publicTool.py DEBUG [line:206] 当前页面的标题为: 身份证验证
+2019-10-14 14:34:32,200 publicTool.py DEBUG [line:200] Routetitle 不存在
+2019-10-14 14:34:32,322 publicTool.py DEBUG [line:200] Routetitle 不存在
+2019-10-14 14:34:32,519 publicTool.py DEBUG [line:200] Routetitle 不存在
+2019-10-14 14:34:32,690 publicTool.py DEBUG [line:200] Routetitle 不存在
+2019-10-14 14:34:32,770 publicTool.py DEBUG [line:200] Routetitle 不存在
+2019-10-14 14:34:32,861 publicTool.py DEBUG [line:200] Routetitle 不存在
+2019-10-14 14:34:34,036 publicTool.py DEBUG [line:203] 调用此方法的是: wait_loading
+2019-10-14 14:34:34,036 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 119
+2019-10-14 14:34:34,114 publicTool.py DEBUG [line:206] 当前页面的标题为: 身份证验证
+2019-10-14 14:34:34,627 publicTool.py DEBUG [line:122] wait_loading as True, loading存在
+2019-10-14 14:34:36,014 publicTool.py DEBUG [line:122] wait_loading as True, loading存在
+2019-10-14 14:34:37,470 publicTool.py DEBUG [line:122] wait_loading as True, loading存在
+2019-10-14 14:34:38,897 publicTool.py DEBUG [line:122] wait_loading as True, loading存在
+2019-10-14 14:34:40,396 publicTool.py DEBUG [line:122] wait_loading as True, loading存在
+2019-10-14 14:34:42,194 publicTool.py DEBUG [line:122] wait_loading as True, loading存在
+2019-10-14 14:34:43,694 publicTool.py DEBUG [line:122] wait_loading as True, loading存在
+2019-10-14 14:34:45,159 publicTool.py DEBUG [line:122] wait_loading as True, loading存在
+2019-10-14 14:34:53,355 publicTool.py DEBUG [line:200] Routetitle 不存在
+2019-10-14 14:34:53,528 publicTool.py DEBUG [line:200] Routetitle 不存在
+2019-10-14 14:34:53,745 publicTool.py DEBUG [line:200] Routetitle 不存在
+2019-10-14 14:34:54,746 publicTool.py DEBUG [line:203] 调用此方法的是: wait_loading
+2019-10-14 14:34:54,746 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 119
+2019-10-14 14:34:54,849 publicTool.py DEBUG [line:206] 当前页面的标题为: 身份证验证
+2019-10-14 14:34:55,143 publicTool.py DEBUG [line:122] wait_loading as True, loading存在
+2019-10-14 14:34:56,463 publicTool.py DEBUG [line:122] wait_loading as True, loading存在
+2019-10-14 14:34:57,825 publicTool.py DEBUG [line:122] wait_loading as True, loading存在
+2019-10-14 14:34:59,120 publicTool.py DEBUG [line:122] wait_loading as True, loading存在
+2019-10-14 14:35:00,527 publicTool.py DEBUG [line:203] 调用此方法的是: test_uploadidcard
+2019-10-14 14:35:00,527 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 41
+2019-10-14 14:35:00,614 publicTool.py DEBUG [line:206] 当前页面的标题为: 身份证验证
+2019-10-14 14:35:02,061 GlobalMap.py DEBUG [line:64] environment:aos-uat
+2019-10-14 14:35:02,967 publicTool.py DEBUG [line:42] 调用此方法的是: test_uploadidcard
+2019-10-14 14:35:02,967 publicTool.py DEBUG [line:46] 进入下一步循环
+2019-10-14 14:35:03,252 publicTool.py DEBUG [line:52] '下一步'按钮高亮
+2019-10-14 14:35:07,878 publicTool.py DEBUG [line:109] 提示框的标题是: 请确认您的身份证地址
+2019-10-14 14:35:08,034 publicTool.py DEBUG [line:110] 提示框的标题是: 河北省保定市北市区五六东路186号
+2019-10-14 14:35:11,294 publicTool.py DEBUG [line:203] 调用此方法的是: test_uploadidcard
+2019-10-14 14:35:11,295 publicTool.py DEBUG [line:204] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 66
+2019-10-14 14:35:11,311 publicTool.py DEBUG [line:206] 当前页面的标题为: 银行卡信息
+2019-10-14 16:26:40,244 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-14 16:26:40,244 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-14 16:26:40,245 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-14 16:26:40,245 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 16:26:46,405 GlobalMap.py DEBUG [line:34] xml_report_path:D:\Test\airtest-APP\report\xml_2019-10-14-16-26-39
+2019-10-14 16:26:46,405 GlobalMap.py DEBUG [line:34] html_report_path:D:\Test\airtest-APP\report\html_2019-10-14-16-26-39
+2019-10-14 16:26:46,407 GlobalMap.py DEBUG [line:64] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 16:26:46,407 mongoTool.py DEBUG [line:23] 开始连接数据库: mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 16:26:47,232 mongoTool.py DEBUG [line:26] 数据库连接成功
+2019-10-14 16:26:47,374 GlobalMap.py DEBUG [line:34] appcationNumber:app191
+2019-10-14 16:26:47,374 GlobalMap.py DEBUG [line:64] environment:aos-uat
+2019-10-14 16:26:47,374 GlobalMap.py DEBUG [line:64] appcationNumber:app191
+2019-10-14 16:26:47,374 GlobalMap.py DEBUG [line:64] environment:aos-uat
+2019-10-14 17:29:53,266 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-14 17:29:53,266 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-14 17:29:53,266 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-14 17:29:53,266 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 17:30:00,660 GlobalMap.py DEBUG [line:34] xml_report_path:D:\Test\airtest-APP\report\xml_2019-10-14-17-29-52
+2019-10-14 17:30:00,660 GlobalMap.py DEBUG [line:34] html_report_path:D:\Test\airtest-APP\report\html_2019-10-14-17-29-52
+2019-10-14 17:30:34,122 GlobalMap.py DEBUG [line:64] xml_report_path:D:\Test\airtest-APP\report\xml_2019-10-14-17-29-52
+2019-10-14 17:30:34,122 GlobalMap.py DEBUG [line:64] html_report_path:D:\Test\airtest-APP\report\html_2019-10-14-17-29-52
+2019-10-14 17:34:01,027 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-14 17:34:01,027 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-14 17:34:01,027 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-14 17:34:01,027 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 17:34:08,983 GlobalMap.py DEBUG [line:34] xml_report_path:D:\Test\airtest-APP\report\xml_2019-10-14-17-34-00
+2019-10-14 17:34:08,984 GlobalMap.py DEBUG [line:34] html_report_path:D:\Test\airtest-APP\report\html_2019-10-14-17-34-00
+2019-10-14 17:34:23,603 GlobalMap.py DEBUG [line:64] xml_report_path:D:\Test\airtest-APP\report\xml_2019-10-14-17-34-00
+2019-10-14 17:34:23,603 GlobalMap.py DEBUG [line:64] html_report_path:D:\Test\airtest-APP\report\html_2019-10-14-17-34-00
+2019-10-14 17:34:37,611 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-14 17:34:37,611 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-14 17:34:37,611 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-14 17:34:37,611 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 17:34:43,463 GlobalMap.py DEBUG [line:34] xml_report_path:D:\Test\airtest-APP\report\xml_2019-10-14-17-34-37
+2019-10-14 17:34:43,463 GlobalMap.py DEBUG [line:34] html_report_path:D:\Test\airtest-APP\report\html_2019-10-14-17-34-37
+2019-10-14 17:34:52,734 GlobalMap.py DEBUG [line:64] xml_report_path:D:\Test\airtest-APP\report\xml_2019-10-14-17-34-37
+2019-10-14 17:34:52,734 GlobalMap.py DEBUG [line:64] html_report_path:D:\Test\airtest-APP\report\html_2019-10-14-17-34-37
+2019-10-14 17:36:10,441 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-14 17:36:10,441 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-14 17:36:10,441 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-14 17:36:10,441 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 17:36:16,264 GlobalMap.py DEBUG [line:34] xml_report_path:D:\Test\airtest-APP\report\xml_2019-10-14-17-36-09
+2019-10-14 17:36:16,264 GlobalMap.py DEBUG [line:34] html_report_path:D:\Test\airtest-APP\report\html_2019-10-14-17-36-09
+2019-10-14 17:36:26,881 publicTool.py DEBUG [line:203] Routetitle 不存在
+2019-10-14 17:36:27,162 publicTool.py DEBUG [line:203] Routetitle 不存在
+2019-10-14 17:36:27,277 publicTool.py DEBUG [line:203] Routetitle 不存在
+2019-10-14 17:36:27,452 publicTool.py DEBUG [line:203] Routetitle 不存在
+2019-10-14 17:36:27,606 publicTool.py DEBUG [line:203] Routetitle 不存在
+2019-10-14 17:36:28,222 publicTool.py DEBUG [line:206] 调用此方法的是: wait_loading
+2019-10-14 17:36:28,222 publicTool.py DEBUG [line:207] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 122
+2019-10-14 17:36:28,316 publicTool.py DEBUG [line:209] 当前页面的标题为: 住址信息
+2019-10-14 17:36:28,755 publicTool.py DEBUG [line:125] wait_loading as True, loading存在
+2019-10-14 17:36:30,164 publicTool.py DEBUG [line:42] 调用此方法的是: test_sendAddressProof
+2019-10-14 17:36:32,164 publicTool.py DEBUG [line:206] 调用此方法的是: wait_loading
+2019-10-14 17:36:32,165 publicTool.py DEBUG [line:207] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 122
+2019-10-14 17:36:32,186 publicTool.py DEBUG [line:209] 当前页面的标题为: 住址信息
+2019-10-14 17:36:32,867 publicTool.py DEBUG [line:112] 提示框的标题是: 请确认您的住址
+2019-10-14 17:36:32,912 publicTool.py DEBUG [line:113] 提示框的标题是: 深圳桑达科技大厦
+2019-10-14 17:36:33,195 GlobalMap.py DEBUG [line:64] xml_report_path:D:\Test\airtest-APP\report\xml_2019-10-14-17-36-09
+2019-10-14 17:36:33,195 GlobalMap.py DEBUG [line:64] html_report_path:D:\Test\airtest-APP\report\html_2019-10-14-17-36-09
+2019-10-14 17:38:47,295 GlobalMap.py DEBUG [line:34] environment:aos-uat
+2019-10-14 17:38:47,295 GlobalMap.py DEBUG [line:43] isbullion:False
+2019-10-14 17:38:47,295 GlobalMap.py DEBUG [line:43] isLeveraged:False
+2019-10-14 17:38:47,295 GlobalMap.py DEBUG [line:34] mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+2019-10-14 17:38:53,317 GlobalMap.py DEBUG [line:34] xml_report_path:D:\Test\airtest-APP\report\xml_2019-10-14-17-38-46
+2019-10-14 17:38:53,317 GlobalMap.py DEBUG [line:34] html_report_path:D:\Test\airtest-APP\report\html_2019-10-14-17-38-46
+2019-10-14 17:39:03,415 publicTool.py DEBUG [line:203] Routetitle 不存在
+2019-10-14 17:39:03,574 publicTool.py DEBUG [line:203] Routetitle 不存在
+2019-10-14 17:39:03,841 publicTool.py DEBUG [line:203] Routetitle 不存在
+2019-10-14 17:39:04,978 publicTool.py DEBUG [line:206] 调用此方法的是: wait_loading
+2019-10-14 17:39:04,978 publicTool.py DEBUG [line:207] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 122
+2019-10-14 17:39:05,069 publicTool.py DEBUG [line:209] 当前页面的标题为: 住址信息
+2019-10-14 17:39:06,143 publicTool.py DEBUG [line:42] 调用此方法的是: test_sendAddressProof
+2019-10-14 17:39:08,151 publicTool.py DEBUG [line:206] 调用此方法的是: wait_loading
+2019-10-14 17:39:08,151 publicTool.py DEBUG [line:207] 调用此方法的模块为: D:\Test\airtest-APP\ElementPage\publicTool.py, 行数为: 122
+2019-10-14 17:39:08,169 publicTool.py DEBUG [line:209] 当前页面的标题为: 住址信息
+2019-10-14 17:39:08,924 publicTool.py DEBUG [line:112] 提示框的标题是: 请确认您的住址
+2019-10-14 17:39:08,961 publicTool.py DEBUG [line:113] 提示框的标题是: 深圳桑达科技大厦
+2019-10-14 17:39:11,012 GlobalMap.py DEBUG [line:64] xml_report_path:D:\Test\airtest-APP\report\xml_2019-10-14-17-38-46
+2019-10-14 17:39:11,012 GlobalMap.py DEBUG [line:64] html_report_path:D:\Test\airtest-APP\report\html_2019-10-14-17-38-46
