@@ -1,0 +1,11 @@
+[ {
+  "uid" : "7a507ed867c026dd",
+  "name" : "test_sendAddressProof",
+  "time" : {
+    "start" : 1571045400662,
+    "stop" : 1571045433948,
+    "duration" : 33286
+  },
+  "status" : "broken",
+  "severity" : "normal"
+} ]

@@ -1,0 +1,22 @@
+{
+  "6b7ff461d248525c232af21ba079ce2e" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 1,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "7a507ed867c026dd",
+      "status" : "broken",
+      "statusDetails" : "hrpc.exceptions.TransportDisconnected: Expecting value: line 1 column 1 (char 0)",
+      "time" : {
+        "start" : 1571045400662,
+        "stop" : 1571045433948,
+        "duration" : 33286
+      }
+    } ]
+  }
+}

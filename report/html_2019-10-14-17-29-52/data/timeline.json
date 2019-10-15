@@ -1,0 +1,26 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "DT003-SZ01-NEWT",
+    "children" : [ {
+      "name" : "17312-MainThread",
+      "children" : [ {
+        "name" : "test_sendAddressProof",
+        "uid" : "7a507ed867c026dd",
+        "parentUid" : "8fd14d49c935f5ec5e2433208b6a1356",
+        "status" : "broken",
+        "time" : {
+          "start" : 1571045400662,
+          "stop" : 1571045433948,
+          "duration" : 33286
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "8fd14d49c935f5ec5e2433208b6a1356"
+    } ],
+    "uid" : "0d89c9efdc63ba6e395250376cc33323"
+  } ]
+}

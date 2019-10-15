@@ -1,0 +1,129 @@
+DEBUG    Commons.Logging:GlobalMap.py:34 environment:aos-uat
+DEBUG    Commons.Logging:GlobalMap.py:43 isbullion:False
+DEBUG    Commons.Logging:GlobalMap.py:43 isLeveraged:False
+DEBUG    Commons.Logging:GlobalMap.py:34 mongohost:mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 get-state
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 wait-for-device
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell getprop ro.build.version.sdk
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell dumpsys activity top ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell dumpsys package com.netease.nie.yosemite ; echo ---$?---
+INFO     airtest.core.android.yosemite:yosemite.py:38 local version code is 288, installed version code is 288
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell settings get secure default_input_method ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell ime list -a ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell dumpsys package com.netease.open.pocoservice ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell dumpsys package com.netease.open.pocoservice.test ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 forward --no-rebind tcp:19546 tcp:10080
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 forward --no-rebind tcp:18964 tcp:10081
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell ps ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell am force-stop com.netease.open.pocoservice ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell am start -n com.netease.open.pocoservice/.TestActivity ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell am instrument -w -e debug false -e class com.netease.open.pocoservice.InstrumentedTestAsLauncher com.netease.open.pocoservice.test/android.support.test.runner.AndroidJUnitRunner
+DEBUG    Commons.Logging:GlobalMap.py:34 xml_report_path:D:\Test\airtest-APP\report\xml_2019-10-14-17-29-52
+DEBUG    Commons.Logging:GlobalMap.py:34 html_report_path:D:\Test\airtest-APP\report\html_2019-10-14-17-29-52
+INFO     airtest.core.api:cv.py:56 Try finding:
+                                   Template(D:\Test\airtest-APP\testData\\testIMG\\mumuidcardFolder.png)
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell pm path jp.co.cyberagent.stf.rotationwatcher ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell am force-stop com.netease.open.pocoservice ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell export CLASSPATH=/data/app/jp.co.cyberagent.stf.rotationwatcher-1/base.apk;exec app_process /system/bin jp.co.cyberagent.stf.rotationwatcher.RotationWatcher
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell am start -n com.netease.open.pocoservice/.TestActivity ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell ls /data/local/tmp/minicap ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell ls /data/local/tmp/minicap.so ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -v 2>&1
+DEBUG    airtest.core.android.minicap:minicap.py:72 WARNING: linker: /data/local/tmp/minicap has text relocations. This is wasting memory and prevents security hardening. Please fix.
+                                                    
+                                                    version:5
+DEBUG    airtest.core.android.minicap:minicap.py:82 upgrade minicap to lastest version: -1->5
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell rm /data/local/tmp/minicap*
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell getprop ro.product.cpu.abi
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell getprop ro.build.version.preview_sdk
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell getprop ro.build.version.release
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 push D:\Python3.6\lib\site-packages\airtest\core\android\static\stf_libs\x86\minicap /data/local/tmp/minicap
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell chmod 755 /data/local/tmp/minicap ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 push D:\Python3.6\lib\site-packages\airtest\core\android\static\stf_libs\minicap-shared/aosp/libs/android-23/x86/minicap.so /data/local/tmp/minicap.so
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell chmod 755 /data/local/tmp/minicap.so ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell am instrument -w -e debug false -e class com.netease.open.pocoservice.InstrumentedTestAsLauncher com.netease.open.pocoservice.test/android.support.test.runner.AndroidJUnitRunner
+INFO     airtest.core.android.minicap:minicap.py:134 minicap installation finished
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 forward --no-rebind tcp:17254 localabstract:minicap_17254
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell dumpsys display
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell dumpsys SurfaceFlinger ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell getevent -p ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -n 'minicap_17254' -P 1440x810@1440x810/270 -l 2>&1
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'WARNING: linker: /data/local/tmp/minicap has text relocations. This is wasting memory and prevents security hardening. Please fix.'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'PID: 21430'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: Using projection 1440x810@1440x810/3'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:240) Creating SurfaceComposerClient'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:243) Performing SurfaceComposerClient init check'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:250) Creating virtual display'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:256) Creating buffer queue'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:261) Creating CPU consumer'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:265) Creating frame waiter'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:269) Publishing virtual display'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (jni/minicap/JpgEncoder.cpp:64) Allocating 3527172 bytes for JPG encoder'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (/home/lxn3032/minicap_for_ide/jni/minicap/minicap.cpp:473) Server start'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (/home/lxn3032/minicap_for_ide/jni/minicap/minicap.cpp:475) New client connection'
+DEBUG    airtest.core.android.minicap:minicap.py:239 (1, 24, 21430, 1440, 810, 1440, 810, 3, 2)
+DEBUG    airtest.core.android.minicap:minicap.py:245 quirk_flag found, going to resetup
+DEBUG    airtest.core.android.minicap:minicap.py:268 minicap stream ends
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 forward --remove tcp:17254
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 forward --no-rebind tcp:17477 localabstract:minicap_17477
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell dumpsys display
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell dumpsys SurfaceFlinger ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell getevent -p ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -n 'minicap_17477' -P 810x1440@810x1440/0 -l 2>&1
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'WARNING: linker: /data/local/tmp/minicap has text relocations. This is wasting memory and prevents security hardening. Please fix.'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'PID: 21455'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: Using projection 810x1440@810x1440/0'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:240) Creating SurfaceComposerClient'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:243) Performing SurfaceComposerClient init check'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:250) Creating virtual display'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:256) Creating buffer queue'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:261) Creating CPU consumer'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:265) Creating frame waiter'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (external/MY_minicap/src/minicap_23.cpp:269) Publishing virtual display'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (jni/minicap/JpgEncoder.cpp:64) Allocating 3527172 bytes for JPG encoder'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (/home/lxn3032/minicap_for_ide/jni/minicap/minicap.cpp:473) Server start'
+DEBUG    airtest.core.android.minicap:minicap.py:239 (1, 24, 21455, 810, 1440, 810, 1440, 0, 2)
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minicap_server]b'INFO: (/home/lxn3032/minicap_for_ide/jni/minicap/minicap.cpp:475) New client connection'
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell dumpsys display
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell dumpsys SurfaceFlinger ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell getevent -p ; echo ---$?---
+DEBUG    airtest.core.api:cv.py:170 try match with SURFMatching
+DEBUG    airtest.core.api:cv.py:177 'Not enough feature points in input images !'
+DEBUG    airtest.core.api:cv.py:170 try match with TemplateMatching
+DEBUG    airtest.aircv.template_matching:template_matching.py:95 [Template] threshold=0.7, result={'result': (267, 1183), 'rectangle': ((233, 1169), (233, 1197), (301, 1197), (301, 1169)), 'confidence': 0.9995158314704895}
+DEBUG    airtest.aircv.template_matching:template_matching.py:26 find_best_result() run time is 0.05 s.
+DEBUG    airtest.core.api:cv.py:140 match result: {'result': (267, 1183), 'rectangle': ((233, 1169), (233, 1197), (301, 1197), (301, 1169)), 'confidence': 0.9995158314704895}
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell getprop ro.product.cpu.abi
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell getprop ro.build.version.sdk
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell ls /data/local/tmp/minitouch ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell ls -l /data/local/tmp/minitouch ; echo ---$?---
+DEBUG    airtest.core.android.minitouch:minitouch.py:95 install_minitouch skipped
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell dumpsys display
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell dumpsys SurfaceFlinger ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell getevent -p ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 forward --no-rebind tcp:15044 localabstract:minitouch_15044
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell /data/local/tmp/minitouch -n 'minitouch_15044' 2>&1
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minitouch_server]b'Note: device /dev/input/mouse1 is not supported by libevdev'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minitouch_server]b'Note: device /dev/input/mice is not supported by libevdev'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minitouch_server]b'Note: device /dev/input/mouse0 is not supported by libevdev'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minitouch_server]b'Type B touch device nemuVM Virtual Input (1440x810 with 32 contacts) detected on /dev/input/event5 (score 22111)'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minitouch_server]b'Note: hard-limiting maximum number of contacts to 10'
+DEBUG    airtest.core.android.minitouch:minitouch.py:550 minitouch header:b'v 1\n^ 10 1440 810 0\n$ 21531\n'
+DEBUG    airtest.utils.nbsp:nbsp.py:37 [minitouch_server]b'Connection established'
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell am force-stop com.netease.open.pocoservice ; echo ---$?---
+INFO     airtest.core.api:cv.py:56 Try finding:
+                                   Template(D:\Test\airtest-APP\testData\\testIMG\\mumuidcardimgpositive.png)
+DEBUG    airtest.core.api:cv.py:170 try match with SURFMatching
+DEBUG    airtest.aircv.keypoint_base:keypoint_base.py:24 find_best_result() run time is 0.16 s.
+DEBUG    airtest.core.api:cv.py:170 try match with TemplateMatching
+DEBUG    airtest.aircv.template_matching:template_matching.py:95 [Template] threshold=0.7, result={'result': (405, 1223), 'rectangle': ((246, 1068), (246, 1378), (565, 1378), (565, 1068)), 'confidence': 0.21467910706996918}
+DEBUG    airtest.aircv.template_matching:template_matching.py:26 find_best_result() run time is 0.05 s.
+DEBUG    airtest.core.api:cv.py:170 try match with BRISKMatching
+DEBUG    airtest.aircv.keypoint_base:keypoint_base.py:24 find_best_result() run time is 0.20 s.
+DEBUG    airtest.core.api:cv.py:140 match result: None
+DEBUG    airtest.core.api:cv.py:170 try match with SURFMatching
+DEBUG    airtest.aircv.keypoint_base:keypoint_base.py:96 [SURF] threshold=0.7, result={'result': (403, 943), 'rectangle': [(244, 789), (244, 1097), (562, 1097), (562, 789)], 'confidence': 0.9465650022029877}
+DEBUG    airtest.aircv.keypoint_base:keypoint_base.py:24 find_best_result() run time is 0.28 s.
+DEBUG    airtest.core.api:cv.py:140 match result: {'result': (403, 943), 'rectangle': [(244, 789), (244, 1097), (562, 1097), (562, 789)], 'confidence': 0.9465650022029877}
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell am start -n com.netease.open.pocoservice/.TestActivity ; echo ---$?---
+DEBUG    airtest.core.android.adb:adb.py:142 D:\Python3.6\lib\site-packages\airtest\core\android\static\adb\windows\adb.exe -P 5037 -s 127.0.0.1:7555 shell am instrument -w -e debug false -e class com.netease.open.pocoservice.InstrumentedTestAsLauncher com.netease.open.pocoservice.test/android.support.test.runner.AndroidJUnitRunner
