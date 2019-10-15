@@ -14,7 +14,7 @@ class personalInformationPage(BaseView):
         try:
             assert self.el_chinesename.get_text() == '宜小信'
         except Exception as e:
-            self.log.error("姓名OCR识别有误, 错误的中文姓名为: {}".format(chineseanme))
+            self.log.error("姓名OCR识别有误, 错误的中文姓名为: {}".format(self.el_chinesename.get_text()))
 
         if ismodify:
             # 判断是否修改
@@ -47,3 +47,5 @@ class personalInformationPage(BaseView):
 
         """
         return self.exists(self.el_iDcardAddress).get_text()
+
+

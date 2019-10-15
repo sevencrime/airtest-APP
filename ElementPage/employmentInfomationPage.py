@@ -61,7 +61,7 @@ class employmentInfomationPage(BaseView):
         self.click_select(self.totalAnnualCustomerRevenueHK, price)
 
         # 判断 "请注明资金来源(可多选)" 复选框是否触发
-        if self.disExists_swipe(self.sourcesfunds):
+        if self.sourcesfunds.exists():
             # 触发资金来源， 向上滑动屏幕
             self.poco("android:id/content").swipe([0, -0.4])
             # 遍历需要点击的选项
@@ -69,12 +69,12 @@ class employmentInfomationPage(BaseView):
                 sources = self.disExists_swipe(self.poco(text=fund))
                 # 判断资金来源和资产净值是否同时出现
                 if len(sources) == 1:
-                    sources.click()
+                    self.disExists_swipe(sources).click()
                     if fund == '其他':
                         self.otherfunds.set_text("其他资金来源")
 
                 elif len(sources) > 1:
-                    sources[0].click()
+                    self.disExists_swipe(sources[0]).click()
                     if fund == '其他':
                         self.otherfunds.set_text("其他资金来源")
 
@@ -102,7 +102,7 @@ class employmentInfomationPage(BaseView):
         self.click_select(self.customerNetAssetValueHK, price)
 
         # 判断 "请注明资金来源(可多选)" 复选框是否触发
-        if self.disExists_swipe(self.assetsvalue):
+        if self.assetsvalue.exists():
             # 触发资产净值来源, 向上滑动页面
             self.poco("android:id/content").swipe([0, -0.4])
             # 遍历需要点击的选项
@@ -110,13 +110,13 @@ class employmentInfomationPage(BaseView):
                 sources  = self.disExists_swipe(self.poco(text=asset))
                 # 判断资金来源和资产净值是否同时出现
                 if len(sources) == 1:
-                    sources.click()
+                    self.disExists_swipe(sources).click()
                     if asset == '其他':
                         # import pdb; pdb.set_trace()
                         self.otherassets.set_text("其他资产净值")
 
                 elif len(sources) > 1:
-                    sources[1].click()
+                    self.disExists_swipe(sources[1]).click()
                     if asset == '其他':
                         self.otherassets.set_text("其他资产净值")
                 else:

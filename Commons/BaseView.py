@@ -189,7 +189,7 @@ class BaseView():
             element.invalidate()
             contentEle = self.poco("android:id/content")
             contentEle.invalidate()
-            contentEle.swipe([0, -0.3])
+            contentEle.swipe([0, -0.4])
 
         element.invalidate()
         return element
@@ -204,18 +204,24 @@ class BaseView():
             selectText : 需要选择的, 下拉框的值
         """
 
-        selectElement = self.exists(selectelement)
+        # selectElement = self.exists(selectelement)
+        while not selectelement.exists():
+            selectelement.invalidate()
+            self.log.debug("{}不存在".format(str(selectelement)))
+
 
         # 获取就业情况栏位的值
         try:
-            employtext = selectElement.get_text()
+            employtext = selectelement.get_text()
+            self.log.debug("employtext的值为: {}".format(employtext))
         except:
             employtext = None
+            self.log.debug("employtext的值为: None")
 
         # 判断下拉选项当前值是否与当前选中的一致
         if selectText != employtext:
             # 点击就业情况下拉框
-            selectElement.click()
+            selectelement.click()
             # 下拉框选值:employ
             self.poco(text=selectText).click()
 

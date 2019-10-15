@@ -14,7 +14,7 @@ class otherDataPage(BaseView):
         # 您是否曾经宣告破产或被申请破产
         """
         content = "您是否曾经宣告破产或被申请破产"
-        self.isElementRadio(content, isFlag).click()
+        self.disExists_swipe(self.isElementRadio(content, isFlag)).click()
 
     def click_customerRelatives(self, isFlag):
         """
@@ -25,7 +25,7 @@ class otherDataPage(BaseView):
             content = "您是否艾德证券期货及/或艾德金业的雇员或任何其雇员的亲属"
         else:
             content = "您是否艾德证券期货的雇员或任何其雇员的亲属"
-        self.isElementRadio(content, isFlag).click()
+        self.disExists_swipe(self.isElementRadio(content, isFlag)).click()
 
 
     def click_associatedcustomer(self, isFlag):
@@ -37,7 +37,7 @@ class otherDataPage(BaseView):
         else:
             content = "您是否与任何艾德证券期货客户有关连"
 
-        self.isElementRadio(content, isFlag).click()
+        self.disExists_swipe(self.isElementRadio(content, isFlag)).click()
 
 
     def click_director(self, isFlag):
@@ -45,28 +45,28 @@ class otherDataPage(BaseView):
         # 4.客户是否香港交易所之交易所参与者或证监会之持牌人或注册人之董事、雇员或认可人士?
         """
         content = "您是否香港交易所之交易所参与者或证监会之持牌人或注册人之董事、雇员或认可人士"
-        self.isElementRadio(content, isFlag).click()
+        self.disExists_swipe(self.isElementRadio(content, isFlag)).click()
 
     def click_citizenOfUSA(self, isFlag):
         """
         # 5.客户是否拥有美国公民或美国合法永久居民身份?
         """
         content = "您是否拥有美国公民或美国合法永久居民身份"
-        self.isElementRadio(content, isFlag).click()
+        self.disExists_swipe(self.isElementRadio(content, isFlag)).click()
 
     def click_americanResident(self, isFlag):
         """
         # 6.就税务而言，您是否美国居民?
         """
         content = "就税务而言，您是否是美国居民"
-        self.isElementRadio(content, isFlag).click()
+        self.disExists_swipe(self.isElementRadio(content, isFlag)).click()
 
     def click_PEP_People(self, isFlag):
         """
         # 7.客户是否香港法律定义下的“政治公众人物（PEP）”或与政治公众人物有密切联系？
         """
         content = "您是否香港法律定义下的“政治公众人物（PEP）”或与政治公众人物有密切联系"
-        self.isElementRadio(content, isFlag).click()
+        self.disExists_swipe(self.isElementRadio(content, isFlag)).click()
 
     def click_investmentTarget(self, investments):
         """

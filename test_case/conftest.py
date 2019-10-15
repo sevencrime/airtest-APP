@@ -11,16 +11,21 @@ from Commons.mongoTool import mongoTool
 from ElementPage.publicTool import publicTool
 
 
+gm = GlobalMap()
+gm._init()
+log = Logs()
+
 @pytest.fixture(scope="class")
 def query_initialData():
     """
-    # 获取就业界面: 全年总收入和资产净值的初始值
+    # 查询数据库获取初始值
 
     textMatches: 模糊匹配
     """
-    gm = GlobalMap()
-    gm._init()
-    log = Logs()
+    # gm = GlobalMap()
+    # log = Logs()
+    global gm
+
     mongo = mongoTool(gm.get_value("mongohost"))
 
     totalAnnuallist = []  # 存放全年总收入的初始值
@@ -100,10 +105,17 @@ def reloadRoute(request, poco):
     # 退出重新加载页面, 清除页面前端缓存
 
     """
+
+    global gm
+
     routetitle = request.param
     pubTool = publicTool(poco)
     # 点击退出按钮后, 再次进入开户表单
     pubTool.closeform()
+    pubTool.wait_loading()
+
+    # 获取标题
+    gm.set_value(Routetitle=pubTool.get_Routetitle())
 
     # 判断当前标题, 如不是操作界面, 则点击返回按钮
     if routetitle != pubTool.get_Routetitle():
@@ -113,8 +125,7 @@ def reloadRoute(request, poco):
 
 @pytest.fixture(scope="session", autouse=True)
 def config():
-    gm = GlobalMap()
-    gm._init()
+    global gm
     gm.set_value(environment="aos-uat")     # 记录数据库
     gm.set_bool(isbullion=False)        # 记录黄金账户是否开启
     gm.set_bool(isLeveraged=False)      # 记录外汇账户是否开启
@@ -148,5 +159,3 @@ def poco():
     # simple_report(__file__)
     # os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
     #     xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
-
-
