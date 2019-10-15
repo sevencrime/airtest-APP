@@ -47,7 +47,3 @@ class personalInformationPage(BaseView):
 
         """
         return self.exists(self.el_iDcardAddress).get_text()
-
-
-    def click_isAddress(self):
-         self.el_isAddress.click()
