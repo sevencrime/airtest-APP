@@ -198,6 +198,21 @@ class publicTool(BaseView):
 
         self.gm.set_value(appcationNumber=appcationNumberatext[5:])
 
+    # 检验是否全是中文字符
+    def is_all_chinese(self, strs):
+        for _char in strs:
+            if not '\u4e00' <= _char <= '\u9fa5':
+                return False
+        return True
+
+
+    # 检验是否含有中文字符
+    def is_contains_chinese(self, strs):
+        for _char in strs:
+            if '\u4e00' <= _char <= '\u9fa5':
+                return True
+        return False
+
 
     def get_Routetitle(self):
         """
@@ -211,6 +226,7 @@ class publicTool(BaseView):
                 地址:
                 https://www.zybuluo.com/natsumi/note/470226
         """
+
         self.Routetitle.invalidate()
 
         while not self.Routetitle.exists():
@@ -219,13 +235,13 @@ class publicTool(BaseView):
 
         self.log.debug("调用此方法的是: {}".format(traceback.extract_stack()[-2][2]))
         self.log.debug("调用此方法的模块为: {}, 行数为: {}".format(sys._getframe().f_code.co_filename , sys._getframe().f_back.f_lineno))
+
         try:
             self.log.debug("当前页面的标题为: {}".format(self.Routetitle.get_text(),))
         except PocoNoSuchNodeException:
             self.log.debug("首页title获取不到")
 
         return self.Routetitle.get_text()
-
 
 
     def rmdir5(self):

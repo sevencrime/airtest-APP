@@ -24,7 +24,6 @@ def query_initialData():
     """
     # gm = GlobalMap()
     # log = Logs()
-    global gm
 
     mongo = mongoTool(gm.get_value("mongohost"))
 
@@ -106,16 +105,15 @@ def reloadRoute(request, poco):
 
     """
 
-    global gm
-
     routetitle = request.param
     pubTool = publicTool(poco)
     # 点击退出按钮后, 再次进入开户表单
     pubTool.closeform()
     pubTool.wait_loading()
-
+    title = pubTool.get_Routetitle()
     # 获取标题
-    gm.set_value(Routetitle=pubTool.get_Routetitle())
+    gm.set_value(Routetitle = title)
+    log.debug("当前的页面标题为: {}".format(title))
 
     # 判断当前标题, 如不是操作界面, 则点击返回按钮
     if routetitle != pubTool.get_Routetitle():
@@ -125,7 +123,6 @@ def reloadRoute(request, poco):
 
 @pytest.fixture(scope="session", autouse=True)
 def config():
-    global gm
     gm.set_value(environment="aos-uat")     # 记录数据库
     gm.set_bool(isbullion=False)        # 记录黄金账户是否开启
     gm.set_bool(isLeveraged=False)      # 记录外汇账户是否开启

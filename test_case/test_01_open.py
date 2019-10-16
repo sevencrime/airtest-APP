@@ -4,9 +4,10 @@ import datetime
 
 import allure
 import pytest
+from Commons.GlobalMap import GlobalMap
+from ElementPage.publicTool import publicTool
 from airtest.core.api import *
 
-from ElementPage.publicTool import publicTool
 from ElementPage.startUpFrom import startUpFrom
 
 
@@ -14,10 +15,10 @@ from ElementPage.startUpFrom import startUpFrom
 class Test_open():
 
     @allure.story("进入开户界面")
-    @pytest.mark.run(order=1)
     def test_Openning(self, poco):
         pubTool = publicTool(poco)
         startupfrom = startUpFrom(poco)
+
         with allure.step("启动APP"):
             startupfrom.Start_APP()
 
@@ -34,8 +35,13 @@ class Test_open():
         #     if not baropen:
         #         allure.attach("AppSetpLOG", "没有底部栏, 非行情APP")
 
+        with allure.step("判断是否登录"):
+            if pubTool.get_Routetitle() in ['艾德证券期货', '注册', '登录', '个人中心']:
+                pytest.mark.skip(reason="已登录, 跳过下面步骤")
+
         with allure.step("点击便捷开户"):
-            startupfrom.click_easyOpenning()
+            if pubTool.get_Routetitle() == "艾德证券期货":
+                startupfrom.click_easyOpenning()
 
         with allure.step("进入注册界面--点击去登陆"):
             startupfrom.click_goLogin()
@@ -48,9 +54,10 @@ class Test_open():
 
         with allure.step("登陆界面--点击登陆按钮"):
             startupfrom.click_Loginbtn()
-            # pubTool.get_Routetitle()
-        # with allure.step("登录后再次点击便捷开户"):
-        #     startupfrom.click_easyOpenning()
+
+        with allure.step("登录后再次点击便捷开户"):
+            if pubTool.get_Routetitle() == "艾德证券期货":
+                startupfrom.click_easyOpenning()
 
 
 

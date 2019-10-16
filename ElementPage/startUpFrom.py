@@ -13,12 +13,13 @@ class startUpFrom(BaseView):
     def Start_APP(self):
         # 获取当前界面的包名和Activity
         CurrentFocus = os.popen("adb shell dumpsys window | findstr mCurrentFocus").read()
-        currentActivity = re.findall(r"u0\s(.+)}", CurrentFocus)
+        currentActivity = ''.join(re.findall(r"u0\s(.+)}", CurrentFocus))
 
+        # start_app('io.newtype.eddid.app', 'io.newtype.eddid.app.MainActivity')
         if currentActivity.find("io.newtype.eddid.app") == -1:
-            curlist = currentActivity.split('/')
-            start_app(curlist[0], curlist[1])
-
+            # curlist = currentActivity.split('/')
+            # start_app(curlist[0], curlist[1])
+            os.popen("adb shell am start -n io.newtype.eddid.app/io.newtype.eddid.app.MainActivity").read()
 
         return currentActivity
 
@@ -58,6 +59,7 @@ class startUpFrom(BaseView):
         注册界面--去登陆
 
         """
+
         self.goLogin.click()
 
     def send_phonenumber(self):
@@ -72,7 +74,6 @@ class startUpFrom(BaseView):
         登陆界面--输入密码
 
         """
-        # import pdb;pdb.set_trace()
         # self.poco(text="请输入密码").set_text("abcd1234")
         self.poco("android.widget.ScrollView").child("android.view.ViewGroup").child("android.widget.EditText")[1].set_text("abcd1234")
 

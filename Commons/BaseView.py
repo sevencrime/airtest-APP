@@ -19,7 +19,6 @@ class BaseView():
         rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
 
         
-        
         # 公用
         self.nextStepbtn = self.poco(text="下一步").parent()
         self.boxCancel = self.poco(text="取消")
