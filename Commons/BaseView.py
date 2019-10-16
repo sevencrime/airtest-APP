@@ -25,9 +25,11 @@ class BaseView():
         self.boxconfirm = self.poco(text="确定")
         self.gallery = self.poco(text="相册选取")
         self.loading = self.poco("android.widget.ProgressBar")
-        self.Routetitle = self.poco("android.widget.FrameLayout").offspring("android.widget.TextView")
-        self.permission_allow_button = self.poco("com.android.packageinstaller:id/permission_allow_button", text="始终允许")
-        self.permission_title = self.poco("com.android.packageinstaller:id/permission_title")
+        self.Routetitle = self.poco("android.widget.FrameLayout").offspring("android.widget.TextView")  # 页面标题
+        self.permission_allow_button = self.poco("com.android.packageinstaller:id/permission_allow_button", text="始终允许")    # 权限弹框: 允许
+        self.permission_title = self.poco("com.android.packageinstaller:id/permission_title")   # 权限弹框标题
+        # APP弹框
+        self.box_alert = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[-1].offspring("android.widget.TextView")
 
         self.closeform_img = rootPath + r'testData\testIMG\closeform.png'
         self.backform_img = rootPath + r'testData\testIMG\backform.png'
@@ -52,8 +54,8 @@ class BaseView():
         self.mumuidcardimgnegative_img = rootPath + r'testData\\testIMG\\mumuidcardimgnegative.png'
         self.mumuidcardimgpositive_img = rootPath + r'testData\\testIMG\\mumuidcardimgpositive.png'
 
-
         # 个人信息界面
+        self.el_title = self.poco(text="称呼").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.el_chinesename = self.poco(text="中文姓名").sibling("android.widget.EditText")
         self.el_lastname = self.poco(text="姓氏").sibling("android.widget.EditText")
         self.el_firstname = self.poco(text="名字").sibling("android.widget.EditText")
@@ -61,8 +63,11 @@ class BaseView():
         self.el_reEmail = self.poco(text="再次输入电邮").sibling("android.widget.EditText")
         self.el_phone = self.poco(text="电话号码(用于通讯)").sibling("android.widget.EditText")
         self.el_idNumber = self.poco(text="证件号码").sibling("android.widget.EditText")
+        self.el_birthday = self.poco(text="出生日期").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
+        self.el_country = self.poco(text="国籍").sibling("android.widget.EditText")
+        self.el_countryIssue = self.poco(text="签发机关").sibling("android.widget.EditText")
+        self.el_validityPeriod = self.poco(text="有效期至").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.el_iDcardAddress = self.poco(text="身份证地址(*请确认地址无误，如有误请手动修改)").sibling("android.widget.EditText")
-        self.el_FalseiDcardAddress = self.poco(text="如住址和身份证地址不一致(请勾选)").sibling("android.widget.ImageView")
         self.el_isAddress = self.poco(text="如住址和身份证地址不一致(请勾选)").sibling("android.widget.ImageView")
 
         # 地址证明
@@ -97,7 +102,6 @@ class BaseView():
         self.otherfunds = self.poco(text="请输入其他资金来源").sibling("android.widget.EditText")
         self.otherassets = self.poco(text="请输入其他资产净值来源").sibling("android.widget.EditText")
         self.otherassetsvalue = self.poco(text="请输入其他资产净值来源").sibling("android.widget.EditText")
-
 
         # 选择交易信息
         self.fundsSourcetext = self.poco(text="交易的资金/财富来源(选择所有适用)")

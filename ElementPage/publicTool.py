@@ -102,16 +102,17 @@ class publicTool(BaseView):
         #             break
 
 
-        boxalert = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[-1].offspring("android.widget.TextView")
+        # box_alert = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[-1].offspring("android.widget.TextView")
+        box_alert = self.box_alert
 
-        while not boxalert.exists():
-            boxalert.invalidate()
+        while not box_alert.exists():
+            box_alert.invalidate()
             pass
 
-        self.log.debug("提示框的标题是: {}".format(boxalert[0].get_text()))
-        self.log.debug("提示框的标题是: {}".format(boxalert[1].get_text()))
+        self.log.debug("提示框的标题是: {}".format(box_alert[0].get_text()))
+        self.log.debug("提示框的标题是: {}".format(box_alert[1].get_text()))
 
-        return boxalert[0].get_text(), boxalert[1].get_text()
+        return box_alert[0].get_text(), box_alert[1].get_text()
 
 
 

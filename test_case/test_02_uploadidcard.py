@@ -53,8 +53,8 @@ class Test_uploadidcard():
             with allure.step("点击下一步"):
                 pubTool.click_NextStepbtn()
 
+            import pdb; pdb.set_trace()
             with allure.step("校验地址弹框标题和内容"):
-                # import pdb; pdb.set_trace()
                 boxtitle, boxcontent = pubTool.get_boxtitle()
                 assert_equal(boxtitle, "请确认您的身份证地址", "确认地址弹框标题有误")
                 assert_equal(boxcontent, perinfo.get_address(), "弹框内容与填写内容不符")
