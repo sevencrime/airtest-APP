@@ -15,7 +15,7 @@ class personalInformationPage(BaseView):
         try:
             assert self.el_title.get_text() == '小姐'
         except Exception as e:
-            self.log.error("称呼OCR识别有误, 错误的中文姓名为: {}".format(self.el_title.get_text()))
+            self.log.error("称呼OCR识别有误, 错误的称谓为: {}".format(self.el_title.get_text()))
 
         if ismodify:
             # 判断是否修改
@@ -47,7 +47,7 @@ class personalInformationPage(BaseView):
         try:
             assert self.el_lastname.get_text() == 'Yi'
         except Exception as e:
-            self.log.error("姓氏OCR识别有误, 错误的中文姓名为: {}".format(self.el_lastname.get_text()))
+            self.log.error("姓氏OCR识别有误, 错误的姓为: {}".format(self.el_lastname.get_text()))
 
         if ismodify:
             # 判断是否修改
@@ -62,7 +62,7 @@ class personalInformationPage(BaseView):
         try:
             assert self.el_firstname.get_text() == 'Xiaoxin'
         except Exception as e:
-            self.log.error("名字OCR识别有误, 错误的中文姓名为: {}".format(self.el_firstname.get_text()))
+            self.log.error("名字OCR识别有误, 错误的名为: {}".format(self.el_firstname.get_text()))
 
         if ismodify:
             # 判断是否修改
@@ -77,7 +77,7 @@ class personalInformationPage(BaseView):
         try:
             assert self.el_idNumber.get_text() == '132261198811160681'
         except Exception as e:
-            self.log.error("身份证OCR识别有误, 错误的中文姓名为: {}".format(self.el_idNumber.get_text()))
+            self.log.error("身份证OCR识别有误, 错误的身份证为: {}".format(self.el_idNumber.get_text()))
 
         if ismodify:
             # 判断是否修改
@@ -99,7 +99,7 @@ class personalInformationPage(BaseView):
         try:
             assert self.el_birthday.get_text() == '1988.11.16'
         except Exception as e:
-            self.log.error("出生日期OCR识别有误, 错误的中文姓名为: {}".format(self.el_birthday.get_text()))
+            self.log.error("出生日期OCR识别有误, 错误的出生日期为: {}".format(self.el_birthday.get_text()))
 
         if ismodify:
             self.datePickerView(self.el_birthday, datestr=datestr)
@@ -113,7 +113,7 @@ class personalInformationPage(BaseView):
         try:
             assert self.el_country.get_text() == '中华人民共和国'
         except Exception as e:
-            self.log.error("国籍OCR识别有误, 错误的中文姓名为: {}".format(self.el_country.get_text()))
+            self.log.error("国籍OCR识别有误, 错误的国籍为: {}".format(self.el_country.get_text()))
 
         if ismodify:
             # 判断是否修改
@@ -128,7 +128,7 @@ class personalInformationPage(BaseView):
         try:
             assert self.el_countryIssue.get_text() == '东台市公安局'
         except Exception as e:
-            self.log.error("签发机关OCR识别有误, 错误的中文姓名为: {}".format(self.el_countryIssue.get_text()))
+            self.log.error("签发机关OCR识别有误, 错误的签发机关为: {}".format(self.el_countryIssue.get_text()))
 
         if ismodify:
             # 判断是否修改
@@ -143,7 +143,7 @@ class personalInformationPage(BaseView):
         try:
             assert self.el_validityPeriod.get_text() == '东台市公安局'
         except Exception as e:
-            self.log.error("签发机关OCR识别有误, 错误的中文姓名为: {}".format(self.el_validityPeriod.get_text()))
+            self.log.error("有效期OCR识别有误, 错误的有效期为: {}".format(self.el_validityPeriod.get_text()))
 
         if ismodify:
             # 判断是否修改
@@ -193,10 +193,21 @@ class personalInformationPage(BaseView):
         return self.disExists_swipe(self.el_iDcardAddress).get_text()
 
 
-    def click_isAddress(self):
+    def click_isAddress(self, isFlag):
         '''
         勾选地址证明
         '''
 
-        self.disExists_swipe(self.el_isAddress).click()
+        # 判断是否勾选, sameAddress
+
+        if not self.gm.get_value("sameAdderss") and isFlag:
+            self.disExists_swipe(self.el_isAddress).click()
+            self.gm.set_bool(sameAdderss=True)
+
+        elif self.gm.get_value("sameAdderss") and not isFlag:
+            self.disExists_swipe(self.el_isAddress).click()
+            self.gm.set_bool(sameAdderss=False)
+
+
+
 

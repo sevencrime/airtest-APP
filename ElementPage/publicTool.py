@@ -124,6 +124,7 @@ class publicTool(BaseView):
         while self.loading.exists():
             self.log.debug("wait_loading as True, loading存在")
             self.loading.invalidate()
+            self.poco("android:id/content").invalidate()
             time.sleep(1)
 
 

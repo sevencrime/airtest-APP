@@ -87,10 +87,10 @@ def query_initialData():
     if result['isLearnAboutProducts'] == 'Y' and result['isIndustryExperience'] == 'Y' and result['isStocks'] == 'Y' and result['isApplyProduct'] == 'Y' and result['knowRisk'] == 'Y':
         gm.set_bool(derivative=True)
 
+    gm.set_bool(sameAdderss = result['sameAddress'])    # sameAdderss: 住址与身份证不一致, ture为勾选
     gm.set_List('istotalAnnual', totalAnnuallist)
     gm.set_List('customerNetAssetValue', customerNetAssetValuelist)
     gm.set_List('fundsSource', fundsSourcelist)
-
 
     log.debug("istotalAnnual的值为:" + "".join(gm.get_value("istotalAnnual")))
     log.debug("customerNetAssetValue的值为:" +
