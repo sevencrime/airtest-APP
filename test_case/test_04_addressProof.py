@@ -39,6 +39,7 @@ class Test_addressProof():
 
         with allure.step("确认地址弹框--点击确定"):
             pubTool.click_boxconfirm()
+            assert_equal(pubTool.get_Routetitle(), "人脸识别", "页面没有跳转")
 
 
 if __name__ == "__main__":

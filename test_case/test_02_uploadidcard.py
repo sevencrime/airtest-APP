@@ -53,7 +53,6 @@ class Test_uploadidcard():
             with allure.step("点击下一步"):
                 pubTool.click_NextStepbtn()
 
-            import pdb; pdb.set_trace()
             with allure.step("校验地址弹框标题和内容"):
                 boxtitle, boxcontent = pubTool.get_boxtitle()
                 assert_equal(boxtitle, "请确认您的身份证地址", "确认地址弹框标题有误")
@@ -65,14 +64,26 @@ class Test_uploadidcard():
             with allure.step("页面跳转到<银行卡信息>界面"):
                 assert_equal(pubTool.get_Routetitle(), "银行卡信息", msg="页面没有跳转")
 
-
         else:
             with allure.step("点击下一步"):
                 pubTool.click_NextStepbtn()
 
 
+    @allure.story("上传身份证")
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    def test_111(self, poco, reloadRoute):
+        pubTool = publicTool(poco)
+
+        if self.gm.get_value("environment").find("aos") != -1:
+
+            perinfo = personalInformationPage(poco)
+            birthday = perinfo.modify_birthday(True, "2008.12.17")
+            print(birthday)
+
+
+
 
 if __name__ == "__main__":
-    pytest.main(["-s", "--pdb","test_02_uploadidcard.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "--pdb","test_02_uploadidcard.py::Test_uploadidcard::test_111", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     gm = GlobalMap()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()

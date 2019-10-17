@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import datetime
 import os
 
 from Commons.GlobalMap import GlobalMap
@@ -28,8 +29,11 @@ class BaseView():
         self.Routetitle = self.poco("android.widget.FrameLayout").offspring("android.widget.TextView")  # 页面标题
         self.permission_allow_button = self.poco("com.android.packageinstaller:id/permission_allow_button", text="始终允许")    # 权限弹框: 允许
         self.permission_title = self.poco("com.android.packageinstaller:id/permission_title")   # 权限弹框标题
-        # APP弹框
-        self.box_alert = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[-1].offspring("android.widget.TextView")
+        try:
+            # APP弹框
+            self.box_alert = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[-1].offspring("android.widget.TextView")
+        except Exception as e:
+            self.log.debug("box_alert 元素报错, {}".format(e))
 
         self.closeform_img = rootPath + r'testData\testIMG\closeform.png'
         self.backform_img = rootPath + r'testData\testIMG\backform.png'
@@ -180,11 +184,12 @@ class BaseView():
             print(e)
 
 
-    def disExists_swipe(self, element):
+    def disExists_swipe(self, element, orientation=None):
         '''
         元素不在界面上, 滑动界面
         :param element:
-        :return:
+        :param orientation: 滑动的方向, 默认向上滑动
+        :return: element
         '''
 
         while not element.exists():
@@ -192,7 +197,10 @@ class BaseView():
             element.invalidate()
             contentEle = self.poco("android:id/content")
             contentEle.invalidate()
-            contentEle.swipe([0, -0.4])
+            if not orientation == None:
+                contentEle.swipe([0, 0.3])
+            else:
+                contentEle.swipe([0, -0.3])
 
         element.invalidate()
         return element
@@ -229,3 +237,76 @@ class BaseView():
             self.poco(text=selectText).click()
 
             return True
+
+    def datePickerView(self, element, datestr=None):
+        '''
+        操作时间组件
+        :param element:
+        :param datestr: 传入str, '年.月.日'
+        :return:
+        '''
+
+        # 时间转换
+        date_map = {
+            '01' : '一月',
+            '02' : '二月',
+            '03' : '三月',
+            '04' : '四月',
+            '05' : '五月',
+            '06' : '六月',
+            '07' : '七月',
+            '08' : '八月',
+            '09' : '九月',
+            '10' : '十月',
+            '11' : '十一月',
+            '12' : '十二月',
+        }
+
+        nowtime = datetime.datetime.now().strftime('%Y.%m.%d')     #获取当前时间
+        nowtimelist = nowtime.split('.')
+
+        # 点击弹出时间组件
+        element.click()
+
+        # 不用选择日期
+        if datestr == None:
+            # 定位选择的日期, 并点击该日期
+            self.poco("{d} {m} {Y}".format(m=date_map[nowtimelist[1]], Y=nowtimelist[0], d=nowtimelist[2])).click()
+            self.poco("android:id/button1").click()  # 时间组件, 确定按钮
+
+        # 选择日期
+        else:
+            # 切割需要选择的日期
+            datestrlist = datestr.split('.')
+            # 比较两个时间月份
+            if int(nowtimelist[1]) > int(datestrlist[1]):
+                # 点击上个月
+                isdirection = 'last'
+            elif int(nowtimelist[1]) == int(datestrlist[1]):
+                isdirection = ''
+            else:
+                # 下个月
+                isdirection = 'next'
+
+            self.poco("android:id/date_picker_header_year").click()  # 时间组件, 选择年份
+            # 点击, 循环滑动选择年份
+            self.disExists_swipe(self.poco(text= datestrlist[0]), orientation="down").click()
+
+            # 需要点击的日子operating
+            operating = self.poco("{d} {m} {Y}".format(m=date_map[datestrlist[1]], Y=datestrlist[0], d=datestrlist[2]))
+
+            while not operating.exists():
+                if isdirection == 'next':
+                    self.poco("android:id/next").click()
+                elif isdirection == 'last':
+                    self.poco("android:id/prev").click()
+
+                operating.invalidate()
+
+            operating.click()
+            self.poco("android:id/button1").click()
+
+            element.invalidate()
+            assert element.get_text() == datestr, "日期控件时间选择有误"
+
+        return element.get_text()
