@@ -9,7 +9,6 @@ from poco.exceptions import PocoNoSuchNodeException
 
 from Commons.BaseView import BaseView
 from Commons.Logging import Logs
-from ElementPage.startUpFrom import startUpFrom
 import sys
 
 class publicTool(BaseView):
@@ -102,17 +101,24 @@ class publicTool(BaseView):
         #             break
 
 
-        # box_alert = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[-1].offspring("android.widget.TextView")
+        import pdb; pdb.set_trace()
+
+        self.poco("android:id/content").invalidate()
         box_alert = self.box_alert
 
-        while not box_alert.exists():
+        while not len(box_alert) > 1:
+            self.poco("android:id/content").invalidate()
             box_alert.invalidate()
-            pass
 
-        self.log.debug("提示框的标题是: {}".format(box_alert[0].get_text()))
-        self.log.debug("提示框的标题是: {}".format(box_alert[1].get_text()))
+        box_alert_text = box_alert[-1].offspring("android.widget.TextView")
 
-        return box_alert[0].get_text(), box_alert[1].get_text()
+        while not box_alert_text.exists():
+            box_alert_text.invalidate()
+
+        self.log.debug("提示框的标题是: {}".format(box_alert_text[0].get_text()))
+        self.log.debug("提示框的标题是: {}".format(box_alert_text[1].get_text()))
+
+        return box_alert_text[0].get_text(), box_alert_text[1].get_text()
 
 
 

@@ -111,6 +111,9 @@ def reloadRoute(request, poco):
     if poco(text="取消").exists():
         poco(text="取消").click()
 
+    if poco(text="知道了").exists():
+        poco(text="知道了").click()
+
     # 点击退出按钮后, 再次进入开户表单
     pubTool.closeform()
     pubTool.wait_loading()

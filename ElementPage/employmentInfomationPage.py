@@ -36,6 +36,10 @@ class employmentInfomationPage(BaseView):
         return self.el_employ.get_text()
 
     def send_officeAddr(self):
+        '''
+        办公室地址
+        :return:
+        '''
 
         self.el_officeaddr.set_text("深圳市南山区大冲商务中心")
 
@@ -63,7 +67,7 @@ class employmentInfomationPage(BaseView):
         # 判断 "请注明资金来源(可多选)" 复选框是否触发
         if self.sourcesfunds.exists():
             # 触发资金来源， 向上滑动屏幕
-            self.poco("android:id/content").swipe([0, -0.4])
+            # self.poco("android:id/content").swipe([0, -0.4])
             # 遍历需要点击的选项
             for fund in funds:
                 sources = self.disExists_swipe(self.poco(text=fund))
@@ -104,7 +108,7 @@ class employmentInfomationPage(BaseView):
         # 判断 "请注明资金来源(可多选)" 复选框是否触发
         if self.assetsvalue.exists():
             # 触发资产净值来源, 向上滑动页面
-            self.poco("android:id/content").swipe([0, -0.4])
+            # self.poco("android:id/content").swipe([0, -0.4])
             # 遍历需要点击的选项
             for asset in assets:
                 sources  = self.disExists_swipe(self.poco(text=asset))

@@ -31,7 +31,8 @@ class BaseView():
         self.permission_title = self.poco("com.android.packageinstaller:id/permission_title")   # 权限弹框标题
         try:
             # APP弹框
-            self.box_alert = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[-1].offspring("android.widget.TextView")
+            # self.box_alert = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].offspring("android.widget.TextView")
+            self.box_alert = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")
         except Exception as e:
             self.log.debug("box_alert 元素报错, {}".format(e))
 

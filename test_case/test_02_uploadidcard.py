@@ -75,12 +75,11 @@ class Test_uploadidcard():
             perinfo = personalInformationPage(poco)
 
             with allure.step("勾选住址与身份证地址不一致"):
-                import pdb; pdb.set_trace()
-                perinfo.click_isAddress(False)
+                perinfo.click_isAddress(True)
 
             with allure.step("点击下一步"):
                 pubTool.click_NextStepbtn()
-                pubTool.wait_loading()
+                # pubTool.wait_loading()
 
             with allure.step("校验地址弹框标题和内容"):
                 boxtitle, boxcontent = pubTool.get_boxtitle()
@@ -99,6 +98,6 @@ class Test_uploadidcard():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "--pdb","test_02_uploadidcard.py::Test_uploadidcard::test_pick_isaddress", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v","--pdb","test_02_uploadidcard.py::Test_uploadidcard::test_pick_isaddress", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     gm = GlobalMap()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
