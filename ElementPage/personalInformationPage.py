@@ -87,7 +87,7 @@ class personalInformationPage(BaseView):
 
         return idNumber
 
-    def modify_birthday(self, ismodify, datestr):
+    def modify_birthday(self, ismodify, datestr=None):
         '''
         修改 / 获取 出生日期
         :param ismodify: 判断是否修改
@@ -138,16 +138,16 @@ class personalInformationPage(BaseView):
 
         return country
 
-    def modify_validityPeriod(self, ismodify):
+    def modify_validityPeriod(self, ismodify, datestr=None):
         self.disExists_swipe(self.el_validityPeriod)
         try:
-            assert self.el_validityPeriod.get_text() == '东台市公安局'
+            assert self.el_validityPeriod.get_text() == '2023.04.17'
         except Exception as e:
             self.log.error("有效期OCR识别有误, 错误的有效期为: {}".format(self.el_validityPeriod.get_text()))
 
         if ismodify:
             # 判断是否修改
-            self.datePickerView(self.el_validityPeriod)
+            self.datePickerView(self.el_validityPeriod, datestr=datestr)
 
         return self.el_validityPeriod.get_text()
 

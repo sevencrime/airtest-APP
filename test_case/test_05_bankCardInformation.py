@@ -15,7 +15,7 @@ from ElementPage.publicTool import publicTool
 
 @allure.feature("银行卡信息")
 class Test_bankCardInformation():
-    log = Logs("Test_bankCardInformation")
+    log = Logs()
 
     @allure.story("内地银行卡号非空校验")
     def test_bankCardnullvalue(self, poco):

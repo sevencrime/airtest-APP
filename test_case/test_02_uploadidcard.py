@@ -66,7 +66,33 @@ class Test_uploadidcard():
                 pubTool.click_NextStepbtn()
 
 
-    @allure.story("上传身份证")
+    @allure.story("身份证验证-校验年龄18岁")
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    def test_birthdayis18(self, poco, reloadRoute):
+        pubTool = publicTool(poco)
+
+        if self.gm.get_value("environment").find("aos") != -1:
+            perinfo = personalInformationPage(poco)
+
+            with allure.step("选择出生日期, 2008.2.12"):
+                perinfo.modify_birthday(True, "2008.10.12")
+
+            with allure.step("点击下一步"):
+                pubTool.click_NextStepbtn()
+                # pubTool.wait_loading()
+
+            with allure.step("校验地址弹框标题和内容"):
+                boxtitle, boxcontent = pubTool.get_boxtitle()
+                assert_equal(boxtitle, "温馨提示", "确认地址弹框标题有误")
+                assert_equal(boxcontent, "用户年龄需大于18岁", "弹框内容与填写内容不符")
+
+            with allure.step("关闭弹框"):
+                while not poco(text="知道了").exists():
+                    poco(text="知道了").invalidate()
+                poco(text="知道了").click()
+
+
+    @allure.story("身份证验证-勾选住址和身份证地址不一致")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_pick_isaddress(self, poco, reloadRoute):
         pubTool = publicTool(poco)
@@ -98,6 +124,6 @@ class Test_uploadidcard():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v","--pdb","test_02_uploadidcard.py::Test_uploadidcard::test_pick_isaddress", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v","--pdb","test_02_uploadidcard.py::Test_uploadidcard::test_birthdayis18", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     gm = GlobalMap()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
