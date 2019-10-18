@@ -152,7 +152,7 @@ class personalInformationPage(BaseView):
         return self.el_validityPeriod.get_text()
 
 
-    def modify_phone(self, ismodify):
+    def modify_phone(self, ismodify, phone):
         self.disExists_swipe(self.el_phone)
         try:
             assert self.el_phone.get_text() == '15089514626'
@@ -161,7 +161,7 @@ class personalInformationPage(BaseView):
 
         if ismodify:
             # 判断是否修改
-            self.el_phone.set_text("15089514626")
+            self.el_phone.set_text(phone)
             self.el_phone.invalidate()
             phone = self.el_phone.get_text()
 

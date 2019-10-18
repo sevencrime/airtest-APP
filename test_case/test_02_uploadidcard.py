@@ -92,6 +92,140 @@ class Test_uploadidcard():
                 poco(text="知道了").click()
 
 
+    @allure.story("身份证验证-校验身份证是否过期")
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    def test_validityPeriod(self, poco, reloadRoute):
+        pubTool = publicTool(poco)
+
+        if self.gm.get_value("environment").find("aos") != -1:
+            perinfo = personalInformationPage(poco)
+
+            with allure.step("校验身份证是否过期"):
+                perinfo.modify_validityPeriod(True, "2018.10.12")
+
+            with allure.step("点击下一步"):
+                pubTool.click_NextStepbtn()
+                # pubTool.wait_loading()
+
+            with allure.step("校验地址弹框标题和内容"):
+                boxtitle, boxcontent = pubTool.get_boxtitle()
+                assert_equal(boxtitle, "温馨提示", "确认地址弹框标题有误")
+                assert_equal(boxcontent, "您的身份证件已过期，请更换证件后再次申请", "弹框内容与填写内容不符")
+
+            with allure.step("关闭弹框"):
+                while not poco(text="知道了").exists():
+                    poco(text="知道了").invalidate()
+                poco(text="知道了").click()
+
+    @allure.story("身份证验证-邮箱格式不正确")
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    def test_Emailformat(self, poco, reloadRoute):
+        pubTool = publicTool(poco)
+
+        if self.gm.get_value("environment").find("aos") != -1:
+            perinfo = personalInformationPage(poco)
+
+            with allure.step("输入非邮箱格式的email"):
+                perinfo.send_emali("onedi")
+                perinfo.send_reemail("onedi")
+
+            with allure.step("点击下一步"):
+                pubTool.click_NextStepbtn()
+                # pubTool.wait_loading()
+
+            with allure.step("校验地址弹框标题和内容"):
+                boxtitle, boxcontent = pubTool.get_boxtitle()
+                assert_equal(boxtitle, "温馨提示", "确认地址弹框标题有误")
+                assert_equal(boxcontent, "邮件格式不正确", "弹框内容与填写内容不符")
+
+            with allure.step("关闭弹框"):
+                while not poco(text="知道了").exists():
+                    poco(text="知道了").invalidate()
+                poco(text="知道了").click()
+
+    @allure.story("身份证验证-邮箱不一致")
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    def test_disEmail(self, poco, reloadRoute):
+        pubTool = publicTool(poco)
+
+        if self.gm.get_value("environment").find("aos") != -1:
+            perinfo = personalInformationPage(poco)
+
+            with allure.step("两次邮箱不一致"):
+                perinfo.send_emali("onedi@qq.cn")
+                perinfo.send_reemail("onedi@qq.com")
+
+            with allure.step("点击下一步"):
+                pubTool.click_NextStepbtn()
+                # pubTool.wait_loading()
+
+            with allure.step("校验地址弹框标题和内容"):
+                boxtitle, boxcontent = pubTool.get_boxtitle()
+                assert_equal(boxtitle, "温馨提示", "确认地址弹框标题有误")
+                assert_equal(boxcontent, "两次邮箱输入不一致", "弹框内容与填写内容不符")
+
+            with allure.step("关闭弹框"):
+                while not poco(text="知道了").exists():
+                    poco(text="知道了").invalidate()
+                poco(text="知道了").click()
+
+    @allure.story("身份证验证-邮箱已存在")
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    def test_Email_exists(self, poco, reloadRoute):
+        pubTool = publicTool(poco)
+
+        if self.gm.get_value("environment").find("aos") != -1:
+            perinfo = personalInformationPage(poco)
+
+            with allure.step("校验邮箱是否存在"):
+                perinfo.send_emali("5555@qq.com")
+                perinfo.send_reemail("5555@qq.com")
+
+            with allure.step("点击下一步"):
+                pubTool.click_NextStepbtn()
+                # pubTool.wait_loading()
+
+            with allure.step("校验地址弹框标题和内容"):
+                boxtitle, boxcontent = pubTool.get_boxtitle()
+                assert_equal(boxtitle, "温馨提示", "确认地址弹框标题有误")
+                assert_equal(boxcontent, "电邮已存在", "弹框内容与填写内容不符")
+
+            with allure.step("关闭弹框"):
+                while not poco(text="知道了").exists():
+                    poco(text="知道了").invalidate()
+                poco(text="知道了").click()
+
+    @allure.story("身份证验证-电话号码已存在")
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    def test_phone_exists(self, poco, reloadRoute):
+        pubTool = publicTool(poco)
+
+        if self.gm.get_value("environment").find("aos") != -1:
+            perinfo = personalInformationPage(poco)
+
+            with allure.step("输入正常邮箱"):
+                perinfo.send_emali("onedi@qq.com")
+                perinfo.send_reemail("onedi@qq.com")
+
+            with allure.step("输入重复的电话号码"):
+                perinfo.modify_phone(True, "321321")
+
+            with allure.step("点击下一步"):
+                pubTool.click_NextStepbtn()
+                # pubTool.wait_loading()
+
+            with allure.step("校验地址弹框标题和内容"):
+                boxtitle, boxcontent = pubTool.get_boxtitle()
+                assert_equal(boxtitle, "温馨提示", "确认地址弹框标题有误")
+                assert_equal(boxcontent, "电话号码(用于通讯)已存在", "弹框内容与填写内容不符")
+
+            with allure.step("关闭弹框"):
+                while not poco(text="知道了").exists():
+                    poco(text="知道了").invalidate()
+                poco(text="知道了").click()
+
+
+
     @allure.story("身份证验证-勾选住址和身份证地址不一致")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_pick_isaddress(self, poco, reloadRoute):
@@ -124,6 +258,6 @@ class Test_uploadidcard():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v","--pdb","test_02_uploadidcard.py::Test_uploadidcard::test_birthdayis18", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s","-v" ,"test_02_uploadidcard.py::Test_uploadidcard", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     gm = GlobalMap()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
