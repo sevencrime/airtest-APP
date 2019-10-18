@@ -101,8 +101,6 @@ class publicTool(BaseView):
         #             break
 
 
-        import pdb; pdb.set_trace()
-
         self.poco("android:id/content").invalidate()
         box_alert = self.box_alert
 
