@@ -15,7 +15,7 @@ from ElementPage.transactionPage import transactionPage
 class Test_channels():
     fix_routetitle = ["介绍与推广"]
 
-    @allure.story("介绍与推广")
+    @allure.story("介绍与推广, 不勾选")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_sendtransaction(self, poco, reloadRoute):
         pubTool = publicTool(poco)
@@ -27,6 +27,10 @@ class Test_channels():
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
+            assert_equal(pubTool.get_Routetitle(), "介绍与推广", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+
+
+
 
 
 

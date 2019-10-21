@@ -27,7 +27,7 @@ class addressProofPage(BaseView):
 
     def send_Nowaddress(self):
 
-        self.Nowaddress.set_text("深圳桑达科技大厦")
+        self.Nowaddress.set_text("深圳桑达科技大厦123@qaz../")
         self.Nowaddress.invalidate()
 
         return self.Nowaddress.get_text()

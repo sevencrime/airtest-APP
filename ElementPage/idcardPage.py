@@ -36,6 +36,7 @@ class idcardPage(BaseView):
         pubTool = publicTool(self.poco)
 
         if pubTool.get_Routetitle() == "选择所属地区":
+            self.el_chinese.wait(5)
             self.el_chinese.click()
 
         if pubTool.get_Routetitle() == "开户准备":

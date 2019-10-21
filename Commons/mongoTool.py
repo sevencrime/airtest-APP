@@ -51,54 +51,17 @@ class mongoTool:
 
 		db = self.client[database]
 		for result in db[collection].find(query):
+			self.log.debug("查询的数据为", result)
+			return result
+
+	def aggregate(self, database, collection, query):
+
+		db = self.client[database]
+		for result in db[collection].aggregate(query):
+			self.log.debug("查询的数据为", result)
 			return result
 
 
-		# if database == 'test' or database == 'uat':
-		# 	db = self.client[database]
-		# elif database == 'aos':
-		# 	aosdb = self.client['aos']
-		# elif database == 'eddidclientpoolfeature':
-		# 	userdb = self.client['eddidclientpoolfeature']
-		# else:
-		# 	print("错误")
-		#
-		# for result in db[collection].find(query):
-		#
-		# 	for key in result.keys():
-		# 		if not key == '_id':
-		# 			if key == 'idpUserId':
-		# 				pass
-
-		#
-		# for applyinfo in db[collection].find(query):
-		# 	print("applyinfo >> ", applyinfo)
-		#
-		# 	for apply in db['apply'].find({'_id' : applyinfo['applyId']}):
-		# 		print("apply >> ", apply)
-		#
-		# 		for account in db['account'].find({'idpUserId' : apply['idpUserId']}):
-		# 			print("account >> ", account)
-		#
-		# 			if isinstance(account['clientId'], list):
-		# 				for n in range(len(account['clientId'])):
-		#
-		# 					for client in db['client_info'].find({'_id' : account['clientId'][n]}):
-		# 						print("client_info >> ", client)
-		#
-		# 			else:
-		# 				print("数据有问题")
-		#
-		# 		# users 表
-		#
-		# 		for users in userdb['users'].find({'subject' : apply['idpUserId']}):
-		# 			print("users >> ", users)
-		#
-		# 		for userdevices in userdb['userdevices'].find({'subject' : apply['idpUserId']}):
-		# 			print("userdevices >> ", userdevices)
-		#
-		# 		for aosaccount in aosdb['account'].find({'idpUserId' : apply['idpUserId']}):
-		# 			print("aosaccount >> ", aosaccount)
 
 
 	def UpdataData(self, database=None, collection=None, query=None, setdata=None):

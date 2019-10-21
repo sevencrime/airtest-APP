@@ -10,13 +10,13 @@ from Commons.Logging import Logs
 from Commons.mongoTool import mongoTool
 from ElementPage.publicTool import publicTool
 
-
 gm = GlobalMap()
 gm._init()
 log = Logs()
 
+
 @pytest.fixture(scope="class")
-def query_initialData():
+def query_initialData(poco):
     """
     # 查询数据库获取初始值
 
@@ -31,9 +31,24 @@ def query_initialData():
     customerNetAssetValuelist = []  # 存放资产净值的初始值
     fundsSourcelist = []  # 交易的资金/财富来源(选择所有适用)
 
-    # 查询数据库获取全年总收入和资产净值的字段
-    result = mongo.findData(gm.get_value("environment"), "accounts", {
-                            'phone': "15089514626", 'forLogin': True})
+    if gm.get_value("environment").find("aos") != -1:
+        # 查询数据库获取全年总收入和资产净值的字段
+        result = mongo.findData(gm.get_value("environment"), "accounts", {
+            'phone': "15089514626", 'forLogin': True})
+
+    elif gm.get_value("environment") == "test" and gm.get_value("environment") == "uat":
+        # result = mongo.findData(gm.get_value("environment"), "apply", {
+        # "applySeqId" : publicTool(poco).get_appcationNumber()})
+
+        result = mongo.aggregate(gm.get_value("environment"),
+                                 "apply", [
+                                     {'$match': {"applySeqId": publicTool(poco).get_appcationNumber()}},
+                                     {'$lookup': {'from': 'apply_info', 'localField': 'applyInfoIds',
+                                                  'foreignField': '_id', 'as': 'applyInfos'}},
+                                     {'$unwind': '$applyInfos'},
+                                     {'$match': {'applyInfos.isMaster': '1'}}
+                                 ]
+                                 )
 
     totalAnnualdict = {
         "pension": "退休金",
@@ -68,26 +83,54 @@ def query_initialData():
         "pension": "退休金",
     }
 
-    # 全年总收入
-    for totalAnnual in result['totalAnnualCustomerRevenueHKSource']:
-        if totalAnnualdict.__contains__(totalAnnual):
-            totalAnnuallist.append(totalAnnualdict[totalAnnual])
+    if gm.get_value("environment").find("aos") != -1:
+        # 全年总收入
+        for totalAnnual in result['totalAnnualCustomerRevenueHKSource']:
+            if totalAnnualdict.__contains__(totalAnnual):
+                totalAnnuallist.append(totalAnnualdict[totalAnnual])
 
-    # 资产净值
-    for customerNetAssetValue in result['customerNetAssetValueHKSource']:
-        if customerNetAssetValuedict.__contains__(customerNetAssetValue):
-            customerNetAssetValuelist.append(
-                customerNetAssetValuedict[customerNetAssetValue])
+        # 资产净值
+        for customerNetAssetValue in result['customerNetAssetValueHKSource']:
+            if customerNetAssetValuedict.__contains__(customerNetAssetValue):
+                customerNetAssetValuelist.append(
+                    customerNetAssetValuedict[customerNetAssetValue])
 
-    # 财富来源
-    for fundsSource in result['fundsSource']:
-        if fundsSourcedict.__contains__(fundsSource):
-            fundsSourcelist.append(fundsSourcedict[fundsSource])
+        # 财富来源
+        for fundsSource in result['fundsSource']:
+            if fundsSourcedict.__contains__(fundsSource):
+                fundsSourcelist.append(fundsSourcedict[fundsSource])
 
-    if result['isLearnAboutProducts'] == 'Y' and result['isIndustryExperience'] == 'Y' and result['isStocks'] == 'Y' and result['isApplyProduct'] == 'Y' and result['knowRisk'] == 'Y':
-        gm.set_bool(derivative=True)
+        if result['isLearnAboutProducts'] == 'Y' and result['isIndustryExperience'] == 'Y' and result[
+            'isStocks'] == 'Y' and result['isApplyProduct'] == 'Y' and result['knowRisk'] == 'Y':
+            gm.set_bool(derivative=True)
 
-    gm.set_bool(sameAdderss = result['sameAddress'])    # sameAdderss: 住址与身份证不一致, ture为勾选
+        gm.set_bool(sameAdderss=result['sameAddress'])  # sameAdderss: 住址与身份证不一致, ture为勾选
+
+    elif gm.get_value("environment") == "test" and gm.get_value("environment") == "uat":
+        # 全年总收入
+        for totalAnnual in result['applyInfos']['riskInfo']['totalAnnualCustomerRevenueHKSource']:
+            if totalAnnualdict.__contains__(totalAnnual):
+                totalAnnuallist.append(totalAnnualdict[totalAnnual])
+
+        # 资产净值
+        for customerNetAssetValue in result['applyInfos']['riskInfo']['customerNetAssetValueHKSource']:
+            if customerNetAssetValuedict.__contains__(customerNetAssetValue):
+                customerNetAssetValuelist.append(
+                    customerNetAssetValuedict[customerNetAssetValue])
+
+        # 财富来源
+        for fundsSource in result['applyInfos']['riskInfo']['sourceOfWealth']:
+            if fundsSourcedict.__contains__(fundsSource):
+                fundsSourcelist.append(fundsSourcedict[fundsSource])
+
+        if result['applyInfos']['riskInfo']['isLearnAboutProducts'] == 'Y' and result['applyInfos']['riskInfo'][
+            'isIndustryExperience'] == 'Y' and result['applyInfos']['riskInfo']['isStocks'] == 'Y' and \
+                result['applyInfos']['riskInfo']['isApplyToOpenTradingStructure'] == 'Y' and \
+                result['applyInfos']['riskInfo']['isTradingStructureAggree'] == 'Y':
+            gm.set_bool(derivative=True)
+
+        gm.set_bool(sameAdderss=result['applyInfos']['syncIDAddress'] == "Y")  # sameAdderss: 住址与身份证不一致, ture为勾选
+
     gm.set_List('istotalAnnual', totalAnnuallist)
     gm.set_List('customerNetAssetValue', customerNetAssetValuelist)
     gm.set_List('fundsSource', fundsSourcelist)
@@ -119,7 +162,7 @@ def reloadRoute(request, poco):
     pubTool.wait_loading()
     title = pubTool.get_Routetitle()
     # 获取标题
-    gm.set_value(Routetitle = title)
+    gm.set_value(Routetitle=title)
     log.debug("当前的页面标题为: {}".format(title))
 
     # 判断当前标题, 如不是操作界面, 则点击返回按钮
@@ -127,12 +170,11 @@ def reloadRoute(request, poco):
         pubTool.backform()
 
 
-
 @pytest.fixture(scope="session", autouse=True)
 def config():
-    gm.set_value(environment="aos-uat")     # 记录数据库
-    gm.set_bool(isbullion=False)        # 记录黄金账户是否开启
-    gm.set_bool(isLeveraged=False)      # 记录外汇账户是否开启
+    gm.set_value(environment="uat")  # 记录数据库
+    gm.set_bool(isbullion=False)  # 记录黄金账户是否开启
+    gm.set_bool(isLeveraged=False)  # 记录外汇账户是否开启
     # mongo数据库地址
     gm.set_value(
         mongohost="mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net")

@@ -54,10 +54,12 @@ class Test_open():
 
         with allure.step("登陆界面--点击登陆按钮"):
             startupfrom.click_Loginbtn()
+            pubTool.wait_loading()
 
         with allure.step("登录后再次点击便捷开户"):
             if pubTool.get_Routetitle() == "艾德证券期货":
                 startupfrom.click_easyOpenning()
+                pubTool.wait_loading()
 
 
 
