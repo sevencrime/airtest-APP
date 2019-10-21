@@ -32,10 +32,10 @@ class Test_faceid():
                 collection = "accounts"
                 query = {"applyCode":self.gm.get_value("appcationNumber"),  "forLogin":True}
                 setdata = {"$set": {"currentRoute": "/account"}}
-            elif self.gm.get_value("environment").find("uat") != -1 or self.gm.get_value("environment").find("test") != -1:
+            elif self.gm.get_value("environment") == "uat" != -1 or self.gm.get_value("environment") == "test" != -1:
                 collection = "apply"
                 query = {"applySeqId":self.gm.get_value("appcationNumber")}
-                setdata = { "$set" : { "step" : "faceid"} }
+                setdata = { "$set" : { "step" : "AccountInformation"} }
             else:
                 self.log.debug("数据可能有问题哦!!!")
 

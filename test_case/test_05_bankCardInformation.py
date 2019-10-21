@@ -7,6 +7,7 @@ import allure
 import pytest
 from airtest.core.api import *
 
+from Commons import Decorator
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.bankCardInformationPage import bankCardInformationPage
@@ -17,6 +18,7 @@ from ElementPage.publicTool import publicTool
 class Test_bankCardInformation():
     log = Logs()
 
+    @Decorator.retry
     @allure.story("内地银行卡号非空校验")
     def test_bankCardnullvalue(self, poco):
         self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
@@ -215,7 +217,7 @@ class Test_bankCardInformation():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "--pdb", "test_05_bankCardInformation.py::Test_bankCardInformation", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v", "test_05_bankCardInformation.py::Test_bankCardInformation::test_bankCardnullvalue", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     gm = GlobalMap()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
 

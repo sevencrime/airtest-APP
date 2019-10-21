@@ -4,6 +4,7 @@ import glob
 import shutil
 import traceback
 
+import allure
 from airtest.core.api import *
 from poco.exceptions import PocoNoSuchNodeException
 
@@ -79,7 +80,6 @@ class publicTool(BaseView):
 
         """
 
-        import pdb; pdb.set_trace()
         self.poco("android:id/content").invalidate()
         box_alert = self.box_alert
 

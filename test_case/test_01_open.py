@@ -4,6 +4,8 @@ import datetime
 
 import allure
 import pytest
+
+from Commons import Decorator
 from Commons.GlobalMap import GlobalMap
 from ElementPage.publicTool import publicTool
 from airtest.core.api import *
@@ -11,6 +13,7 @@ from airtest.core.api import *
 from ElementPage.startUpFrom import startUpFrom
 
 
+@Decorator.retry
 @allure.feature("启动APP, 进入开户界面")
 class Test_open():
 
