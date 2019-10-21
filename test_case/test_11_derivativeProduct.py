@@ -15,7 +15,6 @@ from Commons.GlobalMap import GlobalMap
 class Test_derivativeProduct():
 
     gm = GlobalMap()
-    gm._init()
     fix_routetitle = ["衍生品产品认识"]
     radiovalue = [True, False]
 

@@ -68,6 +68,7 @@ class Test_uploadidcard():
 
     @allure.story("身份证验证-校验年龄18岁")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_birthdayis18(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -94,6 +95,7 @@ class Test_uploadidcard():
 
     @allure.story("身份证验证-校验身份证是否过期")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_validityPeriod(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -119,6 +121,7 @@ class Test_uploadidcard():
 
     @allure.story("身份证验证-邮箱格式不正确")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_Emailformat(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -145,6 +148,7 @@ class Test_uploadidcard():
 
     @allure.story("身份证验证-邮箱不一致")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_disEmail(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -171,6 +175,7 @@ class Test_uploadidcard():
 
     @allure.story("身份证验证-邮箱已存在")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_Email_exists(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -197,6 +202,7 @@ class Test_uploadidcard():
 
     @allure.story("身份证验证-电话号码已存在")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_phone_exists(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -228,6 +234,7 @@ class Test_uploadidcard():
 
     @allure.story("身份证验证-勾选住址和身份证地址不一致")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_pick_isaddress(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 

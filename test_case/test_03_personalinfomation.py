@@ -15,12 +15,12 @@ from ElementPage.publicTool import publicTool
 @allure.feature("请填写个人资料")
 class Test_personalinfomation():
     gm = GlobalMap()
+    fix_routetitle = ["请填写个人资料"]
 
     @allure.story("填写个人资料")
-    @pytest.mark.skipif(gm.get_value("environment") == "aos" or gm.get_value("environment") == "aos-uat",
-                        reason="后台是aos接口, 没有该页面, 跳过此用例")
-    @pytest.mark.run(order=3)
-    def test_personal(self, poco):
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    def test_personal(self, poco, reloadRoute):
 
         perinfo = personalInformationPage(poco)
         pubTool = publicTool(poco)
@@ -35,6 +35,7 @@ class Test_personalinfomation():
             boxtitle, boxcontent = pubTool.get_boxtitle()
             assert_equal(boxtitle, "请确认您的身份证地址", "确认地址弹框标题有误")
             assert_equal(boxcontent, perinfo.get_address(), "弹框内容与填写内容不符")
+
 
         with allure.step("确认地址弹框--点击确定"):
             pubTool.click_boxconfirm()

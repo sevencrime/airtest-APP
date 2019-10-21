@@ -78,29 +78,8 @@ class publicTool(BaseView):
         获取弹出框的标题和弹框的内容
 
         """
-        # index = 0
-        # while True:
-        #
-        #     try:
-        #         # 获取页面标题, 代替页面刷新
-        #         self.get_Routetitle()
-        #         # 弹出框标题
-        #         boxtitle = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.view.ViewGroup")[0].child("android.widget.TextView")
-        #         self.log.debug("获取boxtitle成功, 标题是{}".format(boxtitle))
-        #         # 弹出框内容
-        #         boxcontent = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.widget.TextView")
-        #         self.log.debug("获取boxcontent成功, 内容是{}".format(boxcontent))
-        #         return boxtitle.get_text(), boxcontent.get_text()
-        #
-        #     except Exception as e:
-        #         self.log.debug("弹框标题或内容获取失败")
-        #
-        #     finally:
-        #         index += 1
-        #         if index > 10:
-        #             break
 
-
+        import pdb; pdb.set_trace()
         self.poco("android:id/content").invalidate()
         box_alert = self.box_alert
 
@@ -254,7 +233,6 @@ class publicTool(BaseView):
 
     def rmdir5(self):
 
-        import pdb; pdb.set_trace()
         curPath = os.path.abspath(os.path.dirname(__file__))
         rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
         xml_report_pathlib = glob.glob(rootPath + r'report\\xml*')

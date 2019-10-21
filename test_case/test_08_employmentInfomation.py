@@ -17,7 +17,6 @@ from airtest.core.api import *
 class Test_employmentInfomation():
 
     gm = GlobalMap()
-    gm._init()
     log = Logs()
 
     fix_routetitle = ["就业及财务状况"]      #当fixture的参数

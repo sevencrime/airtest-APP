@@ -11,7 +11,6 @@ from Commons.mongoTool import mongoTool
 from ElementPage.publicTool import publicTool
 
 gm = GlobalMap()
-gm._init()
 log = Logs()
 
 
@@ -151,10 +150,10 @@ def reloadRoute(request, poco):
     routetitle = request.param
     pubTool = publicTool(poco)
 
-    if poco(text="取消").exists():
+    while poco(text="取消").exists():
         poco(text="取消").click()
 
-    if poco(text="知道了").exists():
+    while poco(text="知道了").exists():
         poco(text="知道了").click()
 
     # 点击退出按钮后, 再次进入开户表单
