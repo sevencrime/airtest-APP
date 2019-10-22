@@ -100,7 +100,7 @@ class publicTool(BaseView):
 
 
 
-    def wait_loading(self, timeout=20):
+    def wait_loading(self, timeout=30):
 
         self.get_Routetitle()
         start = time.time()

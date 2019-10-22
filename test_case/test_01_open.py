@@ -6,7 +6,6 @@ import allure
 import pytest
 
 from Commons import CommonsTool
-from Commons.GlobalMap import GlobalMap
 from ElementPage.publicTool import publicTool
 from airtest.core.api import *
 

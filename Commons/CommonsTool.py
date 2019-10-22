@@ -31,7 +31,7 @@ def retry(times=3,wait_time=10):
     return warp_func
 
 
-def rmdir5(self):
+def rmdir5():
 
     curPath = os.path.abspath(os.path.dirname(__file__))
     rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
