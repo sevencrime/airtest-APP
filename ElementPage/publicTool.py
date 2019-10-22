@@ -83,14 +83,21 @@ class publicTool(BaseView):
         self.poco("android:id/content").invalidate()
         box_alert = self.box_alert
 
+        start = time.time()
         while not len(box_alert) > 1:
             self.poco("android:id/content").invalidate()
             box_alert.invalidate()
 
-        box_alert_text = box_alert[-1].offspring("android.widget.TextView")
+            if time.time() - start > 20:
+                break
 
+
+        box_alert_text = box_alert[-1].offspring("android.widget.TextView")
+        start1 = time.time()
         while not box_alert_text.exists():
             box_alert_text.invalidate()
+            if time.time() - start1 > 20:
+                break
 
         self.log.debug("提示框的标题是: {}".format(box_alert_text[0].get_text()))
         self.log.debug("提示框的标题是: {}".format(box_alert_text[1].get_text()))
@@ -222,9 +229,11 @@ class publicTool(BaseView):
         """
 
         self.Routetitle.invalidate()
-
+        start = time.time()
         while not self.Routetitle.exists():
             self.log.debug("Routetitle 不存在")
+            if time.time() - start > 20:
+                break
             pass
 
         self.log.debug("调用此方法的是: {}".format(traceback.extract_stack()[-2][2]))

@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import datetime
 import os
+import time
 
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
@@ -194,6 +195,7 @@ class BaseView():
         :return: element
         '''
 
+        start = time.time()
         while not element.exists():
             self.log.debug("disExists_swipe进来")
             element.invalidate()
@@ -201,6 +203,8 @@ class BaseView():
             contentEle.invalidate()
             if not orientation == None:
                 contentEle.swipe([0, 0.3])
+            elif time.time() - start > 20:
+                break
             else:
                 contentEle.swipe([0, -0.3])
 
@@ -218,9 +222,12 @@ class BaseView():
         """
 
         # selectElement = self.exists(selectelement)
+        start = time.time()
         while not selectelement.exists():
             selectelement.invalidate()
             self.log.debug("{}不存在".format(str(selectelement)))
+            if time.time() - start > 20:
+                break
 
 
         # 获取就业情况栏位的值
@@ -297,11 +304,14 @@ class BaseView():
             # 需要点击的日子operating
             operating = self.poco("{d} {m} {Y}".format(m=date_map[datestrlist[1]], Y=datestrlist[0], d=datestrlist[2]))
 
+            start = time.time()
             while not operating.exists():
                 if isdirection == 'next':
                     self.poco("android:id/next").click()
                 elif isdirection == 'last':
                     self.poco("android:id/prev").click()
+                elif time.time() - start > 20:
+                    break
 
                 operating.invalidate()
 

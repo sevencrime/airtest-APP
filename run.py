@@ -11,7 +11,7 @@ from Commons import CommonsTool
 
 if __name__ == "__main__":
     # "--reruns=3", "--reruns-delay=3"  #重试
-    pytest.main(["-s", "-v", "./test_case/test_01_open.py", '--alluredir',
+    pytest.main(["-s", "-v", "./test_case", '--alluredir',
                  './report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
 
     xml_report_path, html_report_path = CommonsTool.rmdir5()

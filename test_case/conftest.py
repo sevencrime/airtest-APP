@@ -150,11 +150,17 @@ def reloadRoute(request, poco):
     routetitle = request.param
     pubTool = publicTool(poco)
 
+    start = time.time()
     while poco(text="取消").exists():
         poco(text="取消").click()
+        if time.time() - start > 20:
+            break
 
+    start1 = time.time()
     while poco(text="知道了").exists():
         poco(text="知道了").click()
+        if time.time() - start1 > 20:
+            break
 
     # 点击退出按钮后, 再次进入开户表单
     pubTool.closeform()
