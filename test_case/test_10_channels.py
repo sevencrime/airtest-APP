@@ -5,10 +5,10 @@ import datetime
 import allure
 import pytest
 
+from Commons import CommonsTool
 from ElementPage.introPromoPage import introPromoPage
 from ElementPage.publicTool import publicTool
-from ElementPage.transactionPage import transactionPage
-
+from airtest.core.api import *
 
 @allure.feature("介绍与推广")
 @pytest.mark.usefixtures('query_initialData')
@@ -36,9 +36,9 @@ class Test_channels():
 
 if __name__ == "__main__":
     pytest.main(["-s", "test_10_channels.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    gm = GlobalMap()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
-
+    xml_report_path, html_report_path = CommonsTool.rmdir5()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 
 
 

@@ -6,6 +6,7 @@ import allure
 import pytest
 from airtest.core.api import *
 
+from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from ElementPage.personalInformationPage import personalInformationPage
 from ElementPage.idcardPage import idcardPage
@@ -44,5 +45,6 @@ class Test_personalinfomation():
 
 if __name__ == "__main__":
     pytest.main(["-s", "test_03_personalinfomation.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    gm = GlobalMap()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
+    xml_report_path, html_report_path = CommonsTool.rmdir5()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

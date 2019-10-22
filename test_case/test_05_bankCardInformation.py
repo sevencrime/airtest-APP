@@ -217,9 +217,9 @@ class Test_bankCardInformation():
 
 if __name__ == "__main__":
     pytest.main(["-s", "-v", "test_05_bankCardInformation.py::Test_bankCardInformation::test_bankCardnullvalue", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    gm = GlobalMap()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
-
+    xml_report_path, html_report_path = CommonsTool.rmdir5()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 
 
 

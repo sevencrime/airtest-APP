@@ -202,10 +202,6 @@ def poco():
 
     poco = AndroidUiautomationPoco(force_restart=True)
     gm.set_bool(poco=poco)  #全局poco
-    pubTool = publicTool(poco)
-
-    # report限制5条
-    pubTool.rmdir5()
 
     yield poco
 

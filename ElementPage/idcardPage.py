@@ -18,7 +18,6 @@ class idcardPage(BaseView):
         """
 
         def wrapper(self, *args, **kwargs):
-            import pdb; pdb.set_trace()
             try:
                 return func(self, *args, **kwargs)
             except:

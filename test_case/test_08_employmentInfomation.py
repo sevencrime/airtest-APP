@@ -6,6 +6,7 @@ import sys
 import allure
 import pytest
 
+from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.employmentInfomationPage import employmentInfomationPage
@@ -79,7 +80,6 @@ class Test_employmentInfomation():
     @pytest.mark.skipif(gm.get_value("Routetitle") != "选择交易信息", reason= "就业情况已有值, 跳过该用例")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_nullemploy(self, poco, reloadRoute, totalAnnual, customer):
-        import pdb; pdb.set_trace()
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("选择全年总收入选择 {}".format(totalAnnual)):
@@ -208,9 +208,9 @@ class Test_employmentInfomation():
 
 if __name__ == "__main__":
     pytest.main(["-s", "-v", "--pdb", "test_08_employmentInfomation.py::Test_employmentInfomation", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    gm = GlobalMap()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
-
+    xml_report_path, html_report_path = CommonsTool.rmdir5()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 
 
 
