@@ -177,7 +177,7 @@ def reloadRoute(request, poco):
 
 @pytest.fixture(scope="session", autouse=True)
 def config():
-    gm.set_value(environment="uat")  # 记录数据库
+    gm.set_value(environment="aos-uat")  # 记录数据库
     gm.set_bool(isbullion=False)  # 记录黄金账户是否开启
     gm.set_bool(isLeveraged=False)  # 记录外汇账户是否开启
     # mongo数据库地址
@@ -211,8 +211,3 @@ def poco():
 
     yield poco
 
-
-    # from airtest.report.report import simple_report
-    # simple_report(__file__)
-    # os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
-    #     xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

@@ -79,12 +79,12 @@ class publicTool(BaseView):
         获取弹出框的标题和弹框的内容
 
         """
-
         self.poco("android:id/content").invalidate()
         box_alert = self.box_alert
 
         start = time.time()
         while not len(box_alert) > 1:
+            self.log.debug("判断box_alert是否大于1")
             self.poco("android:id/content").invalidate()
             box_alert.invalidate()
 
@@ -95,7 +95,9 @@ class publicTool(BaseView):
         box_alert_text = box_alert[-1].offspring("android.widget.TextView")
         start1 = time.time()
         while not box_alert_text.exists():
+            self.log.debug("循环判断box_alert_text是否存在")
             box_alert_text.invalidate()
+            self.poco("android:id/content").invalidate()
             if time.time() - start1 > 20:
                 break
 
