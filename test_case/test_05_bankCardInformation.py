@@ -7,7 +7,7 @@ import allure
 import pytest
 from airtest.core.api import *
 
-from Commons import Decorator
+from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.bankCardInformationPage import bankCardInformationPage
@@ -18,7 +18,6 @@ from ElementPage.publicTool import publicTool
 class Test_bankCardInformation():
     log = Logs()
 
-    @Decorator.retry
     @allure.story("内地银行卡号非空校验")
     def test_bankCardnullvalue(self, poco):
         self.log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))

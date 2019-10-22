@@ -187,18 +187,28 @@ def poco():
     #     auto_setup(__file__, logdir=True,
     #                devices=["Android:///", ])
 
+    curPath = os.path.abspath(os.path.dirname(__file__))
+    rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
+
     if not cli_setup():
         # 模拟器 >> 网易mumu模拟器连接cap_method=JAVACAP&&ori_method=ADBORI
         os.popen("adb connect 127.0.0.1:7555").read()
         connect_device(
             "Android://127.0.0.1:5037/127.0.0.1:7555?ori_method=ADBORI")
 
+        # auto_setup(basedir=__file__,
+        #            devices = ["Android://127.0.0.1:5037/127.0.0.1:7555?ori_method=ADBORI"],
+        #            logdir=rootPath+'airlog')
+
     poco = AndroidUiautomationPoco(force_restart=True)
+    gm.set_bool(poco=poco)  #全局poco
     pubTool = publicTool(poco)
+
     # report限制5条
     pubTool.rmdir5()
 
     yield poco
+
 
     # from airtest.report.report import simple_report
     # simple_report(__file__)
