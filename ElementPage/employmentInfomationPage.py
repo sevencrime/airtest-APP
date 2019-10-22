@@ -61,7 +61,6 @@ class employmentInfomationPage(BaseView):
         funds = set(self.gm.get_value("istotalAnnual")).symmetric_difference(fundlist)
         self.log.debug("需要点击的选项有: {}".format(','.join(funds)))
 
-
         self.click_select(self.totalAnnualCustomerRevenueHK, price)
 
         # 判断 "请注明资金来源(可多选)" 复选框是否触发

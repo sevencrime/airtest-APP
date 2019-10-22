@@ -119,7 +119,8 @@ class BaseView():
         self.Option_date = self.poco(text="期权").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.Optional_date = self.poco(text="其他投资(选填)").sibling("android.widget.EditText")
         self.otherInvestment_date = self.poco(text="其他投资").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
-        self.poco(textMatches="个人资料之使用声明")
+        self.personalInfoDeclartionLangsas = self.poco(textMatches=".*个人资料之使用声明.*")
+        self.personalInfoDeclartionLangsasImgview = self.poco(textMatches=".*个人资料之使用声明.*").parent().sibling("android.view.ViewGroup").child("android.widget.ImageView")
 
         # 相关保证金融资账户
         self.AccountName = self.poco(textMatches=".*账户持有人姓名").sibling("android.widget.EditText")

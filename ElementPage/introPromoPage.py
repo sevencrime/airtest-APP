@@ -33,5 +33,13 @@ class introPromoPage(BaseView):
 
 
 
+    def click_personalInfoDeclartionLangsasImgview(self):
+        # 本人同意艾德证券期货根据「个人资料之使用声明」使用或转移本人的个人资料做直接促销用途。勾选
+
+        self.personalInfoDeclartionLangsasImgview.click()
+
+    def click_personalInfoDeclartionLangsas(self):
+
+        return self.personalInfoDeclartionLangsas.get_value()
 
 

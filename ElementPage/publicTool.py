@@ -71,7 +71,7 @@ class publicTool(BaseView):
         开户表单-- 弹出确认框--确定按钮
 
         """
-        self.exists(self.boxconfirm).click()
+        self.self.boxconfirm.click()
 
 
     def get_boxtitle(self):
@@ -98,7 +98,10 @@ class publicTool(BaseView):
             self.log.debug("循环判断box_alert_text是否存在")
             box_alert_text.invalidate()
             self.poco("android:id/content").invalidate()
-            if time.time() - start1 > 20:
+            time.sleep(0.5)
+            if time.time() - start1 > 30:
+                import pdb; pdb.set_trace()
+                self.log.debug("循环判断box_alert_text是否存在超时, 退出")
                 break
 
         self.log.debug("提示框的标题是: {}".format(box_alert_text[0].get_text()))
