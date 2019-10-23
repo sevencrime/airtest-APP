@@ -11,7 +11,7 @@ from ElementPage.publicTool import publicTool
 from airtest.core.api import *
 from Commons.GlobalMap import GlobalMap
 
-@pytest.mark.usefixtures('query_initialData')
+
 @allure.feature("衍生产品的认识")
 class Test_derivativeProduct():
 
@@ -22,6 +22,7 @@ class Test_derivativeProduct():
     @allure.story("衍生品产品认识 >> 直接勾选最后一个")
     @pytest.mark.parametrize("buyProduct", radiovalue)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.usefixtures('query_initialData')
     @pytest.mark.skipif(gm.get_value("derivative") == True, reason="衍生产品选项已经勾选")
     def test_derivative_Reversed(self, poco, reloadRoute, buyProduct):
         pubTool = publicTool(poco)
@@ -64,10 +65,12 @@ class Test_derivativeProduct():
             assert_equal(pubTool.get_Routetitle(), "衍生品产品认识", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
     @allure.story("衍生品产品认识 >> 组合勾选")
+    @allure.title("derivativeCourse: {derivativeCourse}, derivativeJobs: {derivativeJobs}, tradingFund : {tradingFund}, buyProduct : {buyProduct}")
     @pytest.mark.parametrize("derivativeCourse", radiovalue)
     @pytest.mark.parametrize("derivativeJobs", radiovalue)
     @pytest.mark.parametrize("tradingFund", radiovalue)
     @pytest.mark.parametrize("buyProduct", radiovalue)
+    @pytest.mark.usefixtures('query_initialData')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_derivative(self, poco, reloadRoute, derivativeCourse, derivativeJobs, tradingFund, buyProduct):
         pubTool = publicTool(poco)
@@ -98,7 +101,7 @@ class Test_derivativeProduct():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_11_derivativeProduct.py::Test_derivativeProduct::test_derivative", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v", "--pdb", "test_11_derivativeProduct.py::Test_derivativeProduct::test_derivative", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
