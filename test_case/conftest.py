@@ -155,7 +155,6 @@ def reloadRoute(request, poco):
     routetitle = request.param
     pubTool = publicTool(poco)
 
-
     start = time.time()
     while poco(text="取消").exists():
         poco(text="取消").click()
@@ -213,7 +212,24 @@ def poco():
         #            logdir=rootPath+'airlog')
 
     poco = AndroidUiautomationPoco(force_restart=True)
-    gm.set_bool(poco=poco)  #全局poco
+    gm.set_bool(poco=poco)  # 全局poco
 
     yield poco
 
+
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item, call):
+    '''
+    捕获测试用例结果
+    :param item:
+    :param call:
+    :return:
+    '''
+    outcome = yield
+    rep = outcome.get_result()
+    setattr(item, "rep_" + rep.when, rep)
+    if rep.when == 'call':
+        if rep.failed:
+            print("我已经捕获失败了")
+        elif rep.passed:
+            pass
