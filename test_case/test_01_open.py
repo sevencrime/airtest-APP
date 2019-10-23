@@ -6,6 +6,7 @@ import allure
 import pytest
 
 from Commons import CommonsTool
+from Commons.GlobalMap import GlobalMap
 from ElementPage.publicTool import publicTool
 from airtest.core.api import *
 
@@ -15,6 +16,9 @@ from ElementPage.startUpFrom import startUpFrom
 @allure.feature("启动APP, 进入开户界面")
 class Test_open():
 
+    gm = GlobalMap()
+
+    @CommonsTool.retry()
     @allure.story("进入开户界面")
     def test_Openning(self, poco):
         pubTool = publicTool(poco)

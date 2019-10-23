@@ -7,28 +7,30 @@ import traceback
 import allure
 from airtest.core.api import *
 
+from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 
+gm = GlobalMap()
 log = Logs()
 
-def retry(times=3,wait_time=10):
-    '''
-    失败重试装饰器
-    :param times: 重试次数
-    :param wait_time: 重试等待时间
-    :return:
-    '''
-    def warp_func(func):
-        def fild_retry(self, *args, **kwargs):
-            for t in range(times):
-                try:
-                    func(self, *args, **kwargs)
-                    return
-                except:
-                    # 截图
-                    time.sleep(wait_time)
-        return fild_retry
-    return warp_func
+# def retry(poco, times=3,wait_time=10):
+#     '''
+#     失败重试装饰器
+#     :param times: 重试次数
+#     :param wait_time: 重试等待时间
+#     :return:
+#     '''
+#     def warp_func(func):
+#         def fild_retry(self, *args, **kwargs):
+#             for t in range(times):
+#                 try:
+#                     func(self, poco, *args, **kwargs)
+#                     return
+#                 except:
+#                     # 截图
+#                     time.sleep(wait_time)
+#         return fild_retry
+#     return warp_func
 
 
 def rmdir5():
@@ -61,3 +63,23 @@ def rmdir5():
     # self.gm.set_value(xml_report_path=xml_report_pathlib[-1])
     # self.gm.set_value(html_report_path=html_report_name)
     return xml_report_pathlib[-1], html_report_name
+
+
+
+def retry(times=3,wait_time=10):
+    '''
+    失败重试装饰器
+    :param times: 重试次数
+    :param wait_time: 重试等待时间
+    :return:
+    '''
+    def wrapper(func):
+        def inner_wrapper(self, *args, **kwargs):
+            print("正在执行用例 :", func.__name__)
+            poco = gm.get_value("poco")
+            return func(self, poco, *args, **kwargs)
+
+        return inner_wrapper
+    return wrapper
+
+
