@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import datetime
 import glob
 import shutil
 import traceback
@@ -12,6 +13,9 @@ from Commons.Logging import Logs
 
 gm = GlobalMap()
 log = Logs()
+
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
 
 # def retry(poco, times=3,wait_time=10):
 #     '''
@@ -66,7 +70,7 @@ def rmdir5():
 
 
 
-def retry(times=3,wait_time=10):
+def retry(times=1,wait_time=3):
     '''
     失败重试装饰器
     :param times: 重试次数
@@ -77,7 +81,22 @@ def retry(times=3,wait_time=10):
         def inner_wrapper(self, *args, **kwargs):
             print("正在执行用例 :", func.__name__)
             poco = gm.get_value("poco")
-            return func(self, poco, *args, **kwargs)
+            # return func(self, poco, *args, **kwargs)
+            for t in range(times):
+                try:
+                    return func(self, poco, *args, **kwargs)
+                except:
+                    nowtime = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+                    # 截图
+                    os.popen(r"adb shell screencap -p /sdcard/screen{}.png".format(nowtime))
+                    # pull
+                    if os.path.exists(rootPath+"Logs/error_screenIMG") is False:
+                        os.makedirs(rootPath+"Logs/error_screenIMG")
+                    os.popen(r"adb pull /sdcard/screen{time}.png {pngfile}".format(time=nowtime, pngfile = rootPath+"Logs/error_screenIMG"))
+                    # 删除原图片
+                    os.popen(r"adb shell rm /sdcard/screen{}.png".format(nowtime))
+                    # 等待重复
+                    time.sleep(wait_time)
 
         return inner_wrapper
     return wrapper
