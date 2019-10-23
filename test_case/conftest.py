@@ -100,8 +100,13 @@ def query_initialData(poco):
                 fundsSourcelist.append(fundsSourcedict[fundsSource])
 
         if result['isLearnAboutProducts'] == 'Y' and result['isIndustryExperience'] == 'Y' and result[
-            'isStocks'] == 'Y' and result['isApplyProduct'] == 'Y' and result['knowRisk'] == 'Y':
+            'isStocks'] == 'Y' and result['isApplyProduct'] == 'Y':
             gm.set_bool(derivative=True)
+
+        if result['knowRisk'] == 'Y' or result['knowRisk'] == True:
+            gm.set_bool(knowRisk=True)
+        else:
+            gm.set_bool(knowRisk=False)
 
         gm.set_bool(sameAdderss=result['sameAddress'])  # sameAdderss: 住址与身份证不一致, ture为勾选
 
@@ -149,6 +154,7 @@ def reloadRoute(request, poco):
 
     routetitle = request.param
     pubTool = publicTool(poco)
+
 
     start = time.time()
     while poco(text="取消").exists():

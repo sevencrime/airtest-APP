@@ -11,7 +11,7 @@ from ElementPage.publicTool import publicTool
 from airtest.core.api import *
 from Commons.GlobalMap import GlobalMap
 
-
+@pytest.mark.usefixtures('query_initialData')
 @allure.feature("衍生产品的认识")
 class Test_derivativeProduct():
 
@@ -19,7 +19,7 @@ class Test_derivativeProduct():
     fix_routetitle = ["衍生品产品认识"]
     radiovalue = [True, False]
 
-    @allure.story("衍生品产品认识 >> 勾选最后一个")
+    @allure.story("衍生品产品认识 >> 直接勾选最后一个")
     @pytest.mark.parametrize("buyProduct", radiovalue)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.skipif(gm.get_value("derivative") == True, reason="衍生产品选项已经勾选")
@@ -54,7 +54,6 @@ class Test_derivativeProduct():
             derivative.click_derivativeJobs(derivativeJobs)
 
         with allure.step("您是否在过去3年曾执行5次或以上有关衍生产品的交易，例如：衍生证券、牛熊市、股票期权、期货与期权、商品、结构性产品及交易所买卖基金等"):
-            # import pdb; pdb.set_trace()
             derivative.click_tradingFund(tradingFund)
 
         with allure.step("客户是否申请开通买卖衍生权证、牛熊证及结构性等产品"):
@@ -80,7 +79,6 @@ class Test_derivativeProduct():
             derivative.click_derivativeJobs(derivativeJobs)
 
         with allure.step("您是否在过去3年曾执行5次或以上有关衍生产品的交易，例如：衍生证券、牛熊市、股票期权、期货与期权、商品、结构性产品及交易所买卖基金等"):
-            # import pdb; pdb.set_trace()
             derivative.click_tradingFund(tradingFund)
 
         with allure.step("客户是否申请开通买卖衍生权证、牛熊证及结构性等产品"):
@@ -90,6 +88,8 @@ class Test_derivativeProduct():
         if buyProduct:
             with allure.step("客户已明白买卖衍生权证、牛熊证及结构性产品的风险。并已详细阅读「结构性产品相关风险声明披露」"):
                 derivative.click_riskStatement()
+        else:
+            self.gm.set_bool(knowRisk=False)
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
@@ -98,7 +98,7 @@ class Test_derivativeProduct():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_11_derivativeProduct.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v", "test_11_derivativeProduct.py::Test_derivativeProduct::test_derivative", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

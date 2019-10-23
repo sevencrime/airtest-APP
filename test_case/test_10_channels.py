@@ -13,9 +13,9 @@ from airtest.core.api import *
 @allure.feature("介绍与推广")
 @pytest.mark.usefixtures('query_initialData')
 class Test_channels():
-    fix_routetitle = ["介绍与推广"]
+    fix_routetitle = ["介绍及推广"]
 
-    @allure.story("介绍与推广, 不勾选")
+    @allure.story("介绍与推广, 不勾选>>必须勾选才能下一步")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_sendtransaction(self, poco, reloadRoute):
         pubTool = publicTool(poco)
@@ -27,10 +27,10 @@ class Test_channels():
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
-            assert_equal(pubTool.get_Routetitle(), "介绍与推广", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+            assert_equal(pubTool.get_Routetitle(), "介绍及推广", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
 
-    @allure.story("介绍与推广, 不勾选")
+    @allure.story("介绍与推广, 勾选 >> 必须勾选才能下一步")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_personalInfoDeclartionasY(self, poco, reloadRoute):
         pubTool = publicTool(poco)
@@ -44,7 +44,7 @@ class Test_channels():
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
-            assert_equal(pubTool.get_Routetitle(), "介绍与推广", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+            assert_equal(pubTool.get_Routetitle(), "衍生品产品认识", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
 
 
