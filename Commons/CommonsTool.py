@@ -70,22 +70,26 @@ def rmdir5():
 
 
 
-def retry(times=1,wait_time=3):
+def retry(times=3,wait_time=3):
     '''
     失败重试装饰器
     :param times: 重试次数
     :param wait_time: 重试等待时间
     :return:
     '''
+    import pdb; pdb.set_trace()
     def wrapper(func):
+        import pdb; pdb.set_trace()
         def inner_wrapper(self, *args, **kwargs):
-            print("正在执行用例 :", func.__name__)
+            log.debug("正在执行用例 : {}".format(func.__name__, ) )
             poco = gm.get_value("poco")
-            # return func(self, poco, *args, **kwargs)
+            import pdb; pdb.set_trace()
             for t in range(times):
                 try:
                     return func(self, poco, *args, **kwargs)
-                except:
+                except Exception as e:
+                    raise e
+                    log.error(e)
                     nowtime = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
                     # 截图
                     os.popen(r"adb shell screencap -p /sdcard/screen{}.png".format(nowtime))
@@ -100,5 +104,4 @@ def retry(times=1,wait_time=3):
 
         return inner_wrapper
     return wrapper
-
 
