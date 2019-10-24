@@ -96,8 +96,9 @@ class publicTool(BaseView):
         start1 = time.time()
         while not box_alert_text.exists():
             self.log.debug("循环判断box_alert_text是否存在")
+            box_alert.invalidate()
+            box_alert_text = box_alert[-1].offspring("android.widget.TextView")
             box_alert_text.invalidate()
-            self.poco("android:id/content").invalidate()
             time.sleep(0.5)
             if time.time() - start1 > 30:
                 self.log.debug("循环判断box_alert_text是否存在超时, 退出")
