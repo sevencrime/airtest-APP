@@ -14,7 +14,7 @@ from ElementPage.publicTool import publicTool
 
 
 @allure.feature("上传身份证")
-# @pytest.mark.usefixtures('query_initialData')
+@pytest.mark.usefixtures('query_initialData') #这里查询是为了判断地址证明是否勾选
 class Test_uploadidcard():
     gm = GlobalMap()
     fix_routetitle = ["身份证验证"]
