@@ -71,7 +71,7 @@ class publicTool(BaseView):
         开户表单-- 弹出确认框--确定按钮
 
         """
-        self.self.boxconfirm.click()
+        self.boxconfirm.click()
 
 
     def get_boxtitle(self):

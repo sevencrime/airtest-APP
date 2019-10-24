@@ -18,7 +18,6 @@ class Test_open():
 
     gm = GlobalMap()
 
-    @CommonsTool.retry()
     @allure.story("进入开户界面")
     def test_Openning(self, poco):
         pubTool = publicTool(poco)

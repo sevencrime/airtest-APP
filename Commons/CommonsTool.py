@@ -17,25 +17,6 @@ log = Logs()
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
 
-# def retry(poco, times=3,wait_time=10):
-#     '''
-#     失败重试装饰器
-#     :param times: 重试次数
-#     :param wait_time: 重试等待时间
-#     :return:
-#     '''
-#     def warp_func(func):
-#         def fild_retry(self, *args, **kwargs):
-#             for t in range(times):
-#                 try:
-#                     func(self, poco, *args, **kwargs)
-#                     return
-#                 except:
-#                     # 截图
-#                     time.sleep(wait_time)
-#         return fild_retry
-#     return warp_func
-
 
 def rmdir5():
 
@@ -70,38 +51,38 @@ def rmdir5():
 
 
 
-def retry(times=3,wait_time=3):
-    '''
-    失败重试装饰器
-    :param times: 重试次数
-    :param wait_time: 重试等待时间
-    :return:
-    '''
-    import pdb; pdb.set_trace()
-    def wrapper(func):
-        import pdb; pdb.set_trace()
-        def inner_wrapper(self, *args, **kwargs):
-            log.debug("正在执行用例 : {}".format(func.__name__, ) )
-            poco = gm.get_value("poco")
-            import pdb; pdb.set_trace()
-            for t in range(times):
-                try:
-                    return func(self, poco, *args, **kwargs)
-                except Exception as e:
-                    raise e
-                    log.error(e)
-                    nowtime = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-                    # 截图
-                    os.popen(r"adb shell screencap -p /sdcard/screen{}.png".format(nowtime))
-                    # pull
-                    if os.path.exists(rootPath+"Logs/error_screenIMG") is False:
-                        os.makedirs(rootPath+"Logs/error_screenIMG")
-                    os.popen(r"adb pull /sdcard/screen{time}.png {pngfile}".format(time=nowtime, pngfile = rootPath+"Logs/error_screenIMG"))
-                    # 删除原图片
-                    os.popen(r"adb shell rm /sdcard/screen{}.png".format(nowtime))
-                    # 等待重复
-                    time.sleep(wait_time)
-
-        return inner_wrapper
-    return wrapper
-
+# def retry(times=3,wait_time=3):
+#     '''
+#     失败重试装饰器
+#     :param times: 重试次数
+#     :param wait_time: 重试等待时间
+#     :return:
+#     '''
+#     import pdb; pdb.set_trace()
+#     def wrapper(func):
+#         import pdb; pdb.set_trace()
+#         def inner_wrapper(self, *args, **kwargs):
+#             log.debug("正在执行用例 : {}".format(func.__name__, ) )
+#             poco = gm.get_value("poco")
+#             import pdb; pdb.set_trace()
+#             for t in range(times):
+#                 try:
+#                     return func(self, poco, *args, **kwargs)
+#                 except Exception as e:
+#                     raise e
+#                     log.error(e)
+#                     nowtime = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+#                     # 截图
+#                     os.popen(r"adb shell screencap -p /sdcard/screen{}.png".format(nowtime))
+#                     # pull
+#                     if os.path.exists(rootPath+"Logs/error_screenIMG") is False:
+#                         os.makedirs(rootPath+"Logs/error_screenIMG")
+#                     os.popen(r"adb pull /sdcard/screen{time}.png {pngfile}".format(time=nowtime, pngfile = rootPath+"Logs/error_screenIMG"))
+#                     # 删除原图片
+#                     os.popen(r"adb shell rm /sdcard/screen{}.png".format(nowtime))
+#                     # 等待重复
+#                     time.sleep(wait_time)
+#
+#         return inner_wrapper
+#     return wrapper
+#

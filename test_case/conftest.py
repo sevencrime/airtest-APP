@@ -1,3 +1,5 @@
+import datetime
+
 import allure
 import pytest
 import os
@@ -12,6 +14,8 @@ from ElementPage.publicTool import publicTool
 
 gm = GlobalMap()
 log = Logs()
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
 
 
 @pytest.fixture(scope="class")
@@ -198,9 +202,6 @@ def poco():
     #     auto_setup(__file__, logdir=True,
     #                devices=["Android:///", ])
 
-    curPath = os.path.abspath(os.path.dirname(__file__))
-    rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
-
     if not cli_setup():
         # 模拟器 >> 网易mumu模拟器连接cap_method=JAVACAP&&ori_method=ADBORI
         os.popen("adb connect 127.0.0.1:7555").read()
@@ -231,5 +232,21 @@ def pytest_runtest_makereport(item, call):
     if rep.when == 'call':
         if rep.failed:
             print("我已经捕获失败了")
+            import pdb; pdb.set_trace()
+            nowtime = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+            # 截图
+            os.popen(r"adb -s {driver} shell screencap -p /sdcard/screen{time}.png".format(driver=device().uuid,
+                                                                                           time=nowtime))
+            # pull
+            if os.path.exists(rootPath + "Logs/error_screenIMG") is False:
+                os.makedirs(rootPath + "Logs/error_screenIMG")
+            os.popen(
+                r"adb -s {driver} pull /sdcard/screen{time}.png {pngfile}".format(driver=device().uuid, time=nowtime,
+                                                                                  pngfile=rootPath + "Logs/error_screenIMG"))
+            # 删除原图片
+            os.popen(r"adb -s {driver} shell rm /sdcard/screen{time}.png".format(driver=device().uuid, time=nowtime))
+            # 等待重复
+            time.sleep(3)
+
         elif rep.passed:
             pass
