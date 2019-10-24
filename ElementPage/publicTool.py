@@ -100,7 +100,6 @@ class publicTool(BaseView):
             self.poco("android:id/content").invalidate()
             time.sleep(0.5)
             if time.time() - start1 > 30:
-                import pdb; pdb.set_trace()
                 self.log.debug("循环判断box_alert_text是否存在超时, 退出")
                 break
 

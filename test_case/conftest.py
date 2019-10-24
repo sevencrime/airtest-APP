@@ -232,7 +232,6 @@ def pytest_runtest_makereport(item, call):
     if rep.when == 'call':
         if rep.failed:
             print("我已经捕获失败了")
-            import pdb; pdb.set_trace()
             nowtime = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
             # 截图
             os.popen(r"adb -s {driver} shell screencap -p /sdcard/screen{time}.png".format(driver=device().uuid,
