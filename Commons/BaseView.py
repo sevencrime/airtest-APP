@@ -31,7 +31,7 @@ class BaseView():
         self.permission_allow_button = self.poco("com.android.packageinstaller:id/permission_allow_button", text="始终允许")    # 权限弹框: 允许
         self.permission_title = self.poco("com.android.packageinstaller:id/permission_title")   # 权限弹框标题
 
-        self.loginbtn = self.poco("button_login").click()
+        self.loginbtn = self.poco("button_login")
         self.passwordedit = self.poco("password_input")
         self.tel_edit = self.poco("tel_input")
 

@@ -81,8 +81,7 @@ class publicTool(BaseView):
         """
         self.poco("android:id/content").invalidate()
         box_alert = self.box_alert
-
-        import pdb; pdb.set_trace()
+        box_alert.invalidate()
         start = time.time()
         while not box_alert.__len__() > 1:
             self.log.debug("判断box_alert是否大于1")
