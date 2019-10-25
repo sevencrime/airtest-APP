@@ -58,7 +58,7 @@ class idcardPage(BaseView):
             touch(Template("".join(self.mumuidcardimgpositive_img), record_pos=(-0.002, 0.277), resolution=(810, 1440)))
         else:
             # oppo手机
-            touch(Template("".join(self.idcardimgpath_img), record_pos=(0.109, -0.466), resolution=(1080, 2340)))
+            touch(Template("".join(self.idcardimgpath_img), record_pos=(0.081, 0.183), resolution=(1080, 2280)))
             touch(Template("".join(self.idcardimgpositive_img), record_pos=(-0.111, -0.728), resolution=(1080, 2340)))
 
     # @permission
@@ -79,9 +79,8 @@ class idcardPage(BaseView):
             touch(Template("".join(self.mumuidcardimgnegative_img), record_pos=(-0.002, -0.132), resolution=(810, 1440)))
 
         else:
-            touch(Template("".join(self.idcardimgpath_img), record_pos=(0.109, -0.466), resolution=(1080, 2340)))
+            touch(Template("".join(self.idcardimgpath_img), record_pos=(0.081, 0.183), resolution=(1080, 2280)))
             touch(Template("".join(self.idcardimgnegative_img), record_pos=(-0.367, -0.721), resolution=(1080, 2340)))
-
 
 
 if __name__ == '__main__':

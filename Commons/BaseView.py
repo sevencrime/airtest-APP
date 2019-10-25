@@ -51,7 +51,7 @@ class BaseView():
         self.el_idcardpositive = self.poco(text="请上传身份证国徽面")
 
         # 采用图片识别方式上传身份证
-        self.idcardimgpath_img = rootPath + r'testData\\testIMG\\idcardFolder.png'
+        self.idcardimgpath_img = rootPath + r'testData\\testIMG\\vivo_idcardFolder.png'
         self.idcardimgnegative_img = rootPath + r'testData\\testIMG\\idcardimgnegative.png'
         self.idcardimgpositive_img = rootPath + r'testData\\testIMG\\idcardimgpositive.png'
 

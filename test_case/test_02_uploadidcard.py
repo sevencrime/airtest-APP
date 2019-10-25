@@ -14,7 +14,6 @@ from ElementPage.publicTool import publicTool
 
 
 @allure.feature("上传身份证")
-@pytest.mark.usefixtures('query_initialData') #这里查询是为了判断地址证明是否勾选
 class Test_uploadidcard():
     gm = GlobalMap()
     fix_routetitle = ["身份证验证"]
@@ -239,6 +238,7 @@ class Test_uploadidcard():
 
 
     @allure.story("身份证验证-勾选住址和身份证地址不一致")
+    @pytest.mark.usefixtures('query_initialData')  # 这里查询是为了判断地址证明是否勾选
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
@@ -270,10 +270,12 @@ class Test_uploadidcard():
                 pubTool.backform()
                 assert_equal(pubTool.get_Routetitle(), "身份证验证", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
+    def test_demo(self):
+        assert False
 
 
 if __name__ == "__main__":
-    pytest.main(["-s","-v", "test_02_uploadidcard.py::Test_uploadidcard", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s","-v", "test_02_uploadidcard.py::Test_uploadidcard::test_demo", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

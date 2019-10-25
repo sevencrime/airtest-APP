@@ -14,9 +14,10 @@ from ElementPage.publicTool import publicTool
 
 @allure.feature("地址证明")
 class Test_addressProof():
-    # gm = GlobalMap()
+    gm = GlobalMap()
 
-    @allure.story("")
+    @allure.story("正常输入地址证明")
+    @pytest.mark.skipif(gm.get_value("sameAdderss") == False, reason="没有勾选地址证明")
     def test_sendAddressProof(self, poco):
 
         pubTool = publicTool(poco)

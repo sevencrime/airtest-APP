@@ -1,4 +1,6 @@
 import datetime
+import re
+import subprocess
 
 import allure
 import pytest
@@ -18,7 +20,7 @@ curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture()
 def query_initialData(poco):
     """
     # 查询数据库获取初始值
@@ -103,16 +105,24 @@ def query_initialData(poco):
             if fundsSourcedict.__contains__(fundsSource):
                 fundsSourcelist.append(fundsSourcedict[fundsSource])
 
-        if result['isLearnAboutProducts'] == 'Y' and result['isIndustryExperience'] == 'Y' and result[
-            'isStocks'] == 'Y' and result['isApplyProduct'] == 'Y':
-            gm.set_bool(derivative=True)
+        try:
+            if result['isLearnAboutProducts'] == 'Y' and result['isIndustryExperience'] == 'Y' and result[
+                'isStocks'] == 'Y' and result['isApplyProduct'] == 'Y':
+                gm.set_bool(derivative=True)
 
-        if result['knowRisk'] == 'Y' or result['knowRisk'] == True:
-            gm.set_bool(knowRisk=True)
-        else:
-            gm.set_bool(knowRisk=False)
+            if result['knowRisk'] == 'Y' or result['knowRisk'] == True:
+                gm.set_bool(knowRisk=True)
+            else:
+                gm.set_bool(knowRisk=False)
 
-        gm.set_bool(sameAdderss=result['sameAddress'])  # sameAdderss: 住址与身份证不一致, ture为勾选
+        except:
+            log.info("还没走到衍生产品页或者字段改动")
+
+        try:
+            gm.set_bool(sameAdderss=result['sameAddress'])  # sameAdderss: 住址与身份证不一致, ture为勾选
+        except Exception as e:
+            raise e
+            gm.set_bool(sameAdderss=False)
 
     elif gm.get_value("environment") == "test" and gm.get_value("environment") == "uat":
         # 全年总收入
@@ -195,8 +205,11 @@ def config():
 
 
 @pytest.fixture(scope="session", autouse=True)
-def poco():
+def poco(config):
     # poco = AndroidUiautomationPoco(screenshot_each_action=False)
+
+    readDeviceId = list(os.popen('adb devices').readlines())
+    deviceId = re.findall(r'(.*)\tdevice', readDeviceId[1])
 
     # if not cli_setup():
     #     auto_setup(__file__, logdir=True,
@@ -204,9 +217,12 @@ def poco():
 
     if not cli_setup():
         # 模拟器 >> 网易mumu模拟器连接cap_method=JAVACAP&&ori_method=ADBORI
-        os.popen("adb connect 127.0.0.1:7555").read()
+        # os.popen("adb connect 127.0.0.1:7555").read()
+        # connect_device(
+        #     "Android://127.0.0.1:5037/127.0.0.1:7555?ori_method=ADBORI")
+
         connect_device(
-            "Android://127.0.0.1:5037/127.0.0.1:7555?ori_method=ADBORI")
+            "Android://127.0.0.1:5037/{device}?ori_method=ADBORI".format(device=''.join(deviceId)))
 
         # auto_setup(basedir=__file__,
         #            devices = ["Android://127.0.0.1:5037/127.0.0.1:7555?ori_method=ADBORI"],
@@ -232,20 +248,24 @@ def pytest_runtest_makereport(item, call):
     if rep.when == 'call':
         if rep.failed:
             print("我已经捕获失败了")
-            nowtime = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+            nowtime = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
             # 截图
-            os.popen(r"adb -s {driver} shell screencap -p /sdcard/screen{time}.png".format(driver=device().uuid,
-                                                                                           time=nowtime))
-            # pull
+            subprocess.Popen(
+                r"adb -s {driver} shell screencap -p /sdcard/Pictures/screen{time}.png".format(driver=device().uuid,time=nowtime),shell=True).wait()
+
             if os.path.exists(rootPath + "Logs/error_screenIMG") is False:
                 os.makedirs(rootPath + "Logs/error_screenIMG")
-            os.popen(
-                r"adb -s {driver} pull /sdcard/screen{time}.png {pngfile}".format(driver=device().uuid, time=nowtime,
-                                                                                  pngfile=rootPath + "Logs/error_screenIMG"))
-            # 删除原图片
-            os.popen(r"adb -s {driver} shell rm /sdcard/screen{time}.png".format(driver=device().uuid, time=nowtime))
-            # 等待重复
-            time.sleep(3)
+
+            # pull
+            subprocess.Popen(
+                r"adb -s {driver} pull /sdcard/Pictures/screen{time}.png {pngfile}".format(driver=device().uuid,
+                                                                                            time=nowtime,pngfile=rootPath + "Logs/error_screenIMG"),shell=True).wait()
+
+            # 删除
+            subprocess.Popen(r"adb -s {driver} shell rm /sdcard/Pictures/screen{time}.png".format(driver=device().uuid,time=nowtime),shell=True).wait()
+
+
+
 
         elif rep.passed:
             pass
