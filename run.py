@@ -10,7 +10,7 @@ from Commons import CommonsTool
 if __name__ == "__main__":
     # "--reruns=3", "--reruns-delay=3"  #重试
     pytest.main(["-s", "-v", "./test_case", '--alluredir',
-                 './report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')), "--reruns=1",
+                 './report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')), "--reruns=3",
                  "--reruns-delay=3"])
 
     xml_report_path, html_report_path = CommonsTool.rmdir5()

@@ -68,7 +68,8 @@ class startUpFrom(BaseView):
         登陆界面--输入电话号码(手机号)
 
         """
-        self.phonenumber.set_text("15089514626")
+        # self.phonenumber.set_text("15089514626")
+        self.poco("tel_input").set_text("15089514626")
 
     def send_password(self):
         """
@@ -76,7 +77,8 @@ class startUpFrom(BaseView):
 
         """
         # self.poco(text="请输入密码").set_text("abcd1234")
-        self.poco("android.widget.ScrollView").child("android.view.ViewGroup").child("android.widget.EditText")[1].set_text("abcd1234")
+        # self.poco("android.widget.ScrollView").child("android.view.ViewGroup").child("android.widget.EditText")[1].set_text("abcd1234")
+        self.poco("password_input").set_text("abcd1234")
 
     def click_Loginbtn(self):
         """
