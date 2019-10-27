@@ -79,30 +79,49 @@ class publicTool(BaseView):
         获取弹出框的标题和弹框的内容
 
         """
-        self.poco("android:id/content").invalidate()
-        box_alert = self.box_alert
-        box_alert.invalidate()
+        # self.poco("android:id/content").invalidate()
+        # box_alert = self.box_alert
+        # box_alert.invalidate()
+        # start = time.time()
+        # while not box_alert.__len__() > 1:
+        #     self.log.debug("判断box_alert是否大于1")
+        #     self.poco("android:id/content").invalidate()
+        #     box_alert.invalidate()
+
+        #     if time.time() - start > 20:
+        #         break
+
+
+        # box_alert_text = box_alert[-1].offspring("android.widget.TextView")
+        # start1 = time.time()
+        # while not box_alert_text.exists():
+        #     self.log.debug("循环判断box_alert_text是否存在")
+        #     box_alert.invalidate()
+        #     box_alert_text = box_alert[-1].offspring("android.widget.TextView")
+        #     box_alert_text.invalidate()
+        #     time.sleep(0.5)
+        #     if time.time() - start1 > 30:
+        #         self.log.debug("循环判断box_alert_text是否存在超时, 退出")
+        #         break
+
         start = time.time()
-        while not box_alert.__len__() > 1:
-            self.log.debug("判断box_alert是否大于1")
-            self.poco("android:id/content").invalidate()
-            box_alert.invalidate()
-
-            if time.time() - start > 20:
+        while not self.poco(text="确定").exists() and not self.poco(text="取消").exists():
+            # self.poco("android:id/content").invalidate()
+            if time.time() - start > 15:
                 break
+        else:
+            box_alert_text = self.poco(text="确定").parent().parent().parent().offspring("android.widget.TextView")
 
 
-        box_alert_text = box_alert[-1].offspring("android.widget.TextView")
         start1 = time.time()
-        while not box_alert_text.exists():
-            self.log.debug("循环判断box_alert_text是否存在")
-            box_alert.invalidate()
-            box_alert_text = box_alert[-1].offspring("android.widget.TextView")
-            box_alert_text.invalidate()
-            time.sleep(0.5)
-            if time.time() - start1 > 30:
-                self.log.debug("循环判断box_alert_text是否存在超时, 退出")
+        while not self.poco(text="知道了").exists():
+            # self.poco("android:id/content").invalidate()
+            if time.time() - start1 > 15:
                 break
+        else:
+            box_alert_text = self.poco(text="知道了").parent().parent().parent().offspring("android.widget.TextView")
+
+
 
         self.log.debug("提示框的标题是: {}".format(box_alert_text[0].get_text()))
         self.log.debug("提示框的标题是: {}".format(box_alert_text[1].get_text()))
