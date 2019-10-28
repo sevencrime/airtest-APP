@@ -15,17 +15,8 @@ from ElementPage.publicTool import publicTool
 
 @allure.feature("上传身份证")
 class Test_uploadidcard():
-    self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
     gm = GlobalMap()
     fix_routetitle = ["身份证验证"]
-
-    def click_box(self, poco):
-        start = time.time()
-        while not poco(text="知道了").exists():
-            poco(text="知道了").invalidate()
-            if time.time() - start > 20:
-                break
-        poco(text="知道了").click()
 
 
     @allure.story("上传身份证")
@@ -100,7 +91,7 @@ class Test_uploadidcard():
                 assert_equal(boxcontent, "开户年龄不得小于18岁", "弹框内容与填写内容不符")
 
             with allure.step("关闭弹框"):
-                self.click_box(poco)
+                pubTool.click_box()
 
 
     @allure.story("身份证验证-校验身份证是否过期")
@@ -126,7 +117,7 @@ class Test_uploadidcard():
                 assert_equal(boxcontent, "您的身份证件已过期，请更换证件后再次申请", "弹框内容与填写内容不符")
 
             with allure.step("关闭弹框"):
-                self.click_box(poco)
+                pubTool.click_box()
 
     @allure.story("身份证验证-邮箱格式不正确")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
@@ -152,7 +143,7 @@ class Test_uploadidcard():
                 assert_equal(boxcontent, "邮件格式不正确", "弹框内容与填写内容不符")
 
             with allure.step("关闭弹框"):
-                self.click_box(poco)
+                pubTool.click_box()
 
     @allure.story("身份证验证-邮箱不一致")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
@@ -178,7 +169,7 @@ class Test_uploadidcard():
                 assert_equal(boxcontent, "两次邮箱输入不一致", "弹框内容与填写内容不符")
 
             with allure.step("关闭弹框"):
-                self.click_box(poco)
+                pubTool.click_box()
 
     @allure.story("身份证验证-邮箱已存在")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
@@ -204,7 +195,7 @@ class Test_uploadidcard():
                 assert_equal(boxcontent, "电邮已存在", "弹框内容与填写内容不符")
 
             with allure.step("关闭弹框"):
-                self.click_box(poco)
+                pubTool.click_box()
 
 
     @allure.story("身份证验证-电话号码已存在")
@@ -234,7 +225,7 @@ class Test_uploadidcard():
                 assert_equal(boxcontent, "电话号码(用于通讯)已存在", "弹框内容与填写内容不符")
 
             with allure.step("关闭弹框"):
-                self.click_box(poco)
+                pubTool.click_box()
 
 
 

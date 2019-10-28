@@ -8,6 +8,7 @@ import os
 from airtest.cli.parser import cli_setup
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
+from pymongo.errors import ServerSelectionTimeoutError
 
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
@@ -38,22 +39,37 @@ def query_initialData(poco):
 
     if gm.get_value("environment").find("aos") != -1:
         # 查询数据库获取全年总收入和资产净值的字段
-        result = mongo.findData(gm.get_value("environment"), "accounts", {
-            'phone': "15089514626", 'forLogin': True})
+        for i in range(3):
+            try:
+                result = mongo.findData(gm.get_value("environment"), "accounts", {
+                    'phone': "15089514626", 'forLogin': True})
+            except ServerSelectionTimeoutError:
+                time.sleep(3)
+                continue
+
+            break
+
 
     elif gm.get_value("environment") == "test" and gm.get_value("environment") == "uat":
         # result = mongo.findData(gm.get_value("environment"), "apply", {
         # "applySeqId" : publicTool(poco).get_appcationNumber()})
+        for i in range(3):
+            try:
+                result = mongo.aggregate(gm.get_value("environment"),
+                                         "apply", [
+                                             {'$match': {"applySeqId": publicTool(poco).get_appcationNumber()}},
+                                             {'$lookup': {'from': 'apply_info', 'localField': 'applyInfoIds',
+                                                          'foreignField': '_id', 'as': 'applyInfos'}},
+                                             {'$unwind': '$applyInfos'},
+                                             {'$match': {'applyInfos.isMaster': '1'}}
+                                         ]
+                                         )
+            except ServerSelectionTimeoutError:
+                time.sleep(3)
+                continue
 
-        result = mongo.aggregate(gm.get_value("environment"),
-                                 "apply", [
-                                     {'$match': {"applySeqId": publicTool(poco).get_appcationNumber()}},
-                                     {'$lookup': {'from': 'apply_info', 'localField': 'applyInfoIds',
-                                                  'foreignField': '_id', 'as': 'applyInfos'}},
-                                     {'$unwind': '$applyInfos'},
-                                     {'$match': {'applyInfos.isMaster': '1'}}
-                                 ]
-                                 )
+            break
+
 
     totalAnnualdict = {
         "pension": "退休金",
@@ -92,7 +108,8 @@ def query_initialData(poco):
         # 全年总收入
         for totalAnnual in result['totalAnnualCustomerRevenueHKSource']:
             if totalAnnualdict.__contains__(totalAnnual):
-                totalAnnuallist.append(totalAnnualdict[totalAnnual])
+                totalAnnuallist.append(
+                    totalAnnualdict[totalAnnual])
 
         # 资产净值
         for customerNetAssetValue in result['customerNetAssetValueHKSource']:
