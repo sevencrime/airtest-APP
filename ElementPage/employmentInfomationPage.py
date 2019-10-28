@@ -73,12 +73,13 @@ class employmentInfomationPage(BaseView):
                 if len(sources) == 1:
                     self.disExists_swipe(sources).click()
                     if fund == '其他':
-                        self.otherfunds.set_text("其他资金来源")
+                        # self.otherfunds.set_text("其他资金来源")
+                        self.exists(self.otherfunds).set_text("其他资金来源")
 
                 elif len(sources) > 1:
                     self.disExists_swipe(sources[0]).click()
                     if fund == '其他':
-                        self.otherfunds.set_text("其他资金来源")
+                        self.exists(self.otherfunds).set_text("其他资金来源")
 
                 else:
                     self.log.debug("出现了不止2个, 需要查看问题哦")
@@ -116,12 +117,13 @@ class employmentInfomationPage(BaseView):
                     self.disExists_swipe(sources).click()
                     if asset == '其他':
                         # import pdb; pdb.set_trace()
-                        self.otherassets.set_text("其他资产净值")
+                        self.exists(self.otherassets).set_text("其他资产净值")
 
                 elif len(sources) > 1:
                     self.disExists_swipe(sources[1]).click()
                     if asset == '其他':
-                        self.otherassets.set_text("其他资产净值")
+                        self.exists(self.otherassets).set_text("其他资产净值")
+
                 else:
                     self.log.debug("出现了不止2个, 需要查看问题哦")
                     pass

@@ -182,16 +182,19 @@ class BaseView():
         先等待元素出现, 再判断元素是否显示
 
         """
-        try:
-            # return self.poco.wait_for_any(element)
-            element.wait_for_appearance(30)
-            # element.wait(5)
-            # element.exists()
-            return element
-        except Exception as e:
-            print("找不到元素 {}".format(element))
-            print(e)
+        start = time.time()
+        while not element.exists():
+            self.log.debug("进入exists循环")
+            element.invalidate()
+            self.poco("android:id/content").invalidate()
 
+            if time.time() - start > 15:
+                self.log.debug("循环查找超过15秒, 失败")
+                break
+
+            time.sleep(0.5)
+
+        return element
 
     def disExists_swipe(self, element, orientation=None):
         '''
