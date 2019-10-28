@@ -15,6 +15,7 @@ from ElementPage.publicTool import publicTool
 
 @allure.feature("上传身份证")
 class Test_uploadidcard():
+    self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
     gm = GlobalMap()
     fix_routetitle = ["身份证验证"]
 

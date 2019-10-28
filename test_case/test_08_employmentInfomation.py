@@ -81,6 +81,7 @@ class Test_employmentInfomation():
     @pytest.mark.usefixtures('reloadRoute')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_nullemploy(self, poco, totalAnnual, customer):
+        self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("选择全年总收入选择 {}".format(totalAnnual)):
@@ -101,6 +102,7 @@ class Test_employmentInfomation():
     @pytest.mark.parametrize("customer, assetslist", Unemployed_assetslist)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_unemployedandnot(self, poco, reloadRoute, employed, totalAnnual, fundlist, customer, assetslist):
+        self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("就业情况选择无业"):
@@ -130,6 +132,7 @@ class Test_employmentInfomation():
     @pytest.mark.parametrize("customer, assetslist", Employed_assetslist)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_Employed(self, poco, reloadRoute, employed, totalAnnual, fundlist, customer, assetslist):
+        self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("就业情况选择就业"):
@@ -171,6 +174,7 @@ class Test_employmentInfomation():
     @pytest.mark.parametrize("customer, assetslist", selfEmployed_assetslist)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_selfEmployed(self, poco, reloadRoute, employed, totalAnnual, fundlist, customer, assetslist):
+        self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("就业情况选择自雇"):

@@ -57,7 +57,6 @@ class employmentInfomationPage(BaseView):
         # gm.get_value("istotalAnnual") : 全年总收入来源已勾选的值
         """
 
-        # import pdb; pdb.set_trace()
         funds = set(self.gm.get_value("istotalAnnual")).symmetric_difference(fundlist)
         self.log.debug("需要点击的选项有: {}".format(','.join(funds)))
 
@@ -100,6 +99,7 @@ class employmentInfomationPage(BaseView):
         """
 
         assets = set(self.gm.get_value("customerNetAssetValue")).symmetric_difference(assetslist)
+        self.log.debug("需要点击的选项有: {}".format(','.join(assets)))
 
 
         self.click_select(self.customerNetAssetValueHK, price)

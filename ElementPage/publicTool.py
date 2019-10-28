@@ -105,22 +105,12 @@ class publicTool(BaseView):
         #         break
 
         start = time.time()
-        while not self.poco(text="确定").exists() and not self.poco(text="取消").exists():
+        while not (self.poco(text="确定").exists() and not self.poco(text="取消").exists()) or self.poco(text="知道了").exists():
             # self.poco("android:id/content").invalidate()
             if time.time() - start > 15:
                 break
         else:
             box_alert_text = self.poco(text="确定").parent().parent().parent().offspring("android.widget.TextView")
-
-
-        start1 = time.time()
-        while not self.poco(text="知道了").exists():
-            # self.poco("android:id/content").invalidate()
-            if time.time() - start1 > 15:
-                break
-        else:
-            box_alert_text = self.poco(text="知道了").parent().parent().parent().offspring("android.widget.TextView")
-
 
 
         self.log.debug("提示框的标题是: {}".format(box_alert_text[0].get_text()))
