@@ -4,7 +4,6 @@ import subprocess
 
 import allure
 import pytest
-import os
 from airtest.cli.parser import cli_setup
 from airtest.core.api import *
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
@@ -323,6 +322,8 @@ def pytest_runtest_makereport(item, call):
             subprocess.Popen(r"adb -s {driver} shell rm /sdcard/Pictures/screen{time}.png".format(driver=device().uuid,time=nowtime),shell=True).wait()
 
 
+            testimg = open(rootPath + "Logs/error_screenIMG/screen{time}.png".format(time=nowtime), 'rb').read()
+            allure.attach('test_img', testimg, allure.attachment_type.PNG)
 
 
         elif rep.passed:

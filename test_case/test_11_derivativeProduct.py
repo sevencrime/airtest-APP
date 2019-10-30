@@ -13,6 +13,7 @@ from Commons.GlobalMap import GlobalMap
 
 
 @allure.feature("衍生产品的认识")
+@pytest.mark.usefixtures('query_initialData')
 class Test_derivativeProduct():
 
     gm = GlobalMap()
@@ -98,10 +99,15 @@ class Test_derivativeProduct():
             pubTool.click_NextStepbtn()
             assert_equal(pubTool.get_Routetitle(), "相关保证金融资账户", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
+    @allure.story("衍生品产品认识 >> 组合勾选")
+    def test_demo(self):
+        assert False
+
+
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "--pdb", "test_11_derivativeProduct.py::Test_derivativeProduct::test_derivative", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v", "test_11_derivativeProduct.py::Test_derivativeProduct::test_demo", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
