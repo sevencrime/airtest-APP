@@ -36,6 +36,7 @@ def query_initialData(poco):
     totalAnnuallist = []  # 存放全年总收入的初始值
     customerNetAssetValuelist = []  # 存放资产净值的初始值
     fundsSourcelist = []  # 交易的资金/财富来源(选择所有适用)
+    channelslist = []   #认识渠道
 
     if gm.get_value("environment").find("aos") != -1:
         # 查询数据库获取全年总收入和资产净值的字段
@@ -104,6 +105,33 @@ def query_initialData(poco):
         "pension": "退休金",
     }
 
+    # 您透过哪些渠道认识艾德证券?(选择所有适用)
+    crm_channelsdict = {
+        "advertising" : "网上广告", 
+        "lecture" : "讲座", 
+        "friend" : "朋友", 
+        "searchEngine" : "搜索引擎", 
+        "newspaper" : "报纸", 
+        'magazine' : '杂志',
+        'forum' : '论坛',
+        'socialMedia' : '社交媒体',
+        'other' : '其他'
+    }
+
+
+    aos_channelsdict = {
+        "onlineAd" : "网上广告", 
+        "lecture" : "讲座", 
+        "friend" : "朋友", 
+        "searchEngine" : "搜索引擎", 
+        "newspaper" : "报纸", 
+        'magazine' : '杂志',
+        'forum' : '论坛',
+        'socialMedia' : '社交媒体',
+        'other' : '其他'
+    }
+
+
     if gm.get_value("environment").find("aos") != -1:
         # 全年总收入
         for totalAnnual in result['totalAnnualCustomerRevenueHKSource']:
@@ -122,9 +150,12 @@ def query_initialData(poco):
             if fundsSourcedict.__contains__(fundsSource):
                 fundsSourcelist.append(fundsSourcedict[fundsSource])
 
+        for channe in result['channels']:
+            if aos_channelsdict.__contains__(channe):
+                channelslist.append(aos_channelsdict[channe])
+
         try:
-            if result['isLearnAboutProducts'] == 'Y' and result['isIndustryExperience'] == 'Y' and result[
-                'isStocks'] == 'Y' and result['isApplyProduct'] == 'Y':
+            if result['isLearnAboutProducts'] == 'Y' and result['isIndustryExperience'] == 'Y' and result['isStocks'] == 'Y' and result['isApplyProduct'] == 'Y':
                 gm.set_bool(derivative=True)
 
             if result['knowRisk'] == 'Y' or result['knowRisk'] == True:
@@ -158,6 +189,11 @@ def query_initialData(poco):
             if fundsSourcedict.__contains__(fundsSource):
                 fundsSourcelist.append(fundsSourcedict[fundsSource])
 
+        for channe in result['channels']:
+            if crm_channelsdict.__contains__(channe):
+                channelslist.append(crm_channelsdict[channe])
+
+
         if result['applyInfos']['riskInfo']['isLearnAboutProducts'] == 'Y' and result['applyInfos']['riskInfo'][
             'isIndustryExperience'] == 'Y' and result['applyInfos']['riskInfo']['isStocks'] == 'Y' and \
                 result['applyInfos']['riskInfo']['isApplyToOpenTradingStructure'] == 'Y' and \
@@ -169,11 +205,13 @@ def query_initialData(poco):
     gm.set_List('istotalAnnual', totalAnnuallist)
     gm.set_List('customerNetAssetValue', customerNetAssetValuelist)
     gm.set_List('fundsSource', fundsSourcelist)
+    gm.set_List('channels', channelslist)
 
     log.debug("istotalAnnual的值为:" + "".join(gm.get_value("istotalAnnual")))
     log.debug("customerNetAssetValue的值为:" +
               "".join(gm.get_value("customerNetAssetValue")))
     log.debug("fundsSource的值为:" + "".join(gm.get_value("fundsSource")))
+    log.debug("认识渠道的值为:" + "".join(gm.get_value("channels")))
 
 
 @pytest.fixture()

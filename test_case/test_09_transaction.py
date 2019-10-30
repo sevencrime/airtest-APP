@@ -22,7 +22,7 @@ class Test_transaction():
         pubTool = publicTool(poco)
         transac = transactionPage(poco)
         with allure.step("输入交易资金/财富来源"):
-            employ = transac.click_fundsSource(["储蓄", "其他", "退休金"])
+            employ = transac.click_fundsSource(["储蓄", "其他"])
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()

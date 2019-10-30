@@ -77,7 +77,7 @@ class Test_employmentInfomation():
     @allure.title("全年总收入选择: {totalAnnual}, 资产净值全栈: {customer}")
     @pytest.mark.parametrize('totalAnnual', ['小于20万', '20-50万', '50-100万', '大于100万'])
     @pytest.mark.parametrize('customer', ['小于100万', '100-300万', '300-800万', '大于800万'])
-    @pytest.mark.skipif(gm.get_value("Routetitle") != "选择交易信息", reason= "就业情况已有值, 跳过该用例")
+    @pytest.mark.skipif(gm.get_value("Routetitle") == "选择交易信息", reason= "就业情况已有值, 跳过该用例")
     @pytest.mark.usefixtures('reloadRoute')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_nullemploy(self, poco, totalAnnual, customer):
@@ -212,7 +212,7 @@ class Test_employmentInfomation():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "--pdb", "test_08_employmentInfomation.py::Test_employmentInfomation", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v",  "test_08_employmentInfomation.py::Test_employmentInfomation", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

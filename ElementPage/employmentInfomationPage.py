@@ -42,6 +42,7 @@ class employmentInfomationPage(BaseView):
         '''
 
         self.el_officeaddr.set_text("深圳市南山区大冲商务中心")
+        self.el_officeaddr.invalidate()
 
         return self.el_officeaddr.get_text()
 

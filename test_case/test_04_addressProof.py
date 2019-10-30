@@ -15,8 +15,11 @@ from ElementPage.publicTool import publicTool
 @allure.feature("地址证明")
 class Test_addressProof():
     gm = GlobalMap()
+    fix_routetitle = ["住址信息"]
 
     @allure.story("正常输入地址证明")
+    @pytest.mark.usefixtures('reloadRoute')
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.skipif(gm.get_value("sameAdderss") == False, reason="没有勾选地址证明")
     def test_sendAddressProof(self, poco):
 
@@ -41,7 +44,7 @@ class Test_addressProof():
 
         with allure.step("确认地址弹框--点击确定"):
             pubTool.click_boxconfirm()
-            assert_equal(pubTool.get_Routetitle(), "人脸识别", "页面没有跳转")
+            assert_equal(pubTool.get_Routetitle(), "银行卡信息", "页面没有跳转")
 
 
 if __name__ == "__main__":

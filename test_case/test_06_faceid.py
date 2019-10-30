@@ -20,8 +20,11 @@ class Test_faceid():
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
     gm = GlobalMap()
     log = Logs()
+    fix_routetitle = ['人脸识别']
 
     @allure.story("人脸识别")
+    @pytest.mark.usefixtures('reloadRoute')
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_bankCard(self, poco):
         mongo = mongoTool(self.gm.get_value("mongohost"))
         pubTool = publicTool(poco)
