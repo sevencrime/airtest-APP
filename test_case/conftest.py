@@ -234,7 +234,10 @@ def poco(config):
 
     if not cli_setup():
         # 模拟器 >> 网易mumu模拟器连接cap_method=JAVACAP&&ori_method=ADBORI
-        # os.popen("adb connect 127.0.0.1:7555").read()
+        try:
+            subprocess.Popen("adb connect 127.0.0.1:7555", shell=True).wait(2)
+        except:
+            pass
         # connect_device(
         #     "Android://127.0.0.1:5037/127.0.0.1:7555?ori_method=ADBORI")
 

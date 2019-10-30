@@ -84,7 +84,7 @@ class publicTool(BaseView):
         start = time.time()
         while True:
             self.log.debug("循环查找")
-            if self.poco(text="确定").exists() and not self.poco(text="取消").exists():
+            if self.poco(text="确定").exists() and self.poco(text="取消").exists():
                 box_alert_text = self.poco(text="确定").parent().parent().parent().offspring("android.widget.TextView")
                 break
             elif self.poco(text="知道了").exists():
@@ -95,6 +95,7 @@ class publicTool(BaseView):
                 self.log.debug("循环查找超过15秒, 失败")
                 break
 
+            self.poco("android:id/content").invalidate()
 
         self.log.debug("提示框的标题是: {}".format(box_alert_text[0].get_text()))
         self.log.debug("提示框的标题是: {}".format(box_alert_text[1].get_text()))

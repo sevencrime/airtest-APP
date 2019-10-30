@@ -65,6 +65,13 @@ class BaseView():
         self.mumuidcardimgnegative_img = rootPath + r'testData\\testIMG\\mumuidcardimgnegative.png'
         self.mumuidcardimgpositive_img = rootPath + r'testData\\testIMG\\mumuidcardimgpositive.png'
 
+        # VIVO图片
+        self.vivoidcardimgpath_img = rootPath + r'testData\\testIMG\\vivo_idcardFolder.png'
+        self.vivoidcardimgnegative_img = rootPath + r'testData\\testIMG\\vivoidcardimgnegative.png'
+        self.vivoidcardimgpositive_img = rootPath + r'testData\\testIMG\\vivoidcardimgpositive.png'
+
+
+
         # 个人信息界面
         self.el_title = self.poco(text="称呼").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.el_chinesename = self.poco(text="中文姓名").sibling("android.widget.EditText")
