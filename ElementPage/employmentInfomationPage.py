@@ -58,6 +58,7 @@ class employmentInfomationPage(BaseView):
         # gm.get_value("istotalAnnual") : 全年总收入来源已勾选的值
         """
 
+        # symmetric_difference() 方法返回两个集合中不重复的元素集合，即会移除两个集合中都存在的元素。
         funds = set(self.gm.get_value("istotalAnnual")).symmetric_difference(fundlist)
         self.log.debug("需要点击的选项有: {}".format(','.join(funds)))
 

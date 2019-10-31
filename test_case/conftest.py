@@ -37,6 +37,7 @@ def query_initialData(poco):
     customerNetAssetValuelist = []  # 存放资产净值的初始值
     fundsSourcelist = []  # 交易的资金/财富来源(选择所有适用)
     channelslist = []   #认识渠道
+    investmentTargetlist = [] #投资目标
 
     if gm.get_value("environment").find("aos") != -1:
         # 查询数据库获取全年总收入和资产净值的字段
@@ -131,6 +132,14 @@ def query_initialData(poco):
         'other' : '其他'
     }
 
+    investmentTargetdict= {
+        "speculation" : "投机",
+        "hedging" : "对冲",
+        "asset" : "资产增值",
+        "income" : "利息/股息收入"
+    }
+
+
 
     if gm.get_value("environment").find("aos") != -1:
         # 全年总收入
@@ -154,9 +163,14 @@ def query_initialData(poco):
             if aos_channelsdict.__contains__(channe):
                 channelslist.append(aos_channelsdict[channe])
 
+
+        for investment in result['investmentTarget']:
+            if investmentTargetdict.__contains__(investment):
+                investmentTargetlist.append(investmentTargetdict[investment])
+
         try:
             if result['isLearnAboutProducts'] == 'Y' and result['isIndustryExperience'] == 'Y' and result['isStocks'] == 'Y' and result['isApplyProduct'] == 'Y':
-                gm.set_bool(derivative=True)
+                gm.set_bool(derivative=True)    # 衍生产品
 
             if result['knowRisk'] == 'Y' or result['knowRisk'] == True:
                 gm.set_bool(knowRisk=True)
@@ -171,6 +185,8 @@ def query_initialData(poco):
         except Exception as e:
             raise e
             gm.set_bool(sameAdderss=False)
+
+        gm.set_List('accountType', result['accountTypes'])  # 账户类型
 
     elif gm.get_value("environment") == "test" and gm.get_value("environment") == "uat":
         # 全年总收入
@@ -193,26 +209,31 @@ def query_initialData(poco):
             if crm_channelsdict.__contains__(channe):
                 channelslist.append(crm_channelsdict[channe])
 
+        for investment in result['purposeOfInvestment']:
+            if investmentTargetdict.__contains__(investment):
+                investmentTargetlist.append(investmentTargetdict[investment])
 
         if result['applyInfos']['riskInfo']['isLearnAboutProducts'] == 'Y' and result['applyInfos']['riskInfo'][
             'isIndustryExperience'] == 'Y' and result['applyInfos']['riskInfo']['isStocks'] == 'Y' and \
                 result['applyInfos']['riskInfo']['isApplyToOpenTradingStructure'] == 'Y' and \
                 result['applyInfos']['riskInfo']['isTradingStructureAggree'] == 'Y':
-            gm.set_bool(derivative=True)
+            gm.set_bool(derivative=True)    # 衍生产品
 
         gm.set_bool(sameAdderss=result['applyInfos']['syncIDAddress'] == "Y")  # sameAdderss: 住址与身份证不一致, ture为勾选
+        gm.set_List('accountType', result['accountType'])   # 账户类型
 
     gm.set_List('istotalAnnual', totalAnnuallist)
     gm.set_List('customerNetAssetValue', customerNetAssetValuelist)
-    gm.set_List('fundsSource', fundsSourcelist)
-    gm.set_List('channels', channelslist)
+    gm.set_List('fundsSource', fundsSourcelist)     # 财富来源
+    gm.set_List('channels', channelslist)   # 认识渠道
+    gm.set_List("investmentTarget", investmentTargetlist)   #投资目标
+
 
     log.debug("istotalAnnual的值为:" + "".join(gm.get_value("istotalAnnual")))
     log.debug("customerNetAssetValue的值为:" +
               "".join(gm.get_value("customerNetAssetValue")))
     log.debug("fundsSource的值为:" + "".join(gm.get_value("fundsSource")))
     log.debug("认识渠道的值为:" + "".join(gm.get_value("channels")))
-
 
 @pytest.fixture()
 def reloadRoute(request, poco):

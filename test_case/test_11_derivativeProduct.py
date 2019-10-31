@@ -103,7 +103,7 @@ class Test_derivativeProduct():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_11_derivativeProduct.py::Test_derivativeProduct::test_demo", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v", "test_11_derivativeProduct.py::Test_derivativeProduct", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
