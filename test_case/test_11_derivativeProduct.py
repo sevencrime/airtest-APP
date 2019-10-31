@@ -99,10 +99,6 @@ class Test_derivativeProduct():
             pubTool.click_NextStepbtn()
             assert_equal(pubTool.get_Routetitle(), "相关保证金融资账户", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
-    @allure.story("衍生品产品认识 >> 组合勾选")
-    def test_demo(self):
-        assert False
-
 
 
 

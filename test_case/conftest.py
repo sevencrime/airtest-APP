@@ -1,6 +1,7 @@
 import datetime
 import re
 import subprocess
+import traceback
 
 import allure
 import pytest
@@ -323,7 +324,12 @@ def pytest_runtest_makereport(item, call):
 
 
             testimg = open(rootPath + "Logs/error_screenIMG/screen{time}.png".format(time=nowtime), 'rb').read()
-            allure.attach('test_img', testimg, allure.attachment_type.PNG)
+            # allure.attach(body, name, attachment_type, extension)
+            # body - 要写入文件的原始内容。
+            # name - 包含文件名的字符串
+            # attachment_type - 其中一个allure.attachment_type值
+            # extension - 提供的将用作创建文件的扩展名
+            allure.attach(testimg, "screen", allure.attachment_type.PNG)
 
 
         elif rep.passed:
