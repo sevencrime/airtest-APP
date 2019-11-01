@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
+import sys
 
 import allure
 import pytest
 
 from Commons import CommonsTool
+from Commons.Logging import Logs
 from ElementPage.derivativeProductPage import derivativeProductPage
 from ElementPage.publicTool import publicTool
 from airtest.core.api import *
@@ -17,24 +19,27 @@ from Commons.GlobalMap import GlobalMap
 class Test_derivativeProduct():
 
     gm = GlobalMap()
+    log = Logs()
     fix_routetitle = ["衍生品产品认识"]
     radiovalue = [True, False]
 
     @allure.story("衍生品产品认识 >> 直接勾选最后一个")
     @pytest.mark.parametrize("buyProduct", radiovalue)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
-    @pytest.mark.usefixtures('query_initialData')
-    @pytest.mark.skipif(gm.get_value("derivative") == True, reason="衍生产品选项已经勾选")
+    @pytest.mark.skipif(gm.get_value("derivative") != True, reason="衍生产品选项已经勾选 {}".format(gm.get_value("derivative")))
     def test_derivative_Reversed(self, poco, reloadRoute, buyProduct):
         pubTool = publicTool(poco)
         derivative = derivativeProductPage(poco)
-
+        print(self.gm.get_value("derivative") != True)
         with allure.step("客户是否申请开通买卖衍生权证、牛熊证及结构性等产品"):
             derivative.click_buyProduct(buyProduct)
 
         if buyProduct:
             with allure.step("客户已明白买卖衍生权证、牛熊证及结构性产品的风险。并已详细阅读「结构性产品相关风险声明披露」"):
                 derivative.click_riskStatement()
+        else:
+            self.gm.set_bool(knowRisk=False)
+
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
@@ -71,9 +76,9 @@ class Test_derivativeProduct():
     @pytest.mark.parametrize("derivativeJobs", radiovalue)
     @pytest.mark.parametrize("tradingFund", radiovalue)
     @pytest.mark.parametrize("buyProduct", radiovalue)
-    @pytest.mark.usefixtures('query_initialData')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_derivative(self, poco, reloadRoute, derivativeCourse, derivativeJobs, tradingFund, buyProduct):
+        self.log.debug("正在执行{} 方法, 参数为: {}".format(sys._getframe().f_code.co_name, locals()))
         pubTool = publicTool(poco)
         derivative = derivativeProductPage(poco)
         with allure.step("客户是否曾接受有关衍生产品性质和风险的一般知识培训或修读相关课程"):
@@ -96,6 +101,7 @@ class Test_derivativeProduct():
             self.gm.set_bool(knowRisk=False)
 
         with allure.step("点击下一步"):
+            self.log.info("test中knowRisk的值为 : {}".format(self.gm.get_value("knowRisk")))
             pubTool.click_NextStepbtn()
             assert_equal(pubTool.get_Routetitle(), "相关保证金融资账户", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
@@ -103,7 +109,7 @@ class Test_derivativeProduct():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_11_derivativeProduct.py::Test_derivativeProduct", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v", "test_11_derivativeProduct.py::Test_derivativeProduct::test_derivative_Reversed", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

@@ -1,6 +1,7 @@
 import datetime
 import re
 import subprocess
+import sys
 import traceback
 
 import allure
@@ -21,7 +22,7 @@ curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
 
 
-@pytest.fixture()
+@pytest.fixture(scope="class")
 def query_initialData(poco):
     """
     # 查询数据库获取初始值
@@ -30,7 +31,7 @@ def query_initialData(poco):
     """
     # gm = GlobalMap()
     # log = Logs()
-
+    log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name))
     mongo = mongoTool(gm.get_value("mongohost"))
 
     totalAnnuallist = []  # 存放全年总收入的初始值
@@ -43,8 +44,13 @@ def query_initialData(poco):
         # 查询数据库获取全年总收入和资产净值的字段
         for i in range(3):
             try:
+                # result = mongo.findData(gm.get_value("environment"), "accounts", {
+                #     'phone': gm.get_value("phone"), 'forLogin': True})
+
                 result = mongo.findData(gm.get_value("environment"), "accounts", {
-                    'phone': "15089514626", 'forLogin': True})
+                    'applyCode': publicTool(poco).get_appcationNumber(), 'forLogin': True})
+
+
             except ServerSelectionTimeoutError:
                 time.sleep(3)
                 continue
@@ -168,22 +174,29 @@ def query_initialData(poco):
             if investmentTargetdict.__contains__(investment):
                 investmentTargetlist.append(investmentTargetdict[investment])
 
+        import pdb; pdb.set_trace()
         try:
-            if result['isLearnAboutProducts'] == 'Y' and result['isIndustryExperience'] == 'Y' and result['isStocks'] == 'Y' and result['isApplyProduct'] == 'Y':
+            if result['isLearnAboutProducts'] != '' and result['isIndustryExperience'] != '' and result['isStocks'] != '' and result['isApplyProduct'] != '':
                 gm.set_bool(derivative=True)    # 衍生产品
+            else:
+                gm.set_bool(derivative=False)
+        except:
+            gm.set_bool(derivative=False)
 
+
+        try:
             if result['knowRisk'] == 'Y' or result['knowRisk'] == True:
                 gm.set_bool(knowRisk=True)
             else:
                 gm.set_bool(knowRisk=False)
-
         except:
-            log.info("还没走到衍生产品页或者字段改动")
+            gm.set_bool(knowRisk=False)
+
 
         try:
             gm.set_bool(sameAdderss=result['sameAddress'])  # sameAdderss: 住址与身份证不一致, ture为勾选
         except Exception as e:
-            raise e
+            # raise e
             gm.set_bool(sameAdderss=False)
 
         gm.set_List('accountType', result['accountTypes'])  # 账户类型
@@ -213,11 +226,17 @@ def query_initialData(poco):
             if investmentTargetdict.__contains__(investment):
                 investmentTargetlist.append(investmentTargetdict[investment])
 
-        if result['applyInfos']['riskInfo']['isLearnAboutProducts'] == 'Y' and result['applyInfos']['riskInfo'][
-            'isIndustryExperience'] == 'Y' and result['applyInfos']['riskInfo']['isStocks'] == 'Y' and \
-                result['applyInfos']['riskInfo']['isApplyToOpenTradingStructure'] == 'Y' and \
-                result['applyInfos']['riskInfo']['isTradingStructureAggree'] == 'Y':
-            gm.set_bool(derivative=True)    # 衍生产品
+        try:
+            if result['applyInfos']['riskInfo']['isLearnAboutProducts'] != '' and result['applyInfos']['riskInfo'][
+                'isIndustryExperience'] != '' and result['applyInfos']['riskInfo']['isStocks'] != '' and \
+                    result['applyInfos']['riskInfo']['isApplyToOpenTradingStructure'] != '' and \
+                    result['applyInfos']['riskInfo']['isTradingStructureAggree'] != '':
+                gm.set_bool(derivative=True)    # 衍生产品
+            else:
+                gm.set_bool(derivative=False)
+
+        except:
+            gm.set_bool(derivative=False)
 
         gm.set_bool(sameAdderss=result['applyInfos']['syncIDAddress'] == "Y")  # sameAdderss: 住址与身份证不一致, ture为勾选
         gm.set_List('accountType', result['accountType'])   # 账户类型
@@ -234,6 +253,7 @@ def query_initialData(poco):
               "".join(gm.get_value("customerNetAssetValue")))
     log.debug("fundsSource的值为:" + "".join(gm.get_value("fundsSource")))
     log.debug("认识渠道的值为:" + "".join(gm.get_value("channels")))
+    log.debug("结构性衍生产品相关风险声明披露字段的值为 knowRisk : {}".format(gm.get_value("knowRisk")))
 
 @pytest.fixture()
 def reloadRoute(request, poco):
@@ -273,6 +293,7 @@ def reloadRoute(request, poco):
 @pytest.fixture(scope="session", autouse=True)
 def config():
     gm.set_value(environment="aos-uat")  # 记录数据库
+    gm.set_value(phone = "13148814889")
     gm.set_bool(isbullion=False)  # 记录黄金账户是否开启
     gm.set_bool(isLeveraged=False)  # 记录外汇账户是否开启
     # mongo数据库地址

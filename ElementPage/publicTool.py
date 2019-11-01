@@ -240,7 +240,7 @@ class publicTool(BaseView):
         try:
             self.log.debug("当前页面的标题为: {}".format(self.Routetitle.get_text(),))
         except PocoNoSuchNodeException:
-            self.log.debug("首页title获取不到")
+            self.log.debug("title获取不到")
 
         return self.Routetitle.get_text()
 

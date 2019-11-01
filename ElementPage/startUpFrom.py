@@ -69,7 +69,7 @@ class startUpFrom(BaseView):
 
         """
         # self.phonenumber.set_text("15089514626")
-        self.tel_edit.set_text("15089514626")
+        self.tel_edit.set_text(self.gm.get_value("phone"))
 
     def send_password(self):
         """
