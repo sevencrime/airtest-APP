@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import datetime
 import re
 import subprocess
@@ -298,7 +301,6 @@ def config():
     # mongo数据库地址
     gm.set_value(
         mongohost="mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net")
-
 
 @pytest.fixture(scope="session", autouse=True)
 def poco(config):
