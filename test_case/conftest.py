@@ -174,7 +174,6 @@ def query_initialData(poco):
             if investmentTargetdict.__contains__(investment):
                 investmentTargetlist.append(investmentTargetdict[investment])
 
-        import pdb; pdb.set_trace()
         try:
             if result['isLearnAboutProducts'] != '' and result['isIndustryExperience'] != '' and result['isStocks'] != '' and result['isApplyProduct'] != '':
                 gm.set_bool(derivative=True)    # 衍生产品

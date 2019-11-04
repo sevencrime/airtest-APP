@@ -26,8 +26,9 @@ class Test_derivativeProduct():
     @allure.story("衍生品产品认识 >> 直接勾选最后一个")
     @pytest.mark.parametrize("buyProduct", radiovalue)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
-    @pytest.mark.skipif(gm.get_value("derivative") != True, reason="衍生产品选项已经勾选 {}".format(gm.get_value("derivative")))
     def test_derivative_Reversed(self, poco, reloadRoute, buyProduct):
+        if self.gm.get_value("derivative") == True:
+            pytest.skip("衍生产品选项已经勾选, 跳过")
         pubTool = publicTool(poco)
         derivative = derivativeProductPage(poco)
         print(self.gm.get_value("derivative") != True)
@@ -109,7 +110,7 @@ class Test_derivativeProduct():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_11_derivativeProduct.py::Test_derivativeProduct::test_derivative_Reversed", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v", "test_11_derivativeProduct.py::Test_derivativeProduct", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

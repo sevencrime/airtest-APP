@@ -192,6 +192,7 @@ class publicTool(BaseView):
         textMatches: 模糊匹配
         """
         appcationNumberatext = self.poco(textMatches="申请编号:.*").get_text()
+        self.log.debug("申请编号为: {}".format(appcationNumberatext))
 
         self.gm.set_value(appcationNumber=appcationNumberatext[5:])
         
