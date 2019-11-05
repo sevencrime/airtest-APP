@@ -150,9 +150,15 @@ class BaseView():
 
         # 签名
         self.signature = self.poco("android.view.View")
-        self.signSubmit = self.poco(text="提").parent()
-        self.resign = self.poco(text="重").parent()
+        self.signSubmit = self.poco(text="提交").parent()
+        self.resign = self.poco(text="重签").parent()
 
+        # 预览页
+        self.previewSubmit = self.poco(text="核对无误，提交")
+
+        # PDF
+        self.signPDF_btn = self.poco(text="开始签署开户书")
+        self.completePDF_btn = self.poco(text="提交")
 
 
     def isElementRadio(self, content, isFlag):

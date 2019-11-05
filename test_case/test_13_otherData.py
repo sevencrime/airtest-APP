@@ -342,9 +342,6 @@ class Test_otherDataPage():
         with allure.step("您是否香港法律定义下的“政治公众人物（PEP）”或与政治公众人物有密切联系"):
             otherdata.click_PEP_People(False)
 
-        # with allure.step("滑动页面"):
-        #     pubTool.swipe_to_Up()
-
         with allure.step("您的投资目标"):
             otherdata.click_investmentTarget(["投机", "对冲"])
 
@@ -353,6 +350,7 @@ class Test_otherDataPage():
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
+            assert_equal(pubTool.get_Routetitle(), "风险披露", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
 
 if __name__ == "__main__":

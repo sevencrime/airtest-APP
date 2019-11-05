@@ -9,7 +9,7 @@ import pytest
 from Commons import CommonsTool
 from ElementPage.RiskDisclosurePage import RiskDisclosurePage
 from ElementPage.publicTool import publicTool
-
+from airtest.core.api import *
 
 @allure.feature("风险披露")
 class Test_riskDisclosure():
@@ -30,7 +30,7 @@ class Test_riskDisclosure():
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
-
+            assert_equal(pubTool.get_Routetitle(), "客户声明", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
 
 

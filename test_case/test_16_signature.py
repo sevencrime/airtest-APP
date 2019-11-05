@@ -5,6 +5,9 @@ import datetime
 import allure
 import pytest
 import os
+
+from poco.exceptions import PocoNoSuchNodeException
+
 from Commons import CommonsTool
 from ElementPage.publicTool import publicTool
 from ElementPage.signaturePage import signaturePage
@@ -17,14 +20,18 @@ class Test_Signature():
     def test_signaturepass(self, poco):
         pubTool = publicTool(poco)
         sign = signaturePage(poco)
-        with allure.step("在签名位置划线"):
-            sign.signatureview().swipe([-0.6, 0.5])
+        try:
 
-        with allure.step("点击提交按钮"):
-            sign.click_signSubmit()
+            with allure.step("在签名位置划线"):
+                sign.signatureview().swipe([-0.6, 0.5])
 
-        with allure.step("如果有权限弹框, 点击允许"):
-            pubTool.allow_permissionBox()
+            with allure.step("点击提交按钮"):
+                sign.click_signSubmit()
+
+            with allure.step("如果有权限弹框, 点击允许"):
+                pubTool.allow_permissionBox()
+        except PocoNoSuchNodeException:
+            print("已经签完名字")
 
 
 

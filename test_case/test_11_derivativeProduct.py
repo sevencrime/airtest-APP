@@ -41,7 +41,6 @@ class Test_derivativeProduct():
         else:
             self.gm.set_bool(knowRisk=False)
 
-
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
             assert_equal(pubTool.get_Routetitle(), "衍生品产品认识", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
