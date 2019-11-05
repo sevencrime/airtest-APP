@@ -7,6 +7,7 @@ import pytest
 from airtest.core.api import *
 
 from Commons import CommonsTool
+from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.idcardPage import idcardPage
 from ElementPage.personalInformationPage import personalInformationPage
@@ -16,6 +17,7 @@ from ElementPage.publicTool import publicTool
 @allure.feature("上传身份证")
 class Test_uploadidcard():
     gm = GlobalMap()
+    query_initialData()
     fix_routetitle = ["身份证验证"]
 
 
@@ -230,10 +232,9 @@ class Test_uploadidcard():
 
 
     @allure.story("身份证验证-勾选住址和身份证地址不一致")
-    @pytest.mark.usefixtures('query_initialData')  # 这里查询是为了判断地址证明是否勾选
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
-    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_pick_isaddress(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 

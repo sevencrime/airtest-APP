@@ -7,14 +7,15 @@ import pytest
 from airtest.core.api import *
 
 from Commons import CommonsTool
+from Commons.CommonsTool import query_initialData
 from ElementPage.introPromoPage import introPromoPage
 from ElementPage.publicTool import publicTool
 
 
 @allure.feature("介绍与推广")
-@pytest.mark.usefixtures('query_initialData')
 class Test_channels():
     fix_routetitle = ["介绍及推广"]
+    query_initialData()
 
     @allure.story("介绍与推广, 不勾选>>必须勾选才能下一步")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
