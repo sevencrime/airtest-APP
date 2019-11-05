@@ -4,9 +4,10 @@ import datetime
 import os
 import allure
 import pytest
-
+from Commons import CommonsTool
 from airtest.core.api import *
 
+from Commons.CommonsTool import isboolean, query_initialData
 from Commons.GlobalMap import GlobalMap
 
 from ElementPage.otherDataPage import otherDataPage
@@ -17,11 +18,9 @@ from ElementPage.publicTool import publicTool
 class Test_otherDataPage():
 
     gm = GlobalMap()
-
     fix_routetitle = ["其他资料"]
     query_initialData()
     boolset = isboolean(knowRisk=gm.get_value("knowRisk"), futures="futuresMargin" in gm.get_value("accountType"))
-
 
     @allure.story("其他资料")
     @allure.story("您是否曾经宣告破产或被申请破产提示")
@@ -125,7 +124,7 @@ class Test_otherDataPage():
     # 需判断期货或衍生产品是否勾选
     @allure.story("选择期货或衍生产品, 投资目标选择'利息/股息收入', 查看提示")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
-    @pytest.mark.skipif(gm.get_value("derivative") == True or "futuresMargin" in gm.get_value("accountType"), reason="跳过用例")
+    @pytest.mark.skipif('knowRisk' not in boolset['True'] and 'futures' not in boolset['True'], reason="跳过用例")
     def test_otherData_investmentTargetMSG(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         otherdata = otherDataPage(poco)
@@ -319,7 +318,6 @@ class Test_otherDataPage():
 
 
     @allure.story("其他资料, 正常输入")
->>>>>>> Stashed changes
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_otherData(self, poco, reloadRoute):
         pubTool = publicTool(poco)
@@ -359,10 +357,10 @@ class Test_otherDataPage():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "test_13_otherData.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    gm = GlobalMap()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
-
+    pytest.main(["-s", "-v", "--pdb", "test_13_otherData.py::Test_otherDataPage::test_otherData_investmentTargetMSG", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    xml_report_path, html_report_path = CommonsTool.rmdir5()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 
 
 

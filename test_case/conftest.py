@@ -22,7 +22,6 @@ curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
 
 
-<<<<<<< Updated upstream
 @pytest.fixture(scope="class")
 def query_initialData(poco):
     """
@@ -255,8 +254,6 @@ def query_initialData(poco):
     log.debug("认识渠道的值为:" + "".join(gm.get_value("channels")))
     log.debug("结构性衍生产品相关风险声明披露字段的值为 knowRisk : {}".format(gm.get_value("knowRisk")))
 
-=======
->>>>>>> Stashed changes
 @pytest.fixture()
 def reloadRoute(request, poco):
     """

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-<<<<<<< HEAD
 import glob
 import shutil
 import sys
@@ -14,7 +13,6 @@ from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from Commons.mongoTool import mongoTool
 from ElementPage.publicTool import publicTool
-=======
 import datetime
 import glob
 import shutil
@@ -25,7 +23,6 @@ from airtest.core.api import *
 
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
->>>>>>> origin/master
 
 gm = GlobalMap()
 log = Logs()
@@ -68,6 +65,11 @@ def rmdir5():
 
 
 def isboolean(**kwargs):
+    '''
+    判断是否勾选,
+    :param kwargs:
+    :return: 返回booleanlist
+    '''
 
     set_true = set()   # 存放为true的字段
     set_false = set()  # 存放为False的字段
@@ -82,6 +84,7 @@ def isboolean(**kwargs):
 
     booleanlist['True'] = set_true
     booleanlist['False'] = set_false
+    log.debug("isboolean : {}".format(isboolean))
     return booleanlist
 
 
@@ -100,6 +103,7 @@ def query_initialData():
     fundsSourcelist = []  # 交易的资金/财富来源(选择所有适用)
     channelslist = []   #认识渠道
     investmentTargetlist = [] #投资目标
+
 
     if gm.get_value("environment").find("aos") != -1:
         # 查询数据库获取全年总收入和资产净值的字段
@@ -207,7 +211,6 @@ def query_initialData():
     }
 
 
-
     if gm.get_value("environment").find("aos") != -1:
         # 全年总收入
         for totalAnnual in result['totalAnnualCustomerRevenueHKSource']:
@@ -242,7 +245,6 @@ def query_initialData():
                 gm.set_bool(derivative=False)
         except:
             gm.set_bool(derivative=False)
-
 
         try:
             if result['knowRisk'] == 'Y' or result['knowRisk'] == True:
@@ -314,4 +316,3 @@ def query_initialData():
     log.debug("fundsSource的值为:" + "".join(gm.get_value("fundsSource")))
     log.debug("认识渠道的值为:" + "".join(gm.get_value("channels")))
     log.debug("结构性衍生产品相关风险声明披露字段的值为 knowRisk : {}".format(gm.get_value("knowRisk")))
-

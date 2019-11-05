@@ -4,15 +4,13 @@ import glob
 import shutil
 import traceback
 
+import allure
 from airtest.core.api import *
 from poco.exceptions import PocoNoSuchNodeException
 
 from Commons.BaseView import BaseView
 from Commons.Logging import Logs
 import sys
-
-from Commons.read_ini import set_configini
-
 
 class publicTool(BaseView):
 
