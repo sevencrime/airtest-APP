@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
+import inspect
 import sys
 import os
+import traceback
+
 import allure
 import pytest
 from airtest.core.api import *
@@ -21,6 +24,7 @@ class Test_employmentInfomation():
     gm = GlobalMap()
     log = Logs()
     fix_routetitle = ["就业及财务状况"]      #当fixture的参数
+
     query_initialData()
 
 

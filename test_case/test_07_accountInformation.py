@@ -7,6 +7,7 @@ import pytest
 from airtest.core.api import *
 
 from Commons import CommonsTool
+from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from Commons.mongoTool import mongoTool
 from ElementPage.accountInformationPage import accountInformationPage
@@ -16,6 +17,7 @@ from ElementPage.publicTool import publicTool
 @allure.feature("账户信息")
 class Test_AccountInformation():
     gm = GlobalMap()
+    query_initialData()
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
 
     @allure.story("填写账户信息")
