@@ -9,6 +9,8 @@ import os
 from poco.exceptions import PocoNoSuchNodeException
 
 from Commons import CommonsTool
+from Commons.CommonsTool import query_initialData
+from Commons.GlobalMap import GlobalMap
 from ElementPage.publicTool import publicTool
 from ElementPage.signaturePage import signaturePage
 
@@ -16,6 +18,10 @@ from ElementPage.signaturePage import signaturePage
 @allure.feature("签名确认")
 class Test_Signature():
 
+    gm = GlobalMap()
+    query_initialData()
+
+    @pytest.mark.skipif(gm.get_value("signature"), reason="签名字段有值, 跳过用例")
     @allure.story("签名确认")
     def test_signaturepass(self, poco):
         pubTool = publicTool(poco)
@@ -32,10 +38,6 @@ class Test_Signature():
                 pubTool.allow_permissionBox()
         except PocoNoSuchNodeException:
             print("已经签完名字")
-
-
-
-
 
 
 if __name__ == "__main__":

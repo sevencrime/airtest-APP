@@ -18,7 +18,8 @@ class Test_otherDataPage():
 
     gm = GlobalMap()
     fix_routetitle = ["其他资料"]
-    query_initialData()
+    _map = query_initialData()
+    print(_map, "222222222222")
     boolset = isboolean(knowRisk=gm.get_value("knowRisk"), futures="futuresMargin" in gm.get_value("accountType"))
 
     @allure.story("其他资料")

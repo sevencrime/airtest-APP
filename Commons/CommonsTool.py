@@ -64,7 +64,7 @@ def isboolean(**kwargs):
     booleanlist = {}
 
     for key_, value_ in kwargs.items():
-        if value_ :
+        if value_ is True:
             set_true.add(key_)
         else:
             set_false.add(key_)
@@ -73,6 +73,7 @@ def isboolean(**kwargs):
     booleanlist['True'] = set_true
     booleanlist['False'] = set_false
     log.debug("isboolean : {}".format(isboolean))
+    import pdb; pdb.set_trace()
     return booleanlist
 
 
@@ -92,6 +93,7 @@ def query_initialData():
     channelslist = []   #认识渠道
     investmentTargetlist = [] #投资目标
 
+    import pdb; pdb.set_trace()
 
     if gm.get_value("environment").find("aos") != -1:
         # 查询数据库获取全年总收入和资产净值的字段
@@ -249,6 +251,12 @@ def query_initialData():
             # raise e
             gm.set_bool(sameAdderss=False)
 
+        import pdb; pdb.set_trace()
+        try:
+            gm.set_bool(signature=True if result['signature'] != "" else False)
+        except:
+            gm.set_bool(signature=False)
+
         gm.set_List('accountType', result['accountTypes'])  # 账户类型
 
     elif gm.get_value("environment") == "test" and gm.get_value("environment") == "uat":
@@ -288,6 +296,11 @@ def query_initialData():
         except:
             gm.set_bool(derivative=False)
 
+        try:
+            gm.set_bool(signature=True if result['applyInfos']['riskInfo']['signatureMaterial'] != "" else False)
+        except:
+            gm.set_bool(signature = False)
+
         gm.set_bool(sameAdderss=result['applyInfos']['syncIDAddress'] == "Y")  # sameAdderss: 住址与身份证不一致, ture为勾选
         gm.set_List('accountType', result['accountType'])   # 账户类型
 
@@ -304,3 +317,6 @@ def query_initialData():
     log.debug("fundsSource的值为:" + "".join(gm.get_value("fundsSource")))
     log.debug("认识渠道的值为:" + "".join(gm.get_value("channels")))
     log.debug("结构性衍生产品相关风险声明披露字段的值为 knowRisk : {}".format(gm.get_value("knowRisk")))
+
+    import pdb; pdb.set_trace()
+    return gm._map

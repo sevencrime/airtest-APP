@@ -12,11 +12,24 @@ rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
 
 
 def str_to_bool(str):
+    '''
+    字符串转bool
+    :param str:
+    :return:
+    '''
     return True if str.lower() == 'true' else False
 
 def set_configini(key, newvalue, Section="baseconf"):
+    '''
+    修改ini文件的数据
+    :param key:
+    :param newvalue:
+    :param Section:
+    :return:
+    '''
     config.set(Section, key, newvalue)
     config.write(open(rootPath + "pytest.ini", "w"))
+
 
 config = configparser.ConfigParser()
 config.read(rootPath + "pytest.ini")

@@ -70,7 +70,7 @@ class GlobalMap:
 
 if __name__ == '__main__':
     gm = GlobalMap()
-    gm._init()
     gm.set_List("accountType", ["bullionMargin"])
     a = gm.get_value("accountType")
     print(a)
+    print(gm._map)
