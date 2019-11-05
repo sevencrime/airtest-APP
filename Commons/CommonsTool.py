@@ -95,8 +95,6 @@ def query_initialData():
     channelslist = []   #认识渠道
     investmentTargetlist = [] #投资目标
 
-    import pdb; pdb.set_trace()
-
     if gm.get_value("environment").find("aos") != -1:
         # 查询数据库获取全年总收入和资产净值的字段
         for i in range(3):
@@ -253,7 +251,6 @@ def query_initialData():
             # raise e
             gm.set_bool(sameAdderss=False)
 
-        import pdb; pdb.set_trace()
         try:
             gm.set_bool(signature=True if result['signature'] != "" else False)
         except:
@@ -320,5 +317,4 @@ def query_initialData():
     log.debug("认识渠道的值为:" + "".join(gm.get_value("channels")))
     log.debug("结构性衍生产品相关风险声明披露字段的值为 knowRisk : {}".format(gm.get_value("knowRisk")))
 
-    import pdb; pdb.set_trace()
     return gm._map
