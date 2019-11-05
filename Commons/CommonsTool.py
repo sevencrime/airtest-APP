@@ -11,6 +11,7 @@ from pymongo.errors import ServerSelectionTimeoutError
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from Commons.mongoTool import mongoTool
+from Commons.read_ini import gm_init
 
 gm = GlobalMap()
 log = Logs()
@@ -85,6 +86,7 @@ def query_initialData():
     textMatches: 模糊匹配
     """
     log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name))
+    gm_init()   # 初始化ini配置
     mongo = mongoTool(gm.get_value("mongohost"))
 
     totalAnnuallist = []  # 存放全年总收入的初始值
