@@ -6,6 +6,7 @@ import allure
 import pytest
 from airtest.core.api import *
 
+from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from ElementPage.addressProofPage import addressProofPage
 from ElementPage.publicTool import publicTool
@@ -13,9 +14,13 @@ from ElementPage.publicTool import publicTool
 
 @allure.feature("地址证明")
 class Test_addressProof():
-    # gm = GlobalMap()
+    gm = GlobalMap()
+    fix_routetitle = ["住址信息"]
 
-    @allure.story("")
+    @allure.story("正常输入地址证明")
+    @pytest.mark.usefixtures('reloadRoute')
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skipif(gm.get_value("sameAdderss") == False, reason="没有勾选地址证明")
     def test_sendAddressProof(self, poco):
 
         pubTool = publicTool(poco)
@@ -39,10 +44,11 @@ class Test_addressProof():
 
         with allure.step("确认地址弹框--点击确定"):
             pubTool.click_boxconfirm()
-            assert_equal(pubTool.get_Routetitle(), "人脸识别", "页面没有跳转")
+            assert_equal(pubTool.get_Routetitle(), "银行卡信息", "页面没有跳转")
 
 
 if __name__ == "__main__":
     pytest.main(["-s", '--pdb', "test_04_addressProof.py::Test_addressProof", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    gm = GlobalMap()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
+    xml_report_path, html_report_path = CommonsTool.rmdir5()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

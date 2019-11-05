@@ -31,7 +31,8 @@ class startUpFrom(BaseView):
 
         """
         try:
-            self.exists(self.el_firstSetting_loc).click()
+            if self.el_firstSetting_loc.exists():
+                self.el_firstSetting_loc.click()
         except:
             return False
 
@@ -67,7 +68,8 @@ class startUpFrom(BaseView):
         登陆界面--输入电话号码(手机号)
 
         """
-        self.phonenumber.set_text("15089514626")
+        # self.phonenumber.set_text("15089514626")
+        self.tel_edit.set_text(self.gm.get_value("phone"))
 
     def send_password(self):
         """
@@ -75,12 +77,15 @@ class startUpFrom(BaseView):
 
         """
         # self.poco(text="请输入密码").set_text("abcd1234")
-        self.poco("android.widget.ScrollView").child("android.view.ViewGroup").child("android.widget.EditText")[1].set_text("abcd1234")
+        # self.poco("android.widget.ScrollView").child("android.view.ViewGroup").child("android.widget.EditText")[1].set_text("abcd1234")
+        self.passwordedit.set_text("abcd1234")
 
     def click_Loginbtn(self):
         """
         登陆界面--登陆按钮
 
         """
-        self.poco("android.widget.ScrollView").child("android.view.ViewGroup").child("android.view.ViewGroup").child(
-            "android.widget.TextView", text="登录").click()
+        # self.poco("android.widget.ScrollView").child("android.view.ViewGroup").child("android.view.ViewGroup").child(
+        #     "android.widget.TextView", text="登录").click()
+
+        self.loginbtn.click()

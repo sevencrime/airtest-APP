@@ -4,14 +4,9 @@ import datetime
 import os
 import allure
 import pytest
-<<<<<<< Updated upstream
-=======
 
-from Commons import CommonsTool
 from airtest.core.api import *
 
-from Commons.CommonsTool import isboolean, query_initialData
->>>>>>> Stashed changes
 from Commons.GlobalMap import GlobalMap
 
 from ElementPage.otherDataPage import otherDataPage
@@ -21,17 +16,14 @@ from ElementPage.publicTool import publicTool
 @allure.feature("其他资料")
 class Test_otherDataPage():
 
-<<<<<<< Updated upstream
-=======
     gm = GlobalMap()
->>>>>>> Stashed changes
+
     fix_routetitle = ["其他资料"]
     query_initialData()
     boolset = isboolean(knowRisk=gm.get_value("knowRisk"), futures="futuresMargin" in gm.get_value("accountType"))
 
-<<<<<<< Updated upstream
+
     @allure.story("其他资料")
-=======
     @allure.story("您是否曾经宣告破产或被申请破产提示")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_otherData_bankruptmsg(self, poco, reloadRoute):
@@ -367,17 +359,10 @@ class Test_otherDataPage():
 
 
 if __name__ == "__main__":
-<<<<<<< Updated upstream
     pytest.main(["-s", "test_13_otherData.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     gm = GlobalMap()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
 
-=======
-    pytest.main(["-s", "-v", "--pdb", "test_13_otherData.py::Test_otherDataPage::test_otherData_derivatives_and_futures", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    xml_report_path, html_report_path = CommonsTool.rmdir5()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
-        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
->>>>>>> Stashed changes
 
 
 

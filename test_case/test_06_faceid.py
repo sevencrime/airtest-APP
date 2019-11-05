@@ -6,6 +6,7 @@ import allure
 import pytest
 from airtest.core.api import *
 
+from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from Commons.mongoTool import mongoTool
@@ -19,8 +20,11 @@ class Test_faceid():
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
     gm = GlobalMap()
     log = Logs()
+    fix_routetitle = ['人脸识别']
 
     @allure.story("人脸识别")
+    @pytest.mark.usefixtures('reloadRoute')
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_bankCard(self, poco):
         mongo = mongoTool(self.gm.get_value("mongohost"))
         pubTool = publicTool(poco)
@@ -32,10 +36,10 @@ class Test_faceid():
                 collection = "accounts"
                 query = {"applyCode":self.gm.get_value("appcationNumber"),  "forLogin":True}
                 setdata = {"$set": {"currentRoute": "/account"}}
-            elif self.gm.get_value("environment").find("uat") != -1 or self.gm.get_value("environment").find("test") != -1:
+            elif self.gm.get_value("environment") == "uat" != -1 or self.gm.get_value("environment") == "test" != -1:
                 collection = "apply"
                 query = {"applySeqId":self.gm.get_value("appcationNumber")}
-                setdata = { "$set" : { "step" : "faceid"} }
+                setdata = { "$set" : { "step" : "AccountInformation"} }
             else:
                 self.log.debug("数据可能有问题哦!!!")
 
@@ -52,9 +56,9 @@ class Test_faceid():
 
 if __name__ == "__main__":
     pytest.main(["-s", "test_06_faceid.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    gm = GlobalMap()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
-
+    xml_report_path, html_report_path = CommonsTool.rmdir5()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 
 
 

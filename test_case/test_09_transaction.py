@@ -5,6 +5,7 @@ import datetime
 import allure
 import pytest
 
+from Commons import CommonsTool
 from ElementPage.publicTool import publicTool
 from ElementPage.transactionPage import transactionPage
 from airtest.core.api import *
@@ -21,7 +22,7 @@ class Test_transaction():
         pubTool = publicTool(poco)
         transac = transactionPage(poco)
         with allure.step("输入交易资金/财富来源"):
-            employ = transac.click_fundsSource(["储蓄", "其他", "退休金"])
+            employ = transac.click_fundsSource(["储蓄", "其他"])
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
@@ -33,9 +34,9 @@ class Test_transaction():
 
 if __name__ == "__main__":
     pytest.main(["-s", "test_09_transaction.py::Test_transaction", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    gm = GlobalMap()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
-
+    xml_report_path, html_report_path = CommonsTool.rmdir5()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 
 
 

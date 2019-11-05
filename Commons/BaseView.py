@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import datetime
 import os
+import time
 
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
@@ -29,6 +30,11 @@ class BaseView():
         self.Routetitle = self.poco("android.widget.FrameLayout").offspring("android.widget.TextView")  # 页面标题
         self.permission_allow_button = self.poco("com.android.packageinstaller:id/permission_allow_button", text="始终允许")    # 权限弹框: 允许
         self.permission_title = self.poco("com.android.packageinstaller:id/permission_title")   # 权限弹框标题
+
+        self.loginbtn = self.poco("button_login")
+        self.passwordedit = self.poco("password_input")
+        self.tel_edit = self.poco("tel_input")
+
         try:
             # APP弹框
             # self.box_alert = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].offspring("android.widget.TextView")
@@ -50,7 +56,7 @@ class BaseView():
         self.el_idcardpositive = self.poco(text="请上传身份证国徽面")
 
         # 采用图片识别方式上传身份证
-        self.idcardimgpath_img = rootPath + r'testData\\testIMG\\idcardFolder.png'
+        self.idcardimgpath_img = rootPath + r'testData\\testIMG\\vivo_idcardFolder.png'
         self.idcardimgnegative_img = rootPath + r'testData\\testIMG\\idcardimgnegative.png'
         self.idcardimgpositive_img = rootPath + r'testData\\testIMG\\idcardimgpositive.png'
 
@@ -58,6 +64,13 @@ class BaseView():
         self.mumuidcardimgpath_img = rootPath + r'testData\\testIMG\\mumuidcardFolder.png'
         self.mumuidcardimgnegative_img = rootPath + r'testData\\testIMG\\mumuidcardimgnegative.png'
         self.mumuidcardimgpositive_img = rootPath + r'testData\\testIMG\\mumuidcardimgpositive.png'
+
+        # VIVO图片
+        self.vivoidcardimgpath_img = rootPath + r'testData\\testIMG\\vivo_idcardFolder.png'
+        self.vivoidcardimgnegative_img = rootPath + r'testData\\testIMG\\vivoidcardimgnegative.png'
+        self.vivoidcardimgpositive_img = rootPath + r'testData\\testIMG\\vivoidcardimgpositive.png'
+
+
 
         # 个人信息界面
         self.el_title = self.poco(text="称呼").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
@@ -118,7 +131,8 @@ class BaseView():
         self.Option_date = self.poco(text="期权").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.Optional_date = self.poco(text="其他投资(选填)").sibling("android.widget.EditText")
         self.otherInvestment_date = self.poco(text="其他投资").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
-        self.poco(textMatches="个人资料之使用声明")
+        self.personalInfoDeclartionLangsas = self.poco(textMatches=".*个人资料之使用声明.*")
+        self.personalInfoDeclartionLangsasImgview = self.poco(textMatches=".*个人资料之使用声明.*").parent().sibling("android.view.ViewGroup").child("android.widget.ImageView")
 
         # 相关保证金融资账户
         self.AccountName = self.poco(textMatches=".*账户持有人姓名").sibling("android.widget.EditText")
@@ -175,16 +189,19 @@ class BaseView():
         先等待元素出现, 再判断元素是否显示
 
         """
-        try:
-            # return self.poco.wait_for_any(element)
-            element.wait_for_appearance(30)
-            # element.wait(5)
-            # element.exists()
-            return element
-        except Exception as e:
-            print("找不到元素 {}".format(element))
-            print(e)
+        start = time.time()
+        while not element.exists():
+            self.log.debug("进入exists循环")
+            element.invalidate()
+            self.poco("android:id/content").invalidate()
 
+            if time.time() - start > 15:
+                self.log.debug("循环查找超过15秒, 失败")
+                break
+
+            time.sleep(0.5)
+
+        return element
 
     def disExists_swipe(self, element, orientation=None):
         '''
@@ -194,6 +211,7 @@ class BaseView():
         :return: element
         '''
 
+        start = time.time()
         while not element.exists():
             self.log.debug("disExists_swipe进来")
             element.invalidate()
@@ -201,6 +219,8 @@ class BaseView():
             contentEle.invalidate()
             if not orientation == None:
                 contentEle.swipe([0, 0.3])
+            elif time.time() - start > 20:
+                break
             else:
                 contentEle.swipe([0, -0.3])
 
@@ -218,9 +238,12 @@ class BaseView():
         """
 
         # selectElement = self.exists(selectelement)
+        start = time.time()
         while not selectelement.exists():
             selectelement.invalidate()
             self.log.debug("{}不存在".format(str(selectelement)))
+            if time.time() - start > 20:
+                break
 
 
         # 获取就业情况栏位的值
@@ -297,11 +320,14 @@ class BaseView():
             # 需要点击的日子operating
             operating = self.poco("{d} {m} {Y}".format(m=date_map[datestrlist[1]], Y=datestrlist[0], d=datestrlist[2]))
 
+            start = time.time()
             while not operating.exists():
                 if isdirection == 'next':
                     self.poco("android:id/next").click()
                 elif isdirection == 'last':
                     self.poco("android:id/prev").click()
+                elif time.time() - start > 20:
+                    break
 
                 operating.invalidate()
 

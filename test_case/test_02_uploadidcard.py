@@ -6,6 +6,7 @@ import allure
 import pytest
 from airtest.core.api import *
 
+from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from ElementPage.idcardPage import idcardPage
 from ElementPage.personalInformationPage import personalInformationPage
@@ -13,13 +14,14 @@ from ElementPage.publicTool import publicTool
 
 
 @allure.feature("上传身份证")
-@pytest.mark.usefixtures('query_initialData')
 class Test_uploadidcard():
     gm = GlobalMap()
     fix_routetitle = ["身份证验证"]
 
+
     @allure.story("上传身份证")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.dependency()
     def test_uploadidcard(self, poco, reloadRoute):
         upidcard = idcardPage(poco)
         pubTool = publicTool(poco)
@@ -68,6 +70,8 @@ class Test_uploadidcard():
 
     @allure.story("身份证验证-校验年龄18岁")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_birthdayis18(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -84,16 +88,16 @@ class Test_uploadidcard():
             with allure.step("校验地址弹框标题和内容"):
                 boxtitle, boxcontent = pubTool.get_boxtitle()
                 assert_equal(boxtitle, "温馨提示", "确认地址弹框标题有误")
-                assert_equal(boxcontent, "用户年龄需大于18岁", "弹框内容与填写内容不符")
+                assert_equal(boxcontent, "开户年龄不得小于18岁", "弹框内容与填写内容不符")
 
             with allure.step("关闭弹框"):
-                while not poco(text="知道了").exists():
-                    poco(text="知道了").invalidate()
-                poco(text="知道了").click()
+                pubTool.click_box()
 
 
     @allure.story("身份证验证-校验身份证是否过期")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_validityPeriod(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -113,12 +117,12 @@ class Test_uploadidcard():
                 assert_equal(boxcontent, "您的身份证件已过期，请更换证件后再次申请", "弹框内容与填写内容不符")
 
             with allure.step("关闭弹框"):
-                while not poco(text="知道了").exists():
-                    poco(text="知道了").invalidate()
-                poco(text="知道了").click()
+                pubTool.click_box()
 
     @allure.story("身份证验证-邮箱格式不正确")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_Emailformat(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -139,12 +143,12 @@ class Test_uploadidcard():
                 assert_equal(boxcontent, "邮件格式不正确", "弹框内容与填写内容不符")
 
             with allure.step("关闭弹框"):
-                while not poco(text="知道了").exists():
-                    poco(text="知道了").invalidate()
-                poco(text="知道了").click()
+                pubTool.click_box()
 
     @allure.story("身份证验证-邮箱不一致")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_disEmail(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -165,12 +169,12 @@ class Test_uploadidcard():
                 assert_equal(boxcontent, "两次邮箱输入不一致", "弹框内容与填写内容不符")
 
             with allure.step("关闭弹框"):
-                while not poco(text="知道了").exists():
-                    poco(text="知道了").invalidate()
-                poco(text="知道了").click()
+                pubTool.click_box()
 
     @allure.story("身份证验证-邮箱已存在")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_Email_exists(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -191,12 +195,13 @@ class Test_uploadidcard():
                 assert_equal(boxcontent, "电邮已存在", "弹框内容与填写内容不符")
 
             with allure.step("关闭弹框"):
-                while not poco(text="知道了").exists():
-                    poco(text="知道了").invalidate()
-                poco(text="知道了").click()
+                pubTool.click_box()
+
 
     @allure.story("身份证验证-电话号码已存在")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_phone_exists(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -220,14 +225,15 @@ class Test_uploadidcard():
                 assert_equal(boxcontent, "电话号码(用于通讯)已存在", "弹框内容与填写内容不符")
 
             with allure.step("关闭弹框"):
-                while not poco(text="知道了").exists():
-                    poco(text="知道了").invalidate()
-                poco(text="知道了").click()
+                pubTool.click_box()
 
 
 
     @allure.story("身份证验证-勾选住址和身份证地址不一致")
+    @pytest.mark.usefixtures('query_initialData')  # 这里查询是为了判断地址证明是否勾选
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     def test_pick_isaddress(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -241,13 +247,13 @@ class Test_uploadidcard():
                 pubTool.click_NextStepbtn()
                 # pubTool.wait_loading()
 
-            with allure.step("校验地址弹框标题和内容"):
-                boxtitle, boxcontent = pubTool.get_boxtitle()
-                assert_equal(boxtitle, "请确认您的身份证地址", "确认地址弹框标题有误")
-                assert_equal(boxcontent, perinfo.get_address(), "弹框内容与填写内容不符")
-
-            with allure.step("确认地址弹框--点击确定"):
-                pubTool.click_boxconfirm()
+            # with allure.step("校验地址弹框标题和内容"):
+            #     boxtitle, boxcontent = pubTool.get_boxtitle()
+            #     assert_equal(boxtitle, "请确认您的身份证地址", "确认地址弹框标题有误")
+            #     assert_equal(boxcontent, perinfo.get_address(), "弹框内容与填写内容不符")
+            #
+            # with allure.step("确认地址弹框--点击确定"):
+            #     pubTool.click_boxconfirm()
 
             with allure.step("页面跳转到<住址信息>界面"):
                 assert_equal(pubTool.get_Routetitle(), "住址信息", msg="页面没有跳转")
@@ -257,7 +263,9 @@ class Test_uploadidcard():
                 assert_equal(pubTool.get_Routetitle(), "身份证验证", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
 
+
 if __name__ == "__main__":
-    pytest.main(["-s","-v" ,"test_02_uploadidcard.py::Test_uploadidcard", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    gm = GlobalMap()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
+    pytest.main(["-s","-v", "--pdb" ,"test_02_uploadidcard.py::Test_uploadidcard", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    xml_report_path, html_report_path = CommonsTool.rmdir5()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

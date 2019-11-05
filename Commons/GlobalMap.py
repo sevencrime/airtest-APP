@@ -11,9 +11,7 @@ class GlobalMap:
     # 拼装成字典构造全局变量  借鉴_map  包含变量的增删改查
     log = Logging.Logs()
 
-    # _map = {}
-
-    def _init(self):  # 初始化
+    def __init__(self):  # 初始化
         global _map
         _map = {}
 
@@ -74,7 +72,6 @@ class GlobalMap:
 
 if __name__ == '__main__':
     gm = GlobalMap()
-    gm._init()
     gm.set_List("accountType", ["bullionMargin"])
     a = gm.get_value("accountType")
     print(a)

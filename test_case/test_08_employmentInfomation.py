@@ -6,6 +6,7 @@ import sys
 import allure
 import pytest
 
+from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.employmentInfomationPage import employmentInfomationPage
@@ -17,7 +18,6 @@ from airtest.core.api import *
 class Test_employmentInfomation():
 
     gm = GlobalMap()
-    gm._init()
     log = Logs()
 
     fix_routetitle = ["就业及财务状况"]      #当fixture的参数
@@ -72,15 +72,16 @@ class Test_employmentInfomation():
         ("大于800万", ["薪金", "自营业务收益", "物业投资", "储蓄", "股票/债券投资", "车辆投资", "遗产", "其他"]),
     ]
 
-
+    # @CommonsTool.retry()
     @allure.step("用例标题: 不选择就业情况, 直接选择全年总收入和资产净值")
     @allure.title("全年总收入选择: {totalAnnual}, 资产净值全栈: {customer}")
     @pytest.mark.parametrize('totalAnnual', ['小于20万', '20-50万', '50-100万', '大于100万'])
     @pytest.mark.parametrize('customer', ['小于100万', '100-300万', '300-800万', '大于800万'])
-    @pytest.mark.skipif(gm.get_value("Routetitle") != "选择交易信息", reason= "就业情况已有值, 跳过该用例")
+    @pytest.mark.skipif(gm.get_value("Routetitle") == "选择交易信息", reason= "就业情况已有值, 跳过该用例")
+    @pytest.mark.usefixtures('reloadRoute')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
-    def test_nullemploy(self, poco, reloadRoute, totalAnnual, customer):
-        import pdb; pdb.set_trace()
+    def test_nullemploy(self, poco, totalAnnual, customer):
+        self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("选择全年总收入选择 {}".format(totalAnnual)):
@@ -101,6 +102,7 @@ class Test_employmentInfomation():
     @pytest.mark.parametrize("customer, assetslist", Unemployed_assetslist)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_unemployedandnot(self, poco, reloadRoute, employed, totalAnnual, fundlist, customer, assetslist):
+        self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("就业情况选择无业"):
@@ -130,6 +132,7 @@ class Test_employmentInfomation():
     @pytest.mark.parametrize("customer, assetslist", Employed_assetslist)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_Employed(self, poco, reloadRoute, employed, totalAnnual, fundlist, customer, assetslist):
+        self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("就业情况选择就业"):
@@ -171,6 +174,7 @@ class Test_employmentInfomation():
     @pytest.mark.parametrize("customer, assetslist", selfEmployed_assetslist)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_selfEmployed(self, poco, reloadRoute, employed, totalAnnual, fundlist, customer, assetslist):
+        self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
         employment = employmentInfomationPage(poco)
         with allure.step("就业情况选择自雇"):
@@ -208,10 +212,10 @@ class Test_employmentInfomation():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "--pdb", "test_08_employmentInfomation.py::Test_employmentInfomation", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    gm = GlobalMap()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
-
+    pytest.main(["-s", "-v",  "test_08_employmentInfomation.py::Test_employmentInfomation", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    xml_report_path, html_report_path = CommonsTool.rmdir5()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 
 
 

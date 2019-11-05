@@ -42,6 +42,7 @@ class employmentInfomationPage(BaseView):
         '''
 
         self.el_officeaddr.set_text("深圳市南山区大冲商务中心")
+        self.el_officeaddr.invalidate()
 
         return self.el_officeaddr.get_text()
 
@@ -57,10 +58,9 @@ class employmentInfomationPage(BaseView):
         # gm.get_value("istotalAnnual") : 全年总收入来源已勾选的值
         """
 
-        # import pdb; pdb.set_trace()
+        # symmetric_difference() 方法返回两个集合中不重复的元素集合，即会移除两个集合中都存在的元素。
         funds = set(self.gm.get_value("istotalAnnual")).symmetric_difference(fundlist)
         self.log.debug("需要点击的选项有: {}".format(','.join(funds)))
-
 
         self.click_select(self.totalAnnualCustomerRevenueHK, price)
 
@@ -75,12 +75,13 @@ class employmentInfomationPage(BaseView):
                 if len(sources) == 1:
                     self.disExists_swipe(sources).click()
                     if fund == '其他':
-                        self.otherfunds.set_text("其他资金来源")
+                        # self.otherfunds.set_text("其他资金来源")
+                        self.exists(self.otherfunds).set_text("其他资金来源")
 
                 elif len(sources) > 1:
                     self.disExists_swipe(sources[0]).click()
                     if fund == '其他':
-                        self.otherfunds.set_text("其他资金来源")
+                        self.exists(self.otherfunds).set_text("其他资金来源")
 
                 else:
                     self.log.debug("出现了不止2个, 需要查看问题哦")
@@ -101,6 +102,7 @@ class employmentInfomationPage(BaseView):
         """
 
         assets = set(self.gm.get_value("customerNetAssetValue")).symmetric_difference(assetslist)
+        self.log.debug("需要点击的选项有: {}".format(','.join(assets)))
 
 
         self.click_select(self.customerNetAssetValueHK, price)
@@ -117,12 +119,13 @@ class employmentInfomationPage(BaseView):
                     self.disExists_swipe(sources).click()
                     if asset == '其他':
                         # import pdb; pdb.set_trace()
-                        self.otherassets.set_text("其他资产净值")
+                        self.exists(self.otherassets).set_text("其他资产净值")
 
                 elif len(sources) > 1:
                     self.disExists_swipe(sources[1]).click()
                     if asset == '其他':
-                        self.otherassets.set_text("其他资产净值")
+                        self.exists(self.otherassets).set_text("其他资产净值")
+
                 else:
                     self.log.debug("出现了不止2个, 需要查看问题哦")
                     pass

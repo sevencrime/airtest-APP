@@ -72,16 +72,21 @@ class otherDataPage(BaseView):
         """
         # 您的投资目标是:
         """
-        if self.investmentTarget:
-            # 遍历需要点击的选项
-            for investment in investments:
-                invest = self.exists(self.poco(text=investment))
-                invest.click()
+        invest = set(self.gm.get_value("investmentTarget")).symmetric_difference(investments)
+        self.log.debug("需要点击的选项有: {}".format(','.join(invest)))
+
+        # 遍历需要点击的选项
+        for investment in invest:
+            # inv = self.exists(self.poco(text=investment))
+            inv = self.poco(text=investment)
+            inv.click()
+
+        self.gm.set_List("investmentTarget", investments)
 
     def click_riskTolerance(self, grade):
         """
         # 您的风险承受能力是
         """
 
-        riskTolerance = self.poco(text="您的风险承受能力是").sibling("android.view.ViewGroup").child("android.widget.TextView", text=grade)
+        riskTolerance = self.disExists_swipe(self.poco(text="您的风险承受能力是").sibling("android.view.ViewGroup").child("android.widget.TextView", text=grade))
         riskTolerance.click()

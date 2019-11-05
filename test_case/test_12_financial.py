@@ -6,11 +6,13 @@ import allure
 import pytest
 from airtest.core.api import *
 
+from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from ElementPage.financialPage import financialPage
 from ElementPage.publicTool import publicTool
 
 @allure.feature("相关保证金融资账户")
+@pytest.mark.usefixtures('query_initialData')
 class Test_financial():
 
     gm = GlobalMap()
@@ -33,11 +35,24 @@ class Test_financial():
         self.gm.set_bool(CompanyAccountsAccountNumber=False)
 
 
+    @allure.story("从底部开始输入")
+    @pytest.mark.usefixtures('teardown')
+    @pytest.mark.skipif(gm.get_value("Routetitle") == "其他资料", reason="有值了, 跳过")
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    def test_derivative_reverseRun(self, poco, reloadRoute):
+        pubTool = publicTool(poco)
+        financial = financialPage(poco)
+
+        financial.click_orderPerson(False)
+
+
+
     @allure.story("没有勾选(证券保证金), 正常输入")
     @pytest.mark.parametrize("accountHolder", [True, False])
     @pytest.mark.parametrize("orderPerson", [True, False])
     @pytest.mark.usefixtures('teardown')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skipif("securitiesMargin" in gm.get_value("accountType"), reason="勾选了证券保证金")
     def test_derivative(self, poco, reloadRoute, orderPerson, accountHolder):
         pubTool = publicTool(poco)
         financial = financialPage(poco)
@@ -61,6 +76,7 @@ class Test_financial():
     @pytest.mark.parametrize("orderPerson", [True, False])
     @pytest.mark.usefixtures('teardown')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skipif("securitiesMargin" not in gm.get_value("accountType"), reason="没有勾选证券保证金")
     def test_derivative_securitiesMargin(self, poco, reloadRoute, orderPerson, accountHolder, isCompanyAccounts, isDiscretion, isMarginAccount):
         pubTool = publicTool(poco)
         financial = financialPage(poco)
@@ -93,23 +109,12 @@ class Test_financial():
             pubTool.click_NextStepbtn()
             assert_equal(pubTool.get_Routetitle(), "其他资料", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
-    @allure.story("从底部开始输入")
-    @pytest.mark.usefixtures('teardown')
-    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
-    def test_derivative_reverseRun(self, poco, reloadRoute):
-        pubTool = publicTool(poco)
-        financial = financialPage(poco)
-
-
-        financial.click_orderPerson(False)
-
-
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "--pdb", "test_12_financial.py::Test_financial::test_derivative_securitiesMargin", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    gm = GlobalMap()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
-
+    pytest.main(["-s", "-v", "--pdb", "test_12_financial.py::Test_financial", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    xml_report_path, html_report_path = CommonsTool.rmdir5()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()
 
 
 

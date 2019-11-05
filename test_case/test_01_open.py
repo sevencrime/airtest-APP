@@ -4,6 +4,8 @@ import datetime
 
 import allure
 import pytest
+
+from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from ElementPage.publicTool import publicTool
 from airtest.core.api import *
@@ -13,6 +15,8 @@ from ElementPage.startUpFrom import startUpFrom
 
 @allure.feature("启动APP, 进入开户界面")
 class Test_open():
+
+    gm = GlobalMap()
 
     @allure.story("进入开户界面")
     def test_Openning(self, poco):
@@ -25,15 +29,15 @@ class Test_open():
         with allure.step("处理权限弹框--点击运行"):
             pubTool.allow_permissionBox()
 
-        # with allure.step("首次使用设置--点击确定"):
-        #     boolstr = startupfrom.firstSetting()
-        #     if not boolstr:
-        #         allure.attach("AppSetpLOG", "首次使用设置弹框没有出现")
-        #
-        # with allure.step("底部栏选择开户"):
-        #     baropen = startupfrom.click_barOpenning()
-        #     if not baropen:
-        #         allure.attach("AppSetpLOG", "没有底部栏, 非行情APP")
+        with allure.step("首次使用设置--点击确定"):
+            boolstr = startupfrom.firstSetting()
+            if not boolstr:
+                allure.attach("AppSetpLOG", "首次使用设置弹框没有出现")
+
+        with allure.step("底部栏选择开户"):
+            baropen = startupfrom.click_barOpenning()
+            if not baropen:
+                allure.attach("AppSetpLOG", "没有底部栏, 非行情APP")
 
         with allure.step("判断是否登录"):
             if pubTool.get_Routetitle() in ['艾德证券期货', '注册', '登录', '个人中心']:
@@ -64,6 +68,7 @@ class Test_open():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_01_open.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
-    gm = GlobalMap()
-    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(xml_report_path=gm.get_value("xml_report_path"), html_report_path=gm.get_value("html_report_path"))).read()
+    pytest.main(["-s", "-v", "--pdb", "test_01_open.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    xml_report_path, html_report_path = CommonsTool.rmdir5()
+    os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
+        xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

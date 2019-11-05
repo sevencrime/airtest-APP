@@ -32,4 +32,8 @@ class derivativeProductPage(BaseView):
     def click_riskStatement(self):
         # 客户是否已明白买卖衍生权证，牛熊证及结构性产品的风险。并已详细阅读「结构性产品相关风险声明披露」
         context = "客户已明白买卖衍生权证、牛熊证及结构性产品的风险。并已详细阅读「结构性产品相关风险声明披露」"
-        self.isElementCheck(context).click()
+        self.log.debug("结构性衍生产品相关风险声明披露字段的值为 knowRisk : {}".format(self.gm.get_value("knowRisk")))
+        if not self.gm.get_value("knowRisk"):
+            self.isElementCheck(context).click()
+            self.gm.set_bool(knowRisk=True)
+

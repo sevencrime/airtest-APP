@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import glob
+import shutil
 import traceback
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 from airtest.core.api import *
 from poco.exceptions import PocoNoSuchNodeException
 
@@ -74,7 +73,7 @@ class publicTool(BaseView):
         开户表单-- 弹出确认框--确定按钮
 
         """
-        self.exists(self.boxconfirm).click()
+        self.boxconfirm.click()
 
 
     def get_boxtitle(self):
@@ -82,40 +81,23 @@ class publicTool(BaseView):
         获取弹出框的标题和弹框的内容
 
         """
-        # index = 0
-        # while True:
-        #
-        #     try:
-        #         # 获取页面标题, 代替页面刷新
-        #         self.get_Routetitle()
-        #         # 弹出框标题
-        #         boxtitle = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.view.ViewGroup")[0].child("android.widget.TextView")
-        #         self.log.debug("获取boxtitle成功, 标题是{}".format(boxtitle))
-        #         # 弹出框内容
-        #         boxcontent = self.poco("android:id/content").child("android.widget.FrameLayout").child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup")[1].child("android.view.ViewGroup").child("android.view.ViewGroup").child("android.widget.TextView")
-        #         self.log.debug("获取boxcontent成功, 内容是{}".format(boxcontent))
-        #         return boxtitle.get_text(), boxcontent.get_text()
-        #
-        #     except Exception as e:
-        #         self.log.debug("弹框标题或内容获取失败")
-        #
-        #     finally:
-        #         index += 1
-        #         if index > 10:
-        #             break
+        self.log.debug("正在执行get_boxtitle方法")
 
+        start = time.time()
+        while True:
+            self.log.debug("循环查找")
+            if self.poco(text="确定").exists() and self.poco(text="取消").exists():
+                box_alert_text = self.poco(text="确定").parent().parent().parent().offspring("android.widget.TextView")
+                break
+            elif self.poco(text="知道了").exists():
+                box_alert_text = self.poco(text="知道了").parent().parent().parent().offspring("android.widget.TextView")
+                break
 
-        self.poco("android:id/content").invalidate()
-        box_alert = self.box_alert
+            if time.time() - start > 15:
+                self.log.debug("循环查找超过15秒, 失败")
+                break
 
-        while not len(box_alert) > 1:
             self.poco("android:id/content").invalidate()
-            box_alert.invalidate()
-
-        box_alert_text = box_alert[-1].offspring("android.widget.TextView")
-
-        while not box_alert_text.exists():
-            box_alert_text.invalidate()
 
         self.log.debug("提示框的标题是: {}".format(box_alert_text[0].get_text()))
         self.log.debug("提示框的标题是: {}".format(box_alert_text[1].get_text()))
@@ -125,15 +107,22 @@ class publicTool(BaseView):
 
 
 
-    def wait_loading(self):
+    def wait_loading(self, timeout=30):
 
         self.get_Routetitle()
+        start = time.time()
         # 循环判断loading是否存在
         while self.loading.exists():
             self.log.debug("wait_loading as True, loading存在")
             self.loading.invalidate()
             self.poco("android:id/content").invalidate()
+
+            if time.time() - start > timeout:
+                self.log.error("wait_loading超时!!!!")
+                break
+
             time.sleep(1)
+
 
 
     def swipe_to_Up(self):
@@ -205,6 +194,7 @@ class publicTool(BaseView):
         textMatches: 模糊匹配
         """
         appcationNumberatext = self.poco(textMatches="申请编号:.*").get_text()
+        self.log.debug("申请编号为: {}".format(appcationNumberatext))
 
         self.gm.set_value(appcationNumber=appcationNumberatext[5:])
         set_configini('appcationNumber', appcationNumberatext[5:])
@@ -241,9 +231,11 @@ class publicTool(BaseView):
         """
 
         self.Routetitle.invalidate()
-
+        start = time.time()
         while not self.Routetitle.exists():
             self.log.debug("Routetitle 不存在")
+            if time.time() - start > 20:
+                break
             pass
 
         self.log.debug("调用此方法的是: {}".format(traceback.extract_stack()[-2][2]))
@@ -252,40 +244,15 @@ class publicTool(BaseView):
         try:
             self.log.debug("当前页面的标题为: {}".format(self.Routetitle.get_text(),))
         except PocoNoSuchNodeException:
-            self.log.debug("首页title获取不到")
+            self.log.debug("title获取不到")
 
         return self.Routetitle.get_text()
 
 
-    def rmdir5(self):
-
-        import pdb; pdb.set_trace()
-        curPath = os.path.abspath(os.path.dirname(__file__))
-        rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
-        xml_report_pathlib = glob.glob(rootPath + r'report\\xml*')
-        html_report_pathlib = glob.glob(rootPath + r'report\\html*')
-        
-        try:
-            html_report_name = rootPath + r'report\html' + os.path.basename(xml_report_pathlib[-1])[3:]
-
-        except IndexError:
-            self.log.debug("调用 <rmdir5> 方法的是: {}".format(traceback.extract_stack()[-2][2]))
-            self.log.error("rmdir5, 数组越界")
-
-        except Exception as e:
-            raise e
-
-        # 判断文件目录是否超过5个
-        # 生成后才调用该方法, 所以要+1
-        if len(xml_report_pathlib) >= 6:
-            # shutil模块, 文件高级库
-            shutil.rmtree(xml_report_pathlib[0])
-
-        if len(html_report_pathlib) >= 5:
-            # 删除第一个
-            shutil.rmtree(html_report_pathlib[0])
-
-        self.gm.set_value(xml_report_path=xml_report_pathlib[-1])
-        self.gm.set_value(html_report_path=html_report_name)
-        return xml_report_pathlib[-1], html_report_name
-
+    def click_box(self):
+        start = time.time()
+        while not self.poco(text="知道了").exists():
+            self.poco(text="知道了").invalidate()
+            if time.time() - start > 20:
+                break
+        self.poco(text="知道了").click()
