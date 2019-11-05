@@ -1,15 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import glob
-import shutil
 import traceback
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 from airtest.core.api import *
 from poco.exceptions import PocoNoSuchNodeException
 
 from Commons.BaseView import BaseView
 from Commons.Logging import Logs
 import sys
+
+from Commons.read_ini import set_configini
+
 
 class publicTool(BaseView):
 
@@ -203,7 +207,8 @@ class publicTool(BaseView):
         appcationNumberatext = self.poco(textMatches="申请编号:.*").get_text()
 
         self.gm.set_value(appcationNumber=appcationNumberatext[5:])
-        
+        set_configini('appcationNumber', appcationNumberatext[5:])
+
         return appcationNumberatext[5:]
 
     # 检验是否全是中文字符

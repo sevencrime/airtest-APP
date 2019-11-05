@@ -15,6 +15,7 @@ gm._init()
 log = Logs()
 
 
+<<<<<<< Updated upstream
 @pytest.fixture(scope="class")
 def query_initialData(poco):
     """
@@ -141,6 +142,8 @@ def query_initialData(poco):
     log.debug("fundsSource的值为:" + "".join(gm.get_value("fundsSource")))
 
 
+=======
+>>>>>>> Stashed changes
 @pytest.fixture()
 def reloadRoute(request, poco):
     """
@@ -156,6 +159,13 @@ def reloadRoute(request, poco):
 
     if poco(text="知道了").exists():
         poco(text="知道了").click()
+
+    start2 = time.time()
+    while poco(text="便捷开户").exists():
+        poco(text="便捷开户").click()
+        if time.time() - start2 > 20:
+            break
+
 
     # 点击退出按钮后, 再次进入开户表单
     pubTool.closeform()
@@ -187,7 +197,6 @@ def poco():
     # if not cli_setup():
     #     auto_setup(__file__, logdir=True,
     #                devices=["Android:///", ])
-
     if not cli_setup():
         # 模拟器 >> 网易mumu模拟器连接cap_method=JAVACAP&&ori_method=ADBORI
         os.popen("adb connect 127.0.0.1:7555").read()
