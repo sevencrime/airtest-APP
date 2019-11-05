@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
-
+import os
 import allure
 import pytest
+from airtest.core.api import *
 
 from Commons import CommonsTool
 from ElementPage.introPromoPage import introPromoPage
 from ElementPage.publicTool import publicTool
-from airtest.core.api import *
+
 
 @allure.feature("介绍与推广")
 @pytest.mark.usefixtures('query_initialData')

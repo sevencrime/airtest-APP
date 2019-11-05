@@ -2,16 +2,16 @@
 # -*- coding: utf-8 -*-
 import datetime
 import sys
-
+import os
 import allure
 import pytest
+from airtest.core.api import *
 
 from Commons import CommonsTool
+from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.derivativeProductPage import derivativeProductPage
 from ElementPage.publicTool import publicTool
-from airtest.core.api import *
-from Commons.GlobalMap import GlobalMap
 
 
 @allure.feature("衍生产品的认识")

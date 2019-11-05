@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
-
+import os
 import allure
 import pytest
 from airtest.core.api import *

@@ -8,7 +8,6 @@ import pytest
 from airtest.core.api import *
 
 from Commons import CommonsTool
-from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.bankCardInformationPage import bankCardInformationPage
 from ElementPage.publicTool import publicTool

@@ -3,7 +3,6 @@
 from poco.exceptions import PocoNoSuchNodeException
 
 from Commons.BaseView import BaseView
-from Commons.GlobalMap import GlobalMap
 
 
 class accountInformationPage(BaseView):

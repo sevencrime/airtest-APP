@@ -5,11 +5,12 @@ import datetime
 import allure
 import pytest
 from airtest.core.api import *
-
+import os
 from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from ElementPage.financialPage import financialPage
 from ElementPage.publicTool import publicTool
+
 
 @allure.feature("相关保证金融资账户")
 @pytest.mark.usefixtures('query_initialData')

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from Commons.BaseView import BaseView
-from Commons.GlobalMap import GlobalMap
 
 
 class introPromoPage(BaseView):

@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
-
+import os
 import allure
 import pytest
+from airtest.core.api import *
 
 from Commons import CommonsTool
 from ElementPage.publicTool import publicTool
 from ElementPage.transactionPage import transactionPage
-from airtest.core.api import *
+
 
 @pytest.mark.usefixtures('query_initialData')
 @allure.feature("选择交易信息")

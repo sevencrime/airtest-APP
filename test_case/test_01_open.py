@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
-
+import os
 import allure
 import pytest
+from airtest.core.api import *
 
 from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from ElementPage.publicTool import publicTool
-from airtest.core.api import *
-
 from ElementPage.startUpFrom import startUpFrom
 
 

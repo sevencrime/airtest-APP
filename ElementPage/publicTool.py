@@ -1,16 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import glob
-import shutil
+import sys
 import traceback
 
-import allure
 from airtest.core.api import *
 from poco.exceptions import PocoNoSuchNodeException
 
 from Commons.BaseView import BaseView
 from Commons.Logging import Logs
-import sys
+
 
 class publicTool(BaseView):
 

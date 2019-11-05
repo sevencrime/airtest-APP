@@ -5,24 +5,12 @@ import shutil
 import sys
 import traceback
 
-import pytest
 from airtest.core.api import *
 from pymongo.errors import ServerSelectionTimeoutError
 
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from Commons.mongoTool import mongoTool
-from ElementPage.publicTool import publicTool
-import datetime
-import glob
-import shutil
-import traceback
-
-import allure
-from airtest.core.api import *
-
-from Commons.GlobalMap import GlobalMap
-from Commons.Logging import Logs
 
 gm = GlobalMap()
 log = Logs()

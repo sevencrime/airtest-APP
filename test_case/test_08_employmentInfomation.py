@@ -2,16 +2,17 @@
 # -*- coding: utf-8 -*-
 import datetime
 import sys
-
+import os
 import allure
 import pytest
+from airtest.core.api import *
 
 from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.employmentInfomationPage import employmentInfomationPage
 from ElementPage.publicTool import publicTool
-from airtest.core.api import *
+
 
 @pytest.mark.usefixtures('query_initialData')
 @allure.feature("就业及财务状况")

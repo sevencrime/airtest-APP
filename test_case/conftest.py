@@ -2,7 +2,6 @@ import datetime
 import re
 import subprocess
 import sys
-import traceback
 
 import allure
 import pytest

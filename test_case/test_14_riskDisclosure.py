@@ -1,19 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
+import os
 
 import allure
 import pytest
 
 from Commons import CommonsTool
 from ElementPage.RiskDisclosurePage import RiskDisclosurePage
-from ElementPage.otherDataPage import otherDataPage
 from ElementPage.publicTool import publicTool
 
-@allure.feature("风险视频")
+
+@allure.feature("风险披露")
 class Test_riskDisclosure():
 
-    @allure.story("风险视频")
+    @allure.story("风险披露")
     @pytest.mark.run(order=3)
     def test_otherData(self, poco):
         pubTool = publicTool(poco)

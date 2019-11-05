@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from Commons.BaseView import BaseView
-import os, re
+import re
 
 from airtest.core.api import *
+
+from Commons.BaseView import BaseView
 
 
 class startUpFrom(BaseView):

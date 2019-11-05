@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
-
+import os
 import allure
 import pytest
 from airtest.core.api import *
@@ -10,7 +10,6 @@ from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from Commons.mongoTool import mongoTool
 from ElementPage.accountInformationPage import accountInformationPage
-from ElementPage.bankCardInformationPage import bankCardInformationPage
 from ElementPage.publicTool import publicTool
 
 

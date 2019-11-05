@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
-
+import os
 import allure
 import pytest
 from airtest.core.api import *
@@ -9,7 +9,6 @@ from airtest.core.api import *
 from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from ElementPage.personalInformationPage import personalInformationPage
-from ElementPage.idcardPage import idcardPage
 from ElementPage.publicTool import publicTool
 
 

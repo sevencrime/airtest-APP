@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from airtest.core.api import *
+
 from Commons.BaseView import BaseView
 
 

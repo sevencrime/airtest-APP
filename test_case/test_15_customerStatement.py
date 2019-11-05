@@ -7,7 +7,8 @@ import pytest
 
 from Commons import CommonsTool
 from ElementPage.customerStatementPage import customerStatementPage
-from ElementPage.publicTool import publicTool
+from ElementPage.publicTool import publicTool, os
+
 
 @allure.feature("其他资料")
 class Test_CustomerStatement():

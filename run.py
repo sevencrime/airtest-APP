@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 import datetime
 import os
+
 import pytest
-import allure
 
 from Commons import CommonsTool
 

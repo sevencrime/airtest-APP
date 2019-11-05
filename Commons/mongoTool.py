@@ -7,10 +7,8 @@
 
 
 import pymongo
-from bson.objectid import ObjectId
-from collections import Counter
+
 from Commons import Logging
-from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 
 

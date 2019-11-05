@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from Commons.BaseView import BaseView
-import datetime
+
 
 class personalInformationPage(BaseView):
     """

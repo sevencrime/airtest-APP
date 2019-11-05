@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
-import os
+
 import allure
 import pytest
-from Commons import CommonsTool
 from airtest.core.api import *
-
+import os
+from Commons import CommonsTool
 from Commons.CommonsTool import isboolean, query_initialData
 from Commons.GlobalMap import GlobalMap
-
 from ElementPage.otherDataPage import otherDataPage
 from ElementPage.publicTool import publicTool
 
