@@ -74,7 +74,6 @@ def isboolean(**kwargs):
     booleanlist['True'] = set_true
     booleanlist['False'] = set_false
     log.debug("isboolean : {}".format(isboolean))
-    import pdb; pdb.set_trace()
     return booleanlist
 
 
