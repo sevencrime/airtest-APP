@@ -9,6 +9,7 @@ from airtest.core.api import *
 from Commons import CommonsTool
 from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
+from Commons.Logging import Logs
 from ElementPage.idcardPage import idcardPage
 from ElementPage.personalInformationPage import personalInformationPage
 from ElementPage.publicTool import publicTool
@@ -17,14 +18,15 @@ from ElementPage.publicTool import publicTool
 @allure.feature("上传身份证")
 class Test_uploadidcard():
     gm = GlobalMap()
-    query_initialData()
+    log = Logs()
+    result = query_initialData()
     fix_routetitle = ["身份证验证"]
-
 
     @allure.story("上传身份证")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
-    @pytest.mark.dependency()
     def test_uploadidcard(self, poco, reloadRoute):
+        self.log.info("连接手机的设备号为: {}".format(device().uuid))
+
         upidcard = idcardPage(poco)
         pubTool = publicTool(poco)
 
@@ -67,6 +69,7 @@ class Test_uploadidcard():
 
         else:
             with allure.step("点击下一步"):
+                self.log.debug("接口是CRM后台的, 直接点击下一步")
                 pubTool.click_NextStepbtn()
 
 

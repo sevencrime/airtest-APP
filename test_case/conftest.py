@@ -259,6 +259,7 @@ def reloadRoute(request, poco):
     # 退出重新加载页面, 清除页面前端缓存
 
     """
+    log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
 
     routetitle = request.param
     pubTool = publicTool(poco)
@@ -295,19 +296,20 @@ def reloadRoute(request, poco):
         pubTool.backform()
 
 
-@pytest.fixture(scope="session", autouse=True)
-def config():
-    gm.set_value(environment="aos-uat")  # 记录数据库
-    gm.set_value(phone = "13148814889")
-    gm.set_bool(isbullion=False)  # 记录黄金账户是否开启
-    gm.set_bool(isLeveraged=False)  # 记录外汇账户是否开启
-    # mongo数据库地址
-    gm.set_value(
-        mongohost="mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net")
+# @pytest.fixture(scope="session", autouse=True)
+# def config():
+#     gm.set_value(environment="aos-uat")  # 记录数据库
+#     gm.set_value(phone = "13148814889")
+#     gm.set_bool(isbullion=False)  # 记录黄金账户是否开启
+#     gm.set_bool(isLeveraged=False)  # 记录外汇账户是否开启
+#     # mongo数据库地址
+#     gm.set_value(
+#         mongohost="mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net")
 
 
 @pytest.fixture(scope="session", autouse=True)
-def poco(config):
+def poco():
+    log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name, ))
     # poco = AndroidUiautomationPoco(screenshot_each_action=False)
 
     readDeviceId = list(os.popen('adb devices').readlines())

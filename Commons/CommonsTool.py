@@ -125,7 +125,7 @@ def query_initialData(*args):
             break
 
 
-    elif gm.get_value("environment") == "test" and gm.get_value("environment") == "uat":
+    elif gm.get_value("environment") == "test" or gm.get_value("environment") == "uat":
         # result = mongo.findData(gm.get_value("environment"), "apply", {
         # "applySeqId" : publicTool(poco).get_appcationNumber()})
         for i in range(3):

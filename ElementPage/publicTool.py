@@ -190,13 +190,16 @@ class publicTool(BaseView):
 
         textMatches: 模糊匹配
         """
-        appcationNumberatext = self.poco(textMatches="申请编号:.*").get_text()
-        self.log.debug("申请编号为: {}".format(appcationNumberatext))
+        try:
+            appcationNumberatext = self.poco(textMatches="申请编号:.*").get_text()
+            self.log.debug("申请编号为: {}".format(appcationNumberatext))
 
-        self.gm.set_value(appcationNumber=appcationNumberatext[5:])
-        set_configini('appcationNumber', appcationNumberatext[5:])
+            self.gm.set_value(appcationNumber=appcationNumberatext[5:])
+            set_configini('appcationNumber', appcationNumberatext[5:])
 
-        return appcationNumberatext[5:]
+            return appcationNumberatext[5:]
+        except:
+            self.log.debug("获取不到申请编号, 读配置")
 
     # 检验是否全是中文字符
     def is_all_chinese(self, strs):

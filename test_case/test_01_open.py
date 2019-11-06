@@ -22,6 +22,8 @@ class Test_open():
         pubTool = publicTool(poco)
         startupfrom = startUpFrom(poco)
 
+        pubTool.get_appcationNumber()
+
         with allure.step("启动APP"):
             startupfrom.Start_APP()
 
