@@ -17,6 +17,7 @@ from ElementPage.publicTool import publicTool
 
 @allure.feature("上传身份证")
 class Test_uploadidcard():
+
     gm = GlobalMap()
     log = Logs()
     result = query_initialData()
@@ -24,6 +25,7 @@ class Test_uploadidcard():
 
     @allure.story("上传身份证")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.dependency()
     def test_uploadidcard(self, poco, reloadRoute):
         self.log.info("连接手机的设备号为: {}".format(device().uuid))
 
@@ -77,6 +79,7 @@ class Test_uploadidcard():
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_birthdayis18(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -103,6 +106,7 @@ class Test_uploadidcard():
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_validityPeriod(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -128,6 +132,7 @@ class Test_uploadidcard():
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_Emailformat(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -154,6 +159,7 @@ class Test_uploadidcard():
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_disEmail(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -180,6 +186,7 @@ class Test_uploadidcard():
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_Email_exists(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -207,6 +214,7 @@ class Test_uploadidcard():
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_phone_exists(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 
@@ -238,6 +246,7 @@ class Test_uploadidcard():
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_pick_isaddress(self, poco, reloadRoute):
         pubTool = publicTool(poco)
 

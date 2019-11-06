@@ -21,7 +21,7 @@ log = Logs()
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = curPath[:curPath.find("airtest-APP\\") + len("airtest-APP\\")]
 
-# _isFlag = True
+_isFlag = False
 
 
 def rmdir5():
@@ -91,11 +91,11 @@ def query_initialData(*args):
     log.debug("正在执行{} 方法".format(sys._getframe().f_code.co_name))
 
     # 获取调用文件名
-    # global _isFlag
-    #
-    # if args.__contains__("run.py") and _isFlag:
-    #     log.info("通过run.py 执行用例")
-    #     return True
+    global _isFlag
+
+    if _isFlag:
+        log.info("不是第一次调用query_initialData, 跳过")
+        return True
 
 
     gm_init()   # 初始化ini配置
@@ -329,5 +329,6 @@ def query_initialData(*args):
     log.debug("认识渠道的值为:" + "".join(gm.get_value("channels")))
     log.debug("结构性衍生产品相关风险声明披露字段的值为 knowRisk : {}".format(gm.get_value("knowRisk")))
 
+    _isFlag = True
 
     return gm._map
