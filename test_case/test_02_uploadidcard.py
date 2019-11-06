@@ -32,6 +32,8 @@ class Test_uploadidcard():
         upidcard = idcardPage(poco)
         pubTool = publicTool(poco)
 
+        pubTool.get_appcationNumber()   #在进入开户表单时获取申请编号
+
         # 判断客户来源
         pubTool.get_appcationNumber()
 

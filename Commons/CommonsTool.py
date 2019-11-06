@@ -241,14 +241,16 @@ def query_initialData(*args):
                 investmentTargetlist.append(investmentTargetdict[investment])
 
         try:
+            # 衍生产品
             if result['isLearnAboutProducts'] != '' and result['isIndustryExperience'] != '' and result['isStocks'] != '' and result['isApplyProduct'] != '':
-                gm.set_bool(derivative=True)    # 衍生产品
+                gm.set_bool(derivative=True)
             else:
                 gm.set_bool(derivative=False)
         except:
             gm.set_bool(derivative=False)
 
         try:
+            # 明白风险
             if result['knowRisk'] == 'Y' or result['knowRisk'] == True:
                 gm.set_bool(knowRisk=True)
             else:
@@ -258,15 +260,23 @@ def query_initialData(*args):
 
 
         try:
-            gm.set_bool(sameAdderss=result['sameAddress'])  # sameAdderss: 住址与身份证不一致, ture为勾选
+            # sameAdderss: 住址与身份证不一致, ture为勾选
+            gm.set_bool(sameAdderss=result['sameAddress'])
         except Exception as e:
             # raise e
             gm.set_bool(sameAdderss=False)
 
         try:
+            # 签名
             gm.set_bool(signature=True if result['signature'] != "" else False)
         except:
             gm.set_bool(signature=False)
+
+        try:
+            # 就业情况
+            gm.set_bool(employment = True if result['employment'] != "" else False)
+        except:
+            gm.set_bool(employment=False)
 
         gm.set_List('accountType', result['accountTypes'])  # 账户类型
 
@@ -312,8 +322,19 @@ def query_initialData(*args):
         except:
             gm.set_bool(signature = False)
 
+        try:
+            # 就业情况
+            gm.set_bool(employment = True if result['applyInfos']['employment'] != "" else False)
+        except:
+            gm.set_bool(employment=False)
+
+
         gm.set_bool(sameAdderss=result['applyInfos']['syncIDAddress'] == "Y")  # sameAdderss: 住址与身份证不一致, ture为勾选
         gm.set_List('accountType', result['accountType'])   # 账户类型
+
+
+
+
 
     gm.set_List('istotalAnnual', totalAnnuallist)
     gm.set_List('customerNetAssetValue', customerNetAssetValuelist)

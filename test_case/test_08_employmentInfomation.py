@@ -77,12 +77,11 @@ class Test_employmentInfomation():
         ("大于800万", ["薪金", "自营业务收益", "物业投资", "储蓄", "股票/债券投资", "车辆投资", "遗产", "其他"]),
     ]
 
-    # @CommonsTool.retry()
     @allure.step("用例标题: 不选择就业情况, 直接选择全年总收入和资产净值")
     @allure.title("全年总收入选择: {totalAnnual}, 资产净值全栈: {customer}")
     @pytest.mark.parametrize('totalAnnual', ['小于20万', '20-50万', '50-100万', '大于100万'])
     @pytest.mark.parametrize('customer', ['小于100万', '100-300万', '300-800万', '大于800万'])
-    @pytest.mark.skipif(gm.get_value("Routetitle") == "选择交易信息", reason= "就业情况已有值, 跳过该用例")
+    @pytest.mark.skipif(gm.get_value("employment"), reason= "就业情况已有值, 跳过该用例")
     @pytest.mark.usefixtures('reloadRoute')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_nullemploy(self, poco, totalAnnual, customer):
