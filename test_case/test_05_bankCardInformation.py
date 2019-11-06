@@ -17,6 +17,7 @@ from ElementPage.publicTool import publicTool
 class Test_bankCardInformation():
     log = Logs()
     fix_routetitle = ["银行卡信息"]
+    log.debug("调用此方法的模块为: {}".format(sys._getframe().f_code.co_filename))
 
     @allure.story("内地银行卡号非空校验")
     @pytest.mark.usefixtures('reloadRoute')
@@ -232,7 +233,7 @@ class Test_bankCardInformation():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "test_05_bankCardInformation.py::Test_bankCardInformation", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v", "test_05_bankCardInformation.py::Test_bankCardInformation::test_bankCardnullvalue", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

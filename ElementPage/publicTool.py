@@ -8,6 +8,7 @@ from poco.exceptions import PocoNoSuchNodeException
 
 from Commons.BaseView import BaseView
 from Commons.Logging import Logs
+from Commons.read_ini import set_configini
 
 
 class publicTool(BaseView):

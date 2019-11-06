@@ -1,27 +1,31 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
+import inspect
 import sys
 import os
+import traceback
+
 import allure
 import pytest
 from airtest.core.api import *
 
 from Commons import CommonsTool
+from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.employmentInfomationPage import employmentInfomationPage
 from ElementPage.publicTool import publicTool
 
 
-@pytest.mark.usefixtures('query_initialData')
 @allure.feature("就业及财务状况")
 class Test_employmentInfomation():
 
     gm = GlobalMap()
     log = Logs()
-
     fix_routetitle = ["就业及财务状况"]      #当fixture的参数
+
+    query_initialData()
 
 
     # 无业--全年总收入

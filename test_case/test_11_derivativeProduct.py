@@ -8,6 +8,7 @@ import pytest
 from airtest.core.api import *
 
 from Commons import CommonsTool
+from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.derivativeProductPage import derivativeProductPage
@@ -15,11 +16,11 @@ from ElementPage.publicTool import publicTool
 
 
 @allure.feature("衍生产品的认识")
-@pytest.mark.usefixtures('query_initialData')
 class Test_derivativeProduct():
 
     gm = GlobalMap()
     log = Logs()
+    query_initialData()
     fix_routetitle = ["衍生品产品认识"]
     radiovalue = [True, False]
 

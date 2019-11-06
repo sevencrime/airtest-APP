@@ -7,6 +7,7 @@ import pytest
 from airtest.core.api import *
 
 from Commons import CommonsTool
+from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.addressProofPage import addressProofPage
 from ElementPage.publicTool import publicTool
@@ -15,6 +16,7 @@ from ElementPage.publicTool import publicTool
 @allure.feature("地址证明")
 class Test_addressProof():
     gm = GlobalMap()
+    query_initialData()
     fix_routetitle = ["住址信息"]
 
     @allure.story("正常输入地址证明")

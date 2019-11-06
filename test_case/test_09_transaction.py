@@ -7,15 +7,16 @@ import pytest
 from airtest.core.api import *
 
 from Commons import CommonsTool
+from Commons.CommonsTool import query_initialData
 from ElementPage.publicTool import publicTool
 from ElementPage.transactionPage import transactionPage
 
 
-@pytest.mark.usefixtures('query_initialData')
 @allure.feature("选择交易信息")
 class Test_transaction():
 
     fix_routetitle = ["选择交易信息"]
+    query_initialData()
 
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @allure.story("选择交易信息")
