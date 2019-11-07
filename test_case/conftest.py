@@ -366,9 +366,11 @@ def pytest_runtest_makereport(item, call):
             subprocess.Popen(
                 r"adb -s {driver} pull /sdcard/Pictures/screen{time}.png {pngfile}".format(driver=device().uuid,
                                                                                             time=nowtime,pngfile=rootPath + "Logs/error_screenIMG"),shell=True).wait()
-
+            # import pdb; pdb.set_trace()
             # 删除
             subprocess.Popen(r"adb -s {driver} shell rm /sdcard/Pictures/screen{time}.png".format(driver=device().uuid,time=nowtime),shell=True).wait()
+            # 刷新文件夹
+            subprocess.Popen(r"adb shell am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/Pictures/screen{time}.png".format(time=nowtime)).wait()
 
 
             testimg = open(rootPath + "Logs/error_screenIMG/screen{time}.png".format(time=nowtime), 'rb').read()

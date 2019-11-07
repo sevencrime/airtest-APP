@@ -80,7 +80,7 @@ class Test_uploadidcard():
     @allure.story("身份证验证-校验年龄18岁")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
-    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_birthdayis18(self, poco, reloadRoute):
         pubTool = publicTool(poco)
@@ -107,7 +107,7 @@ class Test_uploadidcard():
     @allure.story("身份证验证-校验身份证是否过期")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
-    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_validityPeriod(self, poco, reloadRoute):
         pubTool = publicTool(poco)
@@ -133,7 +133,7 @@ class Test_uploadidcard():
     @allure.story("身份证验证-邮箱格式不正确")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
-    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_Emailformat(self, poco, reloadRoute):
         pubTool = publicTool(poco)
@@ -160,7 +160,7 @@ class Test_uploadidcard():
     @allure.story("身份证验证-邮箱不一致")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
-    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_disEmail(self, poco, reloadRoute):
         pubTool = publicTool(poco)
@@ -187,7 +187,7 @@ class Test_uploadidcard():
     @allure.story("身份证验证-邮箱已存在")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
-    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_Email_exists(self, poco, reloadRoute):
         pubTool = publicTool(poco)
@@ -215,7 +215,7 @@ class Test_uploadidcard():
     @allure.story("身份证验证-电话号码已存在")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
-    @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
+    @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])
     def test_phone_exists(self, poco, reloadRoute):
         pubTool = publicTool(poco)
@@ -278,9 +278,12 @@ class Test_uploadidcard():
                 assert_equal(pubTool.get_Routetitle(), "身份证验证", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
 
+    def test_demo(self):
+        assert False
+
 
 if __name__ == "__main__":
-    pytest.main(["-s","-v", "--pdb" ,"test_02_uploadidcard.py::Test_uploadidcard", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s","-v", "--pdb" ,"test_02_uploadidcard.py::Test_uploadidcard::test_demo", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

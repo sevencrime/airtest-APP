@@ -52,8 +52,8 @@ class BaseView():
         self.phonenumber = self.poco(text="请输入手机号")
 
         self.el_chinese = self.poco(text="我是内地居民")
-        self.el_idcardNegative = self.poco(text="请上传身份证人像面")
-        self.el_idcardpositive = self.poco(text="请上传身份证国徽面")
+        self.el_idcardNegative = self.poco("positive")
+        self.el_idcardpositive = self.poco("negative")
 
         # 采用图片识别方式上传身份证
         self.idcardimgpath_img = rootPath + r'testData\\testIMG\\vivo_idcardFolder.png'
@@ -73,19 +73,19 @@ class BaseView():
 
 
         # 个人信息界面
-        self.el_title = self.poco(text="称呼").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
-        self.el_chinesename = self.poco(text="中文姓名").sibling("android.widget.EditText")
-        self.el_lastname = self.poco(text="姓氏").sibling("android.widget.EditText")
-        self.el_firstname = self.poco(text="名字").sibling("android.widget.EditText")
-        self.el_email = self.poco(text="电邮").sibling("android.widget.EditText")
-        self.el_reEmail = self.poco(text="再次输入电邮").sibling("android.widget.EditText")
-        self.el_phone = self.poco(text="电话号码(用于通讯)").sibling("android.widget.EditText")
-        self.el_idNumber = self.poco(text="证件号码").sibling("android.widget.EditText")
+        self.el_title = self.poco(text="称呼")
+        self.el_chinesename = self.poco("chineseName")
+        self.el_lastname = self.poco("firstName")
+        self.el_firstname = self.poco("lastName")
+        self.el_email = self.poco("email")
+        self.el_reEmail = self.poco("confirmEmail")
+        self.el_phone = self.poco("phone")
+        self.el_idNumber = self.poco("idNumber")
         self.el_birthday = self.poco(text="出生日期").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
-        self.el_country = self.poco(text="国籍").sibling("android.widget.EditText")
-        self.el_countryIssue = self.poco(text="签发机关").sibling("android.widget.EditText")
+        self.el_country = self.poco("country")
+        self.el_countryIssue = self.poco("issued_by")
         self.el_validityPeriod = self.poco(text="有效期至").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
-        self.el_iDcardAddress = self.poco(text="身份证地址(*请确认地址无误，如有误请手动修改)").sibling("android.widget.EditText")
+        self.el_iDcardAddress = self.poco("input_idCardAddress")
         self.el_isAddress = self.poco(text="如住址和身份证地址不一致(请勾选)").sibling("android.widget.ImageView")
 
         # 地址证明
