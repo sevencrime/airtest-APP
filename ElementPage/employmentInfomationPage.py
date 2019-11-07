@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from datetime import time
 
 from Commons.BaseView import BaseView
 
@@ -42,7 +43,13 @@ class employmentInfomationPage(BaseView):
         '''
 
         self.el_officeaddr.set_text("深圳市南山区大冲商务中心")
-        self.el_officeaddr.invalidate()
+
+        start = time.time()
+        while self.el_officeaddr.get_text() != "深圳市南山区大冲商务中心":
+            self.el_officeaddr.invalidate()
+            if time.time() - start > 10:
+                self.log.debug("办公司地址内容有误")
+                break
 
         return self.el_officeaddr.get_text()
 

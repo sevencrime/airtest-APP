@@ -4,6 +4,7 @@ import datetime
 import os
 import allure
 import pytest
+from Commons.CommonsTool import query_initialData
 from airtest.core.api import *
 
 from Commons import CommonsTool
@@ -19,6 +20,7 @@ class Test_faceid():
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
     gm = GlobalMap()
     log = Logs()
+    query_initialData()
     fix_routetitle = ['人脸识别']
 
     @allure.story("人脸识别")

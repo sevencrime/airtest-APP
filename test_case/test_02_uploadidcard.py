@@ -278,12 +278,9 @@ class Test_uploadidcard():
                 assert_equal(pubTool.get_Routetitle(), "身份证验证", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
 
-    def test_demo(self):
-        assert False
-
 
 if __name__ == "__main__":
-    pytest.main(["-s","-v", "--pdb" ,"test_02_uploadidcard.py::Test_uploadidcard::test_demo", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s","-v", "--pdb" ,"test_02_uploadidcard.py::Test_uploadidcard", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

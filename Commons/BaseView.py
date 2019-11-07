@@ -246,6 +246,7 @@ class BaseView():
         # selectElement = self.exists(selectelement)
         start = time.time()
         while not selectelement.exists():
+            self.disExists_swipe(selectelement)
             selectelement.invalidate()
             self.log.debug("{}不存在".format(str(selectelement)))
             if time.time() - start > 20:
