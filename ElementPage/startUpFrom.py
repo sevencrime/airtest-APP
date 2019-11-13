@@ -6,21 +6,25 @@ import re
 from airtest.core.api import *
 
 from Commons.BaseView import BaseView
+from Commons.read_ini import gm_init
 
 
 class startUpFrom(BaseView):
 
+    # 初始化gm, phone需要从gm获取
+    gm_init()
+
 
     def Start_APP(self):
         # 获取当前界面的包名和Activity
-        CurrentFocus = os.popen("adb shell dumpsys window | findstr mCurrentFocus").read()
+        CurrentFocus = os.popen("adb -s {} shell dumpsys window | findstr mCurrentFocus".format(self.gm.get_value("deviceuuid"))).read()
         currentActivity = ''.join(re.findall(r"u0\s(.+)}", CurrentFocus))
 
         # start_app('io.newtype.eddid.app', 'io.newtype.eddid.app.MainActivity')
         if currentActivity.find("io.newtype.eddid.app") == -1:
             # curlist = currentActivity.split('/')
             # start_app(curlist[0], curlist[1])
-            os.popen("adb shell am start -n io.newtype.eddid.app/io.newtype.eddid.app.MainActivity").read()
+            os.popen("adb -s {} shell am start -n io.newtype.eddid.app/com.bartech.app.main.launcher.LauncherActivity".format(self.gm.get_value("deviceuuid"))).read()
 
         return currentActivity
 

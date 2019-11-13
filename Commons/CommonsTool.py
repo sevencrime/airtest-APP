@@ -328,6 +328,13 @@ def query_initialData(*args):
         except:
             gm.set_bool(employment=False)
 
+        try:
+            # sameAdderss: 住址与身份证不一致, ture为勾选
+            gm.set_bool(sameAdderss=True if result['applyInfos']['syncIDAddress'] == "N" else False)
+        except Exception as e:
+            # raise e
+            gm.set_bool(sameAdderss=False)
+
 
         gm.set_bool(sameAdderss=result['applyInfos']['syncIDAddress'] == "Y")  # sameAdderss: 住址与身份证不一致, ture为勾选
         gm.set_List('accountType', result['accountType'])   # 账户类型
