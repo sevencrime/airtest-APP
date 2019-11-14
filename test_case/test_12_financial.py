@@ -11,14 +11,14 @@ from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.financialPage import financialPage
 from ElementPage.publicTool import publicTool
+from test_case.parentBase import ParentBase
 
 
 @allure.feature("相关保证金融资账户")
-class Test_financial():
+class Test_financial(ParentBase):
 
     gm = GlobalMap()
     fix_routetitle = ["相关保证金融资账户"]
-    query_initialData()
 
     @pytest.fixture()
     def teardown(self):

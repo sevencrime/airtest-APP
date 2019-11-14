@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import re
 import sys
 import traceback
 
@@ -20,17 +21,30 @@ class publicTool(BaseView):
         处理Android权限弹框
         """
         self.log.debug("处理权限弹框")
-        try:
-            # 循环5次, 点击多个弹框
-            for i in range(5):
-                self.log.debug("进入for循环")
+        # 通过activity判断是否出现弹框
+        # CurrentFocus = os.popen("adb -s {} shell dumpsys window | findstr mCurrentFocus".format(self.gm.get_value("deviceuuid"))).read()
+        # currentActivity = ''.join(re.findall(r"u0\s(.+)}", CurrentFocus))
+        currentActivity = ""
+        while currentActivity == "":
+            time.sleep(0.5)
+            CurrentFocus = os.popen("adb -s {} shell dumpsys window | findstr mCurrentFocus".format(self.gm.get_value("deviceuuid"))).read()
+            currentActivity = ''.join(re.findall(r"u0\s(.+)}", CurrentFocus))
+
+
+        while currentActivity.find("permission.ui.GrantPermissionsActivity") != -1:
+
+            try:
+                # 循环5次, 点击多个弹框
+                # for i in range(5):
+                self.log.debug("循环点击权限框")
                 self.permission_allow_button.invalidate()
                 permission_title = self.permission_title.get_text()
                 self.log.info("权限 >> {}".format(permission_title,))
                 self.permission_allow_button.click()
 
-        except Exception as e:
-            self.log.debug("权限弹框已消失")
+            except Exception as e:
+                print(e)
+                self.log.debug("权限弹框方法报错")
 
 
     def click_NextStepbtn(self, title=None):
@@ -107,7 +121,7 @@ class publicTool(BaseView):
 
     def wait_loading(self, timeout=30):
 
-        self.get_Routetitle()
+        # self.get_Routetitle()
         start = time.time()
         # 循环判断loading是否存在
         while self.loading.exists():

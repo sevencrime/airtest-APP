@@ -11,14 +11,14 @@ from Commons.CommonsTool import isboolean, query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.otherDataPage import otherDataPage
 from ElementPage.publicTool import publicTool
+from test_case.parentBase import ParentBase
 
 
 @allure.feature("其他资料")
-class Test_otherDataPage():
+class Test_otherDataPage(ParentBase):
 
     gm = GlobalMap()
     fix_routetitle = ["其他资料"]
-    _map = query_initialData()
     boolset = isboolean(knowRisk=gm.get_value("knowRisk"), futures="futuresMargin" in gm.get_value("accountType"))
     fix_routetitle = ['其他资料']
 

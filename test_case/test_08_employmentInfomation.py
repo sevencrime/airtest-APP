@@ -16,16 +16,16 @@ from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.employmentInfomationPage import employmentInfomationPage
 from ElementPage.publicTool import publicTool
+from test_case.parentBase import ParentBase
 
 
 @allure.feature("就业及财务状况")
-class Test_employmentInfomation():
+class Test_employmentInfomation(ParentBase):
 
     gm = GlobalMap()
     log = Logs()
     fix_routetitle = ["就业及财务状况"]      #当fixture的参数
 
-    query_initialData()
 
 
     # 无业--全年总收入

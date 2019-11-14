@@ -13,13 +13,13 @@ from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.publicTool import publicTool
 from ElementPage.signaturePage import signaturePage
+from test_case.parentBase import ParentBase
 
 
 @allure.feature("签名确认")
-class Test_Signature():
+class Test_Signature(ParentBase):
 
     gm = GlobalMap()
-    query_initialData()
 
     @pytest.mark.skipif(gm.get_value("signature"), reason="签名字段有值, 跳过用例")
     @allure.story("签名确认")

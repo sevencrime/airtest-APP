@@ -13,14 +13,14 @@ from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.derivativeProductPage import derivativeProductPage
 from ElementPage.publicTool import publicTool
+from test_case.parentBase import ParentBase
 
 
 @allure.feature("衍生产品的认识")
-class Test_derivativeProduct():
+class Test_derivativeProduct(ParentBase):
 
     gm = GlobalMap()
     log = Logs()
-    query_initialData()
     fix_routetitle = ["衍生品产品认识"]
     radiovalue = [True, False]
 

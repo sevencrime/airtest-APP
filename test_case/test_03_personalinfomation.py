@@ -11,12 +11,12 @@ from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.personalInformationPage import personalInformationPage
 from ElementPage.publicTool import publicTool
+from test_case.parentBase import ParentBase
 
 
 @allure.feature("请填写个人资料")
-class Test_personalinfomation():
+class Test_personalinfomation(ParentBase):
     gm = GlobalMap()
-    query_initialData()
     fix_routetitle = ["请填写个人资料"]
 
     @allure.story("填写个人资料-正常输入")

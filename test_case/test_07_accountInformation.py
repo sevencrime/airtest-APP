@@ -12,12 +12,12 @@ from Commons.GlobalMap import GlobalMap
 from Commons.mongoTool import mongoTool
 from ElementPage.accountInformationPage import accountInformationPage
 from ElementPage.publicTool import publicTool
+from test_case.parentBase import ParentBase
 
 
 @allure.feature("账户信息")
-class Test_AccountInformation():
+class Test_AccountInformation(ParentBase):
     gm = GlobalMap()
-    query_initialData()
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
 
     @allure.story("填写账户信息")

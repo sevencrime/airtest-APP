@@ -22,8 +22,7 @@ class startUpFrom(BaseView):
 
         # start_app('io.newtype.eddid.app', 'io.newtype.eddid.app.MainActivity')
         if currentActivity.find("io.newtype.eddid.app") == -1:
-            # curlist = currentActivity.split('/')
-            # start_app(curlist[0], curlist[1])
+            # 启动APP
             os.popen("adb -s {} shell am start -n io.newtype.eddid.app/com.bartech.app.main.launcher.LauncherActivity".format(self.gm.get_value("deviceuuid"))).read()
 
         return currentActivity

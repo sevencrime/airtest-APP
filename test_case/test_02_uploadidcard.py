@@ -13,14 +13,14 @@ from Commons.Logging import Logs
 from ElementPage.idcardPage import idcardPage
 from ElementPage.personalInformationPage import personalInformationPage
 from ElementPage.publicTool import publicTool
+from test_case.parentBase import ParentBase
 
 
 @allure.feature("上传身份证")
-class Test_uploadidcard():
+class Test_uploadidcard(ParentBase):
 
     gm = GlobalMap()
     log = Logs()
-    result = query_initialData()
     fix_routetitle = ["身份证验证"]
 
     @allure.story("上传身份证")
