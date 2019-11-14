@@ -28,8 +28,8 @@ class BaseView():
         self.gallery = self.poco(text="相册选取")
         self.loading = self.poco("android.widget.ProgressBar")
         self.Routetitle = self.poco("android.widget.FrameLayout").offspring("android.widget.TextView")  # 页面标题
-        self.permission_allow_button = self.poco("com.android.packageinstaller:id/permission_allow_button", textMatches="允许")    # 权限弹框: 允许
-        self.permission_title = self.poco("com.android.packageinstaller:id/permission_title")   # 权限弹框标题
+        self.permission_allow_button = self.poco("com.android.packageinstaller:id/permission_allow_button")    # 权限弹框: 允许
+        self.permission_title = self.poco("com.android.packageinstaller:id/permission_message")   # 权限弹框标题
 
         self.loginbtn = self.poco("button_login")
         self.passwordedit = self.poco("input_password")

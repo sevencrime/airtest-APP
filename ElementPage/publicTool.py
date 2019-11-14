@@ -19,17 +19,18 @@ class publicTool(BaseView):
         """
         处理Android权限弹框
         """
+        self.log.debug("处理权限弹框")
         try:
             # 循环5次, 点击多个弹框
             for i in range(5):
+                self.log.debug("进入for循环")
                 self.permission_allow_button.invalidate()
                 permission_title = self.permission_title.get_text()
                 self.log.info("权限 >> {}".format(permission_title,))
                 self.permission_allow_button.click()
 
         except Exception as e:
-            self.log.debug("没有出现权限弹框")
-            pass
+            self.log.debug("权限弹框已消失")
 
 
     def click_NextStepbtn(self, title=None):
