@@ -212,7 +212,6 @@ def query_initialData(*args):
         "income" : "利息/股息收入"
     }
 
-
     if gm.get_value("environment").find("aos") != -1:
         # 全年总收入
         for totalAnnual in result['totalAnnualCustomerRevenueHKSource']:
@@ -280,7 +279,7 @@ def query_initialData(*args):
 
         gm.set_List('accountType', result['accountTypes'])  # 账户类型
 
-    elif gm.get_value("environment") == "test" and gm.get_value("environment") == "uat":
+    elif gm.get_value("environment") == "test" or gm.get_value("environment") == "uat":
         # 全年总收入
         for totalAnnual in result['applyInfos']['riskInfo']['totalAnnualCustomerRevenueHKSource']:
             if totalAnnualdict.__contains__(totalAnnual):
@@ -297,11 +296,11 @@ def query_initialData(*args):
             if fundsSourcedict.__contains__(fundsSource):
                 fundsSourcelist.append(fundsSourcedict[fundsSource])
 
-        for channe in result['channels']:
+        for channe in result['learnHow']:
             if crm_channelsdict.__contains__(channe):
                 channelslist.append(crm_channelsdict[channe])
 
-        for investment in result['purposeOfInvestment']:
+        for investment in result['applyInfos']['riskInfo']['purposeOfInvestment']:    #投资目标
             if investmentTargetdict.__contains__(investment):
                 investmentTargetlist.append(investmentTargetdict[investment])
 
@@ -331,12 +330,12 @@ def query_initialData(*args):
         try:
             # sameAdderss: 住址与身份证不一致, ture为勾选
             gm.set_bool(sameAdderss=True if result['applyInfos']['syncIDAddress'] == "N" else False)
+
         except Exception as e:
             # raise e
             gm.set_bool(sameAdderss=False)
 
 
-        gm.set_bool(sameAdderss=result['applyInfos']['syncIDAddress'] == "Y")  # sameAdderss: 住址与身份证不一致, ture为勾选
         gm.set_List('accountType', result['accountType'])   # 账户类型
 
 
