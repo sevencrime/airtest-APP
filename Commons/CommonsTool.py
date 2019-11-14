@@ -139,11 +139,13 @@ def query_initialData(*args):
                                              {'$match': {'applyInfos.isMaster': '1'}}
                                          ]
                                          )
+                break
             except ServerSelectionTimeoutError:
                 time.sleep(3)
                 continue
 
-            break
+        if result == [] or result == "" or result == None:
+            return True
 
 
     totalAnnualdict = {

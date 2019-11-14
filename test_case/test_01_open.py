@@ -67,6 +67,9 @@ class Test_open():
         with allure.step("判断是否进入表单"):
             assert_equal(pubTool.get_Routetitle(), "选择所属地区", msg="没有进入表单")
 
+        with allure.step("进入表单后判断是否有权限弹框"):
+            pubTool.allow_permissionBox()
+
 if __name__ == "__main__":
     pytest.main(["-s", "-v", "--pdb", "test_01_open.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
