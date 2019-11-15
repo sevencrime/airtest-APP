@@ -10,11 +10,11 @@ from Commons import CommonsTool
 subprocess.Popen(r"adb shell pm clear io.newtype.eddid.app").wait()
 
 # "--reruns=3", "--reruns-delay=3"  #重试
-pytest.main(["-s", "-v", "./test_case/", '--alluredir',
+pytest.main(["-s", "-v", "./test_case/test_02_uploadidcard.py", '--alluredir',
              './report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')),
              # "--reruns=2",
              # "--reruns-delay=3",
-             "--pdb"
+             # "--pdb"
              ])
 
 xml_report_path, html_report_path = CommonsTool.rmdir5()

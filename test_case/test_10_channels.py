@@ -14,8 +14,9 @@ from test_case.parentBase import ParentBase
 
 
 @allure.feature("介绍与推广")
-class Test_channels(ParentBase):
+class Test_channels():
     fix_routetitle = ["介绍及推广"]
+    query_initialData()
 
     @allure.story("介绍与推广, 不勾选>>必须勾选才能下一步")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)

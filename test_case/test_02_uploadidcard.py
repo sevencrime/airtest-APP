@@ -7,6 +7,7 @@ import pytest
 from airtest.core.api import *
 
 from Commons import CommonsTool
+from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.idcardPage import idcardPage
@@ -16,11 +17,12 @@ from test_case.parentBase import ParentBase
 
 @pytest.mark.run(order=2)
 @allure.feature("上传身份证")
-class Test_uploadidcard(ParentBase):
+class Test_uploadidcard():
 
     gm = GlobalMap()
     log = Logs()
     fix_routetitle = ["身份证验证"]
+    query_initialData()
 
     @allure.story("上传身份证")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)

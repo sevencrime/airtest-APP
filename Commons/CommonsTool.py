@@ -144,8 +144,8 @@ def query_initialData(*args):
                 time.sleep(3)
                 continue
 
-        if result == [] or result == "" or result == None:
-            return True
+        # if result == [] or result == "" or result == None:
+        #     return True
 
 
     totalAnnualdict = {

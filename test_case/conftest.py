@@ -166,7 +166,7 @@ def pytest_runtest_makereport(item, call):
 
 # def pytest_collection_modifyitems(config, items):
 #     import pdb; pdb.set_trace()
-#
+# #
 #     print("222222222222222222222222222222")
 #     """ 根据指定的mark参数场景，动态选择case的执行顺序"""
 #     for item in items:

@@ -15,12 +15,12 @@ from test_case.parentBase import ParentBase
 
 
 @allure.feature("其他资料")
-class Test_otherDataPage(ParentBase):
+class Test_otherDataPage():
 
     gm = GlobalMap()
+    query_initialData()
     fix_routetitle = ["其他资料"]
     boolset = isboolean(knowRisk=gm.get_value("knowRisk"), futures="futuresMargin" in gm.get_value("accountType"))
-    fix_routetitle = ['其他资料']
 
     @allure.story("其他资料")
     @allure.story("您是否曾经宣告破产或被申请破产提示")

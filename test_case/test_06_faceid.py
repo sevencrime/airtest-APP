@@ -12,15 +12,15 @@ from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from Commons.mongoTool import mongoTool
 from ElementPage.publicTool import publicTool
-from test_case.parentBase import ParentBase
 
 
 @allure.feature("人脸识别")
-class Test_faceid(ParentBase):
+class Test_faceid():
 
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
     gm = GlobalMap()
     log = Logs()
+    query_initialData()
     fix_routetitle = ['人脸识别']
 
     @allure.story("人脸识别")

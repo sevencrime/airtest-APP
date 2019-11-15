@@ -17,10 +17,11 @@ from test_case.parentBase import ParentBase
 
 
 @allure.feature("衍生产品的认识")
-class Test_derivativeProduct(ParentBase):
+class Test_derivativeProduct():
 
     gm = GlobalMap()
     log = Logs()
+    query_initialData()
     fix_routetitle = ["衍生品产品认识"]
     radiovalue = [True, False]
 

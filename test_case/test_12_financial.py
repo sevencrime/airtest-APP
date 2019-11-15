@@ -15,9 +15,10 @@ from test_case.parentBase import ParentBase
 
 
 @allure.feature("相关保证金融资账户")
-class Test_financial(ParentBase):
+class Test_financial():
 
     gm = GlobalMap()
+    query_initialData()
     fix_routetitle = ["相关保证金融资账户"]
 
     @pytest.fixture()
