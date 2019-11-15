@@ -11,9 +11,8 @@ from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.addressProofPage import addressProofPage
 from ElementPage.publicTool import publicTool
-from test_case.parentBase import ParentBase
 
-
+@pytest.mark.run(order=4)
 @allure.feature("地址证明")
 class Test_addressProof():
     gm = GlobalMap()

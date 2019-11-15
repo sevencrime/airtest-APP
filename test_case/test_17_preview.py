@@ -4,13 +4,13 @@ import datetime
 
 import allure
 import pytest
-import os
+from airtest.core.api import *
 
 from Commons import CommonsTool
 from ElementPage.previewPage import PreviewPage
 from ElementPage.publicTool import publicTool
-from airtest.core.api import *
 
+@pytest.mark.run(order=17)
 @allure.feature("预览页提交")
 class Test_Preview():
 

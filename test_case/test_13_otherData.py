@@ -11,9 +11,8 @@ from Commons.CommonsTool import isboolean, query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.otherDataPage import otherDataPage
 from ElementPage.publicTool import publicTool
-from test_case.parentBase import ParentBase
 
-
+@pytest.mark.run(order=13)
 @allure.feature("其他资料")
 class Test_otherDataPage():
 

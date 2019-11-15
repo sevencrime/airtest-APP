@@ -13,7 +13,7 @@ from Commons.Logging import Logs
 from Commons.mongoTool import mongoTool
 from ElementPage.publicTool import publicTool
 
-
+@pytest.mark.run(order=6)
 @allure.feature("人脸识别")
 class Test_faceid():
 

@@ -12,7 +12,7 @@ from Commons.Logging import Logs
 from ElementPage.bankCardInformationPage import bankCardInformationPage
 from ElementPage.publicTool import publicTool
 
-
+@pytest.mark.run(order=5)
 @allure.feature("银行卡信息")
 class Test_bankCardInformation():
     log = Logs()

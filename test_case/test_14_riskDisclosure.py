@@ -11,11 +11,11 @@ from ElementPage.RiskDisclosurePage import RiskDisclosurePage
 from ElementPage.publicTool import publicTool
 from airtest.core.api import *
 
+@pytest.mark.run(order=14)
 @allure.feature("风险披露")
 class Test_riskDisclosure():
 
     @allure.story("风险披露")
-    @pytest.mark.run(order=3)
     def test_otherData(self, poco):
         pubTool = publicTool(poco)
         riskdisclosure = RiskDisclosurePage(poco)

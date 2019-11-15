@@ -11,9 +11,8 @@ from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.financialPage import financialPage
 from ElementPage.publicTool import publicTool
-from test_case.parentBase import ParentBase
 
-
+@pytest.mark.run(order=12)
 @allure.feature("相关保证金融资账户")
 class Test_financial():
 

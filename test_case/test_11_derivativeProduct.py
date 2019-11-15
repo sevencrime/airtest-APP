@@ -13,9 +13,8 @@ from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.derivativeProductPage import derivativeProductPage
 from ElementPage.publicTool import publicTool
-from test_case.parentBase import ParentBase
 
-
+@pytest.mark.run(order=11)
 @allure.feature("衍生产品的认识")
 class Test_derivativeProduct():
 

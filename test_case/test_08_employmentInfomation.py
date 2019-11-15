@@ -17,7 +17,7 @@ from Commons.Logging import Logs
 from ElementPage.employmentInfomationPage import employmentInfomationPage
 from ElementPage.publicTool import publicTool
 
-
+@pytest.mark.run(order=8)
 @allure.feature("就业及财务状况")
 class Test_employmentInfomation():
 

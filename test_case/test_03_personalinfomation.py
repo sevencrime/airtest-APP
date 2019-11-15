@@ -11,9 +11,8 @@ from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.personalInformationPage import personalInformationPage
 from ElementPage.publicTool import publicTool
-from test_case.parentBase import ParentBase
 
-
+@pytest.mark.run(order=3)
 @allure.feature("请填写个人资料")
 class Test_personalinfomation():
     gm = GlobalMap()

@@ -13,7 +13,6 @@ from Commons.Logging import Logs
 from ElementPage.idcardPage import idcardPage
 from ElementPage.personalInformationPage import personalInformationPage
 from ElementPage.publicTool import publicTool
-from test_case.parentBase import ParentBase
 
 @pytest.mark.run(order=2)
 @allure.feature("上传身份证")

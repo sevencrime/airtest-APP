@@ -97,7 +97,7 @@ def query_initialData(*args):
         log.info("不是第一次调用query_initialData, 跳过")
         return True
 
-
+    _isFlag = True
     gm_init()   # 初始化ini配置
     mongo = mongoTool(gm.get_value("mongohost"))
 
@@ -221,7 +221,7 @@ def query_initialData(*args):
                 if totalAnnualdict.__contains__(totalAnnual):
                     totalAnnuallist.append(
                         totalAnnualdict[totalAnnual])
-        except KeyError:
+        except:
             totalAnnuallist = []
 
         try:
@@ -230,7 +230,7 @@ def query_initialData(*args):
                 if customerNetAssetValuedict.__contains__(customerNetAssetValue):
                     customerNetAssetValuelist.append(
                         customerNetAssetValuedict[customerNetAssetValue])
-        except KeyError:
+        except:
             customerNetAssetValuelist = []
 
         try:
@@ -238,21 +238,21 @@ def query_initialData(*args):
             for fundsSource in result['fundsSource']:
                 if fundsSourcedict.__contains__(fundsSource):
                     fundsSourcelist.append(fundsSourcedict[fundsSource])
-        except KeyError:
+        except:
             fundsSourcelist = []
 
         try:
             for channe in result['channels']:
                 if aos_channelsdict.__contains__(channe):
                     channelslist.append(aos_channelsdict[channe])
-        except KeyError:
+        except:
             channelslist = []
 
         try:
             for investment in result['investmentTarget']:
                 if investmentTargetdict.__contains__(investment):
                     investmentTargetlist.append(investmentTargetdict[investment])
-        except KeyError:
+        except:
             investmentTargetlist = []
 
         try:
@@ -261,7 +261,7 @@ def query_initialData(*args):
                 gm.set_bool(derivative=True)
             else:
                 gm.set_bool(derivative=False)
-        except KeyError:
+        except:
             gm.set_bool(derivative=False)
 
         try:
@@ -270,29 +270,33 @@ def query_initialData(*args):
                 gm.set_bool(knowRisk=True)
             else:
                 gm.set_bool(knowRisk=False)
-        except KeyError:
+        except:
             gm.set_bool(knowRisk=False)
 
         try:
             # sameAdderss: 住址与身份证不一致, ture为勾选
             gm.set_bool(sameAdderss=result['sameAddress'])
-        except KeyError:
+        except:
             # raise e
             gm.set_bool(sameAdderss=False)
 
         try:
             # 签名
             gm.set_bool(signature=True if result['signature'] != "" else False)
-        except KeyError:
+        except:
             gm.set_bool(signature=False)
 
         try:
             # 就业情况
             gm.set_bool(employment = True if result['employment'] != "" else False)
-        except KeyError:
+        except:
             gm.set_bool(employment=False)
 
-        gm.set_List('accountType', result['accountTypes'])  # 账户类型
+        try:
+            gm.set_List('accountType', result['accountTypes'])  # 账户类型
+        except:
+            gm.set_List('accountType', [])  # 账户类型
+
 
     elif gm.get_value("environment") == "test" or gm.get_value("environment") == "uat":
         try:
@@ -300,7 +304,7 @@ def query_initialData(*args):
             for totalAnnual in result['applyInfos']['riskInfo']['totalAnnualCustomerRevenueHKSource']:
                 if totalAnnualdict.__contains__(totalAnnual):
                     totalAnnuallist.append(totalAnnualdict[totalAnnual])
-        except KeyError:
+        except:
             totalAnnuallist = []
 
         try:
@@ -309,7 +313,7 @@ def query_initialData(*args):
                 if customerNetAssetValuedict.__contains__(customerNetAssetValue):
                     customerNetAssetValuelist.append(
                         customerNetAssetValuedict[customerNetAssetValue])
-        except KeyError:
+        except:
             customerNetAssetValuelist = []
 
         try:
@@ -317,21 +321,21 @@ def query_initialData(*args):
             for fundsSource in result['applyInfos']['riskInfo']['sourceOfWealth']:
                 if fundsSourcedict.__contains__(fundsSource):
                     fundsSourcelist.append(fundsSourcedict[fundsSource])
-        except KeyError:
+        except:
             fundsSourcelist = []
 
         try:
             for channe in result['learnHow']:
                 if crm_channelsdict.__contains__(channe):
                     channelslist.append(crm_channelsdict[channe])
-        except KeyError:
+        except:
             channelslist = []
 
         try:
             for investment in result['applyInfos']['riskInfo']['purposeOfInvestment']:    #投资目标
                 if investmentTargetdict.__contains__(investment):
                     investmentTargetlist.append(investmentTargetdict[investment])
-        except KeyError:
+        except:
             investmentTargetlist = []
 
         try:
@@ -343,33 +347,32 @@ def query_initialData(*args):
             else:
                 gm.set_bool(derivative=False)
 
-        except KeyError:
+        except:
             gm.set_bool(derivative=False)
 
         try:
             gm.set_bool(signature=True if result['applyInfos']['riskInfo']['signatureMaterial'] != "" else False)
-        except KeyError:
+        except:
             gm.set_bool(signature = False)
 
         try:
             # 就业情况
             gm.set_bool(employment = True if result['applyInfos']['employment'] != "" else False)
-        except KeyError:
+        except:
             gm.set_bool(employment=False)
 
         try:
             # sameAdderss: 住址与身份证不一致, ture为勾选
             gm.set_bool(sameAdderss=True if result['applyInfos']['syncIDAddress'] == "N" else False)
 
-        except KeyError:
+        except:
             # raise e
             gm.set_bool(sameAdderss=False)
 
-
-        gm.set_List('accountType', result['accountType'])   # 账户类型
-
-
-
+        try:
+            gm.set_List('accountType', result['accountType'])   # 账户类型
+        except:
+            gm.set_List('accountType', ["securitiesCash", "futuresMargin"])
 
 
     gm.set_List('istotalAnnual', totalAnnuallist)
@@ -386,6 +389,5 @@ def query_initialData(*args):
     log.debug("认识渠道的值为:" + "".join(gm.get_value("channels")))
     log.debug("结构性衍生产品相关风险声明披露字段的值为 knowRisk : {}".format(gm.get_value("knowRisk")))
 
-    _isFlag = True
 
     return gm._map

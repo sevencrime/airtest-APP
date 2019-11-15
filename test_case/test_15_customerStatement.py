@@ -9,12 +9,11 @@ from Commons import CommonsTool
 from ElementPage.customerStatementPage import customerStatementPage
 from ElementPage.publicTool import publicTool, os
 
-
+@pytest.mark.run(order=15)
 @allure.feature("客户声明")
 class Test_CustomerStatement():
 
     @allure.story("客户声明")
-    @pytest.mark.run(order=3)
     def test_otherData(self, poco):
         pubTool = publicTool(poco)
         customer = customerStatementPage(poco)

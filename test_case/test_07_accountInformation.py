@@ -12,9 +12,8 @@ from Commons.GlobalMap import GlobalMap
 from Commons.mongoTool import mongoTool
 from ElementPage.accountInformationPage import accountInformationPage
 from ElementPage.publicTool import publicTool
-from test_case.parentBase import ParentBase
 
-
+@pytest.mark.run(order=7)
 @allure.feature("账户信息")
 class Test_AccountInformation():
     gm = GlobalMap()

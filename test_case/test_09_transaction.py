@@ -11,7 +11,7 @@ from Commons.CommonsTool import query_initialData
 from ElementPage.publicTool import publicTool
 from ElementPage.transactionPage import transactionPage
 
-
+@pytest.mark.run(order=9)
 @allure.feature("选择交易信息")
 class Test_transaction():
 

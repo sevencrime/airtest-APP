@@ -10,9 +10,8 @@ from Commons import CommonsTool
 from Commons.CommonsTool import query_initialData
 from ElementPage.introPromoPage import introPromoPage
 from ElementPage.publicTool import publicTool
-from test_case.parentBase import ParentBase
 
-
+@pytest.mark.run(order=10)
 @allure.feature("介绍与推广")
 class Test_channels():
     fix_routetitle = ["介绍及推广"]
