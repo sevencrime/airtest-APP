@@ -35,8 +35,7 @@ class startUpFrom(BaseView):
 
         """
         try:
-            if self.el_firstSetting_loc.exists():
-                self.el_firstSetting_loc.click()
+            self.exists(self.el_firstSetting_loc).click()
         except:
             return False
 

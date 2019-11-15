@@ -162,3 +162,18 @@ def pytest_runtest_makereport(item, call):
 
         elif rep.passed:
             pass
+
+
+# def pytest_collection_modifyitems(config, items):
+#     import pdb; pdb.set_trace()
+#
+#     print("222222222222222222222222222222")
+#     """ 根据指定的mark参数场景，动态选择case的执行顺序"""
+#     for item in items:
+#         scenarios = [
+#             marker for marker in item.own_markers
+#             if marker.name.startswith('scenarios')
+#             and marker.name in config.option.markexpr
+#         ]
+#         if len(scenarios) == 1 and not item.get_closest_marker('run'):
+#            item.add_marker(pytest.mark.run(order=scenarios[0].args[0]))

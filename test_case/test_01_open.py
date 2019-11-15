@@ -11,7 +11,7 @@ from Commons.GlobalMap import GlobalMap
 from ElementPage.publicTool import publicTool
 from ElementPage.startUpFrom import startUpFrom
 
-
+@pytest.mark.run(order=1)
 @allure.feature("启动APP, 进入开户界面")
 class Test_open():
 
@@ -60,17 +60,15 @@ class Test_open():
             pubTool.wait_loading()
 
         with allure.step("登录后再次点击便捷开户"):
-            if pubTool.get_Routetitle() == "艾德证券期货":
+            if pubTool.get_Routetitle() != "选择所属地区":
                 startupfrom.click_easyOpenning()
                 pubTool.wait_loading()
 
-        with allure.step("判断是否进入表单"):
-            assert_equal(pubTool.get_Routetitle(), "选择所属地区", msg="没有进入表单")
-
-        with allure.step("进入表单后判断是否有权限弹框"):
-            import pdb; pdb.set_trace()
+        with allure.step("判断登录成功进入开户表单时是否有权限弹框"):
             pubTool.allow_permissionBox()
 
+        with allure.step("判断是否进入表单"):
+            assert_equal(pubTool.get_Routetitle(), "选择所属地区", msg="没有进入表单")
 
 if __name__ == "__main__":
     pytest.main(["-s", "-v", "--pdb", "test_01_open.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])

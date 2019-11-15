@@ -7,7 +7,6 @@ import pytest
 from airtest.core.api import *
 
 from Commons import CommonsTool
-from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.idcardPage import idcardPage
@@ -15,7 +14,7 @@ from ElementPage.personalInformationPage import personalInformationPage
 from ElementPage.publicTool import publicTool
 from test_case.parentBase import ParentBase
 
-
+@pytest.mark.run(order=2)
 @allure.feature("上传身份证")
 class Test_uploadidcard(ParentBase):
 
