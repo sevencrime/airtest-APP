@@ -46,7 +46,7 @@ class BaseView():
         self.backform_img = rootPath + r'testData\testIMG\backform.png'
 
         self.el_firstSetting_loc = self.poco("io.newtype.eddid.app:id/btn_start")
-        self.baropen = self.poco(text="开户")
+        self.baropen = self.poco(text="交易")
         self.easyOpenning = self.poco(text="便捷开户")
         self.goLogin = self.poco(text="去登录")
         self.phonenumber = self.poco(text="请输入手机号")

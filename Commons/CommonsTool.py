@@ -216,30 +216,44 @@ def query_initialData(*args):
 
     if gm.get_value("environment").find("aos") != -1:
         # 全年总收入
-        for totalAnnual in result['totalAnnualCustomerRevenueHKSource']:
-            if totalAnnualdict.__contains__(totalAnnual):
-                totalAnnuallist.append(
-                    totalAnnualdict[totalAnnual])
+        try:
+            for totalAnnual in result['totalAnnualCustomerRevenueHKSource']:
+                if totalAnnualdict.__contains__(totalAnnual):
+                    totalAnnuallist.append(
+                        totalAnnualdict[totalAnnual])
+        except KeyError:
+            totalAnnuallist = []
 
-        # 资产净值
-        for customerNetAssetValue in result['customerNetAssetValueHKSource']:
-            if customerNetAssetValuedict.__contains__(customerNetAssetValue):
-                customerNetAssetValuelist.append(
-                    customerNetAssetValuedict[customerNetAssetValue])
+        try:
+            # 资产净值
+            for customerNetAssetValue in result['customerNetAssetValueHKSource']:
+                if customerNetAssetValuedict.__contains__(customerNetAssetValue):
+                    customerNetAssetValuelist.append(
+                        customerNetAssetValuedict[customerNetAssetValue])
+        except KeyError:
+            customerNetAssetValuelist = []
 
-        # 财富来源
-        for fundsSource in result['fundsSource']:
-            if fundsSourcedict.__contains__(fundsSource):
-                fundsSourcelist.append(fundsSourcedict[fundsSource])
+        try:
+            # 财富来源
+            for fundsSource in result['fundsSource']:
+                if fundsSourcedict.__contains__(fundsSource):
+                    fundsSourcelist.append(fundsSourcedict[fundsSource])
+        except KeyError:
+            fundsSourcelist = []
 
-        for channe in result['channels']:
-            if aos_channelsdict.__contains__(channe):
-                channelslist.append(aos_channelsdict[channe])
+        try:
+            for channe in result['channels']:
+                if aos_channelsdict.__contains__(channe):
+                    channelslist.append(aos_channelsdict[channe])
+        except KeyError:
+            channelslist = []
 
-
-        for investment in result['investmentTarget']:
-            if investmentTargetdict.__contains__(investment):
-                investmentTargetlist.append(investmentTargetdict[investment])
+        try:
+            for investment in result['investmentTarget']:
+                if investmentTargetdict.__contains__(investment):
+                    investmentTargetlist.append(investmentTargetdict[investment])
+        except KeyError:
+            investmentTargetlist = []
 
         try:
             # 衍生产品
@@ -247,7 +261,7 @@ def query_initialData(*args):
                 gm.set_bool(derivative=True)
             else:
                 gm.set_bool(derivative=False)
-        except:
+        except KeyError:
             gm.set_bool(derivative=False)
 
         try:
@@ -256,55 +270,69 @@ def query_initialData(*args):
                 gm.set_bool(knowRisk=True)
             else:
                 gm.set_bool(knowRisk=False)
-        except:
+        except KeyError:
             gm.set_bool(knowRisk=False)
-
 
         try:
             # sameAdderss: 住址与身份证不一致, ture为勾选
             gm.set_bool(sameAdderss=result['sameAddress'])
-        except Exception as e:
+        except KeyError:
             # raise e
             gm.set_bool(sameAdderss=False)
 
         try:
             # 签名
             gm.set_bool(signature=True if result['signature'] != "" else False)
-        except:
+        except KeyError:
             gm.set_bool(signature=False)
 
         try:
             # 就业情况
             gm.set_bool(employment = True if result['employment'] != "" else False)
-        except:
+        except KeyError:
             gm.set_bool(employment=False)
 
         gm.set_List('accountType', result['accountTypes'])  # 账户类型
 
     elif gm.get_value("environment") == "test" or gm.get_value("environment") == "uat":
-        # 全年总收入
-        for totalAnnual in result['applyInfos']['riskInfo']['totalAnnualCustomerRevenueHKSource']:
-            if totalAnnualdict.__contains__(totalAnnual):
-                totalAnnuallist.append(totalAnnualdict[totalAnnual])
+        try:
+            # 全年总收入
+            for totalAnnual in result['applyInfos']['riskInfo']['totalAnnualCustomerRevenueHKSource']:
+                if totalAnnualdict.__contains__(totalAnnual):
+                    totalAnnuallist.append(totalAnnualdict[totalAnnual])
+        except KeyError:
+            totalAnnuallist = []
 
-        # 资产净值
-        for customerNetAssetValue in result['applyInfos']['riskInfo']['customerNetAssetValueHKSource']:
-            if customerNetAssetValuedict.__contains__(customerNetAssetValue):
-                customerNetAssetValuelist.append(
-                    customerNetAssetValuedict[customerNetAssetValue])
+        try:
+            # 资产净值
+            for customerNetAssetValue in result['applyInfos']['riskInfo']['customerNetAssetValueHKSource']:
+                if customerNetAssetValuedict.__contains__(customerNetAssetValue):
+                    customerNetAssetValuelist.append(
+                        customerNetAssetValuedict[customerNetAssetValue])
+        except KeyError:
+            customerNetAssetValuelist = []
 
-        # 财富来源
-        for fundsSource in result['applyInfos']['riskInfo']['sourceOfWealth']:
-            if fundsSourcedict.__contains__(fundsSource):
-                fundsSourcelist.append(fundsSourcedict[fundsSource])
+        try:
+            # 财富来源
+            for fundsSource in result['applyInfos']['riskInfo']['sourceOfWealth']:
+                if fundsSourcedict.__contains__(fundsSource):
+                    fundsSourcelist.append(fundsSourcedict[fundsSource])
+        except KeyError:
+            fundsSourcelist = []
 
-        for channe in result['learnHow']:
-            if crm_channelsdict.__contains__(channe):
-                channelslist.append(crm_channelsdict[channe])
+        try:
+            for channe in result['learnHow']:
+                if crm_channelsdict.__contains__(channe):
+                    channelslist.append(crm_channelsdict[channe])
+        except KeyError:
+            channelslist = []
 
-        for investment in result['applyInfos']['riskInfo']['purposeOfInvestment']:    #投资目标
-            if investmentTargetdict.__contains__(investment):
-                investmentTargetlist.append(investmentTargetdict[investment])
+        try:
+            for investment in result['applyInfos']['riskInfo']['purposeOfInvestment']:    #投资目标
+                if investmentTargetdict.__contains__(investment):
+                    investmentTargetlist.append(investmentTargetdict[investment])
+        except KeyError:
+            investmentTargetlist = []
 
         try:
             if result['applyInfos']['riskInfo']['isLearnAboutProducts'] != '' and result['applyInfos']['riskInfo'][
@@ -315,25 +343,25 @@ def query_initialData(*args):
             else:
                 gm.set_bool(derivative=False)
 
-        except:
+        except KeyError:
             gm.set_bool(derivative=False)
 
         try:
             gm.set_bool(signature=True if result['applyInfos']['riskInfo']['signatureMaterial'] != "" else False)
-        except:
+        except KeyError:
             gm.set_bool(signature = False)
 
         try:
             # 就业情况
             gm.set_bool(employment = True if result['applyInfos']['employment'] != "" else False)
-        except:
+        except KeyError:
             gm.set_bool(employment=False)
 
         try:
             # sameAdderss: 住址与身份证不一致, ture为勾选
             gm.set_bool(sameAdderss=True if result['applyInfos']['syncIDAddress'] == "N" else False)
 
-        except Exception as e:
+        except KeyError:
             # raise e
             gm.set_bool(sameAdderss=False)
 

@@ -30,24 +30,27 @@ class publicTool(BaseView):
             time.sleep(0.5)
             CurrentFocus = os.popen("adb -s {} shell dumpsys window | findstr mCurrentFocus".format(self.gm.get_value("deviceuuid"))).read()
             currentActivity = ''.join(re.findall(r"u0\s(.+)}", CurrentFocus))
-            if time.time - start > 5:
+            self.log.debug("当前的类为 {}".format(currentActivity))
+
+            if time.time() - start > 5:
+                log.debug("时间超过5秒, 退出")
                 break
 
 
         if currentActivity.find("permission.ui.GrantPermissionsActivity") != -1:
 
-            try:
-                # 循环5次, 点击多个弹框
-                for i in range(5):
-                    self.log.debug("循环点击权限框")
-                    self.permission_allow_button.invalidate()
-                    permission_title = self.permission_title.get_text()
-                    self.log.info("权限 >> {}".format(permission_title,))
-                    self.permission_allow_button.click()
+            # try:
+            # 循环5次, 点击多个弹框
+            for i in range(5):
+                self.log.debug("循环点击权限框")
+                # self.permission_allow_button.invalidate()
+                permission_title = self.exists(self.permission_title).get_text()
+                self.log.info("权限 >> {}".format(permission_title,))
+                self.exists(self.permission_allow_button).click()
 
-            except Exception as e:
-                print(e)
-                self.log.debug("权限弹框方法报错")
+            # except Exception as e:
+            #     self.log.debug(e)
+            #     self.log.debug("权限弹框方法报错")
 
 
     def click_NextStepbtn(self, title=None):
