@@ -19,6 +19,7 @@ class Test_personalinfomation():
     query_initialData()
     fix_routetitle = ["请填写个人资料"]
 
+    @pytest.mark.maintest
     @allure.story("填写个人资料-正常输入")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.skipif(gm.get_value("environment").find("aos") != -1, reason="后台是aos接口, 没有该页面, 跳过此用例")
@@ -147,7 +148,7 @@ class Test_personalinfomation():
             pubTool.click_box()
 
 
-
+    @pytest.mark.maintest
     @allure.story("填写个人资料-勾选住址和身份证地址不一致")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency(depends=["Test_uploadidcard::test_uploadidcard"])

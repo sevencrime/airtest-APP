@@ -23,6 +23,7 @@ class Test_uploadidcard():
     fix_routetitle = ["身份证验证"]
     query_initialData()
 
+    @pytest.mark.maintest
     @allure.story("上传身份证")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.dependency()

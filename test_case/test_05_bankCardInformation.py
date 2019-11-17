@@ -123,6 +123,7 @@ class Test_bankCardInformation():
         with allure.step("页面停留在<银行卡信息>界面"):
             assert_equal(pubTool.get_Routetitle(), "银行卡信息", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
+    @pytest.mark.maintest
     @allure.story("银行名称输入组合字符")
     @pytest.mark.usefixtures('reloadRoute')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)

@@ -19,6 +19,7 @@ class Test_addressProof():
     query_initialData()
     fix_routetitle = ["住址信息"]
 
+    @pytest.mark.maintest
     @allure.story("正常输入地址证明")
     @pytest.mark.usefixtures('reloadRoute')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)

@@ -16,7 +16,8 @@ from ElementPage.startUpFrom import startUpFrom
 class Test_open():
 
     gm = GlobalMap()
-
+    
+    @pytest.mark.maintest
     @allure.story("进入开户界面")
     def test_Openning(self, poco):
         pubTool = publicTool(poco)
@@ -69,6 +70,7 @@ class Test_open():
 
         with allure.step("判断是否进入表单"):
             assert_equal(pubTool.get_Routetitle(), "选择所属地区", msg="没有进入表单")
+
 
 if __name__ == "__main__":
     pytest.main(["-s", "-v", "--pdb", "test_01_open.py", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
