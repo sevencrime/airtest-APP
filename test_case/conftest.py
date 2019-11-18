@@ -1,7 +1,7 @@
-import datetime
 import re
 import subprocess
 import sys
+from datetime import datetime
 
 import allure
 import pytest
@@ -98,7 +98,7 @@ def poco():
                 break
 
             elif ''.join(deviceId) == "f7b6acb9":
-                continue
+                # continue
                 deviceuuid = "f7b6acb9"
                 break
 

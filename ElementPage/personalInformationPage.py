@@ -199,6 +199,8 @@ class personalInformationPage(BaseView):
         '''
 
         # 判断是否勾选, sameAddress
+        self.log.debug("进入勾选住址证明方法")
+        print("sameadderss的值为 : {}".format(self.gm.get_value("sameAdderss")))
 
         if not self.gm.get_value("sameAdderss") and isFlag:
             self.disExists_swipe(self.el_isAddress).click()

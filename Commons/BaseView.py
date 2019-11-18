@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import datetime
 import os
 import time
 
@@ -124,6 +123,8 @@ class BaseView():
         # 地址证明
         self.addressProve = self.poco(text="请上传资料")
         self.Nowaddress = self.poco(text="请输入住址").sibling("android.widget.EditText")
+
+        self.old_Nowaddress = self.poco(text="住宅地址(详细地址: 如道路、楼栋号、门牌号)").sibling("android.widget.EditText")
 
         # 银行卡信息
         self.el_bankCardNo = self.poco(text="卡号").sibling("android.widget.EditText")

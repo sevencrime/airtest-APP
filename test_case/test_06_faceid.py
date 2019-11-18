@@ -1,17 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
-import os
+
 import allure
 import pytest
-from Commons.CommonsTool import query_initialData
 from airtest.core.api import *
 
 from Commons import CommonsTool
+from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from Commons.mongoTool import mongoTool
 from ElementPage.publicTool import publicTool
+
 
 @pytest.mark.run(order=6)
 @allure.feature("人脸识别")

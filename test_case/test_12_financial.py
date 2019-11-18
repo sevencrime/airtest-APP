@@ -1,16 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
+import os
 
 import allure
 import pytest
 from airtest.core.api import *
-import os
+
 from Commons import CommonsTool
 from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.financialPage import financialPage
 from ElementPage.publicTool import publicTool
+
 
 @pytest.mark.run(order=12)
 @allure.feature("相关保证金融资账户")

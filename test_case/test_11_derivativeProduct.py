@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import datetime
 import sys
-import os
+
 import allure
 import pytest
 from airtest.core.api import *
@@ -13,6 +13,7 @@ from Commons.GlobalMap import GlobalMap
 from Commons.Logging import Logs
 from ElementPage.derivativeProductPage import derivativeProductPage
 from ElementPage.publicTool import publicTool
+
 
 @pytest.mark.run(order=11)
 @allure.feature("衍生产品的认识")

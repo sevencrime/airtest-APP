@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import datetime
-import os
 import allure
 import pytest
 from airtest.core.api import *
@@ -13,6 +11,7 @@ from Commons.Logging import Logs
 from ElementPage.idcardPage import idcardPage
 from ElementPage.personalInformationPage import personalInformationPage
 from ElementPage.publicTool import publicTool
+
 
 @pytest.mark.run(order=2)
 @allure.feature("上传身份证")

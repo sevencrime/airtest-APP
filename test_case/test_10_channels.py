@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
-import os
+
 import allure
 import pytest
 from airtest.core.api import *
@@ -10,6 +10,7 @@ from Commons import CommonsTool
 from Commons.CommonsTool import query_initialData
 from ElementPage.introPromoPage import introPromoPage
 from ElementPage.publicTool import publicTool
+
 
 @pytest.mark.run(order=10)
 @allure.feature("介绍与推广")

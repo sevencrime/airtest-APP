@@ -10,6 +10,7 @@ from Commons import CommonsTool
 from ElementPage.previewPage import PreviewPage
 from ElementPage.publicTool import publicTool
 
+
 @pytest.mark.run(order=17)
 @allure.feature("预览页提交")
 class Test_Preview():

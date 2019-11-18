@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import glob
-import inspect
-import re
 import shutil
 import sys
 import traceback

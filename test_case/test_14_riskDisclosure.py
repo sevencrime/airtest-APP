@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
-import os
 
 import allure
 import pytest
+from airtest.core.api import *
 
 from Commons import CommonsTool
 from ElementPage.RiskDisclosurePage import RiskDisclosurePage
 from ElementPage.publicTool import publicTool
-from airtest.core.api import *
+
 
 @pytest.mark.run(order=14)
 @allure.feature("风险披露")

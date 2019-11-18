@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import datetime
-import os
 import allure
 import pytest
 from airtest.core.api import *
@@ -11,6 +9,7 @@ from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.personalInformationPage import personalInformationPage
 from ElementPage.publicTool import publicTool
+
 
 @pytest.mark.run(order=3)
 @allure.feature("请填写个人资料")
@@ -163,8 +162,19 @@ class Test_personalinfomation():
             pubTool.click_NextStepbtn()
             pubTool.wait_loading()
 
+        # if self.gm.get_value("environment").find("aos") != -1:
         with allure.step("页面跳转到<住址信息>界面"):
             assert_equal(pubTool.get_Routetitle(), "住址信息", msg="页面没有跳转")
+
+        # elif self.gm.get_value("environment").find("aos") == -1:
+        #     with allure.step("校验地址弹框标题和内容"):
+        #         boxtitle, boxcontent = pubTool.get_boxtitle()
+        #         assert_equal(boxtitle, "请确认您的身份证地址", "确认地址弹框标题有误")
+        #         assert_equal(boxcontent, perinfo.get_address(), "弹框内容与填写内容不符")
+        #
+        #     with allure.step("确认地址弹框--点击确定"):
+        #         pubTool.click_boxconfirm()
+
 
         with allure.step("点击返回按钮返回身份证界面"):
             pubTool.backform()
@@ -172,7 +182,7 @@ class Test_personalinfomation():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "--pdb", "test_03_personalinfomation.py::Test_personalinfomation", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v", "--pdb", "test_03_personalinfomation.py::Test_personalinfomation::test_personal_pick_isaddress", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

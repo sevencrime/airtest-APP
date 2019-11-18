@@ -2,12 +2,14 @@
 # -*- coding: utf-8 -*-
 import datetime
 import os
-import pytest
 import subprocess
+
+import pytest
+
 from Commons import CommonsTool
 
 # 清理缓存数据
-subprocess.Popen(r"adb -s 127.0.0.1:7555 shell pm clear io.newtype.eddid.app").wait()
+subprocess.Popen(r"adb -s f7b6acb9 shell pm clear io.newtype.eddid.app").wait()
 
 # "--reruns=3", "--reruns-delay=3"  #重试
 pytest.main(["-s", "-v", "./test_case/", '--alluredir',

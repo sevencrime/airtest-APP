@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
+import os
 
 import allure
 import pytest
-import os
-
 from poco.exceptions import PocoNoSuchNodeException
 
 from Commons import CommonsTool
@@ -13,6 +12,7 @@ from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
 from ElementPage.publicTool import publicTool
 from ElementPage.signaturePage import signaturePage
+
 
 @pytest.mark.run(order=16)
 @allure.feature("签名确认")

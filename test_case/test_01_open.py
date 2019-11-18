@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import datetime
-import os
 import allure
 import pytest
 from airtest.core.api import *
@@ -10,6 +8,7 @@ from Commons import CommonsTool
 from Commons.GlobalMap import GlobalMap
 from ElementPage.publicTool import publicTool
 from ElementPage.startUpFrom import startUpFrom
+
 
 @pytest.mark.run(order=1)
 @allure.feature("启动APP, 进入开户界面")

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
-import os
+
 import allure
 import pytest
 from airtest.core.api import *
@@ -12,6 +12,7 @@ from Commons.GlobalMap import GlobalMap
 from Commons.mongoTool import mongoTool
 from ElementPage.accountInformationPage import accountInformationPage
 from ElementPage.publicTool import publicTool
+
 
 @pytest.mark.run(order=7)
 @allure.feature("账户信息")
