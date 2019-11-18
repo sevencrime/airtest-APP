@@ -69,7 +69,7 @@ class Test_open():
             pubTool.allow_permissionBox()
 
         with allure.step("判断是否进入表单"):
-            assert_equal(pubTool.get_Routetitle(), "选择所属地区", msg="没有进入表单")
+            assert pubTool.get_Routetitle() in ["选择所属地区", "开户准备", "身份证验证"]
 
 
 if __name__ == "__main__":

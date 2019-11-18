@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from datetime import time
+
 from poco.exceptions import PocoNoSuchNodeException
 
 from Commons.BaseView import BaseView

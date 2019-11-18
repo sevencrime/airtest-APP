@@ -43,10 +43,25 @@ class Test_uploadidcard():
 
         with allure.step("上传身份证人像面"):
             upidcard.upload_idcardNegative()
+            # pubTool.wait_loading()
+            start1 = time.time()
+            while not pubTool.get_Routetitle() == "身份证验证":
+                if time.time() - start1 > 3:
+                    self.log.debug("上传身份证后页面还没跳转")
+                    break
+
             pubTool.wait_loading()
+
 
         with allure.step("上传身份证国徽面"):
             upidcard.upload_idcardpositive()
+            # pubTool.wait_loading()
+            start2 = time.time()
+            while not pubTool.get_Routetitle() == "身份证验证":
+                if time.time() - start2 > 3:
+                    self.log.debug("上传身份证后页面还没跳转")
+                    break
+
             pubTool.wait_loading()
 
         if self.gm.get_value("environment").find("aos") != -1:

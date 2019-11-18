@@ -47,9 +47,11 @@ class idcardPage(BaseView):
 
         """
         # time.sleep(10)
-        self.el_idcardpositive.wait(10)
-        self.el_idcardpositive.click()
-        self.gallery.click()
+        # self.el_idcardpositive.wait(10)
+        # self.el_idcardpositive.click()
+        # self.gallery.click()
+        self.exists(self.el_idcardpositive, timeout=20).click()
+        self.exists(self.gallery).click()
 
         if device().uuid == '127.0.0.1:7555':
             touch(Template("".join(self.mumuidcardimgpath_img), record_pos=(-0.17, 0.572), resolution=(810, 1440)))
@@ -66,16 +68,20 @@ class idcardPage(BaseView):
             touch(Template("".join(self.idcardimgpath_img), record_pos=(0.081, 0.183), resolution=(1080, 2280)))
             touch(Template("".join(self.idcardimgpositive_img), record_pos=(-0.111, -0.728), resolution=(1080, 2340)))
 
+
     # @permission
     def upload_idcardNegative(self):
         """
         身份证正面--人像面
 
         """
-        self.el_idcardNegative.wait(10)
-        self.el_idcardNegative.click()
+        # self.el_idcardNegative.wait(10)
+        # self.el_idcardNegative.click()
+        # self.gallery.click()
 
-        self.gallery.click()
+        self.exists(self.el_idcardNegative, timeout=20).click()
+        self.exists(self.gallery).click()
+
 
 
         if device().uuid == '127.0.0.1:7555':

@@ -223,7 +223,7 @@ class BaseView():
 
         return element
 
-    def exists(self, element):
+    def exists(self, element, timeout=15):
         """
         先等待元素出现, 再判断元素是否显示
 
@@ -234,7 +234,7 @@ class BaseView():
             element.invalidate()
             self.poco("android:id/content").invalidate()
 
-            if time.time() - start > 15:
+            if time.time() - start > timeout:
                 self.log.debug("循环查找超过15秒, 失败")
                 break
 

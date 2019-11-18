@@ -33,7 +33,7 @@ class publicTool(BaseView):
             self.log.debug("当前的类为 {}".format(currentActivity))
 
             if time.time() - start > 5:
-                log.debug("时间超过5秒, 退出")
+                self.log.debug("时间超过5秒, 退出")
                 break
 
 
@@ -113,10 +113,10 @@ class publicTool(BaseView):
 
 
     def wait_loading(self, timeout=30):
-
         # self.get_Routetitle()
         start = time.time()
         # 循环判断loading是否存在
+        # self.loading.invalidate()
         while self.loading.exists():
             self.log.debug("wait_loading as True, loading存在")
             self.loading.invalidate()

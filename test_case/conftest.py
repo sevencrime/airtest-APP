@@ -92,13 +92,17 @@ def poco():
 
         for deviceid in readDeviceId:
             deviceId = re.findall(r'(.*)\tdevice', deviceid)
-            if ''.join(deviceId) == "f7b6acb9":
+
+            if ''.join(deviceId) == "127.0.0.1:7555":
+                deviceuuid = "127.0.0.1:7555"
+                break
+
+            elif ''.join(deviceId) == "f7b6acb9":
+                continue
                 deviceuuid = "f7b6acb9"
                 break
 
-            elif ''.join(deviceId) == "127.0.0.1:7555":
-                deviceuuid = "127.0.0.1:7555"
-                break
+
 
         # connect_device(
         #     "Android://127.0.0.1:5037/127.0.0.1:7555?ori_method=ADBORI")

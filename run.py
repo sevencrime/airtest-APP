@@ -7,14 +7,14 @@ import subprocess
 from Commons import CommonsTool
 
 # 清理缓存数据
-subprocess.Popen(r"adb shell pm clear io.newtype.eddid.app").wait()
+subprocess.Popen(r"adb -s 127.0.0.1:7555 shell pm clear io.newtype.eddid.app").wait()
 
 # "--reruns=3", "--reruns-delay=3"  #重试
 pytest.main(["-s", "-v", "./test_case/", '--alluredir',
              './report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')),
              # "--reruns=2",
              # "--reruns-delay=3",
-             # "--pdb"
+             "--pdb"
              ])
 
 xml_report_path, html_report_path = CommonsTool.rmdir5()
