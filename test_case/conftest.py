@@ -1,7 +1,7 @@
+import datetime
 import re
 import subprocess
 import sys
-from datetime import datetime
 
 import allure
 import pytest
