@@ -155,7 +155,10 @@ class Test_employmentInfomation():
         with allure.step("校验就业地址弹框标题和内容"):
             boxtitle, boxcontent = pubTool.get_boxtitle()
             assert_equal(boxtitle, "请确认您的办公室地址", "办公室地址弹框标题有误")
-            assert_equal(boxcontent, employaddr, "办公室地址弹框内容与填写的地址不一致")
+            if self.gm.get_value("environment").find("aos") != -1:
+                assert_equal(boxcontent, employaddr, "办公室地址弹框内容与填写的地址不一致")
+            elif self.gm.get_value("environment").find("aos") == -1:
+                assert_equal(boxcontent, "北京市东城区深圳市南山区大冲商务中心", "办公室地址弹框内容与填写的地址不一致")
 
         with allure.step("确认地址弹框--点击确定"):
             pubTool.click_boxconfirm()
@@ -197,7 +200,10 @@ class Test_employmentInfomation():
         with allure.step("校验就业地址弹框标题和内容"):
             boxtitle, boxcontent = pubTool.get_boxtitle()
             assert_equal(boxtitle, "请确认您的办公室地址", "办公室地址弹框标题有误")
-            assert_equal(boxcontent, employaddr, "办公室地址弹框内容与填写的地址不一致")
+            if self.gm.get_value("environment").find("aos") != -1:
+                assert_equal(boxcontent, employaddr, "办公室地址弹框内容与填写的地址不一致")
+            elif self.gm.get_value("environment").find("aos") == -1:
+                assert_equal(boxcontent, "北京市东城区深圳市南山区大冲商务中心", "办公室地址弹框内容与填写的地址不一致")
 
         with allure.step("确认地址弹框--点击确定"):
             pubTool.click_boxconfirm()

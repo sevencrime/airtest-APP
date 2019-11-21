@@ -46,16 +46,12 @@ class addressProofPage(BaseView):
 
         elif self.gm.get_value("environment").find("aos") == -1:
             # CRM后台
-            start = time.time()
-            while len(self.poco("android.widget.ImageView")) < 2:
-                self.log.debug("开始判断")
-                self.poco("android.widget.ImageView").invalidate()
-                if time.time() - start > 3:
-                    break
 
-            self.poco("android.widget.ImageView")[-1].click()
+            self.NowaddressArea.click()
             self.poco(text="确定").click()
             self.old_Nowaddress.set_text("深圳桑达科技大厦123@qaz../")
 
+            self.old_Nowaddress.invalidate()
 
+            return self.old_Nowaddress.get_text()
 

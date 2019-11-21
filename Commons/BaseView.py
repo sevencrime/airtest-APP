@@ -123,9 +123,12 @@ class BaseView():
 
         # 地址证明
         self.addressProve = self.poco(text="请上传资料")
-        self.Nowaddress = self.poco(text="请输入住址").sibling("android.widget.EditText")
+        if self.gm.get_value("environment").find("aos") != -1:
+            self.Nowaddress = self.poco(text="请输入住址").sibling("android.widget.EditText")
+        elif self.gm.get_value("environment").find("aos") == -1:
+            self.NowaddressArea = self.poco(text="住宅地址(所在区域)").sibling("android.view.ViewGroup").child("android.widget.ImageView")
 
-        self.old_Nowaddress = self.poco(text="住宅地址(详细地址: 如道路、楼栋号、门牌号)").sibling("android.widget.EditText")
+            self.old_Nowaddress = self.poco(text="住宅地址(详细地址: 如道路、楼栋号、门牌号)").sibling("android.widget.EditText")
 
         # 银行卡信息
         self.el_bankCardNo = self.poco(text="卡号").sibling("android.widget.EditText")
@@ -147,7 +150,13 @@ class BaseView():
         self.BusinessNature = self.poco(text="业务性质").sibling("android.widget.EditText")
         self.companyName = self.poco(text="公司名称").sibling("android.widget.EditText")
         self.employmenTime = self.poco(text="受雇年期").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
-        self.el_officeaddr = self.poco(text="办公室地址").parent().sibling("android.widget.EditText")
+
+        if self.gm.get_value("environment").find("aos") != -1:
+            self.el_officeaddr = self.poco(text="办公室地址").parent().sibling("android.widget.EditText")
+        elif self.gm.get_value("environment").find("aos") == -1:
+            self.el_officeaddrArea = self.poco(text="办公室地址(所在区域)").sibling("android.view.ViewGroup").child("android.widget.ImageView")
+            self.el_officeaddr = self.poco(text="办公室地址(详细地址: 如道路、楼栋号、门牌号)").sibling("android.widget.EditText")
+
         self.totalAnnualCustomerRevenueHK = self.poco(text="全年总收入(港元)").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.customerNetAssetValueHK = self.poco(text="资产净值(港元)").sibling("android.view.ViewGroup").offspring("android.widget.TextView")
         self.sourcesfunds = self.poco(text="请注明资金来源(可多选)")
@@ -155,6 +164,7 @@ class BaseView():
         self.otherfunds = self.poco(text="请输入其他资金来源").sibling("android.widget.EditText")
         self.otherassets = self.poco(text="请输入其他资产净值来源").sibling("android.widget.EditText")
         self.otherassetsvalue = self.poco(text="请输入其他资产净值来源").sibling("android.widget.EditText")
+
 
         # 选择交易信息
         self.fundsSourcetext = self.poco(text="交易的资金/财富来源(选择所有适用)")
@@ -244,7 +254,7 @@ class BaseView():
 
         return element
 
-    def disExists_swipe(self, element, orientation=None):
+    def disExists_swipe(self, element, orientation=None, timeout=15):
         '''
         元素不在界面上, 滑动界面
         :param element:
@@ -260,10 +270,11 @@ class BaseView():
             contentEle.invalidate()
             if not orientation == None:
                 contentEle.swipe([0, 0.3])
-            elif time.time() - start > 20:
-                break
             else:
                 contentEle.swipe([0, -0.3])
+
+            if time.time() - start > timeout:
+                break
 
         element.invalidate()
         return element

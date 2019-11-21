@@ -9,6 +9,7 @@ from airtest.core.api import *
 from Commons import CommonsTool
 from Commons.CommonsTool import query_initialData
 from Commons.GlobalMap import GlobalMap
+from Commons.Logging import Logs
 from Commons.mongoTool import mongoTool
 from ElementPage.accountInformationPage import accountInformationPage
 from ElementPage.publicTool import publicTool
@@ -18,6 +19,7 @@ from ElementPage.publicTool import publicTool
 @allure.feature("账户信息")
 class Test_AccountInformation():
     gm = GlobalMap()
+    log = Logs()
     query_initialData()
     # mongo = mongoTool('mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net')
 
@@ -31,24 +33,25 @@ class Test_AccountInformation():
             accountinfo.get_leverMargin()
             accountinfo.get_bullionMargin()
 
-        with allure.step("查询数据库, 获取数据的初始值"):
+        # with allure.step("查询数据库, 获取数据的初始值"):
 
-            if self.gm.get_value("environment").find("aos") != -1:
-                collection = "accounts"
-                query = {"applyCode":self.gm.get_value("appcationNumber"),  "forLogin":True}
-            elif self.gm.get_value("environment").find("uat") != -1 or self.gm.get_value("environment").find("test") != -1:
-                collection = "apply"
-                query = {"applySeqId":self.gm.get_value("appcationNumber")}
-            else:
-                self.log.deubg("数据可能有问题哦!!!")
+        #     if self.gm.get_value("environment").find("aos") != -1:
+        #         collection = "accounts"
+        #         query = {"applyCode":self.gm.get_value("appcationNumber"),  "forLogin":True}
+        #     elif self.gm.get_value("environment").find("uat") != -1 or self.gm.get_value("environment").find("test") != -1:
+        #         collection = "apply"
+        #         query = {"applySeqId":self.gm.get_value("appcationNumber")}
+        #     else:
+        #         self.log.deubg("数据可能有问题哦!!!")
 
 
-            # 查询数据库
-            result = mongo.findData(database=self.gm.get_value("environment"), collection=collection, query=query)
+        #     # 查询数据库
+        #     result = mongo.findData(database=self.gm.get_value("environment"), collection=collection, query=query)
+        #     self.log.debug("账户信息查询出的数据 {}".forma(result))
 
         with allure.step("选择账户类别"):
-            accountinfo.click_securitiesCash(result)
-            accountinfo.click_futuresMargin(result)
+            accountinfo.click_securitiesCash()
+            accountinfo.click_futuresMargin()
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()

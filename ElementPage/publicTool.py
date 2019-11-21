@@ -168,13 +168,21 @@ class publicTool(BaseView):
         close_btn = self.poco(text=title).sibling("android.view.ViewGroup")[1]
         close_btn.click()
 
-        # 重复十次
-        for i in range(10):
-            if self.get_Routetitle() == "艾德证券期货":
-                # 点击便捷开户
-                self.easyOpenning.click()
+        # # 重复十次
+        # for i in range(10):
+        #     if self.get_Routetitle() == "艾德证券期货":
+        #         # 点击便捷开户
+        #         self.easyOpenning.click()
+        #         break
+
+        start = time.time()
+        while not self.easyOpenning.exists():
+            self.easyOpenning.invalidate()
+            if time.time() - start > 5:
+                self.log.debug("便捷开户按钮超时退出")
                 break
 
+        self.easyOpenning.click()
 
 
     def backform(self):

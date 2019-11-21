@@ -15,7 +15,7 @@ subprocess.Popen(r"adb -s f7b6acb9 shell pm clear io.newtype.eddid.app").wait()
 pytest.main(["-s", "-v", "./test_case/", '--alluredir',
              './report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')),
              # "--reruns=2",
-             # "--reruns-delay=3",
+             # "--reruns-delay=2",
              "--pdb"
              ])
 

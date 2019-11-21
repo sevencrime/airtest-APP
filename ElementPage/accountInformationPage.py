@@ -52,18 +52,19 @@ class accountInformationPage(BaseView):
 
 
     # 证券现金
-    def click_securitiesCash(self, data):
+    def click_securitiesCash(self):
         # 查询数据库, 通过值判断是否勾选
-        if "securitiesCash" not in data['accountTypes']:
+        if "securitiesCash" not in self.gm.get_value("accountType"):
             self.exists(self.el_securitiesCash).click()
 
+
     # 证券保证金
-    def click_securitiesMargin(self, data):
-        if "securitiesMargin" not in data['accountTypes']:
+    def click_securitiesMargin(self):
+        if "securitiesMargin" not in self.gm.get_value("accountType"):
             self.exists(self.el_securitiesMargin).click()
 
     # 期货
-    def click_futuresMargin(self, data):
-        if "futuresMargin" not in data['accountTypes']:
+    def click_futuresMargin(self):
+        if "futuresMargin" not in self.gm.get_value("accountType"):
             self.exists(self.el_futuresMargin).click()
 

@@ -41,15 +41,17 @@ class employmentInfomationPage(BaseView):
         办公室地址
         :return:
         '''
+        if self.gm.get_value("environment").find("aos") != -1:
+            self.el_officeaddr.set_text("深圳市南山区大冲商务中心")
 
-        self.el_officeaddr.set_text("深圳市南山区大冲商务中心")
+        elif self.gm.get_value("environment").find("aos") == -1:
+            # 点击区域下拉框
+            self.el_officeaddrArea.click()
+            self.poco(text="确定").click()
+            self.el_officeaddr.set_text("深圳市南山区大冲商务中心")
 
-        start = time.time()
-        while self.el_officeaddr.get_text() != "深圳市南山区大冲商务中心":
-            self.el_officeaddr.invalidate()
-            if time.time() - start > 10:
-                self.log.debug("办公司地址内容有误")
-                break
+
+        self.el_officeaddr.invalidate()
 
         return self.el_officeaddr.get_text()
 
@@ -64,19 +66,21 @@ class employmentInfomationPage(BaseView):
 
         # gm.get_value("istotalAnnual") : 全年总收入来源已勾选的值
         """
-
+        self.log.debug("需要勾选的选项有: {}".format(",".join(fundlist)))
+        self.log.debug("已经选中的选项有: {}".format(",".join(self.gm.get_value("istotalAnnual"))))
         # symmetric_difference() 方法返回两个集合中不重复的元素集合，即会移除两个集合中都存在的元素。
         funds = set(self.gm.get_value("istotalAnnual")).symmetric_difference(fundlist)
-        self.log.debug("需要点击的选项有: {}".format(','.join(funds)))
+        self.log.debug("差值后需要点击的选项有: {}".format(','.join(funds)))
 
         self.click_select(self.totalAnnualCustomerRevenueHK, price)
 
         # 判断 "请注明资金来源(可多选)" 复选框是否触发
-        if self.sourcesfunds.exists():
+        if self.disExists_swipe(self.sourcesfunds, timeout=3).exists():
             # 触发资金来源， 向上滑动屏幕
-            # self.poco("android:id/content").swipe([0, -0.4])
             # 遍历需要点击的选项
+            self.log.debug("资金来源出现了!!!!")
             for fund in funds:
+                self.log.debug("开始勾选全年总收入")
                 sources = self.disExists_swipe(self.poco(text=fund))
                 # 判断资金来源和资产净值是否同时出现
                 if len(sources) == 1:
@@ -107,19 +111,21 @@ class employmentInfomationPage(BaseView):
             price: 资金区间(string)
             assetslist:  list类型, 资产净值需要勾选的字段
         """
-
+        self.log.debug("需要勾选的选项有: {}".format(",".join(assetslist)))
+        self.log.debug("已经选中的选项有: {}".format(",".join(self.gm.get_value("customerNetAssetValue"))))
         assets = set(self.gm.get_value("customerNetAssetValue")).symmetric_difference(assetslist)
-        self.log.debug("需要点击的选项有: {}".format(','.join(assets)))
+        self.log.debug("差值后需要点击的选项有: {}".format(','.join(assets)))
 
 
         self.click_select(self.customerNetAssetValueHK, price)
 
         # 判断 "请注明资金来源(可多选)" 复选框是否触发
-        if self.assetsvalue.exists():
+        if self.disExists_swipe(self.assetsvalue, timeout=3).exists():
             # 触发资产净值来源, 向上滑动页面
-            # self.poco("android:id/content").swipe([0, -0.4])
             # 遍历需要点击的选项
+            self.log.debug("资产净值来源出现了!!!!")
             for asset in assets:
+                self.log.debug("开始勾选资产净值")
                 sources  = self.disExists_swipe(self.poco(text=asset))
                 # 判断资金来源和资产净值是否同时出现
                 if len(sources) == 1:
