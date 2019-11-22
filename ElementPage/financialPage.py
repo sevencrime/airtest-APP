@@ -14,7 +14,11 @@ class financialPage(BaseView):
         """
         # 您的配偶是否持有艾德证券期货任何相关的保证金账户?
         """
-        context = "您的配偶是否持有艾德证券期货任何相关的保证金账户？"
+        if self.gm.get_value("environment").find("aos") != -1:
+            context = "您的配偶是否持有艾德证券期货任何相关的保证金账户？"
+        elif self.gm.get_value("environment").find("aos") == -1:
+            context = "您的配偶是否持有艾德证券期货任何相关的保证金账户"
+
         self.isElementRadio(context, isFlag).click()
 
         # isFlag存入global
@@ -29,7 +33,11 @@ class financialPage(BaseView):
         """
         # 您或您的配偶是否单独或共同控制艾德证券期货之其他保证金账户35%或以上之表决权?
         """
-        context = "您或您的配偶是否单独或共同控制艾德证券期货之其他保证金账户35%或以上之表决权？"
+        if self.gm.get_value("environment").find("aos") != -1:
+            context = "您或您的配偶是否单独或共同控制艾德证券期货之其他保证金账户35%或以上之表决权？"
+        elif self.gm.get_value("environment").find("aos") == -1:
+            context = "您或您的配偶是否单独或共同控制艾德证券期货之其他保证金账户35%或以上之表决权"
+
         self.isElementRadio(context, isFlag).click()
 
         # isFlag存入global
@@ -44,7 +52,10 @@ class financialPage(BaseView):
         """
         # 您是否有以客户的同一集团公司旗下之公司开立保证金账户？?
         """
-        context = "您是否有以客户的同一集团公司旗下之公司开立保证金账户？"
+        if self.gm.get_value("environment").find("aos") != -1:
+            context = "您是否有以客户的同一集团公司旗下之公司开立保证金账户？"
+        elif self.gm.get_value("environment").find("aos") == -1:
+            context = "您是否有以客户的同一集团公司旗下之公司开立保证金账户"
         CompanyAccounts = self.isElementRadio(context, isFlag)
         self.disExists_swipe(CompanyAccounts).click()
 
@@ -64,9 +75,9 @@ class financialPage(BaseView):
         accountHolder = self.isElementRadio(context, isFlag)
         self.disExists_swipe(accountHolder).click()
 
-        # 触发框, 受益人名称
-        if not isFlag:
-            self.disExists_swipe(self.beneficiaryName).set_text("账户的最终实益拥有人")
+        # # 触发框, 受益人名称
+        # if not isFlag:
+        #     self.disExists_swipe(self.beneficiaryName).set_text("账户的最终实益拥有人")
 
 
 
@@ -78,9 +89,9 @@ class financialPage(BaseView):
         orderperson = self.isElementRadio(context, isFlag)
         self.disExists_swipe(orderperson).click()
 
-        # 触发框, 下单人名称
-        if not isFlag:
-            self.disExists_swipe(self.ordersName).set_text("最终负责下单的人")
+        # # 触发框, 下单人名称
+        # if not isFlag:
+        #     self.disExists_swipe(self.ordersName).set_text("最终负责下单的人")
 
 
     def send_AccountName(self):

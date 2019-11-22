@@ -24,6 +24,7 @@ class Test_financial():
 
     @pytest.fixture()
     def teardown(self):
+        # 三个配偶信息
         self.gm.set_bool(MarginAccountName=False)
         self.gm.set_bool(MarginAccountNumber=False)
         self.gm.set_bool(iscretionAccountName=False)
@@ -39,15 +40,15 @@ class Test_financial():
         self.gm.set_bool(CompanyAccountsAccountNumber=False)
 
 
-    @allure.story("从底部开始输入")
-    @pytest.mark.usefixtures('teardown')
-    @pytest.mark.skipif(gm.get_value("Routetitle") == "其他资料", reason="有值了, 跳过")
-    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
-    def test_derivative_reverseRun(self, poco, reloadRoute):
-        pubTool = publicTool(poco)
-        financial = financialPage(poco)
-
-        financial.click_orderPerson(False)
+    # @allure.story("从底部开始输入")
+    # @pytest.mark.usefixtures('teardown')
+    # @pytest.mark.skipif(gm.get_value("Routetitle") == "其他资料", reason="有值了, 跳过")
+    # @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    # def test_derivative_reverseRun(self, poco, reloadRoute):
+    #     pubTool = publicTool(poco)
+    #     financial = financialPage(poco)
+    #
+    #     financial.click_orderPerson(False)
 
 
 
@@ -61,14 +62,36 @@ class Test_financial():
         pubTool = publicTool(poco)
         financial = financialPage(poco)
         with allure.step("您是否是账户的最终实益拥有人? "):
-            financial.click_accountHolder(True)
+            financial.click_accountHolder(accountHolder)
+
+        with allure.step("校验最终实益拥有人是否触发弹框 "):
+            if not accountHolder:
+                # 校验弹框      
+                boxtitle, boxcontent = pubTool.get_boxtitle()
+                assert_equal(boxtitle, "温馨提示", "相关保证金融资账户弹框标题有误")
+                assert_equal(boxcontent, "如您并非账户的最终实益拥有人，请联络我们的客服: +852 3896 6333 或电邮：cs@eddid.com.hk", "弹框内容与填写内容不符")
+                poco(text="知道了").click()
 
         with allure.step("您是否是最终负责下单的人?? "):
-            financial.click_orderPerson(True)
+            financial.click_orderPerson(orderPerson)
+
+        with allure.step("校验最终负责下单人是否触发弹框? "):
+            if not orderPerson:
+                boxtitle, boxcontent = pubTool.get_boxtitle()
+                assert_equal(boxtitle, "温馨提示", "相关保证金融资账户弹框标题有误")
+                if not accountHolder:
+                    assert_equal(boxcontent, "如您并非账户的最终实益拥有人，请联络我们的客服: +852 3896 6333 或电邮：cs@eddid.com.hk", "弹框内容与填写内容不符")
+                else:
+                    assert_equal(boxcontent, "如您并非账户最终下单人，请联络我们的客服: +852 3896 6333 或电邮：cs@eddid.com.hk", "弹框内容与填写内容不符")
+                    
+                poco(text="知道了").click()
 
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
-            assert_equal(pubTool.get_Routetitle(), "其他资料", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+            if accountHolder and orderPerson:
+                assert_equal(pubTool.get_Routetitle(), "其他资料", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+            else:
+                assert_equal(pubTool.get_Routetitle(), "相关保证金融资账户", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
 
 
 
@@ -101,17 +124,36 @@ class Test_financial():
             financial.send_AccountNumber()
 
         with allure.step("您是否是账户的最终实益拥有人? "):
-            # pubTool.swipe_to_Up()
             financial.click_accountHolder(accountHolder)
 
-        with allure.step("您是否是最终负责下单的人? "):
-            # pubTool.swipe_to_Up()
+        with allure.step("校验最终实益拥有人是否触发弹框 "):
+            if not accountHolder:
+                # 校验弹框      
+                boxtitle, boxcontent = pubTool.get_boxtitle()
+                assert_equal(boxtitle, "温馨提示", "相关保证金融资账户弹框标题有误")
+                assert_equal(boxcontent, "如您并非账户的最终实益拥有人，请联络我们的客服: +852 3896 6333 或电邮：cs@eddid.com.hk", "弹框内容与填写内容不符")
+                poco(text="知道了").click()
+
+        with allure.step("您是否是最终负责下单的人?? "):
             financial.click_orderPerson(orderPerson)
+
+        with allure.step("校验最终负责下单人是否触发弹框? "):
+            if not orderPerson:
+                boxtitle, boxcontent = pubTool.get_boxtitle()
+                assert_equal(boxtitle, "温馨提示", "相关保证金融资账户弹框标题有误")
+                assert_equal(boxcontent, "如您并非账户最终下单人，请联络我们的客服: +852 3896 6333 或电邮：cs@eddid.com.hk", "弹框内容与填写内容不符")
+                poco(text="知道了").click()
+
 
         with allure.step("点击下一步"):
             # pubTool.swipe_to_Up()
             pubTool.click_NextStepbtn()
-            assert_equal(pubTool.get_Routetitle(), "其他资料", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+            if accountHolder and orderPerson:
+                assert_equal(pubTool.get_Routetitle(), "其他资料", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+            else:
+                assert_equal(pubTool.get_Routetitle(), "相关保证金融资账户", msg="页面跳转到{}页面".format(pubTool.get_Routetitle()))
+
+
 
 
 if __name__ == "__main__":
