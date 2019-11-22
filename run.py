@@ -9,7 +9,8 @@ import pytest
 from Commons import CommonsTool
 
 # 清理缓存数据
-subprocess.Popen(r"adb -s f7b6acb9 shell pm clear io.newtype.eddid.app").wait()
+# subprocess.Popen(r"adb -s f7b6acb9 shell pm clear io.newtype.eddid.app").wait()
+subprocess.Popen(r"adb shell pm clear io.newtype.eddid.app").wait()
 
 # "--reruns=3", "--reruns-delay=3"  #重试
 pytest.main(["-s", "-v", "./test_case/", '--alluredir',

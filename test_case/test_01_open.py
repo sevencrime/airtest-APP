@@ -27,22 +27,24 @@ class Test_open():
         with allure.step("启动APP"):
             startupfrom.Start_APP()
 
-        with allure.step("处理权限弹框--点击运行"):
-            pubTool.allow_permissionBox()
+        if self.gm.get_value("isintegrated"):
 
-        with allure.step("首次使用设置--点击确定"):
-            boolstr = startupfrom.firstSetting()
-            if not boolstr:
-                allure.attach("AppSetpLOG", "首次使用设置弹框没有出现")
+            with allure.step("处理权限弹框--点击运行"):
+                pubTool.allow_permissionBox()
 
-        with allure.step("底部栏选择开户"):
-            baropen = startupfrom.click_barOpenning()
-            if not baropen:
-                allure.attach("AppSetpLOG", "没有底部栏, 非行情APP")
+            with allure.step("首次使用设置--点击确定"):
+                boolstr = startupfrom.firstSetting()
+                if not boolstr:
+                    allure.attach("AppSetpLOG", "首次使用设置弹框没有出现")
 
-        with allure.step("判断是否登录"):
-            if pubTool.get_Routetitle() in ['艾德证券期货', '注册', '登录', '个人中心']:
-                pytest.mark.skip(reason="已登录, 跳过下面步骤")
+            with allure.step("底部栏选择开户"):
+                baropen = startupfrom.click_barOpenning()
+                if not baropen:
+                    allure.attach("AppSetpLOG", "没有底部栏, 非行情APP")
+
+            with allure.step("判断是否登录"):
+                if pubTool.get_Routetitle() in ['艾德证券期货', '注册', '登录', '个人中心']:
+                    pytest.mark.skip(reason="已登录, 跳过下面步骤")
 
         with allure.step("点击便捷开户"):
             if pubTool.get_Routetitle() == "艾德证券期货":
