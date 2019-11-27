@@ -34,6 +34,7 @@ class Test_personalinfomation():
             reEmail = perinfo.send_reemail()
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
+            pubTool.wait_loading()
 
         with allure.step("校验地址弹框标题和内容"):
             boxtitle, boxcontent = pubTool.get_boxtitle()

@@ -82,6 +82,7 @@ class Test_employmentInfomation():
     @pytest.mark.skipif(gm.get_value("employment"), reason= "就业情况已有值, 跳过该用例")
     @pytest.mark.usefixtures('reloadRoute')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skip()
     def test_nullemploy(self, poco, totalAnnual, customer):
         self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
@@ -103,6 +104,7 @@ class Test_employmentInfomation():
     @pytest.mark.parametrize("totalAnnual, fundlist", Unemployed_totalAnnual)
     @pytest.mark.parametrize("customer, assetslist", Unemployed_assetslist)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skip()
     def test_unemployedandnot(self, poco, reloadRoute, employed, totalAnnual, fundlist, customer, assetslist):
         self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)
@@ -133,6 +135,7 @@ class Test_employmentInfomation():
     @pytest.mark.parametrize("totalAnnual, fundlist", Employed_totalAnnual)
     @pytest.mark.parametrize("customer, assetslist", Employed_assetslist)
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.skip()
     def test_Employed(self, poco, reloadRoute, employed, totalAnnual, fundlist, customer, assetslist):
         self.log.debug("正在执行用例 {} ".format(sys._getframe().f_code.co_name, ))
         pubTool = publicTool(poco)

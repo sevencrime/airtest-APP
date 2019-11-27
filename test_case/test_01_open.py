@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import datetime
+import subprocess
 
 import allure
 import pytest
+from Commons.Logging import Logs
 from airtest.core.api import *
 
 from Commons import CommonsTool
@@ -17,36 +19,41 @@ from ElementPage.startUpFrom import startUpFrom
 class Test_open():
 
     gm = GlobalMap()
+    log = Logs()
     
     @pytest.mark.maintest
     @allure.story("进入开户界面")
     def test_Openning(self, poco):
         pubTool = publicTool(poco)
         startupfrom = startUpFrom(poco)
-
+        subprocess.Popen(r"adb shell pm clear io.newtype.eddid.app").wait()
         with allure.step("启动APP"):
+            self.log.debug("启动APP")
             startupfrom.Start_APP()
 
         if self.gm.get_value("isintegrated"):
 
             with allure.step("处理权限弹框--点击运行"):
+                self.log.debug("处理权限框")
                 pubTool.allow_permissionBox()
 
             with allure.step("首次使用设置--点击确定"):
+                time.sleep(1)
+                self.log.debug("首次使用设置")
                 boolstr = startupfrom.firstSetting()
                 if not boolstr:
                     allure.attach("AppSetpLOG", "首次使用设置弹框没有出现")
 
             with allure.step("底部栏选择开户"):
+                self.log.debug("底部栏点击开户")
                 baropen = startupfrom.click_barOpenning()
-                if not baropen:
-                    allure.attach("AppSetpLOG", "没有底部栏, 非行情APP")
 
             with allure.step("判断是否登录"):
                 if pubTool.get_Routetitle() in ['艾德证券期货', '注册', '登录', '个人中心']:
                     pytest.mark.skip(reason="已登录, 跳过下面步骤")
 
         with allure.step("点击便捷开户"):
+            self.log.debug("点击便捷开户")
             if pubTool.get_Routetitle() == "艾德证券期货":
                 startupfrom.click_easyOpenning()
 
@@ -64,11 +71,13 @@ class Test_open():
             pubTool.wait_loading()
 
         with allure.step("登录后再次点击便捷开户"):
+            self.log.debug("登录后点击便捷开户")
             if pubTool.get_Routetitle() != "选择所属地区":
                 startupfrom.click_easyOpenning()
                 pubTool.wait_loading()
 
         with allure.step("判断登录成功进入开户表单时是否有权限弹框"):
+            self.log.debug("处理登录后的权限")
             pubTool.allow_permissionBox()
 
         with allure.step("判断是否进入表单"):

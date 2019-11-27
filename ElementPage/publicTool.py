@@ -41,16 +41,36 @@ class publicTool(BaseView):
 
             # try:
             # 循环5次, 点击多个弹框
-            for i in range(5):
+            for i in range(2):
                 self.log.debug("循环点击权限框")
                 # self.permission_allow_button.invalidate()
-                permission_title = self.exists(self.permission_title).get_text()
-                self.log.info("权限 >> {}".format(permission_title,))
-                self.exists(self.permission_allow_button).click()
+                if not self.permission_title.exists():
+                    self.log.debug("进入not循环")
+                    try:
+                        self.exists(self.permission_title, timeout=5).invalidate()
+                        permission_title = self.exists(self.permission_title, timeout=5).get_text()
+                        self.log.info("权限 >> {}".format(permission_title,))
+                        self.exists(self.permission_allow_button).click()
+                    except:
+                        self.log.debug("这里报错了")
+                        break
+                else:
+                    self.log.debug("进入else循环")
+                    try:
+                        self.permission_title.invalidate()
+                        permission_title = self.permission_title.get_text()
+                        self.log.info("权限 >> {}".format(permission_title,))
+                        self.permission_allow_button.click()
+                    except:
+                        self.log.debug("这里报错了")
+                        break
+
+                # 等待1秒, 防止页面跳转间黑屏
+                time.sleep(1)
+
 
             # except Exception as e:
-            #     self.log.debug(e)
-            #     self.log.debug("权限弹框方法报错")
+            #     self.log.debug("权限except")
 
 
     def click_NextStepbtn(self, title=None):
@@ -104,6 +124,7 @@ class publicTool(BaseView):
 
             self.poco("android:id/content").invalidate()
 
+        self.log.debug("box_alert_text的值为 {}".format(box_alert_text, ))
         self.log.debug("提示框的标题是: {}".format(box_alert_text[0].get_text()))
         self.log.debug("提示框的标题是: {}".format(box_alert_text[1].get_text()))
 
@@ -250,17 +271,18 @@ class publicTool(BaseView):
         start = time.time()
         while not self.Routetitle.exists():
             self.log.debug("Routetitle 不存在")
-            if time.time() - start > 20:
+            if time.time() - start > 10:
                 break
             pass
 
-        self.log.debug("调用此方法的是: {}".format(traceback.extract_stack()[-2][2]))
-        self.log.debug("调用此方法的模块为: {}, 行数为: {}".format(sys._getframe().f_code.co_filename , sys._getframe().f_back.f_lineno))
+        # self.log.debug("调用此方法的是: {}".format(traceback.extract_stack()[-2][2]))
+        # self.log.debug("调用此方法的模块为: {}, 行数为: {}".format(sys._getframe().f_code.co_filename , sys._getframe().f_back.f_lineno))
 
         try:
             self.log.debug("当前页面的标题为: {}".format(self.Routetitle.get_text(),))
         except PocoNoSuchNodeException:
             self.log.debug("title获取不到")
+            return False
 
         return self.Routetitle.get_text()
 

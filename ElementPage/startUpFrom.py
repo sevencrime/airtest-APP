@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import re
+import subprocess
 
 from airtest.core.api import *
 
@@ -14,22 +15,33 @@ class startUpFrom(BaseView):
     # 初始化gm, phone需要从gm获取
     gm_init()
 
-
-    def Start_APP(self):
-        # 获取当前界面的包名和Activity
+    def get_Activity(self):
         CurrentFocus = os.popen("adb -s {} shell dumpsys window | findstr mCurrentFocus".format(self.gm.get_value("deviceuuid"))).read()
         currentActivity = ''.join(re.findall(r"u0\s(.+)}", CurrentFocus))
 
-        # start_app('io.newtype.eddid.app', 'io.newtype.eddid.app.MainActivity')
-        if currentActivity.find("io.newtype.eddid.app") == -1:
-            # 启动APP
-            if not self.gm.get_value("isintegrated"):
-                os.popen("adb -s {} shell am start -n io.newtype.eddid.app/io.newtype.eddid.app.MainActivity".format(self.gm.get_value("deviceuuid"))).read()
-            else:
-                os.popen("adb -s {} shell am start -n io.newtype.eddid.app/com.bartech.app.main.launcher.LauncherActivity".format(self.gm.get_value("deviceuuid"))).read()
-
         return currentActivity
 
+    def Start_APP(self):
+        # 获取当前界面的包名和Activity
+        # CurrentFocus = os.popen("adb -s {} shell dumpsys window | findstr mCurrentFocus".format(self.gm.get_value("deviceuuid"))).read()
+        # currentActivity = ''.join(re.findall(r"u0\s(.+)}", CurrentFocus))
+
+        # start_app('io.newtype.eddid.app', 'io.newtype.eddid.app.MainActivity')
+        if self.get_Activity().find("io.newtype.eddid.app") == -1:
+            # 启动APP
+            if not self.gm.get_value("isintegrated"):
+                # os.popen("adb -s {} shell am start -n io.newtype.eddid.app/io.newtype.eddid.app.MainActivity".format(self.gm.get_value("deviceuuid"))).read()
+                subprocess.Popen("adb -s {} shell am start -n io.newtype.eddid.app/io.newtype.eddid.app.MainActivity".format(self.gm.get_value("deviceuuid"))).wait()
+
+            else:
+                # os.popen("adb -s {} shell am start -n io.newtype.eddid.app/com.bartech.app.main.launcher.LauncherActivity".format(self.gm.get_value("deviceuuid"))).read()
+                subprocess.Popen("adb -s {} shell am start -n io.newtype.eddid.app/com.bartech.app.main.launcher.LauncherActivity".format(self.gm.get_value("deviceuuid"))).wait()
+
+
+        # while self.get_Activity() == "" and self.get_Activity() == None:
+        #     self.log.debug("登录启动APP(等待页面跳转)")
+
+        return self.get_Activity()
 
 
     def firstSetting(self):
@@ -38,7 +50,11 @@ class startUpFrom(BaseView):
 
         """
         try:
-            self.exists(self.el_firstSetting_loc).click()
+            # @BUG: 使用首次设置前加上等待, 防止闪退
+
+            firstSetting = self.exists(self.el_firstSetting_loc, timeout=5)
+            time.sleep(3)
+            firstSetting.click()
         except:
             return False
 
