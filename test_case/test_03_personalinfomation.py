@@ -34,13 +34,12 @@ class Test_personalinfomation():
             reEmail = perinfo.send_reemail()
         with allure.step("点击下一步"):
             pubTool.click_NextStepbtn()
-            pubTool.wait_loading()
+            # pubTool.wait_loading()
 
         with allure.step("校验地址弹框标题和内容"):
             boxtitle, boxcontent = pubTool.get_boxtitle()
             assert_equal(boxtitle, "请确认您的身份证地址", "确认地址弹框标题有误")
             assert_equal(boxcontent, perinfo.get_address(), "弹框内容与填写内容不符")
-
 
         with allure.step("确认地址弹框--点击确定"):
             pubTool.click_boxconfirm()

@@ -20,13 +20,14 @@ class Test_open():
 
     gm = GlobalMap()
     log = Logs()
+
     
     @pytest.mark.maintest
     @allure.story("进入开户界面")
     def test_Openning(self, poco):
         pubTool = publicTool(poco)
         startupfrom = startUpFrom(poco)
-        subprocess.Popen(r"adb shell pm clear io.newtype.eddid.app").wait()
+        subprocess.Popen(r"adb -s {} shell pm clear io.newtype.eddid.app".format(self.gm.get_value("deviceuuid"))).wait()
         with allure.step("启动APP"):
             self.log.debug("启动APP")
             startupfrom.Start_APP()

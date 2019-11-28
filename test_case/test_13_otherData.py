@@ -23,9 +23,9 @@ class Test_otherDataPage():
     fix_routetitle = ["其他资料"]
     boolset = isboolean(knowRisk=gm.get_value("knowRisk"), futures="futuresMargin" in gm.get_value("accountType"))
 
-    @allure.story("其他资料")
     @allure.story("您是否曾经宣告破产或被申请破产提示")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    # @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是CRM接口, 没有该提示, 跳过此用例")
     def test_otherData_bankruptmsg(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         otherdata = otherDataPage(poco)
@@ -40,6 +40,7 @@ class Test_otherDataPage():
 
     @allure.story("您是否艾德证券期货及/或艾德金业的雇员或任何其雇员的亲属?")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    # @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是CRM接口, 没有该提示, 跳过此用例")
     def test_otherData_customerRelativesmsg(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         otherdata = otherDataPage(poco)
@@ -54,6 +55,7 @@ class Test_otherDataPage():
 
     @allure.story("您是否与任何艾德证券期货及/或艾德金业客户有关连")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    # @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是CRM接口, 没有该提示, 跳过此用例")
     def test_otherData_associatedcustomermsg(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         otherdata = otherDataPage(poco)
@@ -68,6 +70,7 @@ class Test_otherDataPage():
 
     @allure.story("您是否香港交易所之交易所参与者或证监会之持牌人或注册人之董事、雇员或认可人士")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    # @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是CRM接口, 没有该提示, 跳过此用例")
     def test_otherData_directormsg(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         otherdata = otherDataPage(poco)
@@ -82,6 +85,7 @@ class Test_otherDataPage():
 
     @allure.story("客户是否拥有美国公民或美国合法永久居民身份?")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    # @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是CRM接口, 没有该提示, 跳过此用例")
     def test_otherData_citizenOfUSAmsg(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         otherdata = otherDataPage(poco)
@@ -96,6 +100,7 @@ class Test_otherDataPage():
 
     @allure.story("就税务而言，您是否是美国居民?")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    # @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是CRM接口, 没有该提示, 跳过此用例")
     def test_otherData_americanResidentmsg(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         otherdata = otherDataPage(poco)
@@ -110,6 +115,7 @@ class Test_otherDataPage():
 
     @allure.story("您是否香港法律定义下的“政治公众人物（PEP）”或与政治公众人物有密切联系")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    # @pytest.mark.skipif(gm.get_value("environment").find("aos") == -1, reason="后台是CRM接口, 没有该提示, 跳过此用例")
     def test_otherData_PEP_Peoplemsg(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         otherdata = otherDataPage(poco)
@@ -320,6 +326,7 @@ class Test_otherDataPage():
 
     @allure.story("其他资料, 正常输入")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
+    @pytest.mark.maintest
     def test_otherData(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         otherdata = otherDataPage(poco)
@@ -356,7 +363,7 @@ class Test_otherDataPage():
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "-v", "--pdb", "test_13_otherData.py::Test_otherDataPage::test_otherData_investmentTargetMSG", '--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
+    pytest.main(["-s", "-v", "--pdb", "test_13_otherData.py::Test_otherDataPage", '-m=maintest','--alluredir', '../report/xml_{time}'.format(time=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))])
     xml_report_path, html_report_path = CommonsTool.rmdir5()
     os.popen("allure generate {xml_report_path} -o {html_report_path} --clean".format(
         xml_report_path=xml_report_path, html_report_path=html_report_path)).read()

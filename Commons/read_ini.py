@@ -47,6 +47,7 @@ def gm_init():
     gm.set_value(appcationNumber=config.get('baseconf', 'appcationNumber'))
     gm.set_value(mongohost=config.get('baseconf', 'mongohost'))
     gm.set_bool(isintegrated=str_to_bool(config.get("baseconf", "isintegrated")))
+    gm.set_value(deviceuuid=config.get('baseconf', 'deviceuuid'))
 
 
 

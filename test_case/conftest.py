@@ -90,27 +90,30 @@ def poco():
             readDeviceId = list(os.popen('adb devices').readlines())
             # 获取第一个
 
-        for deviceid in readDeviceId:
-            deviceId = re.findall(r'(.*)\tdevice', deviceid)
-
-            if ''.join(deviceId) == "127.0.0.1:7555":
-                deviceuuid = "127.0.0.1:7555"
-                break
-
-            elif ''.join(deviceId) == "f7b6acb9":
-                # continue
-                deviceuuid = "f7b6acb9"
-                break
-
-
+        # for deviceid in readDeviceId:
+        #     deviceId = re.findall(r'(.*)\tdevice', deviceid)
+        #
+        #     if ''.join(deviceId) == "127.0.0.1:7555":
+        #         deviceuuid = "127.0.0.1:7555"
+        #         break
+        #
+        #     elif ''.join(deviceId) == "f7b6acb9":
+        #         continue
+        #         deviceuuid = "f7b6acb9"
+        #         break
+        #
+        #     elif ''.join(deviceId) == "3fc638bf":
+        #         continue
+        #         deviceuuid = "3fc638bf"
+        #         break
 
         # connect_device(
         #     "Android://127.0.0.1:5037/127.0.0.1:7555?ori_method=ADBORI")
-        log.debug("当前操作的设备为: {}".format(deviceuuid))
-        gm.set_value(deviceuuid=deviceuuid)
+        log.debug("当前操作的设备为: {}".format(gm.get_value("deviceuuid")))
+        gm.set_value(deviceuuid=gm.get_value("deviceuuid"))
 
         connect_device(
-            "Android://127.0.0.1:5037/{device}?ori_method=ADBORI".format(device=deviceuuid))
+            "Android://127.0.0.1:5037/{device}?ori_method=ADBORI".format(device=gm.get_value("deviceuuid")))
 
         # connect_device(
         #     "Android://127.0.0.1:5037/127.0.0.1:7555?ori_method=ADBORI".format(device=''.join(deviceuuid)))
