@@ -14,8 +14,11 @@ from ElementPage.publicTool import publicTool
 @pytest.mark.run(order=14)
 @allure.feature("风险披露")
 class Test_riskDisclosure():
+    fix_routetitle = ["风险披露"]
 
     @allure.story("风险披露--开始播放后退出")
+    @pytest.mark.usefixtures('reloadRoute')
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     def test_close_Audio(self, poco):
         pubTool = publicTool(poco)
         riskdisclosure = RiskDisclosurePage(poco)
@@ -45,6 +48,8 @@ class Test_riskDisclosure():
 
 
     @allure.story("风险披露--正常播放")
+    @pytest.mark.usefixtures('reloadRoute')
+    @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.maintest
     def test_player_Audio(self, poco):
         pubTool = publicTool(poco)

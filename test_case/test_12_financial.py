@@ -57,7 +57,9 @@ class Test_financial():
     @pytest.mark.parametrize("orderPerson", [True, False])
     @pytest.mark.usefixtures('teardown')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
-    @pytest.mark.skipif("securitiesMargin" in gm.get_value("accountType"), reason="勾选了证券保证金")
+    @pytest.mark.defaultType
+    @pytest.mark.securitiesCash
+    @pytest.mark.futuresMargin
     def test_derivative(self, poco, reloadRoute, orderPerson, accountHolder):
         pubTool = publicTool(poco)
         financial = financialPage(poco)
@@ -103,7 +105,8 @@ class Test_financial():
     @pytest.mark.parametrize("orderPerson", [True, False])
     @pytest.mark.usefixtures('teardown')
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
-    @pytest.mark.skipif("securitiesMargin" not in gm.get_value("accountType"), reason="没有勾选证券保证金")
+    @pytest.mark.securitiesMargin_AND_futuresMargin
+    @pytest.mark.securitiesMargin
     def test_derivative_securitiesMargin(self, poco, reloadRoute, orderPerson, accountHolder, isCompanyAccounts, isDiscretion, isMarginAccount):
         pubTool = publicTool(poco)
         financial = financialPage(poco)
@@ -141,9 +144,13 @@ class Test_financial():
             if not orderPerson:
                 boxtitle, boxcontent = pubTool.get_boxtitle()
                 assert_equal(boxtitle, "温馨提示", "相关保证金融资账户弹框标题有误")
-                assert_equal(boxcontent, "如您并非账户最终下单人，请联络我们的客服: +852 3896 6333 或电邮：cs@eddid.com.hk", "弹框内容与填写内容不符")
-                poco(text="知道了").click()
+                if not accountHolder:
+                    assert_equal(boxcontent, "如您并非账户的最终实益拥有人，请联络我们的客服: +852 3896 6333 或电邮：cs@eddid.com.hk",
+                                 "弹框内容与填写内容不符")
+                else:
+                    assert_equal(boxcontent, "如您并非账户最终下单人，请联络我们的客服: +852 3896 6333 或电邮：cs@eddid.com.hk", "弹框内容与填写内容不符")
 
+                poco(text="知道了").click()
 
         with allure.step("点击下一步"):
             # pubTool.swipe_to_Up()

@@ -36,6 +36,7 @@ class Test_Signature():
 
             with allure.step("如果有权限弹框, 点击允许"):
                 pubTool.allow_permissionBox()
+                
         except PocoNoSuchNodeException:
             print("已经签完名字")
 

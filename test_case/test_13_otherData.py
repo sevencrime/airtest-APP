@@ -5,6 +5,7 @@ import os
 
 import allure
 import pytest
+from Commons.Logging import Logs
 from airtest.core.api import *
 
 from Commons import CommonsTool
@@ -19,6 +20,7 @@ from ElementPage.publicTool import publicTool
 class Test_otherDataPage():
 
     gm = GlobalMap()
+    log = Logs()
     query_initialData()
     fix_routetitle = ["其他资料"]
     boolset = isboolean(knowRisk=gm.get_value("knowRisk"), futures="futuresMargin" in gm.get_value("accountType"))
@@ -227,9 +229,13 @@ class Test_otherDataPage():
 
 
     # 只勾选期货
-    @allure.story("选择期货或衍生产品, 投资目标选择'利息/股息收入', 查看提示")
+    @allure.story("只勾选期货, 投资目标选择'利息/股息收入', 查看提示")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
-    @pytest.mark.skipif(not('knowRisk' not in boolset['True'] and 'futures' in boolset['True']), reason="跳过用例")
+    # @pytest.mark.skipif(not('knowRisk' not in boolset['True'] and 'futures' in boolset['True']), reason="跳过用例")
+    @pytest.mark.skipif(gm.get_value("knowRisk"), reason="跳过用例")
+    @pytest.mark.defaultType
+    @pytest.mark.futuresMargin
+    @pytest.mark.securitiesMargin_AND_futuresMargin
     def test_otherData_futuresmsg(self, poco, reloadRoute):
         pubTool = publicTool(poco)
         otherdata = otherDataPage(poco)
@@ -255,6 +261,7 @@ class Test_otherDataPage():
             otherdata.click_PEP_People(False)
 
         with allure.step("您的投资目标"):
+            self.log.debug("这里开始选择投资目标")
             otherdata.click_investmentTarget(["利息/股息收入", "对冲"])
 
         with allure.step("风险承受能力"):
@@ -270,7 +277,7 @@ class Test_otherDataPage():
 
 
     # 只勾选衍生产品
-    @allure.story("选择期货或衍生产品, 投资目标选择'利息/股息收入', 查看提示")
+    @allure.story("只勾选衍生产品, 投资目标选择'利息/股息收入', 查看提示")
     @pytest.mark.parametrize("reloadRoute", fix_routetitle, indirect=True)
     @pytest.mark.skipif(not('knowRisk' in boolset['True'] and 'futures' not in boolset['True']), reason="跳过用例")
     def test_otherData_derivatives(self, poco, reloadRoute):
