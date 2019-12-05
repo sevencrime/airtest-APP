@@ -66,9 +66,11 @@ class mongoTool:
 
     def findData_All(self, database, collection, query):
 
-    	delmap = {}
+        delmap = {}
+        usersmap = {}
 
         db = self.client[database]
+
         applydata = db[collection].aggregate([{
             '$match': query
         }, {
@@ -87,10 +89,46 @@ class mongoTool:
             }
         }, {
             '$lookup': {
+                'from': 'apply',
+                'localField': 'idpUserId',
+                'foreignField': 'idpUserId',
+                'as': 'applyTable'
+            }
+        }, {
+            '$lookup': {
+                'from': 'apply',
+                'localField': 'accountNumber',
+                'foreignField': 'accountNumber',
+                'as': 'applyTable'
+            }
+
+        }, {
+            '$lookup': {
                 'from': 'lead',
                 'localField': 'leadId',
                 'foreignField': '_id',
                 'as': 'leadTable'
+            }
+        }, {
+            '$lookup': {
+                'from': 'account',
+                'localField': 'accountNumber',
+                'foreignField': 'accountNumber',
+                'as': 'accountTable'     
+            }
+        }, {
+            '$lookup': {
+                'from': 'client_info',
+                'localField': 'clientId',
+                'foreignField': '_id',
+                'as': 'clientTable'     
+            }
+        }, {
+            '$lookup': {
+                'from': 'apply_info',
+                'localField': 'applyTable.applyInfoIds',
+                'foreignField': '_id',
+                'as': 'applyInfoTable'     
             }
         }
         ])
@@ -101,8 +139,28 @@ class mongoTool:
 
 
         if applydata['idpUserId'] != "":
-        	# 通过idp查询users表
-        	pass
+            # 通过idp查询users表
+            if database == 'uat' and database == 'aos-uat':
+                usersTable = 'eddidclientpooluat'
+            if database == 'test' and database == 'aos':
+                usersTable = 'eddidclientpool'
+
+            clientDB = self.client[usersTable]
+            clientdata = clientDB['users'].aggregate([{
+                '$match': {'subject': applydata['idpUserId']}
+            }, {
+                '$lookup': {
+                    'from': 'userdevices',
+                    'localField': 'subject',
+                    'foreignField': '_id',
+                    'as': 'userdevices'
+                }
+            }
+            ])
+
+            usersmap['users'] = clientdata['_id']
+            usersmap['usersdevice'] = clientdata['userdevices']['_id']
+
 
         # 判断数据是否成功, 成功则查询client_info
         if applydata['status'] == "success":
@@ -118,6 +176,9 @@ class mongoTool:
                 }
             }
             ])
+
+            delmap['client_info'] = clientdata['_id']
+            delmap['account'] = clientdata['accountId']['_id']
 
 
 if __name__ == '__main__':
