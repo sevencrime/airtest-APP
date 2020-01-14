@@ -116,6 +116,7 @@ class mongoTool:
 
 if __name__ == '__main__':
     host = 'mongodb+srv://eddiddevadmin:atfxdev2018@dev-clientdb-nckz7.mongodb.net'
+    aoshost=""
     # host = 'localhost:27017'
     database = 'aos'  # 查询的数据库
     # Database(host, database).del_linked("apply_debug", {"phone":"13709691525"})	# 传入需要查询的表和查询条件
