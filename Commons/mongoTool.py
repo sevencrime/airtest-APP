@@ -64,121 +64,54 @@ class mongoTool:
         # db["accounts"].update({"phone":"15089514626",  "forLogin":True} , { "$set" : { "currentRoute" : "/account"} })
         db[collection].update_one(query, setdata)
 
-    def findData_All(self, database, collection, query):
+    def del_linked(self, phone, env="uat"):
 
-        delmap = {}
-        usersmap = {}
+        # 传入phone
+        # 查询idpusers, 获取idp
 
-        db = self.client[database]
+        tables = {}
+        _users = set()
+        _usersdriver = set()
+        _apply = set()
+        _apply_info = set()
+        _client_info = set()
+        _account = set()
 
-        applydata = db[collection].aggregate([{
-            '$match': query
-        }, {
-            '$lookup': {
-                'from': 'apply_info',
-                'localField': 'applyInfoIds',
-                'foreignField': '_id',
-                'as': 'applyInfoTable'
-            }
-        }, {
-            '$lookup': {
-                'from': 'apply',
-                'localField': 'applyId',
-                'foreignField': '_id',
-                'as': 'applyTable'
-            }
-        }, {
-            '$lookup': {
-                'from': 'apply',
-                'localField': 'idpUserId',
-                'foreignField': 'idpUserId',
-                'as': 'applyTable'
-            }
-        }, {
-            '$lookup': {
-                'from': 'apply',
-                'localField': 'accountNumber',
-                'foreignField': 'accountNumber',
-                'as': 'applyTable'
-            }
+        client = pymongo.MongoClient(host)
+        aos = pymongo.MongoClient(aoshost)
 
-        }, {
-            '$lookup': {
-                'from': 'lead',
-                'localField': 'leadId',
-                'foreignField': '_id',
-                'as': 'leadTable'
-            }
-        }, {
-            '$lookup': {
-                'from': 'account',
-                'localField': 'accountNumber',
-                'foreignField': 'accountNumber',
-                'as': 'accountTable'     
-            }
-        }, {
-            '$lookup': {
-                'from': 'client_info',
-                'localField': 'clientId',
-                'foreignField': '_id',
-                'as': 'clientTable'     
-            }
-        }, {
-            '$lookup': {
-                'from': 'apply_info',
-                'localField': 'applyTable.applyInfoIds',
-                'foreignField': '_id',
-                'as': 'applyInfoTable'     
-            }
-        }
-        ])
+        if env == "test"
+            idp = "eddidclientpool"
+            crm = "test"
+        elif env == "uat":
+            idp = "eddidclientpooluat"
+            crm = "uat"
 
-        delmap['apply'] = applydata['_id']
-        delmap['apply_info'] = applydata['applyInfoTable']['_id']
-        delmap['lead'] = applydata['leadId']
+        for result in client[idp]['users'].find({"phone_number":{"$regex":".+{}".format(phone)}}):
+            # print("idp : ", result)
+            # print(result['subject'])
+            _users.add(result['_id'])
+            for usersdriver in client[idp]['userdevices'].find({"subject" : result['subject']}):
+                # print(usersdriver)
+                _usersdriver.add(usersdriver['_id'])
+
+        for result in client[crm]['apply_info'].find({"phone":phone}):
+            # print("apply_info : ", result)
+            # print(result['applyId'])
+            _apply_info.add(result['_id'])
+            for applyd in client[crm]['apply'].find({'_id':"result['_id"}):
+                _apply.add(applyd['_id'])
+                _apply_info.add(applyd['applyInfoIds'])
+                for acc in client[crm]["account"].find({"accountNumber": applyd["accountNumber"]}):
+                    _account.add(acc["_id"])
 
 
-        if applydata['idpUserId'] != "":
-            # 通过idp查询users表
-            if database == 'uat' and database == 'aos-uat':
-                usersTable = 'eddidclientpooluat'
-            if database == 'test' and database == 'aos':
-                usersTable = 'eddidclientpool'
+        for result in client[crm]["client_info"].find({"phone":phone}):
+            _client_info.add(result["_id"])
 
-            clientDB = self.client[usersTable]
-            clientdata = clientDB['users'].aggregate([{
-                '$match': {'subject': applydata['idpUserId']}
-            }, {
-                '$lookup': {
-                    'from': 'userdevices',
-                    'localField': 'subject',
-                    'foreignField': '_id',
-                    'as': 'userdevices'
-                }
-            }
-            ])
+            for acc in client[crm]["account"].find({"_id": result['accountId']}):
+                _account.add(acc["_id"])
 
-            usersmap['users'] = clientdata['_id']
-            usersmap['usersdevice'] = clientdata['userdevices']['_id']
-
-
-        # 判断数据是否成功, 成功则查询client_info
-        if applydata['status'] == "success":
-
-            clientdata = db['client_info'].aggregate([{
-                '$match': {'phone': applydata['applyInfoTable']['phone'], 'email': applydata['applyInfoTable']['email']}
-            }, {
-                '$lookup': {
-                    'from': 'account',
-                    'localField': 'accountId',
-                    'foreignField': '_id',
-                    'as': 'accountTable'
-                }
-            }
-            ])
-
-            delmap['client_info'] = clientdata['_id']
-            delmap['account'] = clientdata['accountId']['_id']
 
 
 if __name__ == '__main__':
